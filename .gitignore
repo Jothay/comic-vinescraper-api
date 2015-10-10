@@ -1,0 +1,7 @@
+/_ReSharper.Caches
+*/bin
+*/obj
+
+*.suo
+*.user
+/.vs/config/applicationhost.config

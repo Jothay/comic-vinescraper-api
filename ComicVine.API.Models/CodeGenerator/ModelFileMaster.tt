@@ -1,0 +1,138 @@
+﻿<#@ output extension="txt" #>
+<#@ include file="MultiOutput.tt" #>
+<#@ include file="ModelFile.tt" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Collections" #>
+<#@ assembly name="System.ComponentModel.Composition" #>
+<#@ assembly name="System.ComponentModel.DataAnnotations" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Data.DataSetExtensions" #>
+<#@ assembly name="System.Net.Http" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ assembly name="$(SolutionDir)packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll" #>
+<#@ assembly name="$(SolutionDir)packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll" #>
+<#@ assembly name="$(SolutionDir)ComicVine.API.DataModel\bin\Debug\ComicVine.API.dll" #>
+<#@ assembly name="$(SolutionDir)ComicVine.API.DataModel\bin\Debug\ComicVine.API.DataModel.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Collections.ObjectModel" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ import namespace="System.Data.Entity" #>
+<#@ import namespace="System.Data.Entity.ModelConfiguration.Configuration" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Linq.Expressions" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Runtime.Serialization" #>
+<#@ import namespace="ComicVine.API" #>
+<#@ import namespace="ComicVine.API.CodeGenerator" #>
+<#@ import namespace="ComicVine.API.DataModel" #>
+<#
+var nameSpaces = new Dictionary<string, List<classInfo>>();
+foreach (var classType in from t in Assembly.GetAssembly(typeof(ComicVine.API.DataModel.ModelEntities)).GetTypes()
+                          where t.IsClass && t.Namespace == "ComicVine.API.DataModel.Schema"
+                          select t)
+{
+    var table = classType.GetCustomAttribute(typeof(System.ComponentModel.DataAnnotations.Schema.TableAttribute))
+                    as System.ComponentModel.DataAnnotations.Schema.TableAttribute;
+    if (table == null) { continue; }
+    var name = table.Name;
+    if (name.Contains('.')) { name = name.Split('.')[0]; }
+    if (name == "System") { name = "Structure"; } // Don't override System by accident
+    if (!nameSpaces.ContainsKey(name)) { nameSpaces[name] = new List<classInfo>(); }
+    // Now that we know for sure the Namespace is recorded
+    // let's add this class to the Entities list
+    var classInfo = new classInfo
+    {
+        name = classType.ToString().Replace("ComicVine.API.DataModel.", ""),
+        baseClassName = classType.BaseType == null ? null : classType.BaseType.ToString().Replace("ComicVine.API.DataModel.", "").Replace("EntityBase", ""),
+        isAttributable = false/*ImplementsInterface(classType, typeof(ComicVine.API.DataModel.Schema.Shared.IAttributableSharedBase))*/,
+        properties = classType
+            .GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance)
+            .Select(p => new propertyInfo
+            {
+                name = p.Name,
+                type = p.PropertyType.ToString()
+                    .Replace("ComicVine.API.", "")
+                    .Replace("Schema.", "")
+                    .Replace("System.", "")
+                    .Replace("String", "string")
+                    .Replace("Int32", "int")
+                    .Replace("Int64", "long")
+                    .Replace("Decimal", "decimal")
+                    .Replace("Boolean", "bool")
+                    .Replace("Nullable`1[int]", "int?")
+                    .Replace("Nullable`1[long]", "long?")
+                    .Replace("Nullable`1[bool]", "bool?")
+                    .Replace("Nullable`1[decimal]", "decimal?")
+                    .Replace("Nullable`1[DateTime]", "DateTime?")
+                    .Replace("Nullable`1[Guid]", "Guid?")
+                    .Replace("Collections.Generic.ICollection`1", "List").Replace("[", "<").Replace("]", ">")
+                    .Replace("Collections.Generic.ICollection`1", "List").Replace("[", "<").Replace("]", ">")
+                    .Replace("Byte", "byte")
+                    .Replace("byte<>", "byte[]"),
+                isNameable = p.PropertyType.BaseType != null
+                    && (p.PropertyType.BaseType == typeof(ComicVine.API.DataModel.Schema.Shared.NameableEntityBase)
+                        /*|| p.PropertyType.BaseType == typeof(ComicVine.API.DataModel.Schema.Shared.ContactableEntityBase)
+                        || p.PropertyType.BaseType == typeof(ComicVine.API.DataModel.Schema.Shared.SalesEntityBase)
+                        || p.PropertyType.BaseType == typeof(ComicVine.API.DataModel.Schema.Shared.SalesItemEntityBase)*/),
+                isContactable = false, //p.PropertyType.BaseType != null && (p.PropertyType.BaseType == typeof(ComicVine.API.DataModel.Schema.Shared.ContactableSharedBase)),
+                isAttributable = false, //p.PropertyType.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ComicVine.API.DataModel.Schema.Shared.IAttributableSharedBase)),
+                isFilterable = p.GetCustomAttributes().Any(ca => (ca is SearchableBooleanAttribute)
+                                                              || (ca is SearchableStringAttribute)
+                                                              || (ca is SearchableIntAttribute)     || (ca is SearchableNullableIntAttribute)
+                                                              || (ca is SearchableDecimalAttribute) || (ca is SearchableNullableDecimalAttribute)),
+                filterName = p.GetCustomAttributes().Any(ca => ca is SearchableBooleanAttribute)         ? ((SearchableBooleanAttribute)p.GetCustomAttributes().First(ca => ca is SearchableBooleanAttribute)).SearchName
+                           : p.GetCustomAttributes().Any(ca => ca is SearchableStringAttribute)          ? ((SearchableStringAttribute)p.GetCustomAttributes().First(ca => ca is SearchableStringAttribute)).SearchName
+                           : p.GetCustomAttributes().Any(ca => ca is SearchableIntAttribute)             ? ((SearchableIntAttribute)p.GetCustomAttributes().First(ca => ca is SearchableIntAttribute)).SearchName
+                           : p.GetCustomAttributes().Any(ca => ca is SearchableNullableIntAttribute)     ? ((SearchableNullableIntAttribute)p.GetCustomAttributes().First(ca => ca is SearchableNullableIntAttribute)).SearchName
+                           : p.GetCustomAttributes().Any(ca => ca is SearchableDecimalAttribute)         ? ((SearchableDecimalAttribute)p.GetCustomAttributes().First(ca => ca is SearchableDecimalAttribute)).SearchName
+                           : p.GetCustomAttributes().Any(ca => ca is SearchableNullableDecimalAttribute) ? ((SearchableNullableDecimalAttribute)p.GetCustomAttributes().First(ca => ca is SearchableNullableDecimalAttribute)).SearchName
+                           : p.Name,
+                filterDescription = p.GetCustomAttributes().Any(ca => ca is SearchableBooleanAttribute)         ? ((SearchableBooleanAttribute)p.GetCustomAttributes().First(ca => ca is SearchableBooleanAttribute)).SearchDescription
+                                  : p.GetCustomAttributes().Any(ca => ca is SearchableStringAttribute)          ? ((SearchableStringAttribute)p.GetCustomAttributes().First(ca => ca is SearchableStringAttribute)).SearchDescription
+                                  : p.GetCustomAttributes().Any(ca => ca is SearchableIntAttribute)             ? ((SearchableIntAttribute)p.GetCustomAttributes().First(ca => ca is SearchableIntAttribute)).SearchDescription
+                                  : p.GetCustomAttributes().Any(ca => ca is SearchableNullableIntAttribute)     ? ((SearchableNullableIntAttribute)p.GetCustomAttributes().First(ca => ca is SearchableNullableIntAttribute)).SearchDescription
+                                  : p.GetCustomAttributes().Any(ca => ca is SearchableDecimalAttribute)         ? ((SearchableDecimalAttribute)p.GetCustomAttributes().First(ca => ca is SearchableDecimalAttribute)).SearchDescription
+                                  : p.GetCustomAttributes().Any(ca => ca is SearchableNullableDecimalAttribute) ? ((SearchableNullableDecimalAttribute)p.GetCustomAttributes().First(ca => ca is SearchableNullableDecimalAttribute)).SearchDescription
+                                  : string.Format("The {0} to search by.", p.Name)
+            }).ToList()
+    };
+    nameSpaces[name].Add(classInfo);
+
+    /*
+    foreach (var propAttr in classType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+        .Where(p => p.GetCustomAttribute<DecimalPrecisionAttribute>() != null)
+        .Select(p => new { prop = p, attr = p.GetCustomAttribute<DecimalPrecisionAttribute>(true) }))
+    {
+    //    var entityConfig = modelBuilder.GetType().GetMethod("Entity").MakeGenericMethod(classType).Invoke(modelBuilder, null);
+    //    var param = Expression.Parameter(classType, "c");
+    //    var property = Expression.Property(param, propAttr.prop.Name);
+    //    var lambdaExpression = Expression.Lambda(property, true, param);
+    //    DecimalPropertyConfiguration decimalConfig;
+    //    if (propAttr.prop.PropertyType.IsGenericType && propAttr.prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+    //    {
+    //        var methodInfo = entityConfig.GetType().GetMethods().Where(p => p.Name == "Property").ToList()[7];
+    //        decimalConfig = methodInfo.Invoke(entityConfig, new object[] { lambdaExpression }) as DecimalPropertyConfiguration;
+    //    }
+    //    else
+    //    {
+    //        var methodInfo = entityConfig.GetType().GetMethods().Where(p => p.Name == "Property").ToList()[6];
+    //        decimalConfig = methodInfo.Invoke(entityConfig, new object[] { lambdaExpression }) as DecimalPropertyConfiguration;
+    //    }
+    //    decimalConfig?.HasPrecision(propAttr.attr.Precision, propAttr.attr.Scale);
+    }*/
+}
+
+var entityClassNames = new[] { "Entity1", "Entity2", "Entity3" };
+foreach(var nameSpace in nameSpaces)
+{
+    foreach(var entityClass in nameSpace.Value)
+    {
+        GenerateModelFile(nameSpace.Key, entityClass);
+        SaveOutput(nameSpace.Key, "" + entityClass.name.Replace("Schema.", "") + "Models.cs");
+    }
+}
+DeleteOldOutputs();
+#>
