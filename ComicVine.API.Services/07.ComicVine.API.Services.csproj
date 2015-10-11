@@ -113,6 +113,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Services\CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\ServiceFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\ServiceFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\ServiceFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -121,7 +138,343 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Authors\AuthorsServices.cs" />
+    <Compile Include="Services\CodeGenerator\Characters.CharacterAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterAppearedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterCreatorServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterDiedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterEnemyServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterEnemyTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterFriendlyTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterFriendServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterMovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterPowerServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterVolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Chats.ChatServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptAppearedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptMovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptVolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterDiedServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeConceptFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeConceptServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeLocationFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeLocationServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeObjectFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeObjectServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodePersonServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeTeamFirstAppearanceServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueWriterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationAppearedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationMovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationVolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Media.ImageFileServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieCharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieConceptServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieLocationServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieObjectServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieProducerServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieStudioServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieWriterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectAppearedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectMovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectVolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Origins.OriginProfileServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Origins.OriginServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.CreatorCharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.GenderServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.PersonAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.PersonServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Powers.PowerAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Powers.PowerServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Profiles.ProfileServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Promos.PromoServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Promos.ResourceTypeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Publishers.PublisherAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Publishers.PublisherServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesCharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesLocationServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\ServiceFile.cs">
+      <DependentUpon>ServiceFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcWriterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Studios.StudioServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamAppearedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamCharacterEnemyServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamCharacterFriendServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamDisbandedInIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamIssueServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamMemberServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamMovieServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamStoryArcServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamVolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Videos.VideoServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Videos.VideoTypeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeAliasServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeCharacterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeConceptServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeLocationServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeObjectServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeTeamServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeWriterServices.cs">
+      <DependentUpon>ServiceFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\ServicesBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +492,9 @@
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
       <Name>01.RepositoryPattern</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

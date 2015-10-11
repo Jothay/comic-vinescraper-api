@@ -8,54 +8,54 @@
     using Interfaces.SearchModels;
     using Moq;
 
-    public static class AuthorsMockingSetup
+    public static class PeopleMockingSetup
     {
-        public static Mock<IAuthorModel> DoMockingSetupForAuthorModel(int idReturnValue = 0, string name = "Stephen King")
+        public static Mock<IPersonModel> DoMockingSetupForPersonModel(int idReturnValue = 0, string name = "Stephen King")
         {
-            var mockAuthorModel = new Mock<IAuthorModel>();
+            var mockPersonModel = new Mock<IPersonModel>();
             // Mock Functions
-            mockAuthorModel.Setup(m => m.Id).Returns(() => idReturnValue);
-            mockAuthorModel.Setup(m => m.Active).Returns(() => true);
-            mockAuthorModel.Setup(m => m.CustomKey).Returns(() => "KING-STEPHEN");
-            mockAuthorModel.Setup(m => m.CreatedDate).Returns(() => new DateTime(2015, 10, 1));
-            mockAuthorModel.Setup(m => m.UpdatedDate).Returns(() => null);
-            mockAuthorModel.Setup(m => m.Name).Returns(() => name);
+            mockPersonModel.Setup(m => m.Id).Returns(() => idReturnValue);
+            mockPersonModel.Setup(m => m.Active).Returns(() => true);
+            mockPersonModel.Setup(m => m.CustomKey).Returns(() => "KING-STEPHEN");
+            mockPersonModel.Setup(m => m.CreatedDate).Returns(() => new DateTime(2015, 10, 1));
+            mockPersonModel.Setup(m => m.UpdatedDate).Returns(() => null);
+            mockPersonModel.Setup(m => m.Name).Returns(() => name);
             // Return
-            return mockAuthorModel;
+            return mockPersonModel;
         }
 
-        public static Mock<IAuthor> DoMockingSetupForAuthor(int idReturnValue = 0)
+        public static Mock<IPerson> DoMockingSetupForPerson(int idReturnValue = 0)
         {
-            var mockAuthor = new Mock<IAuthor>();
+            var mockPerson = new Mock<IPerson>();
             // Mock Functions
-            mockAuthor.Setup(m => m.Id).Returns(() => idReturnValue);
-            mockAuthor.Setup(m => m.Active).Returns(() => true);
-            mockAuthor.Setup(m => m.CustomKey).Returns(() => "KING-STEPHEN");
-            mockAuthor.Setup(m => m.CreatedDate).Returns(() => new DateTime(2015, 10, 1));
-            mockAuthor.Setup(m => m.UpdatedDate).Returns(() => null);
-            mockAuthor.Setup(m => m.Name).Returns(() => "Stephen King");
+            mockPerson.Setup(m => m.Id).Returns(() => idReturnValue);
+            mockPerson.Setup(m => m.Active).Returns(() => true);
+            mockPerson.Setup(m => m.CustomKey).Returns(() => "KING-STEPHEN");
+            mockPerson.Setup(m => m.CreatedDate).Returns(() => new DateTime(2015, 10, 1));
+            mockPerson.Setup(m => m.UpdatedDate).Returns(() => null);
+            mockPerson.Setup(m => m.Name).Returns(() => "Stephen King");
             // Return
-            return mockAuthor;
+            return mockPerson;
         }
 
-        public static Mock<IAuthorsRepository> DoMockingSetupForRepository()
+        public static Mock<IPeopleRepository> DoMockingSetupForRepository()
         {
-            var mockAuthorsRepository = new Mock<IAuthorsRepository>();
+            var mockPeopleRepository = new Mock<IPeopleRepository>();
             // Mock Functions
-            mockAuthorsRepository.Setup(m => m.Get(It.IsAny<int>()))
-                .Returns(() => new Mock<IAuthor>().Object);
-            mockAuthorsRepository.Setup(m => m.Get(It.IsAny<string>()))
-                .Returns(() => new Mock<IAuthor>().Object);
-            mockAuthorsRepository.Setup(m => m.List)
-                .Returns(() => new Mock<List<IAuthor>>().Object);
-            mockAuthorsRepository.Setup(m => m.Search(It.IsAny<IAuthorSearchModel>(), It.IsAny<bool>()))
-                .Returns(() => new Mock<List<IAuthor>>().Object);
-            mockAuthorsRepository.Setup(m => m.Add(It.IsAny<IAuthor>()));
-            mockAuthorsRepository.Setup(m => m.Remove(It.IsAny<IAuthor>()));
-            mockAuthorsRepository.Setup(m => m.Deactivate(It.IsAny<IAuthor>()));
-            mockAuthorsRepository.Setup(m => m.Update(It.IsAny<IAuthor>()));
+            mockPeopleRepository.Setup(m => m.Get(It.IsAny<int>()))
+                .Returns(() => new Mock<IPerson>().Object);
+            mockPeopleRepository.Setup(m => m.Get(It.IsAny<string>()))
+                .Returns(() => new Mock<IPerson>().Object);
+            mockPeopleRepository.Setup(m => m.List)
+                .Returns(() => new Mock<List<IPerson>>().Object);
+            mockPeopleRepository.Setup(m => m.Search(It.IsAny<IPersonSearchModel>(), It.IsAny<bool>()))
+                .Returns(() => new Mock<List<IPerson>>().Object);
+            mockPeopleRepository.Setup(m => m.Add(It.IsAny<IPerson>()));
+            mockPeopleRepository.Setup(m => m.Remove(It.IsAny<IPerson>()));
+            mockPeopleRepository.Setup(m => m.Deactivate(It.IsAny<IPerson>()));
+            mockPeopleRepository.Setup(m => m.Update(It.IsAny<IPerson>()));
             // Return
-            return mockAuthorsRepository;
+            return mockPeopleRepository;
         }
     }
 }

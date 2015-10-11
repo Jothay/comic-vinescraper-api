@@ -1,82 +1,81 @@
-﻿namespace ComicVine.API.Testing.Services.Authors
+﻿namespace ComicVine.API.Testing.Services.People
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    using API.Services;
     using Interfaces.Models;
-    using ComicVine.API.Services.Authors;
     using Xunit;
 
-    public class AuthorsServicesTests : ServicesTestsWithTearDown
+    public class PeopleServicesTests : ServicesTestsWithTearDown
     {
         [Fact]
-        public void Verify_GetAuthors_Should_ReturnAListOfAuthorModels()
+        public void Verify_GetPeople_Should_ReturnAListOfPersonModels()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new GetAuthors { Name = "Stephen King", Id = 1, CustomKey = "KING-STEPHEN", Description = null, ModifiedSince = DateTime.Now, Paging = null });
-            Assert.IsType<List<IAuthorModel>>(response);
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new GetPeople { Name = "Stephen King", Id = 1, CustomKey = "KING-STEPHEN", Description = null, ModifiedSince = DateTime.Now, Paging = null });
+            Assert.IsType<List<IPersonModel>>(response);
         }
         [Fact]
-        public void Verify_GetAuthorsAsListing_Should_ReturnAListOfAuthorModels()
+        public void Verify_GetPeopleAsListing_Should_ReturnAListOfPersonModels()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new GetAuthorsAsListing { Name = "Stephen King", Id = 1, CustomKey = "KING-STEPHEN", Description = "famous", ModifiedSince = DateTime.Now, Paging = null });
-            Assert.IsType<List<IAuthorModel>>(response);
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new GetPeopleAsListing { Name = "Stephen King", Id = 1, CustomKey = "KING-STEPHEN", Description = "famous", ModifiedSince = DateTime.Now, Paging = null });
+            Assert.IsType<List<IPersonModel>>(response);
         }
         [Fact]
-        public void Verify_GetAuthor_Should_ReturnAnAuthorModel()
+        public void Verify_GetPerson_Should_ReturnAnPersonModel()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new GetAuthor { ID = 1 });
-            Assert.Equal(nameof(IAuthorModel), response.GetType().Name.Replace("Proxy", ""));
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new GetPerson { ID = 1 });
+            Assert.Equal(nameof(IPersonModel), response.GetType().Name.Replace("Proxy", ""));
         }
         [Fact]
-        public void Verify_GetAuthorByKey_Should_ReturnAnAuthorModel()
+        public void Verify_GetPersonByKey_Should_ReturnAnPersonModel()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new GetAuthorByKey { CustomKey = "TEST" });
-            Assert.Equal(nameof(IAuthorModel), response.GetType().Name.Replace("Proxy", ""));
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new GetPersonByKey { CustomKey = "TEST" });
+            Assert.Equal(nameof(IPersonModel), response.GetType().Name.Replace("Proxy", ""));
         }
         [Fact]
-        public void Verify_CreateAuthor_Should_ReturnAnAuthorModel()
+        public void Verify_CreatePerson_Should_ReturnAnPersonModel()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new CreateAuthor { Name = "Stephen King", CustomKey = "KING-STEPHEN", Active = true, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now });
-            Assert.Equal(nameof(IAuthorModel), response.GetType().Name.Replace("Proxy", ""));
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new CreatePerson { Name = "Stephen King", CustomKey = "KING-STEPHEN", Active = true, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now });
+            Assert.Equal(nameof(IPersonModel), response.GetType().Name.Replace("Proxy", ""));
         }
         [Fact]
-        public void Verify_UpdateAuthor_Should_ReturnAnAuthorModel()
+        public void Verify_UpdatePerson_Should_ReturnAnPersonModel()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new UpdateAuthor { Id = 1 });
-            Assert.Equal(nameof(IAuthorModel), response.GetType().Name.Replace("Proxy", ""));
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new UpdatePerson { Id = 1 });
+            Assert.Equal(nameof(IPersonModel), response.GetType().Name.Replace("Proxy", ""));
         }
         [Fact]
-        public void Verify_DeactivateAuthor_Should_ReturnTrue()
+        public void Verify_DeactivatePerson_Should_ReturnTrue()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new DeactivateAuthor { ID = 1 });
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new DeactivatePerson { ID = 1 });
             Assert.Equal(true, response);
         }
         [Fact]
-        public void Verify_DeactivateAuthorByKey_Should_ReturnTrue()
+        public void Verify_DeactivatePersonByKey_Should_ReturnTrue()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new DeactivateAuthorByKey { CustomKey = "TEST" });
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new DeactivatePersonByKey { CustomKey = "TEST" });
             Assert.Equal(true, response);
         }
         [Fact]
-        public void Verify_RemoveAuthor_Should_ReturnTrue()
+        public void Verify_RemovePerson_Should_ReturnTrue()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new RemoveAuthor { ID = 1 });
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new RemovePerson { ID = 1 });
             Assert.Equal(true, response);
         }
         [Fact]
-        public void Verify_RemoveAuthorByKey_Should_ReturnTrue()
+        public void Verify_RemovePersonByKey_Should_ReturnTrue()
         {
-            var service = AppHost.Container.Resolve<IAuthorsServices>();
-            var response = service.Any(new RemoveAuthorByKey { CustomKey = "TEST" });
+            var service = AppHost.Container.Resolve<IPeopleServices>();
+            var response = service.Any(new RemovePersonByKey { CustomKey = "TEST" });
             Assert.Equal(true, response);
         }
     }

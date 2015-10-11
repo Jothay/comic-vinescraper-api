@@ -1,24 +1,24 @@
 ﻿namespace ComicVine.API.Testing.Services
 {
+    using API.Services;
     using Interfaces.BusinessWorkflows;
-    using ComicVine.API.Services.Authors;
     using Xunit;
 
     public class BaseServicesTests : ServiceTestsSetupTeardown
     {
 
         [Fact(Skip = "Figure out how to test")]
-        public void Verify_TryResolve_AuthorsBusinessWorkflow_Should_ReturnProperInstance()
+        public void Verify_TryResolve_PeopleBusinessWorkflow_Should_ReturnProperInstance()
         {
-            var result = AppHost.Resolve<IAuthorsBusinessWorkflow>();
-            Assert.IsType<IAuthorsBusinessWorkflow>(result);
+            var result = AppHost.Resolve<IPeopleBusinessWorkflow>();
+            Assert.IsType<IPeopleBusinessWorkflow>(result);
         }
 
         [Fact(Skip = "Figure out how to test")]
-        public void Verify_TryResolve_AuthorsServices_Should_ReturnProperInstance()
+        public void Verify_TryResolve_PeopleServices_Should_ReturnProperInstance()
         {
-            var result = AppHost.Resolve<IAuthorsServices>();
-            Assert.IsType<IAuthorsServices>(result);
+            var result = AppHost.Resolve<IPeopleServices>();
+            Assert.IsType<IPeopleServices>(result);
         }
     }
 }

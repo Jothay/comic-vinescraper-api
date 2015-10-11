@@ -1,39 +1,38 @@
 ﻿namespace ComicVine.API.Testing.BusinessWorkflows
 {
+    using API.BusinessWorkflows;
     using Interfaces.BusinessWorkflows;
     using Interfaces.Mappers;
     using Interfaces.Repositories;
-    using Mappings.Authors;
     using Repositories;
-    using ComicVine.API.BusinessWorkflows;
-    using ComicVine.API.BusinessWorkflows.Authors;
+    using Mappings;
     using StructureMap;
     using Xunit;
 
     public class WorkflowRegistryTests
     {
         [Fact]
-        public void Verify_WorkflowRegistry_Should_ConnectAuthorMapper()
+        public void Verify_WorkflowRegistry_Should_ConnectPersonMapper()
         {
             var container = new Container(new WorkflowRegistry());
-            var instance = container.GetInstance<IAuthorMapper>();
-            Assert.IsType<AuthorMapper>(instance);
+            var instance = container.GetInstance<IPersonMapper>();
+            Assert.IsType<PersonMapper>(instance);
         }
 
         [Fact]
-        public void Verify_WorkflowRegistry_Should_ConnectAuthorsRepository()
+        public void Verify_WorkflowRegistry_Should_ConnectPeopleRepository()
         {
             var container = new Container(new WorkflowRegistry());
-            var instance = container.GetInstance<IAuthorsRepository>();
-            Assert.IsType<AuthorsRepository>(instance);
+            var instance = container.GetInstance<IPeopleRepository>();
+            Assert.IsType<PeopleRepository>(instance);
         }
 
         [Fact]
-        public void Verify_WorkflowRegistry_Should_ConnectAuthorsBusinessWorkflow()
+        public void Verify_WorkflowRegistry_Should_ConnectPeopleBusinessWorkflow()
         {
             var container = new Container(new WorkflowRegistry());
-            var instance = container.GetInstance<IAuthorsBusinessWorkflow>();
-            Assert.IsType<AuthorsBusinessWorkflow>(instance);
+            var instance = container.GetInstance<IPeopleBusinessWorkflow>();
+            Assert.IsType<PeopleBusinessWorkflow>(instance);
         }
     }
 }

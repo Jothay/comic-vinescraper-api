@@ -49,6 +49,7 @@ bool IsIdentifierProperty(propertyInfo property) {
 	return (property.name.EndsWith("Id") || property.name.EndsWith("ID")) && property.type.Replace("?", "") != "Guid";
 }
 string PluralizeName(string original) {
+	if (original.Equals("EpisodeCharacterDied")) { return "EpisodeCharactersDied"; }
 	if (original.EndsWith("Person")) { return original.Replace("Person", "People"); }
 	if (original.EndsWith("Series")) { return original; }
 	if (original.EndsWith("Address")
@@ -149,7 +150,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 <#+		if (IsIdentifierProperty(property)) {#>
             entity.<#= property.name #> = model.<#= property.name #>;
 <#+		} else {#>
-            entity.<#= property.name #> = (<#= property.type.Replace("DataModel.", "") #>)model.<#= property.name #>.MapToEntity();
+            entity.<#= property.name #> = (<#= property.type.Replace("DataModel.", "") #>)model.<#= property.name #>?.MapToEntity();
 <#+		} #>
 <#+	} // End Foreach loop (var property in entityClass.properties) // Related #>
 <#+	if (!hasRelatedProperties) { #>
@@ -189,7 +190,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 <#+		if (IsIdentifierProperty(property)) {#>
             entity.<#= property.name #> = model.<#= property.name #>;
 <#+		} else {#>
-            entity.<#= property.name #> = (<#= property.type.Replace("DataModel.", "") #>)model.<#= property.name #>.MapToEntity();
+            entity.<#= property.name #> = (<#= property.type.Replace("DataModel.", "") #>)model.<#= property.name #>?.MapToEntity();
 <#+		} #>
 <#+	} // End Foreach loop (var property in entityClass.properties) // Related #>
 <#+	if (!hasRelatedProperties) { #>
@@ -226,7 +227,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 <#+		if (IsIdentifierProperty(property)) {#>
             model.<#= property.name #> = entity.<#= property.name #>;
 <#+		} else {#>
-            model.<#= property.name #> = entity.<#= property.name #>.MapToModel();
+            model.<#= property.name #> = entity.<#= property.name #>?.MapToModel();
 <#+		} #>
 <#+	} // End Foreach loop (var property in entityClass.properties) // Related #>
 <#+	if (!hasRelatedProperties) { #>
@@ -237,7 +238,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 		if (!IsAssociatedObjectProperty(property, out propertyType)) { continue; }
 		var type = propertyType.Replace("List<", "").Replace(">", "").Replace("DataModel.", "").Replace("Model", "");
 		hasAssociatedProperties = true; #>
-            model.<#= property.name #> = entity.<#= property.name #>?.Where(i => i.Active).Select(<#= type #>MapperExtensions.MapToModel).ToList();
+            model.<#= property.name #> = entity.<#= property.name #>?.Where(i => i.Active).Select(<#= type #>MapperExtensions.MapToModelLite).ToList();
 <#+	} // End Foreach loop (var property in entityClass.properties) // Associated #>
 <#+	if (!hasAssociatedProperties) { #>
             // <None>
@@ -310,7 +311,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 			if (IsIdentifierProperty(property)) { #>
             searchModel.<#= property.name #> = model.<#= property.name #>;
 <#+				if (entityClass.properties.Any(p => p.name == property.name.Replace("Id", "").Replace("ID", ""))) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>CustomKey = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.CustomKey;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>CustomKey = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.CustomKey;
 <#+				} // End If (entityClass.properties.Any(p => p.name == property.name.Replace("Id", "").Replace("ID", ""))) #>
 <#+				if (property.name == "RequiredLevelId") {#>
             searchmodel.LevelMin = model.Level;
@@ -318,13 +319,13 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 <#+				} // End If (property.name == "RequiredLevelId") #>
 <#+			} // End If (IsIdentifierProperty(property)) #>
 <#+			if (property.isNameable) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Name = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.Name;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Description = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.Description;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Name = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Name;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Description = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Description;
 <#+			} // End If (property.isNameable) #>
 <#+			if (property.isContactable) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Phone = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.Phone;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Fax = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.Fax;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Email = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>.Email;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Phone = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Phone;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Fax = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Fax;
+            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Email = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Email;
 <#+			} // End If (property.isContactable) #>
 <#+		} // End Foreach Loop (var property in entityClass.properties) // Related #>
 <#+	} // End If (hasRelatedProperties) #>

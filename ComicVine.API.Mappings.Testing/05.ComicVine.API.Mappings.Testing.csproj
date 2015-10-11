@@ -112,8 +112,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Mappings\EntityMapperTests.cs" />
-    <Compile Include="Mappings\Authors\AuthorMapperTests.cs" />
-    <Compile Include="Mocking\AuthorsMockingSetup.cs" />
+    <Compile Include="Mappings\People\PeopleMapperTests.cs" />
+    <Compile Include="Mocking\PeopleMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

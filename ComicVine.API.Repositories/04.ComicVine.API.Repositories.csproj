@@ -58,128 +58,334 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGenerator\dbo.EpisodeAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterAliasRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.IssueAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterAppearedInIssueRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.LocationAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterCreatorRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ObjectAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterDiedInIssueRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PersonAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PowerAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyTeamRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ProducerRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterFriendlyTeamRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ProfileRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterFriendRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PublisherAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterIssueRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ResourceTypeRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterMovieRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.SeriesAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterPowerRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.StoryArcAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.StudioRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterStoryArcRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.TeamAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterTeamRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.VolumeAliasRepository.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterVolumeRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.WriterRepository.cs">
+    <Compile Include="CodeGenerator\Chats.ChatRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAppearedInIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptMovieRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptVolumeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterDiedRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodePersonRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamFirstAppearanceRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueWriterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAppearedInIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationMovieRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationStoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationVolumeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Media.ImageFileRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieCharacterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieConceptRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieLocationRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieObjectRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieProducerRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStudioRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieTeamRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieWriterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAppearedInIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectMovieRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectStoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectVolumeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginProfileRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.CreatorCharacterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.GenderRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Profiles.ProfileRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.PromoRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.ResourceTypeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesCharacterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesLocationRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcWriterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Studios.StudioRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAppearedInIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterEnemyRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterFriendRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamDisbandedInIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamIssueRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMemberRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMovieRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamStoryArcRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamVolumeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoTypeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeAliasRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeCharacterRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeConceptRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeLocationRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeObjectRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeTeamRepository.cs">
+      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeWriterRepository.cs">
       <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeGenerator\AuthorExample.cs" />
-    <Compile Include="CodeGenerator\dbo.AuthorRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.CharacterAliasRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.CharacterRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.ChatRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.ConceptAliasRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.ConceptRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.EpisodeRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.GenderRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.ImageFileRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.IssueRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.LocationRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.MovieRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.ObjectRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.OriginRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.PersonRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.PowerRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.PromoRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.PublisherRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.SeriesRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.StoryArcRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.TeamRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.VideoRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.VideoTypeRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\dbo.VolumeRepository.cs">
-      <DependentUpon>RepositoryFileMaster.tt</DependentUpon>
-    </Compile>
     <Compile Include="CodeGenerator\RepositoryFile.cs">
       <DependentUpon>RepositoryFile.tt</DependentUpon>
       <AutoGen>True</AutoGen>

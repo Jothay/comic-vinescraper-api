@@ -6,23 +6,23 @@
     using Interfaces.SearchModels;
     using Moq;
 
-    public static class AuthorsMockingSetup
+    public static class PeopleMockingSetup
     {
-        public static Mock<IAuthorsBusinessWorkflow> DoMockingSetupForBusinessWorkflow()
+        public static Mock<IPeopleBusinessWorkflow> DoMockingSetupForBusinessWorkflow()
         {
-            var mockAuthorsBusinessWorkflow = new Mock<IAuthorsBusinessWorkflow>();
+            var mockPeopleBusinessWorkflow = new Mock<IPeopleBusinessWorkflow>();
             // Mock Functions
-            mockAuthorsBusinessWorkflow.Setup(m => m.Search(It.IsAny<IAuthorSearchModel>(), It.IsAny<bool>())).Returns(() => new List<IAuthorModel>());
-            mockAuthorsBusinessWorkflow.Setup(m => m.Get(It.IsAny<int>())).Returns(() => new Mock<IAuthorModel>().Object);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Get(It.IsAny<string>())).Returns(() => new Mock<IAuthorModel>().Object);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Create(It.IsAny<IAuthorModel>())).Returns(() => new Mock<IAuthorModel>().Object);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Update(It.IsAny<IAuthorModel>())).Returns(() => new Mock<IAuthorModel>().Object);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Deactivate(It.IsAny<int>())).Returns(() => true);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Deactivate(It.IsAny<string>())).Returns(() => true);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Remove(It.IsAny<int>())).Returns(() => true);
-            mockAuthorsBusinessWorkflow.Setup(m => m.Remove(It.IsAny<string>())).Returns(() => true);
+            mockPeopleBusinessWorkflow.Setup(m => m.Search(It.IsAny<IPersonSearchModel>(), It.IsAny<bool>())).Returns(() => new List<IPersonModel>());
+            mockPeopleBusinessWorkflow.Setup(m => m.Get(It.IsAny<int>())).Returns(() => new Mock<IPersonModel>().Object);
+            mockPeopleBusinessWorkflow.Setup(m => m.Get(It.IsAny<string>())).Returns(() => new Mock<IPersonModel>().Object);
+            mockPeopleBusinessWorkflow.Setup(m => m.Create(It.IsAny<IPersonModel>())).Returns(() => new Mock<IPersonModel>().Object);
+            mockPeopleBusinessWorkflow.Setup(m => m.Update(It.IsAny<IPersonModel>())).Returns(() => new Mock<IPersonModel>().Object);
+            mockPeopleBusinessWorkflow.Setup(m => m.Deactivate(It.IsAny<int>())).Returns(() => true);
+            mockPeopleBusinessWorkflow.Setup(m => m.Deactivate(It.IsAny<string>())).Returns(() => true);
+            mockPeopleBusinessWorkflow.Setup(m => m.Remove(It.IsAny<int>())).Returns(() => true);
+            mockPeopleBusinessWorkflow.Setup(m => m.Remove(It.IsAny<string>())).Returns(() => true);
             // Return
-            return mockAuthorsBusinessWorkflow;
+            return mockPeopleBusinessWorkflow;
         }
     }
 }

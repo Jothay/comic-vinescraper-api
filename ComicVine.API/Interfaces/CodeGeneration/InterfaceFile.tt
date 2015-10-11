@@ -49,6 +49,7 @@ bool IsIdentifierProperty(propertyInfo property) {
 	return (property.name.EndsWith("Id") || property.name.EndsWith("ID")) && property.type.Replace("?", "") != "Guid";
 }
 string PluralizeName(string original) {
+	if (original.Equals("EpisodeCharacterDied")) { return "EpisodeCharactersDied"; }
 	if (original.EndsWith("Person")) { return original.Replace("Person", "People"); }
 	if (original.EndsWith("Series")) { return original; }
 	if (original.EndsWith("Address")

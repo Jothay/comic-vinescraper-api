@@ -59,7 +59,343 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessWorkflows\BusinessWorkflowBase.cs" />
-    <Compile Include="BusinessWorkflows\Authors\AuthorsBusinessWorkflow.cs" />
+    <Compile Include="CodeGenerator\Characters.CharacterAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterAppearedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterCreatorBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterDiedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterFriendBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterFriendlyTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterMovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterPowerBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterVolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Chats.ChatBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAppearedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptMovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptVolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterDiedBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodePersonBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamFirstAppearanceBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueWriterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAppearedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationMovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationVolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Media.ImageFileBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieCharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieConceptBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieLocationBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieObjectBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieProducerBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStudioBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieWriterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAppearedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectMovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectVolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginProfileBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.CreatorCharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.GenderBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Profiles.ProfileBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.PromoBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.ResourceTypeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesCharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesLocationBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcWriterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Studios.StudioBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAppearedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterEnemyBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterFriendBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamDisbandedInIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamIssueBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMemberBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMovieBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamStoryArcBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamVolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoTypeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeAliasBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeCharacterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeConceptBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeLocationBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeObjectBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeTeamBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeWriterBusinessWorkflow.cs">
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\WorkflowFile.cs">
+      <DependentUpon>WorkflowFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkflowRegistry.cs" />
   </ItemGroup>
@@ -80,6 +416,28 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeGenerator\WorkflowFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WorkflowFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeGenerator\WorkflowFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WorkflowFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeGenerator\WorkflowFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkflowFileMaster.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

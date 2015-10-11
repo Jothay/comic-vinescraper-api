@@ -69,124 +69,118 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\CodeGeneration\dbo.AuthorInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterAliasInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.CharacterAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterAppearedInIssueInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.CharacterInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterCreatorInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ChatInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterDiedInIssueInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ConceptAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterEnemyInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ConceptInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterEnemyTeamInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.EpisodeAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterFriendInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.EpisodeInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterFriendlyTeamInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.GenderInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ImageFileInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterIssueInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.IssueAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterMovieInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.IssueInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterPowerInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.LocationAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterStoryArcInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.LocationInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterTeamInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.MovieInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Characters.CharacterVolumeInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ObjectAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Chats.ChatInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ObjectInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptAliasInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.OriginInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptAppearedInIssueInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PersonAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PersonInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptIssueInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PowerAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptMovieInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PowerInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Concepts.ConceptVolumeInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ProducerInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeAliasInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ProfileInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeCharacterDiedInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PromoInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeCharacterFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PublisherAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeCharacterInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.PublisherInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeConceptFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.ResourceTypeInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeConceptInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.SeriesAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.SeriesInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeLocationFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.StoryArcAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeLocationInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.StoryArcInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeObjectFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.StudioInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeObjectInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.TeamAliasInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodePersonInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.TeamInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeStoryArcFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.VideoInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeStoryArcInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.VideoTypeInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeTeamFirstAppearanceInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.VolumeAliasInterfaces.cs">
-      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.VolumeInterfaces.cs">
-      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces\CodeGeneration\dbo.WriterInterfaces.cs">
+    <Compile Include="Interfaces\CodeGeneration\Episodes.EpisodeTeamInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\CodeGeneration\InterfaceFile.cs">
@@ -194,7 +188,69 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InterfaceFile.tt</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\CodeGeneration\AuthorExample.cs" />
+    <Compile Include="Interfaces\CodeGeneration\Issues.IssueAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Issues.IssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Issues.IssueWriterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationAppearedInIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationMovieInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationStoryArcInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Locations.LocationVolumeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Media.ImageFileInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieCharacterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieConceptInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieLocationInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieObjectInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieProducerInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieStoryArcInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieStudioInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieTeamInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Movies.MovieWriterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\CodeGeneration\MultiOutput.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,6 +267,156 @@
     <Compile Include="Interfaces\02.DataModels\IEntity.cs" />
     <Compile Include="Interfaces\03.SearchModels\IPaging.cs" />
     <Compile Include="Interfaces\06.BusinessWorkflows\IBusinessWorkflow.cs" />
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectAppearedInIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectMovieInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectStoryArcInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Objects.ObjectVolumeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Origins.OriginInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Origins.OriginProfileInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\People.CreatorCharacterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\People.GenderInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\People.PersonAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\People.PersonInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Powers.PowerAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Powers.PowerInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Profiles.ProfileInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Promos.PromoInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Promos.ResourceTypeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Publishers.PublisherAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Publishers.PublisherInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Series.SeriesAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Series.SeriesCharacterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Series.SeriesInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Series.SeriesLocationInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\StoryArcs.StoryArcAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\StoryArcs.StoryArcInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\StoryArcs.StoryArcIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\StoryArcs.StoryArcWriterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Studios.StudioInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamAppearedInIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamCharacterEnemyInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamCharacterFriendInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamDisbandedInIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamIssueInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamMemberInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamMovieInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamStoryArcInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Teams.TeamVolumeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Videos.VideoInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Videos.VideoTypeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeAliasInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeCharacterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeConceptInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeLocationInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeObjectInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeTeamInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\CodeGeneration\Volumes.VolumeWriterInterfaces.cs">
+      <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,9 @@
 ﻿namespace ComicVine.API.Testing.Services
 {
     using System;
+    using API.Services;
     using Interfaces.BusinessWorkflows;
     using Mocking;
-    using ComicVine.API.Services.Authors;
     using ServiceStack;
     using ServiceStack.Testing;
 
@@ -17,24 +17,22 @@
     {
         public ServicesTestsWithTearDown()
         {
-            AppHost = new BasicAppHost(typeof(AuthorsServices).Assembly)
+            AppHost = new BasicAppHost(typeof(PeopleServices).Assembly)
             {
                 ConfigureContainer = container =>
                 {
-                    //container.Register<IAuthorMapper>(c => new AuthorMapper());
-                    //container.Register<IModelEntities<Author>>(c =>
-                    //{
-                    //    Mock<IDbSet<Author>> mockAuthSet;
-                    //    return AuthorsMockingSetup.DoMockingSetupForContext(true, out mockAuthSet).Object;
+                    //container.Register<IPersonMapper>(c => new PersonMapper());
+                    //container.Register<IModelEntities<Person>>(c => {
+                    //    Mock<IDbSet<Person>> mockAuthSet;
+                    //    return PeopleMockingSetup.DoMockingSetupForContext(true, out mockAuthSet).Object;
                     //});
-                    //container.Register<IAuthorsRepository>(c =>
-                    //{
-                    //    Mock<IDbSet<Author>> mockAuthSet;
-                    //    var mockContext = AuthorsMockingSetup.DoMockingSetupForContext(true, out mockAuthSet);
-                    //    return AuthorsMockingSetup.DoMockingSetupForRepository(ref mockContext).Object;
+                    //container.Register<IPeopleRepository>(c => {
+                    //    Mock<IDbSet<Person>> mockAuthSet;
+                    //    var mockContext = PeopleMockingSetup.DoMockingSetupForContext(true, out mockAuthSet);
+                    //    return PeopleMockingSetup.DoMockingSetupForRepository(ref mockContext).Object;
                     //});
-                    container.Register(c => AuthorsMockingSetup.DoMockingSetupForBusinessWorkflow().Object);
-                    container.Register<IAuthorsServices>(c => new AuthorsServices(c.Resolve<IAuthorsBusinessWorkflow>()));
+                    container.Register(c => PeopleMockingSetup.DoMockingSetupForBusinessWorkflow().Object);
+                    container.Register<IPeopleServices>(c => new PeopleServices(c.Resolve<IPeopleBusinessWorkflow>()));
                 }
             }.Init();
         }

@@ -1,6 +1,5 @@
 ﻿namespace ComicVine.API.Services
 {
-    using Authors;
     using ServiceStack;
     using ServiceStack.Configuration;
     using StructureMap;
@@ -11,7 +10,7 @@
         /// <summary>Default constructor. Base constructor requires a name and assembly to locate web
         ///          service classes.</summary>
         public AppHost()
-            : base("ComicVine.API.Services", typeof(AuthorsServices).Assembly)
+            : base("ComicVine.API.Services", typeof(PeopleServices).Assembly)
         {
         }
 

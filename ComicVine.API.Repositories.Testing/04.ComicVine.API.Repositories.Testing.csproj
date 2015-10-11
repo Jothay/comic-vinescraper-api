@@ -113,9 +113,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Repositories\RepositoryBaseTests.cs" />
-    <Compile Include="Repositories\Authors\AuthorsRepositoryTests.cs" />
+    <Compile Include="Repositories\People\PeopleRepositoryTests.cs" />
     <Compile Include="Repositories\RepositoryRegistryTests.cs" />
-    <Compile Include="Mocking\AuthorsMockingSetup.cs" />
+    <Compile Include="Mocking\PeopleMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

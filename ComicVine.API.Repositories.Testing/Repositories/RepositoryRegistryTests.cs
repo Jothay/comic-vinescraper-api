@@ -1,9 +1,9 @@
 ﻿namespace ComicVine.API.Testing.Repositories
 {
     using System.Collections.Generic;
+    using API.Repositories;
     using DataModel;
     using Interfaces.Repositories;
-    using API.Repositories;
     using StructureMap;
     using StructureMap.Pipeline;
     using Xunit;
@@ -20,19 +20,11 @@
         }
 
         [Fact]
-        public void Verify_RepositoryRegistry_Should_ConnectAuthorsRepository()
+        public void Verify_RepositoryRegistry_Should_ConnectPeopleRepository()
         {
             var container = new Container(new RepositoryRegistry());
-            var instance = container.GetInstance<IAuthorsRepository>();
-            Assert.IsType<AuthorsRepository>(instance);
+            var instance = container.GetInstance<IPeopleRepository>();
+            Assert.IsType<PeopleRepository>(instance);
         }
-
-        //[Fact]
-        //public void Verify_RepositoryRegistry_Should_ConnectAuthorsBusinessWorkflow()
-        //{
-        //    var container = new Container(new RepositoryRegistry());
-        //    var instance = container.GetInstance<IAuthorsBusinessWorkflow>();
-        //    Assert.IsType<AuthorsBusinessWorkflow>(instance);
-        //}
     }
 }

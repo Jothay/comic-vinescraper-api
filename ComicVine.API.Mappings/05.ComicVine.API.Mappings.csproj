@@ -41,124 +41,148 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGenerator\dbo.AuthorMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterAliasMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.CharacterAliasMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterAppearedInIssueMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.CharacterMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterCreatorMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ChatMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterDiedInIssueMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ConceptAliasMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ConceptMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyTeamMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.EpisodeAliasMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterFriendlyTeamMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.EpisodeMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterFriendMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.GenderMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterIssueMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ImageFileMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.IssueAliasMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterMovieMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.IssueMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterPowerMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.LocationAliasMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterStoryArcMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.LocationMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterTeamMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.MovieMappings.cs">
+    <Compile Include="CodeGenerator\Characters.CharacterVolumeMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ObjectAliasMappings.cs">
+    <Compile Include="CodeGenerator\Chats.ChatMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ObjectMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptAliasMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.OriginMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptAppearedInIssueMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PersonAliasMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptIssueMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PersonMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PowerAliasMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptMovieMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PowerMappings.cs">
+    <Compile Include="CodeGenerator\Concepts.ConceptVolumeMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ProducerMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeAliasMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ProfileMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterDiedMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PromoMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PublisherAliasMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.PublisherMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.ResourceTypeMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.SeriesAliasMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.SeriesMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.StoryArcAliasMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.StoryArcMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.StudioMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.TeamAliasMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodePersonMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.TeamMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.VideoMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.VideoTypeMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamFirstAppearanceMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.VolumeAliasMappings.cs">
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.VolumeMappings.cs">
+    <Compile Include="CodeGenerator\Issues.IssueAliasMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\dbo.WriterMappings.cs">
+    <Compile Include="CodeGenerator\Issues.IssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueWriterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAppearedInIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationMovieMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationStoryArcMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationVolumeMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="CodeGenerator\MappingFile.cs">
@@ -166,15 +190,197 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="CodeGenerator\Media.ImageFileMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieCharacterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieConceptMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieLocationMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieObjectMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieProducerMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStoryArcMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStudioMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieTeamMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieWriterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="CodeGenerator\MultiOutput.cs">
       <DependentUpon>MultiOutput.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAppearedInIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectMovieMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectStoryArcMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectVolumeMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginProfileMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.CreatorCharacterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.GenderMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Profiles.ProfileMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.PromoMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.ResourceTypeMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesCharacterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesLocationMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcWriterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Studios.StudioMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAppearedInIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterEnemyMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterFriendMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamDisbandedInIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamIssueMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMemberMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMovieMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamStoryArcMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamVolumeMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoTypeMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeAliasMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeCharacterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeConceptMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeLocationMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeObjectMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeTeamMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeWriterMappings.cs">
+      <DependentUpon>MappingFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Mappings\NameableEntityMapper.cs" />
     <Compile Include="Mappings\EntityMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeGenerator\AuthorExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVine.API.DataModel.csproj">
