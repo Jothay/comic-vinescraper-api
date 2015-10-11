@@ -1,6 +1,6 @@
 ﻿<#@ output extension="txt" #>
 <#@ include file="MultiOutput.tt" #>
-<#@ include file="MappingTestingFile.tt" #>
+<#@ include file="BusinessWorkflowsTestingFile.tt" #>
 <#@ assembly name="System" #>
 <#@ assembly name="System.Collections" #>
 <#@ assembly name="System.ComponentModel.Composition" #>
