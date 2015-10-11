@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterEnemyTeamMapperExtensions
     {
-        public static readonly CharacterEnemyTeamMapper Mapper = new CharacterEnemyTeamMapper();
+        public static ICharacterEnemyTeamMapper Mapper = new CharacterEnemyTeamMapper();
+
+        public static void OverrideMapper(ICharacterEnemyTeamMapper mapper) { Mapper = mapper; }
 
         public static ICharacterEnemyTeam MapToEntity(this ICharacterEnemyTeamModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterEnemyTeamMapper : ICharacterEnemyTeamMapper
     {
-        public ICharacterEnemyTeam MapToEntity(ICharacterEnemyTeamModel model)
+        public virtual ICharacterEnemyTeam MapToEntity(ICharacterEnemyTeamModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterEnemyTeam, ICharacterEnemyTeamModel>(model);
             // CharacterEnemyTeam Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterEnemyTeamModel model, ref ICharacterEnemyTeam entity)
+        public virtual void MapToEntity(ICharacterEnemyTeamModel model, ref ICharacterEnemyTeam entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterEnemyTeamModel MapToModel(ICharacterEnemyTeam entity)
+        public virtual ICharacterEnemyTeamModel MapToModel(ICharacterEnemyTeam entity)
         {
             var model = EntityMapper.MapToModel<ICharacterEnemyTeam, CharacterEnemyTeamModel>(entity);
             // CharacterEnemyTeam Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemyTeamModel MapToModelLite(ICharacterEnemyTeam entity)
+        public virtual ICharacterEnemyTeamModel MapToModelLite(ICharacterEnemyTeam entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterEnemyTeam, CharacterEnemyTeamModel>(entity);
             // CharacterEnemyTeam Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemyTeamModel MapToModelListing(ICharacterEnemyTeam entity)
+        public virtual ICharacterEnemyTeamModel MapToModelListing(ICharacterEnemyTeam entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterEnemyTeam, CharacterEnemyTeamModel>(entity);
             // CharacterEnemyTeam Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemyTeamSearchModel MapToSearchModel(ICharacterEnemyTeamModel model)
+        public virtual ICharacterEnemyTeamSearchModel MapToSearchModel(ICharacterEnemyTeamModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterEnemyTeamModel, CharacterEnemyTeamSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.EnemyTeamId = model.EnemyTeamId;
             searchModel.EnemyTeamCustomKey = model.EnemyTeam?.CustomKey;
+            searchModel.EnemyTeamApiDetailUrl = model.EnemyTeam?.ApiDetailUrl;
+            searchModel.EnemyTeamSiteDetailUrl = model.EnemyTeam?.SiteDetailUrl;
             searchModel.EnemyTeamName = model.EnemyTeam?.Name;
+            searchModel.EnemyTeamShortDescription = model.EnemyTeam?.ShortDescription;
             searchModel.EnemyTeamDescription = model.EnemyTeam?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterEnemyTeamModel model, ICharacterEnemyTeam entity)
+        public virtual bool AreEqual(ICharacterEnemyTeamModel model, ICharacterEnemyTeam entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterEnemyTeam Properties

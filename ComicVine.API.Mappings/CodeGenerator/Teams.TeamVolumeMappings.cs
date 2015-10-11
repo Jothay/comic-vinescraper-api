@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamVolumeMapperExtensions
     {
-        public static readonly TeamVolumeMapper Mapper = new TeamVolumeMapper();
+        public static ITeamVolumeMapper Mapper = new TeamVolumeMapper();
+
+        public static void OverrideMapper(ITeamVolumeMapper mapper) { Mapper = mapper; }
 
         public static ITeamVolume MapToEntity(this ITeamVolumeModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamVolumeMapper : ITeamVolumeMapper
     {
-        public ITeamVolume MapToEntity(ITeamVolumeModel model)
+        public virtual ITeamVolume MapToEntity(ITeamVolumeModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamVolume, ITeamVolumeModel>(model);
             // TeamVolume Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamVolumeModel model, ref ITeamVolume entity)
+        public virtual void MapToEntity(ITeamVolumeModel model, ref ITeamVolume entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamVolumeModel MapToModel(ITeamVolume entity)
+        public virtual ITeamVolumeModel MapToModel(ITeamVolume entity)
         {
             var model = EntityMapper.MapToModel<ITeamVolume, TeamVolumeModel>(entity);
             // TeamVolume Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamVolumeModel MapToModelLite(ITeamVolume entity)
+        public virtual ITeamVolumeModel MapToModelLite(ITeamVolume entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamVolume, TeamVolumeModel>(entity);
             // TeamVolume Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamVolumeModel MapToModelListing(ITeamVolume entity)
+        public virtual ITeamVolumeModel MapToModelListing(ITeamVolume entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamVolume, TeamVolumeModel>(entity);
             // TeamVolume Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamVolumeSearchModel MapToSearchModel(ITeamVolumeModel model)
+        public virtual ITeamVolumeSearchModel MapToSearchModel(ITeamVolumeModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamVolumeModel, TeamVolumeSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamVolumeModel model, ITeamVolume entity)
+        public virtual bool AreEqual(ITeamVolumeModel model, ITeamVolume entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamVolume Properties

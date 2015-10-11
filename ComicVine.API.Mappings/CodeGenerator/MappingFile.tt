@@ -97,7 +97,9 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 
     public static class <#= thisClassName #>MapperExtensions
     {
-        public static readonly <#= thisClassName #>Mapper Mapper = new <#= thisClassName #>Mapper();
+        public static I<#= thisClassName #>Mapper Mapper = new <#= thisClassName #>Mapper();
+
+        public static void OverrideMapper(I<#= thisClassName #>Mapper mapper) { Mapper = mapper; }
 
         public static I<#= thisClassName #> MapToEntity(this I<#= thisClassName #>Model model)
         {
@@ -131,7 +133,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 
     public class <#= thisClassName #>Mapper : I<#= thisClassName #>Mapper
     {
-        public I<#= thisClassName #> MapToEntity(I<#= thisClassName #>Model model)
+        public virtual I<#= thisClassName #> MapToEntity(I<#= thisClassName #>Model model)
         {
             var entity = <#= baseClassNameNoShared #>EntityMapper.MapToEntity<<#= thisClassName #>, I<#= thisClassName #>Model>(model);
             // <#= thisClassName #> Properties
@@ -170,7 +172,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
             return entity;
         }
 
-        public void MapToEntity(I<#= thisClassName #>Model model, ref I<#= thisClassName #> entity)
+        public virtual void MapToEntity(I<#= thisClassName #>Model model, ref I<#= thisClassName #> entity)
         {
             // Assign Base properties
             <#= baseClassNameNoShared #>EntityMapper.MapToEntity(model, ref entity);
@@ -201,14 +203,14 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
 		if (!IsAssociatedObjectProperty(property, out propertyType)) { continue; }
 		var type = propertyType.Replace("List<", "").Replace(">", "").Replace("DataModel.", "").Replace("Model", "");
 		hasAssociatedProperties = true; #>
-            entity.<#= property.name #> = (ICollection<I<#= type #>>)model.<#= property.name #>?.Where(i => i.Active).Select(<#= type #>MapperExtensions.MapToEntity).Cast<<#= type #>>();
+            entity.<#= property.name #> = model.<#= property.name #>?.Where(i => i.Active).Select(<#= type #>MapperExtensions.MapToEntity).ToList();
 <#+	} // End Foreach loop (var property in entityClass.properties) // Associated #>
 <#+	if (!hasAssociatedProperties) { #>
             // <None>
 <#+	} // End If (!hasAssociatedProperties) #>
         }
 
-        public I<#= thisClassName #>Model MapToModel(I<#= thisClassName #> entity)
+        public virtual I<#= thisClassName #>Model MapToModel(I<#= thisClassName #> entity)
         {
             var model = <#= baseClassNameNoShared #>EntityMapper.MapToModel<I<#= thisClassName #>, <#= thisClassName #>Model>(entity);
             // <#= thisClassName #> Properties
@@ -247,7 +249,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
             return model;
         }
 
-        public I<#= thisClassName #>Model MapToModelLite(I<#= thisClassName #> entity)
+        public virtual I<#= thisClassName #>Model MapToModelLite(I<#= thisClassName #> entity)
         {
             var model = <#= baseClassNameNoShared #>EntityMapper.MapToModelLite<I<#= thisClassName #>, <#= thisClassName #>Model>(entity);
             // <#= thisClassName #> Properties
@@ -274,7 +276,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
             return model;
         }
 
-        public I<#= thisClassName #>Model MapToModelListing(I<#= thisClassName #> entity)
+        public virtual I<#= thisClassName #>Model MapToModelListing(I<#= thisClassName #> entity)
         {
             var model = <#= baseClassNameNoShared #>EntityMapper.MapToModelListing<I<#= thisClassName #>, <#= thisClassName #>Model>(entity);
             // <#= thisClassName #> Properties
@@ -301,31 +303,35 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
             return model;
         }
 
-        public I<#= thisClassName #>SearchModel MapToSearchModel(I<#= thisClassName #>Model model)
+        public virtual I<#= thisClassName #>SearchModel MapToSearchModel(I<#= thisClassName #>Model model)
         {
             var searchModel = <#= baseClassNameNoShared #>EntityMapper.MapToSearchModel<I<#= thisClassName #>Model, <#= thisClassName #>SearchModel>(model);
             // Search Properties
 <#+	if (hasRelatedProperties) { #>
 <#+		foreach (var property in entityClass.properties) {
 			if (!IsRelatedObjectProperty(property, out propertyType)) { continue; }
+			var nameNoID = property.name.Replace("Id", "").Replace("ID", "");
 			if (IsIdentifierProperty(property)) { #>
             searchModel.<#= property.name #> = model.<#= property.name #>;
-<#+				if (entityClass.properties.Any(p => p.name == property.name.Replace("Id", "").Replace("ID", ""))) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>CustomKey = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.CustomKey;
-<#+				} // End If (entityClass.properties.Any(p => p.name == property.name.Replace("Id", "").Replace("ID", ""))) #>
+<#+				if (entityClass.properties.Any(p => p.name == nameNoID)) { #>
+            searchModel.<#= nameNoID #>CustomKey = model.<#= nameNoID #>?.CustomKey;
+<#+				} // End If (entityClass.properties.Any(p => p.name == nameNoID)) #>
 <#+				if (property.name == "RequiredLevelId") {#>
             searchmodel.LevelMin = model.Level;
             searchmodel.LevelMax = model.Level;
 <#+				} // End If (property.name == "RequiredLevelId") #>
 <#+			} // End If (IsIdentifierProperty(property)) #>
 <#+			if (property.isNameable) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Name = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Name;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Description = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Description;
+            searchModel.<#= nameNoID #>ApiDetailUrl = model.<#= nameNoID #>?.ApiDetailUrl;
+            searchModel.<#= nameNoID #>SiteDetailUrl = model.<#= nameNoID #>?.SiteDetailUrl;
+            searchModel.<#= nameNoID #>Name = model.<#= nameNoID #>?.Name;
+            searchModel.<#= nameNoID #>ShortDescription = model.<#= nameNoID #>?.ShortDescription;
+            searchModel.<#= nameNoID #>Description = model.<#= nameNoID #>?.Description;
 <#+			} // End If (property.isNameable) #>
 <#+			if (property.isContactable) { #>
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Phone = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Phone;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Fax = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Fax;
-            searchModel.<#= property.name.Replace("Id", "").Replace("ID", "") #>Email = model.<#= property.name.Replace("Id", "").Replace("ID", "") #>?.Email;
+            searchModel.<#= nameNoID #>Phone = model.<#= nameNoID #>?.Phone;
+            searchModel.<#= nameNoID #>Fax = model.<#= nameNoID #>?.Fax;
+            searchModel.<#= nameNoID #>Email = model.<#= nameNoID #>?.Email;
 <#+			} // End If (property.isContactable) #>
 <#+		} // End Foreach Loop (var property in entityClass.properties) // Related #>
 <#+	} // End If (hasRelatedProperties) #>
@@ -345,7 +351,7 @@ namespace ComicVine.API.Mappings//.<#= nameSpace #>
             return searchModel;
         }
 
-        public bool AreEqual(I<#= thisClassName #>Model model, I<#= thisClassName #> entity)
+        public virtual bool AreEqual(I<#= thisClassName #>Model model, I<#= thisClassName #> entity)
         {
             return <#= baseClassNameNoShared #>EntityMapper.AreEqual(model, entity)
                 // <#= thisClassName #> Properties

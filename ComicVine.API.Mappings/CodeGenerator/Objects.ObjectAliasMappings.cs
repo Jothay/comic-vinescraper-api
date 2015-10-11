@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Objects
 
     public static class ObjectAliasMapperExtensions
     {
-        public static readonly ObjectAliasMapper Mapper = new ObjectAliasMapper();
+        public static IObjectAliasMapper Mapper = new ObjectAliasMapper();
+
+        public static void OverrideMapper(IObjectAliasMapper mapper) { Mapper = mapper; }
 
         public static IObjectAlias MapToEntity(this IObjectAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Objects
 
     public class ObjectAliasMapper : IObjectAliasMapper
     {
-        public IObjectAlias MapToEntity(IObjectAliasModel model)
+        public virtual IObjectAlias MapToEntity(IObjectAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<ObjectAlias, IObjectAliasModel>(model);
             // ObjectAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Objects
             return entity;
         }
 
-        public void MapToEntity(IObjectAliasModel model, ref IObjectAlias entity)
+        public virtual void MapToEntity(IObjectAliasModel model, ref IObjectAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Objects
             // <None>
         }
 
-        public IObjectAliasModel MapToModel(IObjectAlias entity)
+        public virtual IObjectAliasModel MapToModel(IObjectAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IObjectAlias, ObjectAliasModel>(entity);
             // ObjectAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAliasModel MapToModelLite(IObjectAlias entity)
+        public virtual IObjectAliasModel MapToModelLite(IObjectAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IObjectAlias, ObjectAliasModel>(entity);
             // ObjectAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAliasModel MapToModelListing(IObjectAlias entity)
+        public virtual IObjectAliasModel MapToModelListing(IObjectAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IObjectAlias, ObjectAliasModel>(entity);
             // ObjectAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAliasSearchModel MapToSearchModel(IObjectAliasModel model)
+        public virtual IObjectAliasSearchModel MapToSearchModel(IObjectAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IObjectAliasModel, ObjectAliasSearchModel>(model);
             // Search Properties
             searchModel.ObjectId = model.ObjectId;
             searchModel.ObjectCustomKey = model.Object?.CustomKey;
+            searchModel.ObjectApiDetailUrl = model.Object?.ApiDetailUrl;
+            searchModel.ObjectSiteDetailUrl = model.Object?.SiteDetailUrl;
             searchModel.ObjectName = model.Object?.Name;
+            searchModel.ObjectShortDescription = model.Object?.ShortDescription;
             searchModel.ObjectDescription = model.Object?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IObjectAliasModel model, IObjectAlias entity)
+        public virtual bool AreEqual(IObjectAliasModel model, IObjectAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // ObjectAlias Properties

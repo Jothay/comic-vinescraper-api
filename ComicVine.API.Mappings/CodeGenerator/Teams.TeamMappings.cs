@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamMapperExtensions
     {
-        public static readonly TeamMapper Mapper = new TeamMapper();
+        public static ITeamMapper Mapper = new TeamMapper();
+
+        public static void OverrideMapper(ITeamMapper mapper) { Mapper = mapper; }
 
         public static ITeam MapToEntity(this ITeamModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamMapper : ITeamMapper
     {
-        public ITeam MapToEntity(ITeamModel model)
+        public virtual ITeam MapToEntity(ITeamModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Team, ITeamModel>(model);
             // Team Properties
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamModel model, ref ITeam entity)
+        public virtual void MapToEntity(ITeamModel model, ref ITeam entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -94,19 +96,19 @@ namespace ComicVine.API.Mappings//.Teams
             entity.PublisherId = model.PublisherId;
             entity.Publisher = (Publisher)model.Publisher?.MapToEntity();
             // Associated Objects
-            entity.TeamAliases = (ICollection<ITeamAlias>)model.TeamAliases?.Where(i => i.Active).Select(TeamAliasMapperExtensions.MapToEntity).Cast<TeamAlias>();
-            entity.TeamCharacterEnemies = (ICollection<ITeamCharacterEnemy>)model.TeamCharacterEnemies?.Where(i => i.Active).Select(TeamCharacterEnemyMapperExtensions.MapToEntity).Cast<TeamCharacterEnemy>();
-            entity.TeamCharacterFriends = (ICollection<ITeamCharacterFriend>)model.TeamCharacterFriends?.Where(i => i.Active).Select(TeamCharacterFriendMapperExtensions.MapToEntity).Cast<TeamCharacterFriend>();
-            entity.TeamIssuesAppearedIn = (ICollection<ITeamAppearedInIssue>)model.TeamIssuesAppearedIn?.Where(i => i.Active).Select(TeamAppearedInIssueMapperExtensions.MapToEntity).Cast<TeamAppearedInIssue>();
-            entity.TeamIssuesDisbandedIn = (ICollection<ITeamDisbandedInIssue>)model.TeamIssuesDisbandedIn?.Where(i => i.Active).Select(TeamDisbandedInIssueMapperExtensions.MapToEntity).Cast<TeamDisbandedInIssue>();
-            entity.TeamIssues = (ICollection<ITeamIssue>)model.TeamIssues?.Where(i => i.Active).Select(TeamIssueMapperExtensions.MapToEntity).Cast<TeamIssue>();
-            entity.TeamMembers = (ICollection<ITeamMember>)model.TeamMembers?.Where(i => i.Active).Select(TeamMemberMapperExtensions.MapToEntity).Cast<TeamMember>();
-            entity.TeamMovies = (ICollection<ITeamMovie>)model.TeamMovies?.Where(i => i.Active).Select(TeamMovieMapperExtensions.MapToEntity).Cast<TeamMovie>();
-            entity.TeamStoryArcs = (ICollection<ITeamStoryArc>)model.TeamStoryArcs?.Where(i => i.Active).Select(TeamStoryArcMapperExtensions.MapToEntity).Cast<TeamStoryArc>();
-            entity.TeamVolumes = (ICollection<ITeamVolume>)model.TeamVolumes?.Where(i => i.Active).Select(TeamVolumeMapperExtensions.MapToEntity).Cast<TeamVolume>();
+            entity.TeamAliases = model.TeamAliases?.Where(i => i.Active).Select(TeamAliasMapperExtensions.MapToEntity).ToList();
+            entity.TeamCharacterEnemies = model.TeamCharacterEnemies?.Where(i => i.Active).Select(TeamCharacterEnemyMapperExtensions.MapToEntity).ToList();
+            entity.TeamCharacterFriends = model.TeamCharacterFriends?.Where(i => i.Active).Select(TeamCharacterFriendMapperExtensions.MapToEntity).ToList();
+            entity.TeamIssuesAppearedIn = model.TeamIssuesAppearedIn?.Where(i => i.Active).Select(TeamAppearedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.TeamIssuesDisbandedIn = model.TeamIssuesDisbandedIn?.Where(i => i.Active).Select(TeamDisbandedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.TeamIssues = model.TeamIssues?.Where(i => i.Active).Select(TeamIssueMapperExtensions.MapToEntity).ToList();
+            entity.TeamMembers = model.TeamMembers?.Where(i => i.Active).Select(TeamMemberMapperExtensions.MapToEntity).ToList();
+            entity.TeamMovies = model.TeamMovies?.Where(i => i.Active).Select(TeamMovieMapperExtensions.MapToEntity).ToList();
+            entity.TeamStoryArcs = model.TeamStoryArcs?.Where(i => i.Active).Select(TeamStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.TeamVolumes = model.TeamVolumes?.Where(i => i.Active).Select(TeamVolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public ITeamModel MapToModel(ITeam entity)
+        public virtual ITeamModel MapToModel(ITeam entity)
         {
             var model = NameableEntityMapper.MapToModel<ITeam, TeamModel>(entity);
             // Team Properties
@@ -133,7 +135,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamModel MapToModelLite(ITeam entity)
+        public virtual ITeamModel MapToModelLite(ITeam entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ITeam, TeamModel>(entity);
             // Team Properties
@@ -146,7 +148,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamModel MapToModelListing(ITeam entity)
+        public virtual ITeamModel MapToModelListing(ITeam entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ITeam, TeamModel>(entity);
             // Team Properties
@@ -159,27 +161,36 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamSearchModel MapToSearchModel(ITeamModel model)
+        public virtual ITeamSearchModel MapToSearchModel(ITeamModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ITeamModel, TeamSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamModel model, ITeam entity)
+        public virtual bool AreEqual(ITeamModel model, ITeam entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Team Properties

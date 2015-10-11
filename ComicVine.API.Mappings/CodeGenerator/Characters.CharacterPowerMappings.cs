@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterPowerMapperExtensions
     {
-        public static readonly CharacterPowerMapper Mapper = new CharacterPowerMapper();
+        public static ICharacterPowerMapper Mapper = new CharacterPowerMapper();
+
+        public static void OverrideMapper(ICharacterPowerMapper mapper) { Mapper = mapper; }
 
         public static ICharacterPower MapToEntity(this ICharacterPowerModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterPowerMapper : ICharacterPowerMapper
     {
-        public ICharacterPower MapToEntity(ICharacterPowerModel model)
+        public virtual ICharacterPower MapToEntity(ICharacterPowerModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterPower, ICharacterPowerModel>(model);
             // CharacterPower Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterPowerModel model, ref ICharacterPower entity)
+        public virtual void MapToEntity(ICharacterPowerModel model, ref ICharacterPower entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterPowerModel MapToModel(ICharacterPower entity)
+        public virtual ICharacterPowerModel MapToModel(ICharacterPower entity)
         {
             var model = EntityMapper.MapToModel<ICharacterPower, CharacterPowerModel>(entity);
             // CharacterPower Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterPowerModel MapToModelLite(ICharacterPower entity)
+        public virtual ICharacterPowerModel MapToModelLite(ICharacterPower entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterPower, CharacterPowerModel>(entity);
             // CharacterPower Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterPowerModel MapToModelListing(ICharacterPower entity)
+        public virtual ICharacterPowerModel MapToModelListing(ICharacterPower entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterPower, CharacterPowerModel>(entity);
             // CharacterPower Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterPowerSearchModel MapToSearchModel(ICharacterPowerModel model)
+        public virtual ICharacterPowerSearchModel MapToSearchModel(ICharacterPowerModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterPowerModel, CharacterPowerSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.PowerId = model.PowerId;
             searchModel.PowerCustomKey = model.Power?.CustomKey;
+            searchModel.PowerApiDetailUrl = model.Power?.ApiDetailUrl;
+            searchModel.PowerSiteDetailUrl = model.Power?.SiteDetailUrl;
             searchModel.PowerName = model.Power?.Name;
+            searchModel.PowerShortDescription = model.Power?.ShortDescription;
             searchModel.PowerDescription = model.Power?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterPowerModel model, ICharacterPower entity)
+        public virtual bool AreEqual(ICharacterPowerModel model, ICharacterPower entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterPower Properties

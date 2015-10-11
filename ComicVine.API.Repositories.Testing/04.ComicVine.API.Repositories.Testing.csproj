@@ -112,8 +112,345 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterAppearedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterCreatorRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterDiedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterEnemyRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterEnemyTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterFriendlyTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterFriendRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterMovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterPowerRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Characters.CharacterVolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Chats.ChatRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptAppearedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptMovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Concepts.ConceptVolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeCharacterDiedRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeCharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeConceptFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeConceptRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeLocationFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeLocationRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeObjectFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeObjectRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodePersonRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeTeamFirstAppearanceRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Episodes.EpisodeTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Issues.IssueAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Issues.IssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Issues.IssueWriterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationAppearedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationMovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Locations.LocationVolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Media.ImageFileRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieCharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieConceptRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieLocationRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieObjectRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieProducerRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieStudioRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Movies.MovieWriterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectAppearedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectMovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Objects.ObjectVolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Origins.OriginProfileRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Origins.OriginRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\People.CreatorCharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\People.GenderRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\People.PersonAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\People.PersonRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Powers.PowerAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Powers.PowerRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Profiles.ProfileRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Promos.PromoRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Promos.ResourceTypeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Publishers.PublisherAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Publishers.PublisherRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\RepositoryTestingFile.cs">
+      <DependentUpon>RepositoryTestingFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Series.SeriesAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Series.SeriesCharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Series.SeriesLocationRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Series.SeriesRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\StoryArcs.StoryArcAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\StoryArcs.StoryArcIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\StoryArcs.StoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\StoryArcs.StoryArcWriterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Studios.StudioRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamAppearedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamCharacterEnemyRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamCharacterFriendRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamDisbandedInIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamIssueRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamMemberRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamMovieRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamStoryArcRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Teams.TeamVolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Videos.VideoRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Videos.VideoTypeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeAliasRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeCharacterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeConceptRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeLocationRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeObjectRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeTeamRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CodeGenerator\Volumes.VolumeWriterRepositoryTests.cs">
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\RepositoryBaseTests.cs" />
-    <Compile Include="Repositories\People\PeopleRepositoryTests.cs" />
+    <Compile Include="Repositories\CodeGenerator\PeopleRepositoryTestsExample.cs" />
     <Compile Include="Repositories\RepositoryRegistryTests.cs" />
     <Compile Include="Mocking\PeopleMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,7 +477,28 @@
       <Name>01.RepositoryPattern</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Repositories\CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repositories\CodeGenerator\RepositoryTestingFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryTestingFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repositories\CodeGenerator\RepositoryTestingFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepositoryTestingFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="Repositories\CodeGenerator\RepositoryTestingFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

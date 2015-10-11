@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Videos
 
     public static class VideoMapperExtensions
     {
-        public static readonly VideoMapper Mapper = new VideoMapper();
+        public static IVideoMapper Mapper = new VideoMapper();
+
+        public static void OverrideMapper(IVideoMapper mapper) { Mapper = mapper; }
 
         public static IVideo MapToEntity(this IVideoModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Videos
 
     public class VideoMapper : IVideoMapper
     {
-        public IVideo MapToEntity(IVideoModel model)
+        public virtual IVideo MapToEntity(IVideoModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Video, IVideoModel>(model);
             // Video Properties
@@ -76,7 +78,7 @@ namespace ComicVine.API.Mappings//.Videos
             return entity;
         }
 
-        public void MapToEntity(IVideoModel model, ref IVideo entity)
+        public virtual void MapToEntity(IVideoModel model, ref IVideo entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -98,7 +100,7 @@ namespace ComicVine.API.Mappings//.Videos
             // <None>
         }
 
-        public IVideoModel MapToModel(IVideo entity)
+        public virtual IVideoModel MapToModel(IVideo entity)
         {
             var model = NameableEntityMapper.MapToModel<IVideo, VideoModel>(entity);
             // Video Properties
@@ -121,7 +123,7 @@ namespace ComicVine.API.Mappings//.Videos
             return model;
         }
 
-        public IVideoModel MapToModelLite(IVideo entity)
+        public virtual IVideoModel MapToModelLite(IVideo entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IVideo, VideoModel>(entity);
             // Video Properties
@@ -139,7 +141,7 @@ namespace ComicVine.API.Mappings//.Videos
             return model;
         }
 
-        public IVideoModel MapToModelListing(IVideo entity)
+        public virtual IVideoModel MapToModelListing(IVideo entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IVideo, VideoModel>(entity);
             // Video Properties
@@ -157,27 +159,36 @@ namespace ComicVine.API.Mappings//.Videos
             return model;
         }
 
-        public IVideoSearchModel MapToSearchModel(IVideoModel model)
+        public virtual IVideoSearchModel MapToSearchModel(IVideoModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IVideoModel, VideoSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.AuthorId = model.AuthorId;
             searchModel.AuthorCustomKey = model.Author?.CustomKey;
+            searchModel.AuthorApiDetailUrl = model.Author?.ApiDetailUrl;
+            searchModel.AuthorSiteDetailUrl = model.Author?.SiteDetailUrl;
             searchModel.AuthorName = model.Author?.Name;
+            searchModel.AuthorShortDescription = model.Author?.ShortDescription;
             searchModel.AuthorDescription = model.Author?.Description;
             searchModel.VideoTypeId = model.VideoTypeId;
             searchModel.VideoTypeCustomKey = model.VideoType?.CustomKey;
+            searchModel.VideoTypeApiDetailUrl = model.VideoType?.ApiDetailUrl;
+            searchModel.VideoTypeSiteDetailUrl = model.VideoType?.SiteDetailUrl;
             searchModel.VideoTypeName = model.VideoType?.Name;
+            searchModel.VideoTypeShortDescription = model.VideoType?.ShortDescription;
             searchModel.VideoTypeDescription = model.VideoType?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVideoModel model, IVideo entity)
+        public virtual bool AreEqual(IVideoModel model, IVideo entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Video Properties

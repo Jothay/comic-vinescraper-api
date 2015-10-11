@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeObjectMapperExtensions
     {
-        public static readonly VolumeObjectMapper Mapper = new VolumeObjectMapper();
+        public static IVolumeObjectMapper Mapper = new VolumeObjectMapper();
+
+        public static void OverrideMapper(IVolumeObjectMapper mapper) { Mapper = mapper; }
 
         public static IVolumeObject MapToEntity(this IVolumeObjectModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeObjectMapper : IVolumeObjectMapper
     {
-        public IVolumeObject MapToEntity(IVolumeObjectModel model)
+        public virtual IVolumeObject MapToEntity(IVolumeObjectModel model)
         {
             var entity = EntityMapper.MapToEntity<VolumeObject, IVolumeObjectModel>(model);
             // VolumeObject Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeObjectModel model, ref IVolumeObject entity)
+        public virtual void MapToEntity(IVolumeObjectModel model, ref IVolumeObject entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeObjectModel MapToModel(IVolumeObject entity)
+        public virtual IVolumeObjectModel MapToModel(IVolumeObject entity)
         {
             var model = EntityMapper.MapToModel<IVolumeObject, VolumeObjectModel>(entity);
             // VolumeObject Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeObjectModel MapToModelLite(IVolumeObject entity)
+        public virtual IVolumeObjectModel MapToModelLite(IVolumeObject entity)
         {
             var model = EntityMapper.MapToModelLite<IVolumeObject, VolumeObjectModel>(entity);
             // VolumeObject Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeObjectModel MapToModelListing(IVolumeObject entity)
+        public virtual IVolumeObjectModel MapToModelListing(IVolumeObject entity)
         {
             var model = EntityMapper.MapToModelListing<IVolumeObject, VolumeObjectModel>(entity);
             // VolumeObject Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeObjectSearchModel MapToSearchModel(IVolumeObjectModel model)
+        public virtual IVolumeObjectSearchModel MapToSearchModel(IVolumeObjectModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IVolumeObjectModel, VolumeObjectSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.ObjectId = model.ObjectId;
             searchModel.ObjectCustomKey = model.Object?.CustomKey;
+            searchModel.ObjectApiDetailUrl = model.Object?.ApiDetailUrl;
+            searchModel.ObjectSiteDetailUrl = model.Object?.SiteDetailUrl;
             searchModel.ObjectName = model.Object?.Name;
+            searchModel.ObjectShortDescription = model.Object?.ShortDescription;
             searchModel.ObjectDescription = model.Object?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeObjectModel model, IVolumeObject entity)
+        public virtual bool AreEqual(IVolumeObjectModel model, IVolumeObject entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // VolumeObject Properties

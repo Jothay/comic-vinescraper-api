@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamMemberMapperExtensions
     {
-        public static readonly TeamMemberMapper Mapper = new TeamMemberMapper();
+        public static ITeamMemberMapper Mapper = new TeamMemberMapper();
+
+        public static void OverrideMapper(ITeamMemberMapper mapper) { Mapper = mapper; }
 
         public static ITeamMember MapToEntity(this ITeamMemberModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamMemberMapper : ITeamMemberMapper
     {
-        public ITeamMember MapToEntity(ITeamMemberModel model)
+        public virtual ITeamMember MapToEntity(ITeamMemberModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamMember, ITeamMemberModel>(model);
             // TeamMember Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamMemberModel model, ref ITeamMember entity)
+        public virtual void MapToEntity(ITeamMemberModel model, ref ITeamMember entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamMemberModel MapToModel(ITeamMember entity)
+        public virtual ITeamMemberModel MapToModel(ITeamMember entity)
         {
             var model = EntityMapper.MapToModel<ITeamMember, TeamMemberModel>(entity);
             // TeamMember Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMemberModel MapToModelLite(ITeamMember entity)
+        public virtual ITeamMemberModel MapToModelLite(ITeamMember entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamMember, TeamMemberModel>(entity);
             // TeamMember Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMemberModel MapToModelListing(ITeamMember entity)
+        public virtual ITeamMemberModel MapToModelListing(ITeamMember entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamMember, TeamMemberModel>(entity);
             // TeamMember Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMemberSearchModel MapToSearchModel(ITeamMemberModel model)
+        public virtual ITeamMemberSearchModel MapToSearchModel(ITeamMemberModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamMemberModel, TeamMemberSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamMemberModel model, ITeamMember entity)
+        public virtual bool AreEqual(ITeamMemberModel model, ITeamMember entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamMember Properties

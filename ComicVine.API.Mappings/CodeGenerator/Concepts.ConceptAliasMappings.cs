@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptAliasMapperExtensions
     {
-        public static readonly ConceptAliasMapper Mapper = new ConceptAliasMapper();
+        public static IConceptAliasMapper Mapper = new ConceptAliasMapper();
+
+        public static void OverrideMapper(IConceptAliasMapper mapper) { Mapper = mapper; }
 
         public static IConceptAlias MapToEntity(this IConceptAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptAliasMapper : IConceptAliasMapper
     {
-        public IConceptAlias MapToEntity(IConceptAliasModel model)
+        public virtual IConceptAlias MapToEntity(IConceptAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<ConceptAlias, IConceptAliasModel>(model);
             // ConceptAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptAliasModel model, ref IConceptAlias entity)
+        public virtual void MapToEntity(IConceptAliasModel model, ref IConceptAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Concepts
             // <None>
         }
 
-        public IConceptAliasModel MapToModel(IConceptAlias entity)
+        public virtual IConceptAliasModel MapToModel(IConceptAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IConceptAlias, ConceptAliasModel>(entity);
             // ConceptAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAliasModel MapToModelLite(IConceptAlias entity)
+        public virtual IConceptAliasModel MapToModelLite(IConceptAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IConceptAlias, ConceptAliasModel>(entity);
             // ConceptAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAliasModel MapToModelListing(IConceptAlias entity)
+        public virtual IConceptAliasModel MapToModelListing(IConceptAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IConceptAlias, ConceptAliasModel>(entity);
             // ConceptAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAliasSearchModel MapToSearchModel(IConceptAliasModel model)
+        public virtual IConceptAliasSearchModel MapToSearchModel(IConceptAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IConceptAliasModel, ConceptAliasSearchModel>(model);
             // Search Properties
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptAliasModel model, IConceptAlias entity)
+        public virtual bool AreEqual(IConceptAliasModel model, IConceptAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // ConceptAlias Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptAppearedInIssueMapperExtensions
     {
-        public static readonly ConceptAppearedInIssueMapper Mapper = new ConceptAppearedInIssueMapper();
+        public static IConceptAppearedInIssueMapper Mapper = new ConceptAppearedInIssueMapper();
+
+        public static void OverrideMapper(IConceptAppearedInIssueMapper mapper) { Mapper = mapper; }
 
         public static IConceptAppearedInIssue MapToEntity(this IConceptAppearedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptAppearedInIssueMapper : IConceptAppearedInIssueMapper
     {
-        public IConceptAppearedInIssue MapToEntity(IConceptAppearedInIssueModel model)
+        public virtual IConceptAppearedInIssue MapToEntity(IConceptAppearedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<ConceptAppearedInIssue, IConceptAppearedInIssueModel>(model);
             // ConceptAppearedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptAppearedInIssueModel model, ref IConceptAppearedInIssue entity)
+        public virtual void MapToEntity(IConceptAppearedInIssueModel model, ref IConceptAppearedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Concepts
             // <None>
         }
 
-        public IConceptAppearedInIssueModel MapToModel(IConceptAppearedInIssue entity)
+        public virtual IConceptAppearedInIssueModel MapToModel(IConceptAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModel<IConceptAppearedInIssue, ConceptAppearedInIssueModel>(entity);
             // ConceptAppearedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAppearedInIssueModel MapToModelLite(IConceptAppearedInIssue entity)
+        public virtual IConceptAppearedInIssueModel MapToModelLite(IConceptAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<IConceptAppearedInIssue, ConceptAppearedInIssueModel>(entity);
             // ConceptAppearedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAppearedInIssueModel MapToModelListing(IConceptAppearedInIssue entity)
+        public virtual IConceptAppearedInIssueModel MapToModelListing(IConceptAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<IConceptAppearedInIssue, ConceptAppearedInIssueModel>(entity);
             // ConceptAppearedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptAppearedInIssueSearchModel MapToSearchModel(IConceptAppearedInIssueModel model)
+        public virtual IConceptAppearedInIssueSearchModel MapToSearchModel(IConceptAppearedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IConceptAppearedInIssueModel, ConceptAppearedInIssueSearchModel>(model);
             // Search Properties
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             searchModel.AppearedInIssueId = model.AppearedInIssueId;
             searchModel.AppearedInIssueCustomKey = model.AppearedInIssue?.CustomKey;
+            searchModel.AppearedInIssueApiDetailUrl = model.AppearedInIssue?.ApiDetailUrl;
+            searchModel.AppearedInIssueSiteDetailUrl = model.AppearedInIssue?.SiteDetailUrl;
             searchModel.AppearedInIssueName = model.AppearedInIssue?.Name;
+            searchModel.AppearedInIssueShortDescription = model.AppearedInIssue?.ShortDescription;
             searchModel.AppearedInIssueDescription = model.AppearedInIssue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptAppearedInIssueModel model, IConceptAppearedInIssue entity)
+        public virtual bool AreEqual(IConceptAppearedInIssueModel model, IConceptAppearedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ConceptAppearedInIssue Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public static class StoryArcAliasMapperExtensions
     {
-        public static readonly StoryArcAliasMapper Mapper = new StoryArcAliasMapper();
+        public static IStoryArcAliasMapper Mapper = new StoryArcAliasMapper();
+
+        public static void OverrideMapper(IStoryArcAliasMapper mapper) { Mapper = mapper; }
 
         public static IStoryArcAlias MapToEntity(this IStoryArcAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public class StoryArcAliasMapper : IStoryArcAliasMapper
     {
-        public IStoryArcAlias MapToEntity(IStoryArcAliasModel model)
+        public virtual IStoryArcAlias MapToEntity(IStoryArcAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<StoryArcAlias, IStoryArcAliasModel>(model);
             // StoryArcAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return entity;
         }
 
-        public void MapToEntity(IStoryArcAliasModel model, ref IStoryArcAlias entity)
+        public virtual void MapToEntity(IStoryArcAliasModel model, ref IStoryArcAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             // <None>
         }
 
-        public IStoryArcAliasModel MapToModel(IStoryArcAlias entity)
+        public virtual IStoryArcAliasModel MapToModel(IStoryArcAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IStoryArcAlias, StoryArcAliasModel>(entity);
             // StoryArcAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcAliasModel MapToModelLite(IStoryArcAlias entity)
+        public virtual IStoryArcAliasModel MapToModelLite(IStoryArcAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IStoryArcAlias, StoryArcAliasModel>(entity);
             // StoryArcAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcAliasModel MapToModelListing(IStoryArcAlias entity)
+        public virtual IStoryArcAliasModel MapToModelListing(IStoryArcAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IStoryArcAlias, StoryArcAliasModel>(entity);
             // StoryArcAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcAliasSearchModel MapToSearchModel(IStoryArcAliasModel model)
+        public virtual IStoryArcAliasSearchModel MapToSearchModel(IStoryArcAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IStoryArcAliasModel, StoryArcAliasSearchModel>(model);
             // Search Properties
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IStoryArcAliasModel model, IStoryArcAlias entity)
+        public virtual bool AreEqual(IStoryArcAliasModel model, IStoryArcAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // StoryArcAlias Properties

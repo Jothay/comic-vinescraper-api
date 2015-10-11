@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Locations
 
     public static class LocationStoryArcMapperExtensions
     {
-        public static readonly LocationStoryArcMapper Mapper = new LocationStoryArcMapper();
+        public static ILocationStoryArcMapper Mapper = new LocationStoryArcMapper();
+
+        public static void OverrideMapper(ILocationStoryArcMapper mapper) { Mapper = mapper; }
 
         public static ILocationStoryArc MapToEntity(this ILocationStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Locations
 
     public class LocationStoryArcMapper : ILocationStoryArcMapper
     {
-        public ILocationStoryArc MapToEntity(ILocationStoryArcModel model)
+        public virtual ILocationStoryArc MapToEntity(ILocationStoryArcModel model)
         {
             var entity = EntityMapper.MapToEntity<LocationStoryArc, ILocationStoryArcModel>(model);
             // LocationStoryArc Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Locations
             return entity;
         }
 
-        public void MapToEntity(ILocationStoryArcModel model, ref ILocationStoryArc entity)
+        public virtual void MapToEntity(ILocationStoryArcModel model, ref ILocationStoryArc entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Locations
             // <None>
         }
 
-        public ILocationStoryArcModel MapToModel(ILocationStoryArc entity)
+        public virtual ILocationStoryArcModel MapToModel(ILocationStoryArc entity)
         {
             var model = EntityMapper.MapToModel<ILocationStoryArc, LocationStoryArcModel>(entity);
             // LocationStoryArc Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationStoryArcModel MapToModelLite(ILocationStoryArc entity)
+        public virtual ILocationStoryArcModel MapToModelLite(ILocationStoryArc entity)
         {
             var model = EntityMapper.MapToModelLite<ILocationStoryArc, LocationStoryArcModel>(entity);
             // LocationStoryArc Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationStoryArcModel MapToModelListing(ILocationStoryArc entity)
+        public virtual ILocationStoryArcModel MapToModelListing(ILocationStoryArc entity)
         {
             var model = EntityMapper.MapToModelListing<ILocationStoryArc, LocationStoryArcModel>(entity);
             // LocationStoryArc Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationStoryArcSearchModel MapToSearchModel(ILocationStoryArcModel model)
+        public virtual ILocationStoryArcSearchModel MapToSearchModel(ILocationStoryArcModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ILocationStoryArcModel, LocationStoryArcSearchModel>(model);
             // Search Properties
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ILocationStoryArcModel model, ILocationStoryArc entity)
+        public virtual bool AreEqual(ILocationStoryArcModel model, ILocationStoryArc entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // LocationStoryArc Properties

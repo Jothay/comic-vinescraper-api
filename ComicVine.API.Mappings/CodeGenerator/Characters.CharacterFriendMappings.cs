@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterFriendMapperExtensions
     {
-        public static readonly CharacterFriendMapper Mapper = new CharacterFriendMapper();
+        public static ICharacterFriendMapper Mapper = new CharacterFriendMapper();
+
+        public static void OverrideMapper(ICharacterFriendMapper mapper) { Mapper = mapper; }
 
         public static ICharacterFriend MapToEntity(this ICharacterFriendModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterFriendMapper : ICharacterFriendMapper
     {
-        public ICharacterFriend MapToEntity(ICharacterFriendModel model)
+        public virtual ICharacterFriend MapToEntity(ICharacterFriendModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterFriend, ICharacterFriendModel>(model);
             // CharacterFriend Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterFriendModel model, ref ICharacterFriend entity)
+        public virtual void MapToEntity(ICharacterFriendModel model, ref ICharacterFriend entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterFriendModel MapToModel(ICharacterFriend entity)
+        public virtual ICharacterFriendModel MapToModel(ICharacterFriend entity)
         {
             var model = EntityMapper.MapToModel<ICharacterFriend, CharacterFriendModel>(entity);
             // CharacterFriend Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterFriendModel MapToModelLite(ICharacterFriend entity)
+        public virtual ICharacterFriendModel MapToModelLite(ICharacterFriend entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterFriend, CharacterFriendModel>(entity);
             // CharacterFriend Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterFriendModel MapToModelListing(ICharacterFriend entity)
+        public virtual ICharacterFriendModel MapToModelListing(ICharacterFriend entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterFriend, CharacterFriendModel>(entity);
             // CharacterFriend Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterFriendSearchModel MapToSearchModel(ICharacterFriendModel model)
+        public virtual ICharacterFriendSearchModel MapToSearchModel(ICharacterFriendModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterFriendModel, CharacterFriendSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.FriendId = model.FriendId;
             searchModel.FriendCustomKey = model.Friend?.CustomKey;
+            searchModel.FriendApiDetailUrl = model.Friend?.ApiDetailUrl;
+            searchModel.FriendSiteDetailUrl = model.Friend?.SiteDetailUrl;
             searchModel.FriendName = model.Friend?.Name;
+            searchModel.FriendShortDescription = model.Friend?.ShortDescription;
             searchModel.FriendDescription = model.Friend?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterFriendModel model, ICharacterFriend entity)
+        public virtual bool AreEqual(ICharacterFriendModel model, ICharacterFriend entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterFriend Properties

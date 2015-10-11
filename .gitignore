@@ -5,3 +5,5 @@
 *.suo
 *.user
 /.vs/config/applicationhost.config
+/ComicVine.API.Services/App_Data/Models.mdf
+/ComicVine.API.Services/App_Data/Models_log.ldf

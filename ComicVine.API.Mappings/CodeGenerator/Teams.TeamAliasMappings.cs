@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamAliasMapperExtensions
     {
-        public static readonly TeamAliasMapper Mapper = new TeamAliasMapper();
+        public static ITeamAliasMapper Mapper = new TeamAliasMapper();
+
+        public static void OverrideMapper(ITeamAliasMapper mapper) { Mapper = mapper; }
 
         public static ITeamAlias MapToEntity(this ITeamAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamAliasMapper : ITeamAliasMapper
     {
-        public ITeamAlias MapToEntity(ITeamAliasModel model)
+        public virtual ITeamAlias MapToEntity(ITeamAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<TeamAlias, ITeamAliasModel>(model);
             // TeamAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamAliasModel model, ref ITeamAlias entity)
+        public virtual void MapToEntity(ITeamAliasModel model, ref ITeamAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamAliasModel MapToModel(ITeamAlias entity)
+        public virtual ITeamAliasModel MapToModel(ITeamAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<ITeamAlias, TeamAliasModel>(entity);
             // TeamAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamAliasModel MapToModelLite(ITeamAlias entity)
+        public virtual ITeamAliasModel MapToModelLite(ITeamAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ITeamAlias, TeamAliasModel>(entity);
             // TeamAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamAliasModel MapToModelListing(ITeamAlias entity)
+        public virtual ITeamAliasModel MapToModelListing(ITeamAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ITeamAlias, TeamAliasModel>(entity);
             // TeamAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamAliasSearchModel MapToSearchModel(ITeamAliasModel model)
+        public virtual ITeamAliasSearchModel MapToSearchModel(ITeamAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ITeamAliasModel, TeamAliasSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamAliasModel model, ITeamAlias entity)
+        public virtual bool AreEqual(ITeamAliasModel model, ITeamAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // TeamAlias Properties

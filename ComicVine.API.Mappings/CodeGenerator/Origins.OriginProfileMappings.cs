@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Origins
 
     public static class OriginProfileMapperExtensions
     {
-        public static readonly OriginProfileMapper Mapper = new OriginProfileMapper();
+        public static IOriginProfileMapper Mapper = new OriginProfileMapper();
+
+        public static void OverrideMapper(IOriginProfileMapper mapper) { Mapper = mapper; }
 
         public static IOriginProfile MapToEntity(this IOriginProfileModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Origins
 
     public class OriginProfileMapper : IOriginProfileMapper
     {
-        public IOriginProfile MapToEntity(IOriginProfileModel model)
+        public virtual IOriginProfile MapToEntity(IOriginProfileModel model)
         {
             var entity = EntityMapper.MapToEntity<OriginProfile, IOriginProfileModel>(model);
             // OriginProfile Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Origins
             return entity;
         }
 
-        public void MapToEntity(IOriginProfileModel model, ref IOriginProfile entity)
+        public virtual void MapToEntity(IOriginProfileModel model, ref IOriginProfile entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Origins
             // <None>
         }
 
-        public IOriginProfileModel MapToModel(IOriginProfile entity)
+        public virtual IOriginProfileModel MapToModel(IOriginProfile entity)
         {
             var model = EntityMapper.MapToModel<IOriginProfile, OriginProfileModel>(entity);
             // OriginProfile Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginProfileModel MapToModelLite(IOriginProfile entity)
+        public virtual IOriginProfileModel MapToModelLite(IOriginProfile entity)
         {
             var model = EntityMapper.MapToModelLite<IOriginProfile, OriginProfileModel>(entity);
             // OriginProfile Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginProfileModel MapToModelListing(IOriginProfile entity)
+        public virtual IOriginProfileModel MapToModelListing(IOriginProfile entity)
         {
             var model = EntityMapper.MapToModelListing<IOriginProfile, OriginProfileModel>(entity);
             // OriginProfile Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginProfileSearchModel MapToSearchModel(IOriginProfileModel model)
+        public virtual IOriginProfileSearchModel MapToSearchModel(IOriginProfileModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IOriginProfileModel, OriginProfileSearchModel>(model);
             // Search Properties
             searchModel.OriginId = model.OriginId;
             searchModel.OriginCustomKey = model.Origin?.CustomKey;
+            searchModel.OriginApiDetailUrl = model.Origin?.ApiDetailUrl;
+            searchModel.OriginSiteDetailUrl = model.Origin?.SiteDetailUrl;
             searchModel.OriginName = model.Origin?.Name;
+            searchModel.OriginShortDescription = model.Origin?.ShortDescription;
             searchModel.OriginDescription = model.Origin?.Description;
             searchModel.ProfileId = model.ProfileId;
             searchModel.ProfileCustomKey = model.Profile?.CustomKey;
+            searchModel.ProfileApiDetailUrl = model.Profile?.ApiDetailUrl;
+            searchModel.ProfileSiteDetailUrl = model.Profile?.SiteDetailUrl;
             searchModel.ProfileName = model.Profile?.Name;
+            searchModel.ProfileShortDescription = model.Profile?.ShortDescription;
             searchModel.ProfileDescription = model.Profile?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IOriginProfileModel model, IOriginProfile entity)
+        public virtual bool AreEqual(IOriginProfileModel model, IOriginProfile entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // OriginProfile Properties

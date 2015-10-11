@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeStoryArcMapperExtensions
     {
-        public static readonly EpisodeStoryArcMapper Mapper = new EpisodeStoryArcMapper();
+        public static IEpisodeStoryArcMapper Mapper = new EpisodeStoryArcMapper();
+
+        public static void OverrideMapper(IEpisodeStoryArcMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeStoryArc MapToEntity(this IEpisodeStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeStoryArcMapper : IEpisodeStoryArcMapper
     {
-        public IEpisodeStoryArc MapToEntity(IEpisodeStoryArcModel model)
+        public virtual IEpisodeStoryArc MapToEntity(IEpisodeStoryArcModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeStoryArc, IEpisodeStoryArcModel>(model);
             // EpisodeStoryArc Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeStoryArcModel model, ref IEpisodeStoryArc entity)
+        public virtual void MapToEntity(IEpisodeStoryArcModel model, ref IEpisodeStoryArc entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeStoryArcModel MapToModel(IEpisodeStoryArc entity)
+        public virtual IEpisodeStoryArcModel MapToModel(IEpisodeStoryArc entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeStoryArc, EpisodeStoryArcModel>(entity);
             // EpisodeStoryArc Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcModel MapToModelLite(IEpisodeStoryArc entity)
+        public virtual IEpisodeStoryArcModel MapToModelLite(IEpisodeStoryArc entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeStoryArc, EpisodeStoryArcModel>(entity);
             // EpisodeStoryArc Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcModel MapToModelListing(IEpisodeStoryArc entity)
+        public virtual IEpisodeStoryArcModel MapToModelListing(IEpisodeStoryArc entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeStoryArc, EpisodeStoryArcModel>(entity);
             // EpisodeStoryArc Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcSearchModel MapToSearchModel(IEpisodeStoryArcModel model)
+        public virtual IEpisodeStoryArcSearchModel MapToSearchModel(IEpisodeStoryArcModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeStoryArcModel, EpisodeStoryArcSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeStoryArcModel model, IEpisodeStoryArc entity)
+        public virtual bool AreEqual(IEpisodeStoryArcModel model, IEpisodeStoryArc entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeStoryArc Properties

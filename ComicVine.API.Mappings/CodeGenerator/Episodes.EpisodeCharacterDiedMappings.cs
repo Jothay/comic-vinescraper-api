@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeCharacterDiedMapperExtensions
     {
-        public static readonly EpisodeCharacterDiedMapper Mapper = new EpisodeCharacterDiedMapper();
+        public static IEpisodeCharacterDiedMapper Mapper = new EpisodeCharacterDiedMapper();
+
+        public static void OverrideMapper(IEpisodeCharacterDiedMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeCharacterDied MapToEntity(this IEpisodeCharacterDiedModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeCharacterDiedMapper : IEpisodeCharacterDiedMapper
     {
-        public IEpisodeCharacterDied MapToEntity(IEpisodeCharacterDiedModel model)
+        public virtual IEpisodeCharacterDied MapToEntity(IEpisodeCharacterDiedModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeCharacterDied, IEpisodeCharacterDiedModel>(model);
             // EpisodeCharacterDied Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeCharacterDiedModel model, ref IEpisodeCharacterDied entity)
+        public virtual void MapToEntity(IEpisodeCharacterDiedModel model, ref IEpisodeCharacterDied entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeCharacterDiedModel MapToModel(IEpisodeCharacterDied entity)
+        public virtual IEpisodeCharacterDiedModel MapToModel(IEpisodeCharacterDied entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeCharacterDied, EpisodeCharacterDiedModel>(entity);
             // EpisodeCharacterDied Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterDiedModel MapToModelLite(IEpisodeCharacterDied entity)
+        public virtual IEpisodeCharacterDiedModel MapToModelLite(IEpisodeCharacterDied entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeCharacterDied, EpisodeCharacterDiedModel>(entity);
             // EpisodeCharacterDied Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterDiedModel MapToModelListing(IEpisodeCharacterDied entity)
+        public virtual IEpisodeCharacterDiedModel MapToModelListing(IEpisodeCharacterDied entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeCharacterDied, EpisodeCharacterDiedModel>(entity);
             // EpisodeCharacterDied Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterDiedSearchModel MapToSearchModel(IEpisodeCharacterDiedModel model)
+        public virtual IEpisodeCharacterDiedSearchModel MapToSearchModel(IEpisodeCharacterDiedModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeCharacterDiedModel, EpisodeCharacterDiedSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeCharacterDiedModel model, IEpisodeCharacterDied entity)
+        public virtual bool AreEqual(IEpisodeCharacterDiedModel model, IEpisodeCharacterDied entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeCharacterDied Properties

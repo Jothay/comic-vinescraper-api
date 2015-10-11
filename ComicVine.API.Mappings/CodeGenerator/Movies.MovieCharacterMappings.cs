@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieCharacterMapperExtensions
     {
-        public static readonly MovieCharacterMapper Mapper = new MovieCharacterMapper();
+        public static IMovieCharacterMapper Mapper = new MovieCharacterMapper();
+
+        public static void OverrideMapper(IMovieCharacterMapper mapper) { Mapper = mapper; }
 
         public static IMovieCharacter MapToEntity(this IMovieCharacterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieCharacterMapper : IMovieCharacterMapper
     {
-        public IMovieCharacter MapToEntity(IMovieCharacterModel model)
+        public virtual IMovieCharacter MapToEntity(IMovieCharacterModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieCharacter, IMovieCharacterModel>(model);
             // MovieCharacter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieCharacterModel model, ref IMovieCharacter entity)
+        public virtual void MapToEntity(IMovieCharacterModel model, ref IMovieCharacter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieCharacterModel MapToModel(IMovieCharacter entity)
+        public virtual IMovieCharacterModel MapToModel(IMovieCharacter entity)
         {
             var model = EntityMapper.MapToModel<IMovieCharacter, MovieCharacterModel>(entity);
             // MovieCharacter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieCharacterModel MapToModelLite(IMovieCharacter entity)
+        public virtual IMovieCharacterModel MapToModelLite(IMovieCharacter entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieCharacter, MovieCharacterModel>(entity);
             // MovieCharacter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieCharacterModel MapToModelListing(IMovieCharacter entity)
+        public virtual IMovieCharacterModel MapToModelListing(IMovieCharacter entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieCharacter, MovieCharacterModel>(entity);
             // MovieCharacter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieCharacterSearchModel MapToSearchModel(IMovieCharacterModel model)
+        public virtual IMovieCharacterSearchModel MapToSearchModel(IMovieCharacterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieCharacterModel, MovieCharacterSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieCharacterModel model, IMovieCharacter entity)
+        public virtual bool AreEqual(IMovieCharacterModel model, IMovieCharacter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieCharacter Properties

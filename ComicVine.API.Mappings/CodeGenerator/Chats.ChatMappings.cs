@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Chats
 
     public static class ChatMapperExtensions
     {
-        public static readonly ChatMapper Mapper = new ChatMapper();
+        public static IChatMapper Mapper = new ChatMapper();
+
+        public static void OverrideMapper(IChatMapper mapper) { Mapper = mapper; }
 
         public static IChat MapToEntity(this IChatModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Chats
 
     public class ChatMapper : IChatMapper
     {
-        public IChat MapToEntity(IChatModel model)
+        public virtual IChat MapToEntity(IChatModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Chat, IChatModel>(model);
             // Chat Properties
@@ -68,7 +70,7 @@ namespace ComicVine.API.Mappings//.Chats
             return entity;
         }
 
-        public void MapToEntity(IChatModel model, ref IChat entity)
+        public virtual void MapToEntity(IChatModel model, ref IChat entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -82,7 +84,7 @@ namespace ComicVine.API.Mappings//.Chats
             // <None>
         }
 
-        public IChatModel MapToModel(IChat entity)
+        public virtual IChatModel MapToModel(IChat entity)
         {
             var model = NameableEntityMapper.MapToModel<IChat, ChatModel>(entity);
             // Chat Properties
@@ -97,7 +99,7 @@ namespace ComicVine.API.Mappings//.Chats
             return model;
         }
 
-        public IChatModel MapToModelLite(IChat entity)
+        public virtual IChatModel MapToModelLite(IChat entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IChat, ChatModel>(entity);
             // Chat Properties
@@ -109,7 +111,7 @@ namespace ComicVine.API.Mappings//.Chats
             return model;
         }
 
-        public IChatModel MapToModelListing(IChat entity)
+        public virtual IChatModel MapToModelListing(IChat entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IChat, ChatModel>(entity);
             // Chat Properties
@@ -121,20 +123,23 @@ namespace ComicVine.API.Mappings//.Chats
             return model;
         }
 
-        public IChatSearchModel MapToSearchModel(IChatModel model)
+        public virtual IChatSearchModel MapToSearchModel(IChatModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IChatModel, ChatSearchModel>(model);
             // Search Properties
             searchModel.ImageFileId = model.ImageFileId;
             searchModel.ImageFileCustomKey = model.ImageFile?.CustomKey;
+            searchModel.ImageFileApiDetailUrl = model.ImageFile?.ApiDetailUrl;
+            searchModel.ImageFileSiteDetailUrl = model.ImageFile?.SiteDetailUrl;
             searchModel.ImageFileName = model.ImageFile?.Name;
+            searchModel.ImageFileShortDescription = model.ImageFile?.ShortDescription;
             searchModel.ImageFileDescription = model.ImageFile?.Description;
             searchModel.ChannelName = model.ChannelName;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IChatModel model, IChat entity)
+        public virtual bool AreEqual(IChatModel model, IChat entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Chat Properties

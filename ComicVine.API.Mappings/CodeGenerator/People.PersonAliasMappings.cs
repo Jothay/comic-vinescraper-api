@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.People
 
     public static class PersonAliasMapperExtensions
     {
-        public static readonly PersonAliasMapper Mapper = new PersonAliasMapper();
+        public static IPersonAliasMapper Mapper = new PersonAliasMapper();
+
+        public static void OverrideMapper(IPersonAliasMapper mapper) { Mapper = mapper; }
 
         public static IPersonAlias MapToEntity(this IPersonAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.People
 
     public class PersonAliasMapper : IPersonAliasMapper
     {
-        public IPersonAlias MapToEntity(IPersonAliasModel model)
+        public virtual IPersonAlias MapToEntity(IPersonAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<PersonAlias, IPersonAliasModel>(model);
             // PersonAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.People
             return entity;
         }
 
-        public void MapToEntity(IPersonAliasModel model, ref IPersonAlias entity)
+        public virtual void MapToEntity(IPersonAliasModel model, ref IPersonAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.People
             // <None>
         }
 
-        public IPersonAliasModel MapToModel(IPersonAlias entity)
+        public virtual IPersonAliasModel MapToModel(IPersonAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IPersonAlias, PersonAliasModel>(entity);
             // PersonAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonAliasModel MapToModelLite(IPersonAlias entity)
+        public virtual IPersonAliasModel MapToModelLite(IPersonAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPersonAlias, PersonAliasModel>(entity);
             // PersonAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonAliasModel MapToModelListing(IPersonAlias entity)
+        public virtual IPersonAliasModel MapToModelListing(IPersonAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPersonAlias, PersonAliasModel>(entity);
             // PersonAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonAliasSearchModel MapToSearchModel(IPersonAliasModel model)
+        public virtual IPersonAliasSearchModel MapToSearchModel(IPersonAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPersonAliasModel, PersonAliasSearchModel>(model);
             // Search Properties
             searchModel.PersonId = model.PersonId;
             searchModel.PersonCustomKey = model.Person?.CustomKey;
+            searchModel.PersonApiDetailUrl = model.Person?.ApiDetailUrl;
+            searchModel.PersonSiteDetailUrl = model.Person?.SiteDetailUrl;
             searchModel.PersonName = model.Person?.Name;
+            searchModel.PersonShortDescription = model.Person?.ShortDescription;
             searchModel.PersonDescription = model.Person?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IPersonAliasModel model, IPersonAlias entity)
+        public virtual bool AreEqual(IPersonAliasModel model, IPersonAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // PersonAlias Properties

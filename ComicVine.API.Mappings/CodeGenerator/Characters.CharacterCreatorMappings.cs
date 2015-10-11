@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterCreatorMapperExtensions
     {
-        public static readonly CharacterCreatorMapper Mapper = new CharacterCreatorMapper();
+        public static ICharacterCreatorMapper Mapper = new CharacterCreatorMapper();
+
+        public static void OverrideMapper(ICharacterCreatorMapper mapper) { Mapper = mapper; }
 
         public static ICharacterCreator MapToEntity(this ICharacterCreatorModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterCreatorMapper : ICharacterCreatorMapper
     {
-        public ICharacterCreator MapToEntity(ICharacterCreatorModel model)
+        public virtual ICharacterCreator MapToEntity(ICharacterCreatorModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterCreator, ICharacterCreatorModel>(model);
             // CharacterCreator Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterCreatorModel model, ref ICharacterCreator entity)
+        public virtual void MapToEntity(ICharacterCreatorModel model, ref ICharacterCreator entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterCreatorModel MapToModel(ICharacterCreator entity)
+        public virtual ICharacterCreatorModel MapToModel(ICharacterCreator entity)
         {
             var model = EntityMapper.MapToModel<ICharacterCreator, CharacterCreatorModel>(entity);
             // CharacterCreator Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterCreatorModel MapToModelLite(ICharacterCreator entity)
+        public virtual ICharacterCreatorModel MapToModelLite(ICharacterCreator entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterCreator, CharacterCreatorModel>(entity);
             // CharacterCreator Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterCreatorModel MapToModelListing(ICharacterCreator entity)
+        public virtual ICharacterCreatorModel MapToModelListing(ICharacterCreator entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterCreator, CharacterCreatorModel>(entity);
             // CharacterCreator Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterCreatorSearchModel MapToSearchModel(ICharacterCreatorModel model)
+        public virtual ICharacterCreatorSearchModel MapToSearchModel(ICharacterCreatorModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterCreatorModel, CharacterCreatorSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.CreatorId = model.CreatorId;
             searchModel.CreatorCustomKey = model.Creator?.CustomKey;
+            searchModel.CreatorApiDetailUrl = model.Creator?.ApiDetailUrl;
+            searchModel.CreatorSiteDetailUrl = model.Creator?.SiteDetailUrl;
             searchModel.CreatorName = model.Creator?.Name;
+            searchModel.CreatorShortDescription = model.Creator?.ShortDescription;
             searchModel.CreatorDescription = model.Creator?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterCreatorModel model, ICharacterCreator entity)
+        public virtual bool AreEqual(ICharacterCreatorModel model, ICharacterCreator entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterCreator Properties

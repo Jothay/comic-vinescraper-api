@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeCharacterMapperExtensions
     {
-        public static readonly EpisodeCharacterMapper Mapper = new EpisodeCharacterMapper();
+        public static IEpisodeCharacterMapper Mapper = new EpisodeCharacterMapper();
+
+        public static void OverrideMapper(IEpisodeCharacterMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeCharacter MapToEntity(this IEpisodeCharacterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeCharacterMapper : IEpisodeCharacterMapper
     {
-        public IEpisodeCharacter MapToEntity(IEpisodeCharacterModel model)
+        public virtual IEpisodeCharacter MapToEntity(IEpisodeCharacterModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeCharacter, IEpisodeCharacterModel>(model);
             // EpisodeCharacter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeCharacterModel model, ref IEpisodeCharacter entity)
+        public virtual void MapToEntity(IEpisodeCharacterModel model, ref IEpisodeCharacter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeCharacterModel MapToModel(IEpisodeCharacter entity)
+        public virtual IEpisodeCharacterModel MapToModel(IEpisodeCharacter entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeCharacter, EpisodeCharacterModel>(entity);
             // EpisodeCharacter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterModel MapToModelLite(IEpisodeCharacter entity)
+        public virtual IEpisodeCharacterModel MapToModelLite(IEpisodeCharacter entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeCharacter, EpisodeCharacterModel>(entity);
             // EpisodeCharacter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterModel MapToModelListing(IEpisodeCharacter entity)
+        public virtual IEpisodeCharacterModel MapToModelListing(IEpisodeCharacter entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeCharacter, EpisodeCharacterModel>(entity);
             // EpisodeCharacter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeCharacterSearchModel MapToSearchModel(IEpisodeCharacterModel model)
+        public virtual IEpisodeCharacterSearchModel MapToSearchModel(IEpisodeCharacterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeCharacterModel, EpisodeCharacterSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeCharacterModel model, IEpisodeCharacter entity)
+        public virtual bool AreEqual(IEpisodeCharacterModel model, IEpisodeCharacter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeCharacter Properties

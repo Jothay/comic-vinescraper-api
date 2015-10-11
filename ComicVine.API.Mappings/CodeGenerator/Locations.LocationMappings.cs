@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Locations
 
     public static class LocationMapperExtensions
     {
-        public static readonly LocationMapper Mapper = new LocationMapper();
+        public static ILocationMapper Mapper = new LocationMapper();
+
+        public static void OverrideMapper(ILocationMapper mapper) { Mapper = mapper; }
 
         public static ILocation MapToEntity(this ILocationModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Locations
 
     public class LocationMapper : ILocationMapper
     {
-        public ILocation MapToEntity(ILocationModel model)
+        public virtual ILocation MapToEntity(ILocationModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Location, ILocationModel>(model);
             // Location Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.Locations
             return entity;
         }
 
-        public void MapToEntity(ILocationModel model, ref ILocation entity)
+        public virtual void MapToEntity(ILocationModel model, ref ILocation entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -86,15 +88,15 @@ namespace ComicVine.API.Mappings//.Locations
             entity.PrimaryImageFileId = model.PrimaryImageFileId;
             entity.PrimaryImageFile = (ImageFile)model.PrimaryImageFile?.MapToEntity();
             // Associated Objects
-            entity.LocationAliases = (ICollection<ILocationAlias>)model.LocationAliases?.Where(i => i.Active).Select(LocationAliasMapperExtensions.MapToEntity).Cast<LocationAlias>();
-            entity.LocationAppearedInIssues = (ICollection<ILocationAppearedInIssue>)model.LocationAppearedInIssues?.Where(i => i.Active).Select(LocationAppearedInIssueMapperExtensions.MapToEntity).Cast<LocationAppearedInIssue>();
-            entity.LocationIssues = (ICollection<ILocationIssue>)model.LocationIssues?.Where(i => i.Active).Select(LocationIssueMapperExtensions.MapToEntity).Cast<LocationIssue>();
-            entity.LocationMovies = (ICollection<ILocationMovie>)model.LocationMovies?.Where(i => i.Active).Select(LocationMovieMapperExtensions.MapToEntity).Cast<LocationMovie>();
-            entity.LocationStoryArcs = (ICollection<ILocationStoryArc>)model.LocationStoryArcs?.Where(i => i.Active).Select(LocationStoryArcMapperExtensions.MapToEntity).Cast<LocationStoryArc>();
-            entity.LocationVolumes = (ICollection<ILocationVolume>)model.LocationVolumes?.Where(i => i.Active).Select(LocationVolumeMapperExtensions.MapToEntity).Cast<LocationVolume>();
+            entity.LocationAliases = model.LocationAliases?.Where(i => i.Active).Select(LocationAliasMapperExtensions.MapToEntity).ToList();
+            entity.LocationAppearedInIssues = model.LocationAppearedInIssues?.Where(i => i.Active).Select(LocationAppearedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.LocationIssues = model.LocationIssues?.Where(i => i.Active).Select(LocationIssueMapperExtensions.MapToEntity).ToList();
+            entity.LocationMovies = model.LocationMovies?.Where(i => i.Active).Select(LocationMovieMapperExtensions.MapToEntity).ToList();
+            entity.LocationStoryArcs = model.LocationStoryArcs?.Where(i => i.Active).Select(LocationStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.LocationVolumes = model.LocationVolumes?.Where(i => i.Active).Select(LocationVolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public ILocationModel MapToModel(ILocation entity)
+        public virtual ILocationModel MapToModel(ILocation entity)
         {
             var model = NameableEntityMapper.MapToModel<ILocation, LocationModel>(entity);
             // Location Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationModel MapToModelLite(ILocation entity)
+        public virtual ILocationModel MapToModelLite(ILocation entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ILocation, LocationModel>(entity);
             // Location Properties
@@ -127,7 +129,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationModel MapToModelListing(ILocation entity)
+        public virtual ILocationModel MapToModelListing(ILocation entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ILocation, LocationModel>(entity);
             // Location Properties
@@ -139,23 +141,29 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationSearchModel MapToSearchModel(ILocationModel model)
+        public virtual ILocationSearchModel MapToSearchModel(ILocationModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ILocationModel, LocationSearchModel>(model);
             // Search Properties
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ILocationModel model, ILocation entity)
+        public virtual bool AreEqual(ILocationModel model, ILocation entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Location Properties

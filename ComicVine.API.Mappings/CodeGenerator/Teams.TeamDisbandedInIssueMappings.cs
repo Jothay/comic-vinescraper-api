@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamDisbandedInIssueMapperExtensions
     {
-        public static readonly TeamDisbandedInIssueMapper Mapper = new TeamDisbandedInIssueMapper();
+        public static ITeamDisbandedInIssueMapper Mapper = new TeamDisbandedInIssueMapper();
+
+        public static void OverrideMapper(ITeamDisbandedInIssueMapper mapper) { Mapper = mapper; }
 
         public static ITeamDisbandedInIssue MapToEntity(this ITeamDisbandedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamDisbandedInIssueMapper : ITeamDisbandedInIssueMapper
     {
-        public ITeamDisbandedInIssue MapToEntity(ITeamDisbandedInIssueModel model)
+        public virtual ITeamDisbandedInIssue MapToEntity(ITeamDisbandedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamDisbandedInIssue, ITeamDisbandedInIssueModel>(model);
             // TeamDisbandedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamDisbandedInIssueModel model, ref ITeamDisbandedInIssue entity)
+        public virtual void MapToEntity(ITeamDisbandedInIssueModel model, ref ITeamDisbandedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamDisbandedInIssueModel MapToModel(ITeamDisbandedInIssue entity)
+        public virtual ITeamDisbandedInIssueModel MapToModel(ITeamDisbandedInIssue entity)
         {
             var model = EntityMapper.MapToModel<ITeamDisbandedInIssue, TeamDisbandedInIssueModel>(entity);
             // TeamDisbandedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamDisbandedInIssueModel MapToModelLite(ITeamDisbandedInIssue entity)
+        public virtual ITeamDisbandedInIssueModel MapToModelLite(ITeamDisbandedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamDisbandedInIssue, TeamDisbandedInIssueModel>(entity);
             // TeamDisbandedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamDisbandedInIssueModel MapToModelListing(ITeamDisbandedInIssue entity)
+        public virtual ITeamDisbandedInIssueModel MapToModelListing(ITeamDisbandedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamDisbandedInIssue, TeamDisbandedInIssueModel>(entity);
             // TeamDisbandedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamDisbandedInIssueSearchModel MapToSearchModel(ITeamDisbandedInIssueModel model)
+        public virtual ITeamDisbandedInIssueSearchModel MapToSearchModel(ITeamDisbandedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamDisbandedInIssueModel, TeamDisbandedInIssueSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamDisbandedInIssueModel model, ITeamDisbandedInIssue entity)
+        public virtual bool AreEqual(ITeamDisbandedInIssueModel model, ITeamDisbandedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamDisbandedInIssue Properties

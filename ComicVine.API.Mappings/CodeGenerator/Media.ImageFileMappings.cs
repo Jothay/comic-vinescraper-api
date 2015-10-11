@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Media
 
     public static class ImageFileMapperExtensions
     {
-        public static readonly ImageFileMapper Mapper = new ImageFileMapper();
+        public static IImageFileMapper Mapper = new ImageFileMapper();
+
+        public static void OverrideMapper(IImageFileMapper mapper) { Mapper = mapper; }
 
         public static IImageFile MapToEntity(this IImageFileModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Media
 
     public class ImageFileMapper : IImageFileMapper
     {
-        public IImageFile MapToEntity(IImageFileModel model)
+        public virtual IImageFile MapToEntity(IImageFileModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<ImageFile, IImageFileModel>(model);
             // ImageFile Properties
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Media
             return entity;
         }
 
-        public void MapToEntity(IImageFileModel model, ref IImageFile entity)
+        public virtual void MapToEntity(IImageFileModel model, ref IImageFile entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -89,24 +91,24 @@ namespace ComicVine.API.Mappings//.Media
             // Related Objects
             // <None>
             // Associated Objects
-            entity.Characters = (ICollection<ICharacter>)model.Characters?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).Cast<Character>();
-            entity.Chats = (ICollection<IChat>)model.Chats?.Where(i => i.Active).Select(ChatMapperExtensions.MapToEntity).Cast<Chat>();
-            entity.Concepts = (ICollection<IConcept>)model.Concepts?.Where(i => i.Active).Select(ConceptMapperExtensions.MapToEntity).Cast<Concept>();
-            entity.Episodes = (ICollection<IEpisode>)model.Episodes?.Where(i => i.Active).Select(EpisodeMapperExtensions.MapToEntity).Cast<Episode>();
-            entity.Issues = (ICollection<IIssue>)model.Issues?.Where(i => i.Active).Select(IssueMapperExtensions.MapToEntity).Cast<Issue>();
-            entity.Locations = (ICollection<ILocation>)model.Locations?.Where(i => i.Active).Select(LocationMapperExtensions.MapToEntity).Cast<Location>();
-            entity.Movies = (ICollection<IMovie>)model.Movies?.Where(i => i.Active).Select(MovieMapperExtensions.MapToEntity).Cast<Movie>();
-            entity.Objects = (ICollection<IObject>)model.Objects?.Where(i => i.Active).Select(ObjectMapperExtensions.MapToEntity).Cast<Object>();
-            entity.People = (ICollection<IPerson>)model.People?.Where(i => i.Active).Select(PersonMapperExtensions.MapToEntity).Cast<Person>();
-            entity.Promos = (ICollection<IPromo>)model.Promos?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).Cast<Promo>();
-            entity.Publishers = (ICollection<IPublisher>)model.Publishers?.Where(i => i.Active).Select(PublisherMapperExtensions.MapToEntity).Cast<Publisher>();
-            entity.StoryArcs = (ICollection<IStoryArc>)model.StoryArcs?.Where(i => i.Active).Select(StoryArcMapperExtensions.MapToEntity).Cast<StoryArc>();
-            entity.Teams = (ICollection<ITeam>)model.Teams?.Where(i => i.Active).Select(TeamMapperExtensions.MapToEntity).Cast<Team>();
-            entity.Videos = (ICollection<IVideo>)model.Videos?.Where(i => i.Active).Select(VideoMapperExtensions.MapToEntity).Cast<Video>();
-            entity.Volumes = (ICollection<IVolume>)model.Volumes?.Where(i => i.Active).Select(VolumeMapperExtensions.MapToEntity).Cast<Volume>();
+            entity.Characters = model.Characters?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).ToList();
+            entity.Chats = model.Chats?.Where(i => i.Active).Select(ChatMapperExtensions.MapToEntity).ToList();
+            entity.Concepts = model.Concepts?.Where(i => i.Active).Select(ConceptMapperExtensions.MapToEntity).ToList();
+            entity.Episodes = model.Episodes?.Where(i => i.Active).Select(EpisodeMapperExtensions.MapToEntity).ToList();
+            entity.Issues = model.Issues?.Where(i => i.Active).Select(IssueMapperExtensions.MapToEntity).ToList();
+            entity.Locations = model.Locations?.Where(i => i.Active).Select(LocationMapperExtensions.MapToEntity).ToList();
+            entity.Movies = model.Movies?.Where(i => i.Active).Select(MovieMapperExtensions.MapToEntity).ToList();
+            entity.Objects = model.Objects?.Where(i => i.Active).Select(ObjectMapperExtensions.MapToEntity).ToList();
+            entity.People = model.People?.Where(i => i.Active).Select(PersonMapperExtensions.MapToEntity).ToList();
+            entity.Promos = model.Promos?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).ToList();
+            entity.Publishers = model.Publishers?.Where(i => i.Active).Select(PublisherMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcs = model.StoryArcs?.Where(i => i.Active).Select(StoryArcMapperExtensions.MapToEntity).ToList();
+            entity.Teams = model.Teams?.Where(i => i.Active).Select(TeamMapperExtensions.MapToEntity).ToList();
+            entity.Videos = model.Videos?.Where(i => i.Active).Select(VideoMapperExtensions.MapToEntity).ToList();
+            entity.Volumes = model.Volumes?.Where(i => i.Active).Select(VolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public IImageFileModel MapToModel(IImageFile entity)
+        public virtual IImageFileModel MapToModel(IImageFile entity)
         {
             var model = NameableEntityMapper.MapToModel<IImageFile, ImageFileModel>(entity);
             // ImageFile Properties
@@ -133,7 +135,7 @@ namespace ComicVine.API.Mappings//.Media
             return model;
         }
 
-        public IImageFileModel MapToModelLite(IImageFile entity)
+        public virtual IImageFileModel MapToModelLite(IImageFile entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IImageFile, ImageFileModel>(entity);
             // ImageFile Properties
@@ -144,7 +146,7 @@ namespace ComicVine.API.Mappings//.Media
             return model;
         }
 
-        public IImageFileModel MapToModelListing(IImageFile entity)
+        public virtual IImageFileModel MapToModelListing(IImageFile entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IImageFile, ImageFileModel>(entity);
             // ImageFile Properties
@@ -155,7 +157,7 @@ namespace ComicVine.API.Mappings//.Media
             return model;
         }
 
-        public IImageFileSearchModel MapToSearchModel(IImageFileModel model)
+        public virtual IImageFileSearchModel MapToSearchModel(IImageFileModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IImageFileModel, ImageFileSearchModel>(model);
             // Search Properties
@@ -163,7 +165,7 @@ namespace ComicVine.API.Mappings//.Media
             return searchModel;
         }
 
-        public bool AreEqual(IImageFileModel model, IImageFile entity)
+        public virtual bool AreEqual(IImageFileModel model, IImageFile entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // ImageFile Properties

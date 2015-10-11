@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieStudioMapperExtensions
     {
-        public static readonly MovieStudioMapper Mapper = new MovieStudioMapper();
+        public static IMovieStudioMapper Mapper = new MovieStudioMapper();
+
+        public static void OverrideMapper(IMovieStudioMapper mapper) { Mapper = mapper; }
 
         public static IMovieStudio MapToEntity(this IMovieStudioModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieStudioMapper : IMovieStudioMapper
     {
-        public IMovieStudio MapToEntity(IMovieStudioModel model)
+        public virtual IMovieStudio MapToEntity(IMovieStudioModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieStudio, IMovieStudioModel>(model);
             // MovieStudio Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieStudioModel model, ref IMovieStudio entity)
+        public virtual void MapToEntity(IMovieStudioModel model, ref IMovieStudio entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieStudioModel MapToModel(IMovieStudio entity)
+        public virtual IMovieStudioModel MapToModel(IMovieStudio entity)
         {
             var model = EntityMapper.MapToModel<IMovieStudio, MovieStudioModel>(entity);
             // MovieStudio Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStudioModel MapToModelLite(IMovieStudio entity)
+        public virtual IMovieStudioModel MapToModelLite(IMovieStudio entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieStudio, MovieStudioModel>(entity);
             // MovieStudio Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStudioModel MapToModelListing(IMovieStudio entity)
+        public virtual IMovieStudioModel MapToModelListing(IMovieStudio entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieStudio, MovieStudioModel>(entity);
             // MovieStudio Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStudioSearchModel MapToSearchModel(IMovieStudioModel model)
+        public virtual IMovieStudioSearchModel MapToSearchModel(IMovieStudioModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieStudioModel, MovieStudioSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.StudioId = model.StudioId;
             searchModel.StudioCustomKey = model.Studio?.CustomKey;
+            searchModel.StudioApiDetailUrl = model.Studio?.ApiDetailUrl;
+            searchModel.StudioSiteDetailUrl = model.Studio?.SiteDetailUrl;
             searchModel.StudioName = model.Studio?.Name;
+            searchModel.StudioShortDescription = model.Studio?.ShortDescription;
             searchModel.StudioDescription = model.Studio?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieStudioModel model, IMovieStudio entity)
+        public virtual bool AreEqual(IMovieStudioModel model, IMovieStudio entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieStudio Properties

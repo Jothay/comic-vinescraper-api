@@ -14,6 +14,7 @@
             var entity = EntityMapper.MapToEntity<TEntity, TModel>(model);
             // Assign Properties
             entity.Name = model.Name;
+            entity.ShortDescription = model.ShortDescription;
             entity.Description = model.Description;
             // Return the Result
             return entity;
@@ -26,6 +27,7 @@
             // Assign Properties
             EntityMapper.MapToEntity(model, ref entity);
             entity.Name = model.Name;
+            entity.ShortDescription = model.ShortDescription;
             entity.Description = model.Description;
         }
 
@@ -37,6 +39,7 @@
             var model = EntityMapper.MapToModel<TEntity, TModel>(entity);
             // Assign Properties
             model.Name = entity.Name;
+            model.ShortDescription = entity.ShortDescription;
             model.Description = entity.Description;
             // Return the Result
             return model;
@@ -50,6 +53,7 @@
             var model = EntityMapper.MapToModelLite<TEntity, TModel>(entity);
             // Assign Properties
             model.Name = entity.Name;
+            model.ShortDescription = entity.ShortDescription;
             model.Description = entity.Description;
             // Return the Result
             return model;
@@ -75,6 +79,7 @@
             var searchModel = EntityMapper.MapToSearchModel<TModel, TSearchModel>(model);
             // Assign Properties
             searchModel.Name = model.Name;
+            searchModel.ShortDescription = model.ShortDescription;
             searchModel.Description = model.Description;
             // Return the Result
             return searchModel;
@@ -86,6 +91,7 @@
         {
             return EntityMapper.AreEqual(model, entity)
                 && string.Equals(model.Name, entity.Name)
+                && string.Equals(model.ShortDescription, entity.ShortDescription)
                 && string.Equals(model.Description, entity.Description);
         }
     }

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Series
 
     public static class SeriesAliasMapperExtensions
     {
-        public static readonly SeriesAliasMapper Mapper = new SeriesAliasMapper();
+        public static ISeriesAliasMapper Mapper = new SeriesAliasMapper();
+
+        public static void OverrideMapper(ISeriesAliasMapper mapper) { Mapper = mapper; }
 
         public static ISeriesAlias MapToEntity(this ISeriesAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Series
 
     public class SeriesAliasMapper : ISeriesAliasMapper
     {
-        public ISeriesAlias MapToEntity(ISeriesAliasModel model)
+        public virtual ISeriesAlias MapToEntity(ISeriesAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<SeriesAlias, ISeriesAliasModel>(model);
             // SeriesAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Series
             return entity;
         }
 
-        public void MapToEntity(ISeriesAliasModel model, ref ISeriesAlias entity)
+        public virtual void MapToEntity(ISeriesAliasModel model, ref ISeriesAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Series
             // <None>
         }
 
-        public ISeriesAliasModel MapToModel(ISeriesAlias entity)
+        public virtual ISeriesAliasModel MapToModel(ISeriesAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<ISeriesAlias, SeriesAliasModel>(entity);
             // SeriesAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesAliasModel MapToModelLite(ISeriesAlias entity)
+        public virtual ISeriesAliasModel MapToModelLite(ISeriesAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ISeriesAlias, SeriesAliasModel>(entity);
             // SeriesAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesAliasModel MapToModelListing(ISeriesAlias entity)
+        public virtual ISeriesAliasModel MapToModelListing(ISeriesAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ISeriesAlias, SeriesAliasModel>(entity);
             // SeriesAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesAliasSearchModel MapToSearchModel(ISeriesAliasModel model)
+        public virtual ISeriesAliasSearchModel MapToSearchModel(ISeriesAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ISeriesAliasModel, SeriesAliasSearchModel>(model);
             // Search Properties
             searchModel.SeriesId = model.SeriesId;
             searchModel.SeriesCustomKey = model.Series?.CustomKey;
+            searchModel.SeriesApiDetailUrl = model.Series?.ApiDetailUrl;
+            searchModel.SeriesSiteDetailUrl = model.Series?.SiteDetailUrl;
             searchModel.SeriesName = model.Series?.Name;
+            searchModel.SeriesShortDescription = model.Series?.ShortDescription;
             searchModel.SeriesDescription = model.Series?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ISeriesAliasModel model, ISeriesAlias entity)
+        public virtual bool AreEqual(ISeriesAliasModel model, ISeriesAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // SeriesAlias Properties

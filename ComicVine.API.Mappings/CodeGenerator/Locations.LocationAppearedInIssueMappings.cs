@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Locations
 
     public static class LocationAppearedInIssueMapperExtensions
     {
-        public static readonly LocationAppearedInIssueMapper Mapper = new LocationAppearedInIssueMapper();
+        public static ILocationAppearedInIssueMapper Mapper = new LocationAppearedInIssueMapper();
+
+        public static void OverrideMapper(ILocationAppearedInIssueMapper mapper) { Mapper = mapper; }
 
         public static ILocationAppearedInIssue MapToEntity(this ILocationAppearedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Locations
 
     public class LocationAppearedInIssueMapper : ILocationAppearedInIssueMapper
     {
-        public ILocationAppearedInIssue MapToEntity(ILocationAppearedInIssueModel model)
+        public virtual ILocationAppearedInIssue MapToEntity(ILocationAppearedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<LocationAppearedInIssue, ILocationAppearedInIssueModel>(model);
             // LocationAppearedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Locations
             return entity;
         }
 
-        public void MapToEntity(ILocationAppearedInIssueModel model, ref ILocationAppearedInIssue entity)
+        public virtual void MapToEntity(ILocationAppearedInIssueModel model, ref ILocationAppearedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Locations
             // <None>
         }
 
-        public ILocationAppearedInIssueModel MapToModel(ILocationAppearedInIssue entity)
+        public virtual ILocationAppearedInIssueModel MapToModel(ILocationAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModel<ILocationAppearedInIssue, LocationAppearedInIssueModel>(entity);
             // LocationAppearedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAppearedInIssueModel MapToModelLite(ILocationAppearedInIssue entity)
+        public virtual ILocationAppearedInIssueModel MapToModelLite(ILocationAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ILocationAppearedInIssue, LocationAppearedInIssueModel>(entity);
             // LocationAppearedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAppearedInIssueModel MapToModelListing(ILocationAppearedInIssue entity)
+        public virtual ILocationAppearedInIssueModel MapToModelListing(ILocationAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ILocationAppearedInIssue, LocationAppearedInIssueModel>(entity);
             // LocationAppearedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAppearedInIssueSearchModel MapToSearchModel(ILocationAppearedInIssueModel model)
+        public virtual ILocationAppearedInIssueSearchModel MapToSearchModel(ILocationAppearedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ILocationAppearedInIssueModel, LocationAppearedInIssueSearchModel>(model);
             // Search Properties
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             searchModel.AppearedInIssueId = model.AppearedInIssueId;
             searchModel.AppearedInIssueCustomKey = model.AppearedInIssue?.CustomKey;
+            searchModel.AppearedInIssueApiDetailUrl = model.AppearedInIssue?.ApiDetailUrl;
+            searchModel.AppearedInIssueSiteDetailUrl = model.AppearedInIssue?.SiteDetailUrl;
             searchModel.AppearedInIssueName = model.AppearedInIssue?.Name;
+            searchModel.AppearedInIssueShortDescription = model.AppearedInIssue?.ShortDescription;
             searchModel.AppearedInIssueDescription = model.AppearedInIssue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ILocationAppearedInIssueModel model, ILocationAppearedInIssue entity)
+        public virtual bool AreEqual(ILocationAppearedInIssueModel model, ILocationAppearedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // LocationAppearedInIssue Properties

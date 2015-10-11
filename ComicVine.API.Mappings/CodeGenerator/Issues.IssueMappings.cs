@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Issues
 
     public static class IssueMapperExtensions
     {
-        public static readonly IssueMapper Mapper = new IssueMapper();
+        public static IIssueMapper Mapper = new IssueMapper();
+
+        public static void OverrideMapper(IIssueMapper mapper) { Mapper = mapper; }
 
         public static IIssue MapToEntity(this IIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Issues
 
     public class IssueMapper : IIssueMapper
     {
-        public IIssue MapToEntity(IIssueModel model)
+        public virtual IIssue MapToEntity(IIssueModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Issue, IIssueModel>(model);
             // Issue Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.Issues
             return entity;
         }
 
-        public void MapToEntity(IIssueModel model, ref IIssue entity)
+        public virtual void MapToEntity(IIssueModel model, ref IIssue entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -89,12 +91,12 @@ namespace ComicVine.API.Mappings//.Issues
             entity.VolumeId = model.VolumeId;
             entity.Volume = (Volume)model.Volume?.MapToEntity();
             // Associated Objects
-            entity.IssueAliases = (ICollection<IIssueAlias>)model.IssueAliases?.Where(i => i.Active).Select(IssueAliasMapperExtensions.MapToEntity).Cast<IssueAlias>();
-            entity.IssueStoryArcs = (ICollection<IStoryArcIssue>)model.IssueStoryArcs?.Where(i => i.Active).Select(StoryArcIssueMapperExtensions.MapToEntity).Cast<StoryArcIssue>();
-            entity.IssueWriters = (ICollection<IIssueWriter>)model.IssueWriters?.Where(i => i.Active).Select(IssueWriterMapperExtensions.MapToEntity).Cast<IssueWriter>();
+            entity.IssueAliases = model.IssueAliases?.Where(i => i.Active).Select(IssueAliasMapperExtensions.MapToEntity).ToList();
+            entity.IssueStoryArcs = model.IssueStoryArcs?.Where(i => i.Active).Select(StoryArcIssueMapperExtensions.MapToEntity).ToList();
+            entity.IssueWriters = model.IssueWriters?.Where(i => i.Active).Select(IssueWriterMapperExtensions.MapToEntity).ToList();
         }
 
-        public IIssueModel MapToModel(IIssue entity)
+        public virtual IIssueModel MapToModel(IIssue entity)
         {
             var model = NameableEntityMapper.MapToModel<IIssue, IssueModel>(entity);
             // Issue Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueModel MapToModelLite(IIssue entity)
+        public virtual IIssueModel MapToModelLite(IIssue entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IIssue, IssueModel>(entity);
             // Issue Properties
@@ -130,7 +132,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueModel MapToModelListing(IIssue entity)
+        public virtual IIssueModel MapToModelListing(IIssue entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IIssue, IssueModel>(entity);
             // Issue Properties
@@ -145,24 +147,30 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueSearchModel MapToSearchModel(IIssueModel model)
+        public virtual IIssueSearchModel MapToSearchModel(IIssueModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IIssueModel, IssueSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.HasStaffReview = model.HasStaffReview;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IIssueModel model, IIssue entity)
+        public virtual bool AreEqual(IIssueModel model, IIssue entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Issue Properties

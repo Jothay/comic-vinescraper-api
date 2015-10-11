@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptIssueMapperExtensions
     {
-        public static readonly ConceptIssueMapper Mapper = new ConceptIssueMapper();
+        public static IConceptIssueMapper Mapper = new ConceptIssueMapper();
+
+        public static void OverrideMapper(IConceptIssueMapper mapper) { Mapper = mapper; }
 
         public static IConceptIssue MapToEntity(this IConceptIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptIssueMapper : IConceptIssueMapper
     {
-        public IConceptIssue MapToEntity(IConceptIssueModel model)
+        public virtual IConceptIssue MapToEntity(IConceptIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<ConceptIssue, IConceptIssueModel>(model);
             // ConceptIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptIssueModel model, ref IConceptIssue entity)
+        public virtual void MapToEntity(IConceptIssueModel model, ref IConceptIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Concepts
             // <None>
         }
 
-        public IConceptIssueModel MapToModel(IConceptIssue entity)
+        public virtual IConceptIssueModel MapToModel(IConceptIssue entity)
         {
             var model = EntityMapper.MapToModel<IConceptIssue, ConceptIssueModel>(entity);
             // ConceptIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptIssueModel MapToModelLite(IConceptIssue entity)
+        public virtual IConceptIssueModel MapToModelLite(IConceptIssue entity)
         {
             var model = EntityMapper.MapToModelLite<IConceptIssue, ConceptIssueModel>(entity);
             // ConceptIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptIssueModel MapToModelListing(IConceptIssue entity)
+        public virtual IConceptIssueModel MapToModelListing(IConceptIssue entity)
         {
             var model = EntityMapper.MapToModelListing<IConceptIssue, ConceptIssueModel>(entity);
             // ConceptIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptIssueSearchModel MapToSearchModel(IConceptIssueModel model)
+        public virtual IConceptIssueSearchModel MapToSearchModel(IConceptIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IConceptIssueModel, ConceptIssueSearchModel>(model);
             // Search Properties
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptIssueModel model, IConceptIssue entity)
+        public virtual bool AreEqual(IConceptIssueModel model, IConceptIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ConceptIssue Properties

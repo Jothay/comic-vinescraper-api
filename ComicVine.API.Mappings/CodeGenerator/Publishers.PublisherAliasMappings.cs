@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Publishers
 
     public static class PublisherAliasMapperExtensions
     {
-        public static readonly PublisherAliasMapper Mapper = new PublisherAliasMapper();
+        public static IPublisherAliasMapper Mapper = new PublisherAliasMapper();
+
+        public static void OverrideMapper(IPublisherAliasMapper mapper) { Mapper = mapper; }
 
         public static IPublisherAlias MapToEntity(this IPublisherAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Publishers
 
     public class PublisherAliasMapper : IPublisherAliasMapper
     {
-        public IPublisherAlias MapToEntity(IPublisherAliasModel model)
+        public virtual IPublisherAlias MapToEntity(IPublisherAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<PublisherAlias, IPublisherAliasModel>(model);
             // PublisherAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return entity;
         }
 
-        public void MapToEntity(IPublisherAliasModel model, ref IPublisherAlias entity)
+        public virtual void MapToEntity(IPublisherAliasModel model, ref IPublisherAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Publishers
             // <None>
         }
 
-        public IPublisherAliasModel MapToModel(IPublisherAlias entity)
+        public virtual IPublisherAliasModel MapToModel(IPublisherAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IPublisherAlias, PublisherAliasModel>(entity);
             // PublisherAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherAliasModel MapToModelLite(IPublisherAlias entity)
+        public virtual IPublisherAliasModel MapToModelLite(IPublisherAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPublisherAlias, PublisherAliasModel>(entity);
             // PublisherAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherAliasModel MapToModelListing(IPublisherAlias entity)
+        public virtual IPublisherAliasModel MapToModelListing(IPublisherAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPublisherAlias, PublisherAliasModel>(entity);
             // PublisherAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherAliasSearchModel MapToSearchModel(IPublisherAliasModel model)
+        public virtual IPublisherAliasSearchModel MapToSearchModel(IPublisherAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPublisherAliasModel, PublisherAliasSearchModel>(model);
             // Search Properties
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IPublisherAliasModel model, IPublisherAlias entity)
+        public virtual bool AreEqual(IPublisherAliasModel model, IPublisherAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // PublisherAlias Properties

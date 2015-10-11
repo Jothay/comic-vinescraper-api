@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.People
 
     public static class GenderMapperExtensions
     {
-        public static readonly GenderMapper Mapper = new GenderMapper();
+        public static IGenderMapper Mapper = new GenderMapper();
+
+        public static void OverrideMapper(IGenderMapper mapper) { Mapper = mapper; }
 
         public static IGender MapToEntity(this IGenderModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.People
 
     public class GenderMapper : IGenderMapper
     {
-        public IGender MapToEntity(IGenderModel model)
+        public virtual IGender MapToEntity(IGenderModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Gender, IGenderModel>(model);
             // Gender Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.People
             return entity;
         }
 
-        public void MapToEntity(IGenderModel model, ref IGender entity)
+        public virtual void MapToEntity(IGenderModel model, ref IGender entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -76,11 +78,11 @@ namespace ComicVine.API.Mappings//.People
             // Related Objects
             // <None>
             // Associated Objects
-            entity.Characters = (ICollection<ICharacter>)model.Characters?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).Cast<Character>();
-            entity.People = (ICollection<IPerson>)model.People?.Where(i => i.Active).Select(PersonMapperExtensions.MapToEntity).Cast<Person>();
+            entity.Characters = model.Characters?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).ToList();
+            entity.People = model.People?.Where(i => i.Active).Select(PersonMapperExtensions.MapToEntity).ToList();
         }
 
-        public IGenderModel MapToModel(IGender entity)
+        public virtual IGenderModel MapToModel(IGender entity)
         {
             var model = NameableEntityMapper.MapToModel<IGender, GenderModel>(entity);
             // Gender Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IGenderModel MapToModelLite(IGender entity)
+        public virtual IGenderModel MapToModelLite(IGender entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IGender, GenderModel>(entity);
             // Gender Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IGenderModel MapToModelListing(IGender entity)
+        public virtual IGenderModel MapToModelListing(IGender entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IGender, GenderModel>(entity);
             // Gender Properties
@@ -116,7 +118,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IGenderSearchModel MapToSearchModel(IGenderModel model)
+        public virtual IGenderSearchModel MapToSearchModel(IGenderModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IGenderModel, GenderSearchModel>(model);
             // Search Properties
@@ -124,7 +126,7 @@ namespace ComicVine.API.Mappings//.People
             return searchModel;
         }
 
-        public bool AreEqual(IGenderModel model, IGender entity)
+        public virtual bool AreEqual(IGenderModel model, IGender entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Gender Properties

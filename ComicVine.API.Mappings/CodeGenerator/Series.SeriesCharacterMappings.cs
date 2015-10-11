@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Series
 
     public static class SeriesCharacterMapperExtensions
     {
-        public static readonly SeriesCharacterMapper Mapper = new SeriesCharacterMapper();
+        public static ISeriesCharacterMapper Mapper = new SeriesCharacterMapper();
+
+        public static void OverrideMapper(ISeriesCharacterMapper mapper) { Mapper = mapper; }
 
         public static ISeriesCharacter MapToEntity(this ISeriesCharacterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Series
 
     public class SeriesCharacterMapper : ISeriesCharacterMapper
     {
-        public ISeriesCharacter MapToEntity(ISeriesCharacterModel model)
+        public virtual ISeriesCharacter MapToEntity(ISeriesCharacterModel model)
         {
             var entity = EntityMapper.MapToEntity<SeriesCharacter, ISeriesCharacterModel>(model);
             // SeriesCharacter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Series
             return entity;
         }
 
-        public void MapToEntity(ISeriesCharacterModel model, ref ISeriesCharacter entity)
+        public virtual void MapToEntity(ISeriesCharacterModel model, ref ISeriesCharacter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Series
             // <None>
         }
 
-        public ISeriesCharacterModel MapToModel(ISeriesCharacter entity)
+        public virtual ISeriesCharacterModel MapToModel(ISeriesCharacter entity)
         {
             var model = EntityMapper.MapToModel<ISeriesCharacter, SeriesCharacterModel>(entity);
             // SeriesCharacter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesCharacterModel MapToModelLite(ISeriesCharacter entity)
+        public virtual ISeriesCharacterModel MapToModelLite(ISeriesCharacter entity)
         {
             var model = EntityMapper.MapToModelLite<ISeriesCharacter, SeriesCharacterModel>(entity);
             // SeriesCharacter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesCharacterModel MapToModelListing(ISeriesCharacter entity)
+        public virtual ISeriesCharacterModel MapToModelListing(ISeriesCharacter entity)
         {
             var model = EntityMapper.MapToModelListing<ISeriesCharacter, SeriesCharacterModel>(entity);
             // SeriesCharacter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesCharacterSearchModel MapToSearchModel(ISeriesCharacterModel model)
+        public virtual ISeriesCharacterSearchModel MapToSearchModel(ISeriesCharacterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ISeriesCharacterModel, SeriesCharacterSearchModel>(model);
             // Search Properties
             searchModel.SeriesId = model.SeriesId;
             searchModel.SeriesCustomKey = model.Series?.CustomKey;
+            searchModel.SeriesApiDetailUrl = model.Series?.ApiDetailUrl;
+            searchModel.SeriesSiteDetailUrl = model.Series?.SiteDetailUrl;
             searchModel.SeriesName = model.Series?.Name;
+            searchModel.SeriesShortDescription = model.Series?.ShortDescription;
             searchModel.SeriesDescription = model.Series?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ISeriesCharacterModel model, ISeriesCharacter entity)
+        public virtual bool AreEqual(ISeriesCharacterModel model, ISeriesCharacter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // SeriesCharacter Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeLocationMapperExtensions
     {
-        public static readonly EpisodeLocationMapper Mapper = new EpisodeLocationMapper();
+        public static IEpisodeLocationMapper Mapper = new EpisodeLocationMapper();
+
+        public static void OverrideMapper(IEpisodeLocationMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeLocation MapToEntity(this IEpisodeLocationModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeLocationMapper : IEpisodeLocationMapper
     {
-        public IEpisodeLocation MapToEntity(IEpisodeLocationModel model)
+        public virtual IEpisodeLocation MapToEntity(IEpisodeLocationModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeLocation, IEpisodeLocationModel>(model);
             // EpisodeLocation Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeLocationModel model, ref IEpisodeLocation entity)
+        public virtual void MapToEntity(IEpisodeLocationModel model, ref IEpisodeLocation entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeLocationModel MapToModel(IEpisodeLocation entity)
+        public virtual IEpisodeLocationModel MapToModel(IEpisodeLocation entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeLocation, EpisodeLocationModel>(entity);
             // EpisodeLocation Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeLocationModel MapToModelLite(IEpisodeLocation entity)
+        public virtual IEpisodeLocationModel MapToModelLite(IEpisodeLocation entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeLocation, EpisodeLocationModel>(entity);
             // EpisodeLocation Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeLocationModel MapToModelListing(IEpisodeLocation entity)
+        public virtual IEpisodeLocationModel MapToModelListing(IEpisodeLocation entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeLocation, EpisodeLocationModel>(entity);
             // EpisodeLocation Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeLocationSearchModel MapToSearchModel(IEpisodeLocationModel model)
+        public virtual IEpisodeLocationSearchModel MapToSearchModel(IEpisodeLocationModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeLocationModel, EpisodeLocationSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeLocationModel model, IEpisodeLocation entity)
+        public virtual bool AreEqual(IEpisodeLocationModel model, IEpisodeLocation entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeLocation Properties

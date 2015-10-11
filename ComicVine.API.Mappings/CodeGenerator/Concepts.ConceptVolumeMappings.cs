@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptVolumeMapperExtensions
     {
-        public static readonly ConceptVolumeMapper Mapper = new ConceptVolumeMapper();
+        public static IConceptVolumeMapper Mapper = new ConceptVolumeMapper();
+
+        public static void OverrideMapper(IConceptVolumeMapper mapper) { Mapper = mapper; }
 
         public static IConceptVolume MapToEntity(this IConceptVolumeModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptVolumeMapper : IConceptVolumeMapper
     {
-        public IConceptVolume MapToEntity(IConceptVolumeModel model)
+        public virtual IConceptVolume MapToEntity(IConceptVolumeModel model)
         {
             var entity = EntityMapper.MapToEntity<ConceptVolume, IConceptVolumeModel>(model);
             // ConceptVolume Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptVolumeModel model, ref IConceptVolume entity)
+        public virtual void MapToEntity(IConceptVolumeModel model, ref IConceptVolume entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Concepts
             // <None>
         }
 
-        public IConceptVolumeModel MapToModel(IConceptVolume entity)
+        public virtual IConceptVolumeModel MapToModel(IConceptVolume entity)
         {
             var model = EntityMapper.MapToModel<IConceptVolume, ConceptVolumeModel>(entity);
             // ConceptVolume Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptVolumeModel MapToModelLite(IConceptVolume entity)
+        public virtual IConceptVolumeModel MapToModelLite(IConceptVolume entity)
         {
             var model = EntityMapper.MapToModelLite<IConceptVolume, ConceptVolumeModel>(entity);
             // ConceptVolume Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptVolumeModel MapToModelListing(IConceptVolume entity)
+        public virtual IConceptVolumeModel MapToModelListing(IConceptVolume entity)
         {
             var model = EntityMapper.MapToModelListing<IConceptVolume, ConceptVolumeModel>(entity);
             // ConceptVolume Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptVolumeSearchModel MapToSearchModel(IConceptVolumeModel model)
+        public virtual IConceptVolumeSearchModel MapToSearchModel(IConceptVolumeModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IConceptVolumeModel, ConceptVolumeSearchModel>(model);
             // Search Properties
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptVolumeModel model, IConceptVolume entity)
+        public virtual bool AreEqual(IConceptVolumeModel model, IConceptVolume entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ConceptVolume Properties

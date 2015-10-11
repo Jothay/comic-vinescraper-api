@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Issues
 
     public static class IssueWriterMapperExtensions
     {
-        public static readonly IssueWriterMapper Mapper = new IssueWriterMapper();
+        public static IIssueWriterMapper Mapper = new IssueWriterMapper();
+
+        public static void OverrideMapper(IIssueWriterMapper mapper) { Mapper = mapper; }
 
         public static IIssueWriter MapToEntity(this IIssueWriterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Issues
 
     public class IssueWriterMapper : IIssueWriterMapper
     {
-        public IIssueWriter MapToEntity(IIssueWriterModel model)
+        public virtual IIssueWriter MapToEntity(IIssueWriterModel model)
         {
             var entity = EntityMapper.MapToEntity<IssueWriter, IIssueWriterModel>(model);
             // IssueWriter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Issues
             return entity;
         }
 
-        public void MapToEntity(IIssueWriterModel model, ref IIssueWriter entity)
+        public virtual void MapToEntity(IIssueWriterModel model, ref IIssueWriter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Issues
             // <None>
         }
 
-        public IIssueWriterModel MapToModel(IIssueWriter entity)
+        public virtual IIssueWriterModel MapToModel(IIssueWriter entity)
         {
             var model = EntityMapper.MapToModel<IIssueWriter, IssueWriterModel>(entity);
             // IssueWriter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueWriterModel MapToModelLite(IIssueWriter entity)
+        public virtual IIssueWriterModel MapToModelLite(IIssueWriter entity)
         {
             var model = EntityMapper.MapToModelLite<IIssueWriter, IssueWriterModel>(entity);
             // IssueWriter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueWriterModel MapToModelListing(IIssueWriter entity)
+        public virtual IIssueWriterModel MapToModelListing(IIssueWriter entity)
         {
             var model = EntityMapper.MapToModelListing<IIssueWriter, IssueWriterModel>(entity);
             // IssueWriter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueWriterSearchModel MapToSearchModel(IIssueWriterModel model)
+        public virtual IIssueWriterSearchModel MapToSearchModel(IIssueWriterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IIssueWriterModel, IssueWriterSearchModel>(model);
             // Search Properties
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             searchModel.WriterId = model.WriterId;
             searchModel.WriterCustomKey = model.Writer?.CustomKey;
+            searchModel.WriterApiDetailUrl = model.Writer?.ApiDetailUrl;
+            searchModel.WriterSiteDetailUrl = model.Writer?.SiteDetailUrl;
             searchModel.WriterName = model.Writer?.Name;
+            searchModel.WriterShortDescription = model.Writer?.ShortDescription;
             searchModel.WriterDescription = model.Writer?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IIssueWriterModel model, IIssueWriter entity)
+        public virtual bool AreEqual(IIssueWriterModel model, IIssueWriter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // IssueWriter Properties

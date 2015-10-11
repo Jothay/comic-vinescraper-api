@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodePersonMapperExtensions
     {
-        public static readonly EpisodePersonMapper Mapper = new EpisodePersonMapper();
+        public static IEpisodePersonMapper Mapper = new EpisodePersonMapper();
+
+        public static void OverrideMapper(IEpisodePersonMapper mapper) { Mapper = mapper; }
 
         public static IEpisodePerson MapToEntity(this IEpisodePersonModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodePersonMapper : IEpisodePersonMapper
     {
-        public IEpisodePerson MapToEntity(IEpisodePersonModel model)
+        public virtual IEpisodePerson MapToEntity(IEpisodePersonModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodePerson, IEpisodePersonModel>(model);
             // EpisodePerson Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodePersonModel model, ref IEpisodePerson entity)
+        public virtual void MapToEntity(IEpisodePersonModel model, ref IEpisodePerson entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodePersonModel MapToModel(IEpisodePerson entity)
+        public virtual IEpisodePersonModel MapToModel(IEpisodePerson entity)
         {
             var model = EntityMapper.MapToModel<IEpisodePerson, EpisodePersonModel>(entity);
             // EpisodePerson Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodePersonModel MapToModelLite(IEpisodePerson entity)
+        public virtual IEpisodePersonModel MapToModelLite(IEpisodePerson entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodePerson, EpisodePersonModel>(entity);
             // EpisodePerson Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodePersonModel MapToModelListing(IEpisodePerson entity)
+        public virtual IEpisodePersonModel MapToModelListing(IEpisodePerson entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodePerson, EpisodePersonModel>(entity);
             // EpisodePerson Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodePersonSearchModel MapToSearchModel(IEpisodePersonModel model)
+        public virtual IEpisodePersonSearchModel MapToSearchModel(IEpisodePersonModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodePersonModel, EpisodePersonSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.PersonId = model.PersonId;
             searchModel.PersonCustomKey = model.Person?.CustomKey;
+            searchModel.PersonApiDetailUrl = model.Person?.ApiDetailUrl;
+            searchModel.PersonSiteDetailUrl = model.Person?.SiteDetailUrl;
             searchModel.PersonName = model.Person?.Name;
+            searchModel.PersonShortDescription = model.Person?.ShortDescription;
             searchModel.PersonDescription = model.Person?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodePersonModel model, IEpisodePerson entity)
+        public virtual bool AreEqual(IEpisodePersonModel model, IEpisodePerson entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodePerson Properties

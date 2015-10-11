@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeStoryArcFirstAppearanceMapperExtensions
     {
-        public static readonly EpisodeStoryArcFirstAppearanceMapper Mapper = new EpisodeStoryArcFirstAppearanceMapper();
+        public static IEpisodeStoryArcFirstAppearanceMapper Mapper = new EpisodeStoryArcFirstAppearanceMapper();
+
+        public static void OverrideMapper(IEpisodeStoryArcFirstAppearanceMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeStoryArcFirstAppearance MapToEntity(this IEpisodeStoryArcFirstAppearanceModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeStoryArcFirstAppearanceMapper : IEpisodeStoryArcFirstAppearanceMapper
     {
-        public IEpisodeStoryArcFirstAppearance MapToEntity(IEpisodeStoryArcFirstAppearanceModel model)
+        public virtual IEpisodeStoryArcFirstAppearance MapToEntity(IEpisodeStoryArcFirstAppearanceModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeStoryArcFirstAppearance, IEpisodeStoryArcFirstAppearanceModel>(model);
             // EpisodeStoryArcFirstAppearance Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeStoryArcFirstAppearanceModel model, ref IEpisodeStoryArcFirstAppearance entity)
+        public virtual void MapToEntity(IEpisodeStoryArcFirstAppearanceModel model, ref IEpisodeStoryArcFirstAppearance entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeStoryArcFirstAppearanceModel MapToModel(IEpisodeStoryArcFirstAppearance entity)
+        public virtual IEpisodeStoryArcFirstAppearanceModel MapToModel(IEpisodeStoryArcFirstAppearance entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeStoryArcFirstAppearance, EpisodeStoryArcFirstAppearanceModel>(entity);
             // EpisodeStoryArcFirstAppearance Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcFirstAppearanceModel MapToModelLite(IEpisodeStoryArcFirstAppearance entity)
+        public virtual IEpisodeStoryArcFirstAppearanceModel MapToModelLite(IEpisodeStoryArcFirstAppearance entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeStoryArcFirstAppearance, EpisodeStoryArcFirstAppearanceModel>(entity);
             // EpisodeStoryArcFirstAppearance Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcFirstAppearanceModel MapToModelListing(IEpisodeStoryArcFirstAppearance entity)
+        public virtual IEpisodeStoryArcFirstAppearanceModel MapToModelListing(IEpisodeStoryArcFirstAppearance entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeStoryArcFirstAppearance, EpisodeStoryArcFirstAppearanceModel>(entity);
             // EpisodeStoryArcFirstAppearance Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeStoryArcFirstAppearanceSearchModel MapToSearchModel(IEpisodeStoryArcFirstAppearanceModel model)
+        public virtual IEpisodeStoryArcFirstAppearanceSearchModel MapToSearchModel(IEpisodeStoryArcFirstAppearanceModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeStoryArcFirstAppearanceModel, EpisodeStoryArcFirstAppearanceSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeStoryArcFirstAppearanceModel model, IEpisodeStoryArcFirstAppearance entity)
+        public virtual bool AreEqual(IEpisodeStoryArcFirstAppearanceModel model, IEpisodeStoryArcFirstAppearance entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeStoryArcFirstAppearance Properties

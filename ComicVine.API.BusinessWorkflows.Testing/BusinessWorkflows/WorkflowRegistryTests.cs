@@ -1,11 +1,11 @@
 ﻿namespace ComicVine.API.Testing.BusinessWorkflows
 {
     using API.BusinessWorkflows;
+    using API.Mappings;
     using Interfaces.BusinessWorkflows;
     using Interfaces.Mappers;
     using Interfaces.Repositories;
     using Repositories;
-    using Mappings;
     using StructureMap;
     using Xunit;
 

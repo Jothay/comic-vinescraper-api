@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public static class StoryArcMapperExtensions
     {
-        public static readonly StoryArcMapper Mapper = new StoryArcMapper();
+        public static IStoryArcMapper Mapper = new StoryArcMapper();
+
+        public static void OverrideMapper(IStoryArcMapper mapper) { Mapper = mapper; }
 
         public static IStoryArc MapToEntity(this IStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public class StoryArcMapper : IStoryArcMapper
     {
-        public IStoryArc MapToEntity(IStoryArcModel model)
+        public virtual IStoryArc MapToEntity(IStoryArcModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<StoryArc, IStoryArcModel>(model);
             // StoryArc Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return entity;
         }
 
-        public void MapToEntity(IStoryArcModel model, ref IStoryArc entity)
+        public virtual void MapToEntity(IStoryArcModel model, ref IStoryArc entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -88,13 +90,13 @@ namespace ComicVine.API.Mappings//.StoryArcs
             entity.PublisherId = model.PublisherId;
             entity.Publisher = (Publisher)model.Publisher?.MapToEntity();
             // Associated Objects
-            entity.MovieStoryArcs = (ICollection<IMovieStoryArc>)model.MovieStoryArcs?.Where(i => i.Active).Select(MovieStoryArcMapperExtensions.MapToEntity).Cast<MovieStoryArc>();
-            entity.StoryArcAliases = (ICollection<IStoryArcAlias>)model.StoryArcAliases?.Where(i => i.Active).Select(StoryArcAliasMapperExtensions.MapToEntity).Cast<StoryArcAlias>();
-            entity.StoryArcIssues = (ICollection<IStoryArcIssue>)model.StoryArcIssues?.Where(i => i.Active).Select(StoryArcIssueMapperExtensions.MapToEntity).Cast<StoryArcIssue>();
-            entity.StoryArcsWritten = (ICollection<IStoryArcWriter>)model.StoryArcsWritten?.Where(i => i.Active).Select(StoryArcWriterMapperExtensions.MapToEntity).Cast<StoryArcWriter>();
+            entity.MovieStoryArcs = model.MovieStoryArcs?.Where(i => i.Active).Select(MovieStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcAliases = model.StoryArcAliases?.Where(i => i.Active).Select(StoryArcAliasMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcIssues = model.StoryArcIssues?.Where(i => i.Active).Select(StoryArcIssueMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcsWritten = model.StoryArcsWritten?.Where(i => i.Active).Select(StoryArcWriterMapperExtensions.MapToEntity).ToList();
         }
 
-        public IStoryArcModel MapToModel(IStoryArc entity)
+        public virtual IStoryArcModel MapToModel(IStoryArc entity)
         {
             var model = NameableEntityMapper.MapToModel<IStoryArc, StoryArcModel>(entity);
             // StoryArc Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcModel MapToModelLite(IStoryArc entity)
+        public virtual IStoryArcModel MapToModelLite(IStoryArc entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IStoryArc, StoryArcModel>(entity);
             // StoryArc Properties
@@ -128,7 +130,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcModel MapToModelListing(IStoryArc entity)
+        public virtual IStoryArcModel MapToModelListing(IStoryArc entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IStoryArc, StoryArcModel>(entity);
             // StoryArc Properties
@@ -141,27 +143,36 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcSearchModel MapToSearchModel(IStoryArcModel model)
+        public virtual IStoryArcSearchModel MapToSearchModel(IStoryArcModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IStoryArcModel, StoryArcSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IStoryArcModel model, IStoryArc entity)
+        public virtual bool AreEqual(IStoryArcModel model, IStoryArc entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // StoryArc Properties

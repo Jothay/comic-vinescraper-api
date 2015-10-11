@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeCharacterMapperExtensions
     {
-        public static readonly VolumeCharacterMapper Mapper = new VolumeCharacterMapper();
+        public static IVolumeCharacterMapper Mapper = new VolumeCharacterMapper();
+
+        public static void OverrideMapper(IVolumeCharacterMapper mapper) { Mapper = mapper; }
 
         public static IVolumeCharacter MapToEntity(this IVolumeCharacterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeCharacterMapper : IVolumeCharacterMapper
     {
-        public IVolumeCharacter MapToEntity(IVolumeCharacterModel model)
+        public virtual IVolumeCharacter MapToEntity(IVolumeCharacterModel model)
         {
             var entity = EntityMapper.MapToEntity<VolumeCharacter, IVolumeCharacterModel>(model);
             // VolumeCharacter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeCharacterModel model, ref IVolumeCharacter entity)
+        public virtual void MapToEntity(IVolumeCharacterModel model, ref IVolumeCharacter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeCharacterModel MapToModel(IVolumeCharacter entity)
+        public virtual IVolumeCharacterModel MapToModel(IVolumeCharacter entity)
         {
             var model = EntityMapper.MapToModel<IVolumeCharacter, VolumeCharacterModel>(entity);
             // VolumeCharacter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeCharacterModel MapToModelLite(IVolumeCharacter entity)
+        public virtual IVolumeCharacterModel MapToModelLite(IVolumeCharacter entity)
         {
             var model = EntityMapper.MapToModelLite<IVolumeCharacter, VolumeCharacterModel>(entity);
             // VolumeCharacter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeCharacterModel MapToModelListing(IVolumeCharacter entity)
+        public virtual IVolumeCharacterModel MapToModelListing(IVolumeCharacter entity)
         {
             var model = EntityMapper.MapToModelListing<IVolumeCharacter, VolumeCharacterModel>(entity);
             // VolumeCharacter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeCharacterSearchModel MapToSearchModel(IVolumeCharacterModel model)
+        public virtual IVolumeCharacterSearchModel MapToSearchModel(IVolumeCharacterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IVolumeCharacterModel, VolumeCharacterSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeCharacterModel model, IVolumeCharacter entity)
+        public virtual bool AreEqual(IVolumeCharacterModel model, IVolumeCharacter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // VolumeCharacter Properties

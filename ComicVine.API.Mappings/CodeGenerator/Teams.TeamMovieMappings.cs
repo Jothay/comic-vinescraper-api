@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamMovieMapperExtensions
     {
-        public static readonly TeamMovieMapper Mapper = new TeamMovieMapper();
+        public static ITeamMovieMapper Mapper = new TeamMovieMapper();
+
+        public static void OverrideMapper(ITeamMovieMapper mapper) { Mapper = mapper; }
 
         public static ITeamMovie MapToEntity(this ITeamMovieModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamMovieMapper : ITeamMovieMapper
     {
-        public ITeamMovie MapToEntity(ITeamMovieModel model)
+        public virtual ITeamMovie MapToEntity(ITeamMovieModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamMovie, ITeamMovieModel>(model);
             // TeamMovie Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamMovieModel model, ref ITeamMovie entity)
+        public virtual void MapToEntity(ITeamMovieModel model, ref ITeamMovie entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamMovieModel MapToModel(ITeamMovie entity)
+        public virtual ITeamMovieModel MapToModel(ITeamMovie entity)
         {
             var model = EntityMapper.MapToModel<ITeamMovie, TeamMovieModel>(entity);
             // TeamMovie Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMovieModel MapToModelLite(ITeamMovie entity)
+        public virtual ITeamMovieModel MapToModelLite(ITeamMovie entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamMovie, TeamMovieModel>(entity);
             // TeamMovie Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMovieModel MapToModelListing(ITeamMovie entity)
+        public virtual ITeamMovieModel MapToModelListing(ITeamMovie entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamMovie, TeamMovieModel>(entity);
             // TeamMovie Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamMovieSearchModel MapToSearchModel(ITeamMovieModel model)
+        public virtual ITeamMovieSearchModel MapToSearchModel(ITeamMovieModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamMovieModel, TeamMovieSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamMovieModel model, ITeamMovie entity)
+        public virtual bool AreEqual(ITeamMovieModel model, ITeamMovie entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamMovie Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamStoryArcMapperExtensions
     {
-        public static readonly TeamStoryArcMapper Mapper = new TeamStoryArcMapper();
+        public static ITeamStoryArcMapper Mapper = new TeamStoryArcMapper();
+
+        public static void OverrideMapper(ITeamStoryArcMapper mapper) { Mapper = mapper; }
 
         public static ITeamStoryArc MapToEntity(this ITeamStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamStoryArcMapper : ITeamStoryArcMapper
     {
-        public ITeamStoryArc MapToEntity(ITeamStoryArcModel model)
+        public virtual ITeamStoryArc MapToEntity(ITeamStoryArcModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamStoryArc, ITeamStoryArcModel>(model);
             // TeamStoryArc Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamStoryArcModel model, ref ITeamStoryArc entity)
+        public virtual void MapToEntity(ITeamStoryArcModel model, ref ITeamStoryArc entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamStoryArcModel MapToModel(ITeamStoryArc entity)
+        public virtual ITeamStoryArcModel MapToModel(ITeamStoryArc entity)
         {
             var model = EntityMapper.MapToModel<ITeamStoryArc, TeamStoryArcModel>(entity);
             // TeamStoryArc Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamStoryArcModel MapToModelLite(ITeamStoryArc entity)
+        public virtual ITeamStoryArcModel MapToModelLite(ITeamStoryArc entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamStoryArc, TeamStoryArcModel>(entity);
             // TeamStoryArc Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamStoryArcModel MapToModelListing(ITeamStoryArc entity)
+        public virtual ITeamStoryArcModel MapToModelListing(ITeamStoryArc entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamStoryArc, TeamStoryArcModel>(entity);
             // TeamStoryArc Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamStoryArcSearchModel MapToSearchModel(ITeamStoryArcModel model)
+        public virtual ITeamStoryArcSearchModel MapToSearchModel(ITeamStoryArcModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamStoryArcModel, TeamStoryArcSearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamStoryArcModel model, ITeamStoryArc entity)
+        public virtual bool AreEqual(ITeamStoryArcModel model, ITeamStoryArc entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamStoryArc Properties

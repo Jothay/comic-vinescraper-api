@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterMapperExtensions
     {
-        public static readonly CharacterMapper Mapper = new CharacterMapper();
+        public static ICharacterMapper Mapper = new CharacterMapper();
+
+        public static void OverrideMapper(ICharacterMapper mapper) { Mapper = mapper; }
 
         public static ICharacter MapToEntity(this ICharacterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterMapper : ICharacterMapper
     {
-        public ICharacter MapToEntity(ICharacterModel model)
+        public virtual ICharacter MapToEntity(ICharacterModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Character, ICharacterModel>(model);
             // Character Properties
@@ -89,7 +91,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterModel model, ref ICharacter entity)
+        public virtual void MapToEntity(ICharacterModel model, ref ICharacter entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -108,23 +110,23 @@ namespace ComicVine.API.Mappings//.Characters
             entity.PublisherId = model.PublisherId;
             entity.Publisher = (Publisher)model.Publisher?.MapToEntity();
             // Associated Objects
-            entity.CharacterAliases = (ICollection<ICharacterAlias>)model.CharacterAliases?.Where(i => i.Active).Select(CharacterAliasMapperExtensions.MapToEntity).Cast<CharacterAlias>();
-            entity.CharacterCreators = (ICollection<ICharacterCreator>)model.CharacterCreators?.Where(i => i.Active).Select(CharacterCreatorMapperExtensions.MapToEntity).Cast<CharacterCreator>();
-            entity.CharacterEnemies = (ICollection<ICharacterEnemy>)model.CharacterEnemies?.Where(i => i.Active).Select(CharacterEnemyMapperExtensions.MapToEntity).Cast<CharacterEnemy>();
-            entity.CharacterEnemyTeams = (ICollection<ICharacterEnemyTeam>)model.CharacterEnemyTeams?.Where(i => i.Active).Select(CharacterEnemyTeamMapperExtensions.MapToEntity).Cast<CharacterEnemyTeam>();
-            entity.CharacterFriends = (ICollection<ICharacterFriend>)model.CharacterFriends?.Where(i => i.Active).Select(CharacterFriendMapperExtensions.MapToEntity).Cast<CharacterFriend>();
-            entity.CharacterFriendlyTeams = (ICollection<ICharacterFriendlyTeam>)model.CharacterFriendlyTeams?.Where(i => i.Active).Select(CharacterFriendlyTeamMapperExtensions.MapToEntity).Cast<CharacterFriendlyTeam>();
-            entity.CharacterIssuesAppearedIn = (ICollection<ICharacterAppearedInIssue>)model.CharacterIssuesAppearedIn?.Where(i => i.Active).Select(CharacterAppearedInIssueMapperExtensions.MapToEntity).Cast<CharacterAppearedInIssue>();
-            entity.CharacterIssuesDiedIn = (ICollection<ICharacterDiedInIssue>)model.CharacterIssuesDiedIn?.Where(i => i.Active).Select(CharacterDiedInIssueMapperExtensions.MapToEntity).Cast<CharacterDiedInIssue>();
-            entity.CharacterIssues = (ICollection<ICharacterIssue>)model.CharacterIssues?.Where(i => i.Active).Select(CharacterIssueMapperExtensions.MapToEntity).Cast<CharacterIssue>();
-            entity.CharacterMovies = (ICollection<ICharacterMovie>)model.CharacterMovies?.Where(i => i.Active).Select(CharacterMovieMapperExtensions.MapToEntity).Cast<CharacterMovie>();
-            entity.CharacterPowers = (ICollection<ICharacterPower>)model.CharacterPowers?.Where(i => i.Active).Select(CharacterPowerMapperExtensions.MapToEntity).Cast<CharacterPower>();
-            entity.CharacterStoryArcs = (ICollection<ICharacterStoryArc>)model.CharacterStoryArcs?.Where(i => i.Active).Select(CharacterStoryArcMapperExtensions.MapToEntity).Cast<CharacterStoryArc>();
-            entity.CharacterTeams = (ICollection<ICharacterTeam>)model.CharacterTeams?.Where(i => i.Active).Select(CharacterTeamMapperExtensions.MapToEntity).Cast<CharacterTeam>();
-            entity.CharacterVolumes = (ICollection<ICharacterVolume>)model.CharacterVolumes?.Where(i => i.Active).Select(CharacterVolumeMapperExtensions.MapToEntity).Cast<CharacterVolume>();
+            entity.CharacterAliases = model.CharacterAliases?.Where(i => i.Active).Select(CharacterAliasMapperExtensions.MapToEntity).ToList();
+            entity.CharacterCreators = model.CharacterCreators?.Where(i => i.Active).Select(CharacterCreatorMapperExtensions.MapToEntity).ToList();
+            entity.CharacterEnemies = model.CharacterEnemies?.Where(i => i.Active).Select(CharacterEnemyMapperExtensions.MapToEntity).ToList();
+            entity.CharacterEnemyTeams = model.CharacterEnemyTeams?.Where(i => i.Active).Select(CharacterEnemyTeamMapperExtensions.MapToEntity).ToList();
+            entity.CharacterFriends = model.CharacterFriends?.Where(i => i.Active).Select(CharacterFriendMapperExtensions.MapToEntity).ToList();
+            entity.CharacterFriendlyTeams = model.CharacterFriendlyTeams?.Where(i => i.Active).Select(CharacterFriendlyTeamMapperExtensions.MapToEntity).ToList();
+            entity.CharacterIssuesAppearedIn = model.CharacterIssuesAppearedIn?.Where(i => i.Active).Select(CharacterAppearedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.CharacterIssuesDiedIn = model.CharacterIssuesDiedIn?.Where(i => i.Active).Select(CharacterDiedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.CharacterIssues = model.CharacterIssues?.Where(i => i.Active).Select(CharacterIssueMapperExtensions.MapToEntity).ToList();
+            entity.CharacterMovies = model.CharacterMovies?.Where(i => i.Active).Select(CharacterMovieMapperExtensions.MapToEntity).ToList();
+            entity.CharacterPowers = model.CharacterPowers?.Where(i => i.Active).Select(CharacterPowerMapperExtensions.MapToEntity).ToList();
+            entity.CharacterStoryArcs = model.CharacterStoryArcs?.Where(i => i.Active).Select(CharacterStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.CharacterTeams = model.CharacterTeams?.Where(i => i.Active).Select(CharacterTeamMapperExtensions.MapToEntity).ToList();
+            entity.CharacterVolumes = model.CharacterVolumes?.Where(i => i.Active).Select(CharacterVolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public ICharacterModel MapToModel(ICharacter entity)
+        public virtual ICharacterModel MapToModel(ICharacter entity)
         {
             var model = NameableEntityMapper.MapToModel<ICharacter, CharacterModel>(entity);
             // Character Properties
@@ -160,7 +162,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterModel MapToModelLite(ICharacter entity)
+        public virtual ICharacterModel MapToModelLite(ICharacter entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ICharacter, CharacterModel>(entity);
             // Character Properties
@@ -176,7 +178,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterModel MapToModelListing(ICharacter entity)
+        public virtual ICharacterModel MapToModelListing(ICharacter entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ICharacter, CharacterModel>(entity);
             // Character Properties
@@ -192,36 +194,51 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterSearchModel MapToSearchModel(ICharacterModel model)
+        public virtual ICharacterSearchModel MapToSearchModel(ICharacterModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ICharacterModel, CharacterSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             searchModel.GenderId = model.GenderId;
             searchModel.GenderCustomKey = model.Gender?.CustomKey;
+            searchModel.GenderApiDetailUrl = model.Gender?.ApiDetailUrl;
+            searchModel.GenderSiteDetailUrl = model.Gender?.SiteDetailUrl;
             searchModel.GenderName = model.Gender?.Name;
+            searchModel.GenderShortDescription = model.Gender?.ShortDescription;
             searchModel.GenderDescription = model.Gender?.Description;
             searchModel.OriginId = model.OriginId;
             searchModel.OriginCustomKey = model.Origin?.CustomKey;
+            searchModel.OriginApiDetailUrl = model.Origin?.ApiDetailUrl;
+            searchModel.OriginSiteDetailUrl = model.Origin?.SiteDetailUrl;
             searchModel.OriginName = model.Origin?.Name;
+            searchModel.OriginShortDescription = model.Origin?.ShortDescription;
             searchModel.OriginDescription = model.Origin?.Description;
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             searchModel.RealName = model.RealName;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterModel model, ICharacter entity)
+        public virtual bool AreEqual(ICharacterModel model, ICharacter entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Character Properties

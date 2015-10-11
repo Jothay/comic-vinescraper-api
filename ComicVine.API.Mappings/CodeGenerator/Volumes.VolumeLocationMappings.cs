@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeLocationMapperExtensions
     {
-        public static readonly VolumeLocationMapper Mapper = new VolumeLocationMapper();
+        public static IVolumeLocationMapper Mapper = new VolumeLocationMapper();
+
+        public static void OverrideMapper(IVolumeLocationMapper mapper) { Mapper = mapper; }
 
         public static IVolumeLocation MapToEntity(this IVolumeLocationModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeLocationMapper : IVolumeLocationMapper
     {
-        public IVolumeLocation MapToEntity(IVolumeLocationModel model)
+        public virtual IVolumeLocation MapToEntity(IVolumeLocationModel model)
         {
             var entity = EntityMapper.MapToEntity<VolumeLocation, IVolumeLocationModel>(model);
             // VolumeLocation Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeLocationModel model, ref IVolumeLocation entity)
+        public virtual void MapToEntity(IVolumeLocationModel model, ref IVolumeLocation entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeLocationModel MapToModel(IVolumeLocation entity)
+        public virtual IVolumeLocationModel MapToModel(IVolumeLocation entity)
         {
             var model = EntityMapper.MapToModel<IVolumeLocation, VolumeLocationModel>(entity);
             // VolumeLocation Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeLocationModel MapToModelLite(IVolumeLocation entity)
+        public virtual IVolumeLocationModel MapToModelLite(IVolumeLocation entity)
         {
             var model = EntityMapper.MapToModelLite<IVolumeLocation, VolumeLocationModel>(entity);
             // VolumeLocation Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeLocationModel MapToModelListing(IVolumeLocation entity)
+        public virtual IVolumeLocationModel MapToModelListing(IVolumeLocation entity)
         {
             var model = EntityMapper.MapToModelListing<IVolumeLocation, VolumeLocationModel>(entity);
             // VolumeLocation Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeLocationSearchModel MapToSearchModel(IVolumeLocationModel model)
+        public virtual IVolumeLocationSearchModel MapToSearchModel(IVolumeLocationModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IVolumeLocationModel, VolumeLocationSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeLocationModel model, IVolumeLocation entity)
+        public virtual bool AreEqual(IVolumeLocationModel model, IVolumeLocation entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // VolumeLocation Properties

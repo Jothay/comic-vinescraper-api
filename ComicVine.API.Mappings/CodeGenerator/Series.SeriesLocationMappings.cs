@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Series
 
     public static class SeriesLocationMapperExtensions
     {
-        public static readonly SeriesLocationMapper Mapper = new SeriesLocationMapper();
+        public static ISeriesLocationMapper Mapper = new SeriesLocationMapper();
+
+        public static void OverrideMapper(ISeriesLocationMapper mapper) { Mapper = mapper; }
 
         public static ISeriesLocation MapToEntity(this ISeriesLocationModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Series
 
     public class SeriesLocationMapper : ISeriesLocationMapper
     {
-        public ISeriesLocation MapToEntity(ISeriesLocationModel model)
+        public virtual ISeriesLocation MapToEntity(ISeriesLocationModel model)
         {
             var entity = EntityMapper.MapToEntity<SeriesLocation, ISeriesLocationModel>(model);
             // SeriesLocation Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Series
             return entity;
         }
 
-        public void MapToEntity(ISeriesLocationModel model, ref ISeriesLocation entity)
+        public virtual void MapToEntity(ISeriesLocationModel model, ref ISeriesLocation entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Series
             // <None>
         }
 
-        public ISeriesLocationModel MapToModel(ISeriesLocation entity)
+        public virtual ISeriesLocationModel MapToModel(ISeriesLocation entity)
         {
             var model = EntityMapper.MapToModel<ISeriesLocation, SeriesLocationModel>(entity);
             // SeriesLocation Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesLocationModel MapToModelLite(ISeriesLocation entity)
+        public virtual ISeriesLocationModel MapToModelLite(ISeriesLocation entity)
         {
             var model = EntityMapper.MapToModelLite<ISeriesLocation, SeriesLocationModel>(entity);
             // SeriesLocation Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesLocationModel MapToModelListing(ISeriesLocation entity)
+        public virtual ISeriesLocationModel MapToModelListing(ISeriesLocation entity)
         {
             var model = EntityMapper.MapToModelListing<ISeriesLocation, SeriesLocationModel>(entity);
             // SeriesLocation Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesLocationSearchModel MapToSearchModel(ISeriesLocationModel model)
+        public virtual ISeriesLocationSearchModel MapToSearchModel(ISeriesLocationModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ISeriesLocationModel, SeriesLocationSearchModel>(model);
             // Search Properties
             searchModel.SeriesId = model.SeriesId;
             searchModel.SeriesCustomKey = model.Series?.CustomKey;
+            searchModel.SeriesApiDetailUrl = model.Series?.ApiDetailUrl;
+            searchModel.SeriesSiteDetailUrl = model.Series?.SiteDetailUrl;
             searchModel.SeriesName = model.Series?.Name;
+            searchModel.SeriesShortDescription = model.Series?.ShortDescription;
             searchModel.SeriesDescription = model.Series?.Description;
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ISeriesLocationModel model, ISeriesLocation entity)
+        public virtual bool AreEqual(ISeriesLocationModel model, ISeriesLocation entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // SeriesLocation Properties

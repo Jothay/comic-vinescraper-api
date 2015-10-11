@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Locations
 
     public static class LocationAliasMapperExtensions
     {
-        public static readonly LocationAliasMapper Mapper = new LocationAliasMapper();
+        public static ILocationAliasMapper Mapper = new LocationAliasMapper();
+
+        public static void OverrideMapper(ILocationAliasMapper mapper) { Mapper = mapper; }
 
         public static ILocationAlias MapToEntity(this ILocationAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Locations
 
     public class LocationAliasMapper : ILocationAliasMapper
     {
-        public ILocationAlias MapToEntity(ILocationAliasModel model)
+        public virtual ILocationAlias MapToEntity(ILocationAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<LocationAlias, ILocationAliasModel>(model);
             // LocationAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Locations
             return entity;
         }
 
-        public void MapToEntity(ILocationAliasModel model, ref ILocationAlias entity)
+        public virtual void MapToEntity(ILocationAliasModel model, ref ILocationAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Locations
             // <None>
         }
 
-        public ILocationAliasModel MapToModel(ILocationAlias entity)
+        public virtual ILocationAliasModel MapToModel(ILocationAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<ILocationAlias, LocationAliasModel>(entity);
             // LocationAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAliasModel MapToModelLite(ILocationAlias entity)
+        public virtual ILocationAliasModel MapToModelLite(ILocationAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ILocationAlias, LocationAliasModel>(entity);
             // LocationAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAliasModel MapToModelListing(ILocationAlias entity)
+        public virtual ILocationAliasModel MapToModelListing(ILocationAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ILocationAlias, LocationAliasModel>(entity);
             // LocationAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationAliasSearchModel MapToSearchModel(ILocationAliasModel model)
+        public virtual ILocationAliasSearchModel MapToSearchModel(ILocationAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ILocationAliasModel, LocationAliasSearchModel>(model);
             // Search Properties
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ILocationAliasModel model, ILocationAlias entity)
+        public virtual bool AreEqual(ILocationAliasModel model, ILocationAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // LocationAlias Properties

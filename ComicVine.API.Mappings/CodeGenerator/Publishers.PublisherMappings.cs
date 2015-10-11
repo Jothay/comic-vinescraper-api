@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Publishers
 
     public static class PublisherMapperExtensions
     {
-        public static readonly PublisherMapper Mapper = new PublisherMapper();
+        public static IPublisherMapper Mapper = new PublisherMapper();
+
+        public static void OverrideMapper(IPublisherMapper mapper) { Mapper = mapper; }
 
         public static IPublisher MapToEntity(this IPublisherModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Publishers
 
     public class PublisherMapper : IPublisherMapper
     {
-        public IPublisher MapToEntity(IPublisherModel model)
+        public virtual IPublisher MapToEntity(IPublisherModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Publisher, IPublisherModel>(model);
             // Publisher Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return entity;
         }
 
-        public void MapToEntity(IPublisherModel model, ref IPublisher entity)
+        public virtual void MapToEntity(IPublisherModel model, ref IPublisher entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -86,15 +88,15 @@ namespace ComicVine.API.Mappings//.Publishers
             entity.PrimaryImageFileId = model.PrimaryImageFileId;
             entity.PrimaryImageFile = (ImageFile)model.PrimaryImageFile?.MapToEntity();
             // Associated Objects
-            entity.CharactersPublished = (ICollection<ICharacter>)model.CharactersPublished?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).Cast<Character>();
-            entity.PublisherAliases = (ICollection<IPublisherAlias>)model.PublisherAliases?.Where(i => i.Active).Select(PublisherAliasMapperExtensions.MapToEntity).Cast<PublisherAlias>();
-            entity.SeriesPublished = (ICollection<ISeries>)model.SeriesPublished?.Where(i => i.Active).Select(SeriesMapperExtensions.MapToEntity).Cast<Series>();
-            entity.StoryArcsPublished = (ICollection<IStoryArc>)model.StoryArcsPublished?.Where(i => i.Active).Select(StoryArcMapperExtensions.MapToEntity).Cast<StoryArc>();
-            entity.TeamsPublished = (ICollection<ITeam>)model.TeamsPublished?.Where(i => i.Active).Select(TeamMapperExtensions.MapToEntity).Cast<Team>();
-            entity.VolumesPublished = (ICollection<IVolume>)model.VolumesPublished?.Where(i => i.Active).Select(VolumeMapperExtensions.MapToEntity).Cast<Volume>();
+            entity.CharactersPublished = model.CharactersPublished?.Where(i => i.Active).Select(CharacterMapperExtensions.MapToEntity).ToList();
+            entity.PublisherAliases = model.PublisherAliases?.Where(i => i.Active).Select(PublisherAliasMapperExtensions.MapToEntity).ToList();
+            entity.SeriesPublished = model.SeriesPublished?.Where(i => i.Active).Select(SeriesMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcsPublished = model.StoryArcsPublished?.Where(i => i.Active).Select(StoryArcMapperExtensions.MapToEntity).ToList();
+            entity.TeamsPublished = model.TeamsPublished?.Where(i => i.Active).Select(TeamMapperExtensions.MapToEntity).ToList();
+            entity.VolumesPublished = model.VolumesPublished?.Where(i => i.Active).Select(VolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public IPublisherModel MapToModel(IPublisher entity)
+        public virtual IPublisherModel MapToModel(IPublisher entity)
         {
             var model = NameableEntityMapper.MapToModel<IPublisher, PublisherModel>(entity);
             // Publisher Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherModel MapToModelLite(IPublisher entity)
+        public virtual IPublisherModel MapToModelLite(IPublisher entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPublisher, PublisherModel>(entity);
             // Publisher Properties
@@ -128,7 +130,7 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherModel MapToModelListing(IPublisher entity)
+        public virtual IPublisherModel MapToModelListing(IPublisher entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPublisher, PublisherModel>(entity);
             // Publisher Properties
@@ -141,19 +143,22 @@ namespace ComicVine.API.Mappings//.Publishers
             return model;
         }
 
-        public IPublisherSearchModel MapToSearchModel(IPublisherModel model)
+        public virtual IPublisherSearchModel MapToSearchModel(IPublisherModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPublisherModel, PublisherSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IPublisherModel model, IPublisher entity)
+        public virtual bool AreEqual(IPublisherModel model, IPublisher entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Publisher Properties

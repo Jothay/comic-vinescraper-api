@@ -6,8 +6,8 @@
     using System.Data.Entity.Validation;
     using API.Repositories;
     using DataModel.Schema;
-    using Mocking;
     using Moq;
+    using People;
     using Xunit;
 
     public class RepositoryBaseTests

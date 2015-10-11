@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeTeamMapperExtensions
     {
-        public static readonly EpisodeTeamMapper Mapper = new EpisodeTeamMapper();
+        public static IEpisodeTeamMapper Mapper = new EpisodeTeamMapper();
+
+        public static void OverrideMapper(IEpisodeTeamMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeTeam MapToEntity(this IEpisodeTeamModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeTeamMapper : IEpisodeTeamMapper
     {
-        public IEpisodeTeam MapToEntity(IEpisodeTeamModel model)
+        public virtual IEpisodeTeam MapToEntity(IEpisodeTeamModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeTeam, IEpisodeTeamModel>(model);
             // EpisodeTeam Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeTeamModel model, ref IEpisodeTeam entity)
+        public virtual void MapToEntity(IEpisodeTeamModel model, ref IEpisodeTeam entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeTeamModel MapToModel(IEpisodeTeam entity)
+        public virtual IEpisodeTeamModel MapToModel(IEpisodeTeam entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeTeam, EpisodeTeamModel>(entity);
             // EpisodeTeam Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamModel MapToModelLite(IEpisodeTeam entity)
+        public virtual IEpisodeTeamModel MapToModelLite(IEpisodeTeam entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeTeam, EpisodeTeamModel>(entity);
             // EpisodeTeam Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamModel MapToModelListing(IEpisodeTeam entity)
+        public virtual IEpisodeTeamModel MapToModelListing(IEpisodeTeam entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeTeam, EpisodeTeamModel>(entity);
             // EpisodeTeam Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamSearchModel MapToSearchModel(IEpisodeTeamModel model)
+        public virtual IEpisodeTeamSearchModel MapToSearchModel(IEpisodeTeamModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeTeamModel, EpisodeTeamSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeTeamModel model, IEpisodeTeam entity)
+        public virtual bool AreEqual(IEpisodeTeamModel model, IEpisodeTeam entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeTeam Properties

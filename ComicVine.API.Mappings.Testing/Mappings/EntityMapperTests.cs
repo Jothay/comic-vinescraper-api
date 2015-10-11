@@ -5,8 +5,8 @@
     using DataModel.Schema;
     using Interfaces.DataModels;
     using Interfaces.Models;
-    using Mocking;
     using Models;
+    using People;
     using SearchModels;
     using Xunit;
 
@@ -23,6 +23,8 @@
             Assert.Equal(model.Object.Id, entity.Id);
             Assert.Equal(model.Object.Active, entity.Active);
             Assert.Equal(model.Object.CustomKey, entity.CustomKey);
+            Assert.Equal(model.Object.ApiDetailUrl, entity.ApiDetailUrl);
+            Assert.Equal(model.Object.SiteDetailUrl, entity.SiteDetailUrl);
             Assert.Equal(model.Object.CreatedDate, entity.CreatedDate);
             Assert.Equal(model.Object.UpdatedDate, entity.UpdatedDate);
         }
@@ -39,6 +41,8 @@
             Assert.Equal(model.Object.Id, existingEntity.Id);
             Assert.Equal(model.Object.Active, existingEntity.Active);
             Assert.Equal(model.Object.CustomKey, existingEntity.CustomKey);
+            Assert.Equal(model.Object.ApiDetailUrl, existingEntity.ApiDetailUrl);
+            Assert.Equal(model.Object.SiteDetailUrl, existingEntity.SiteDetailUrl);
             Assert.Equal(model.Object.CreatedDate, existingEntity.CreatedDate);
             Assert.Equal(model.Object.UpdatedDate, existingEntity.UpdatedDate);
         }
@@ -54,6 +58,8 @@
             Assert.Equal(entity.Object.Id, model.Id);
             Assert.Equal(entity.Object.Active, model.Active);
             Assert.Equal(entity.Object.CustomKey, model.CustomKey);
+            Assert.Equal(entity.Object.ApiDetailUrl, model.ApiDetailUrl);
+            Assert.Equal(entity.Object.SiteDetailUrl, model.SiteDetailUrl);
             Assert.Equal(entity.Object.CreatedDate, model.CreatedDate);
             Assert.Equal(entity.Object.UpdatedDate, model.UpdatedDate);
         }
@@ -69,6 +75,8 @@
             Assert.Equal(entity.Object.Id, model.Id);
             Assert.Equal(entity.Object.Active, model.Active);
             Assert.Equal(entity.Object.CustomKey, model.CustomKey);
+            Assert.Equal(entity.Object.ApiDetailUrl, model.ApiDetailUrl);
+            Assert.Equal(entity.Object.SiteDetailUrl, model.SiteDetailUrl);
             Assert.Equal(entity.Object.CreatedDate, model.CreatedDate);
             Assert.Equal(entity.Object.UpdatedDate, model.UpdatedDate);
         }
@@ -84,6 +92,8 @@
             Assert.Equal(entity.Object.Id, model.Id);
             Assert.Equal(entity.Object.Active, model.Active);
             Assert.Equal(entity.Object.CustomKey, model.CustomKey);
+            Assert.Null(model.ApiDetailUrl);
+            Assert.Null(model.SiteDetailUrl);
             Assert.Equal(new DateTime(1,1,1), model.CreatedDate);
             Assert.Null(model.UpdatedDate);
         }
@@ -98,6 +108,8 @@
             // Assert
             Assert.Equal(model.Object.Id, searchModel.Id);
             Assert.Equal(model.Object.CustomKey, searchModel.CustomKey);
+            Assert.Equal(model.Object.ApiDetailUrl, searchModel.ApiDetailUrl);
+            Assert.Equal(model.Object.SiteDetailUrl, searchModel.SiteDetailUrl);
         }
 
         [Fact]

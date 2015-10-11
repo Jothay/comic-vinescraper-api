@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieWriterMapperExtensions
     {
-        public static readonly MovieWriterMapper Mapper = new MovieWriterMapper();
+        public static IMovieWriterMapper Mapper = new MovieWriterMapper();
+
+        public static void OverrideMapper(IMovieWriterMapper mapper) { Mapper = mapper; }
 
         public static IMovieWriter MapToEntity(this IMovieWriterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieWriterMapper : IMovieWriterMapper
     {
-        public IMovieWriter MapToEntity(IMovieWriterModel model)
+        public virtual IMovieWriter MapToEntity(IMovieWriterModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieWriter, IMovieWriterModel>(model);
             // MovieWriter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieWriterModel model, ref IMovieWriter entity)
+        public virtual void MapToEntity(IMovieWriterModel model, ref IMovieWriter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieWriterModel MapToModel(IMovieWriter entity)
+        public virtual IMovieWriterModel MapToModel(IMovieWriter entity)
         {
             var model = EntityMapper.MapToModel<IMovieWriter, MovieWriterModel>(entity);
             // MovieWriter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieWriterModel MapToModelLite(IMovieWriter entity)
+        public virtual IMovieWriterModel MapToModelLite(IMovieWriter entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieWriter, MovieWriterModel>(entity);
             // MovieWriter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieWriterModel MapToModelListing(IMovieWriter entity)
+        public virtual IMovieWriterModel MapToModelListing(IMovieWriter entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieWriter, MovieWriterModel>(entity);
             // MovieWriter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieWriterSearchModel MapToSearchModel(IMovieWriterModel model)
+        public virtual IMovieWriterSearchModel MapToSearchModel(IMovieWriterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieWriterModel, MovieWriterSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.WriterId = model.WriterId;
             searchModel.WriterCustomKey = model.Writer?.CustomKey;
+            searchModel.WriterApiDetailUrl = model.Writer?.ApiDetailUrl;
+            searchModel.WriterSiteDetailUrl = model.Writer?.SiteDetailUrl;
             searchModel.WriterName = model.Writer?.Name;
+            searchModel.WriterShortDescription = model.Writer?.ShortDescription;
             searchModel.WriterDescription = model.Writer?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieWriterModel model, IMovieWriter entity)
+        public virtual bool AreEqual(IMovieWriterModel model, IMovieWriter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieWriter Properties

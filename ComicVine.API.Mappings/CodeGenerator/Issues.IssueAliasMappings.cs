@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Issues
 
     public static class IssueAliasMapperExtensions
     {
-        public static readonly IssueAliasMapper Mapper = new IssueAliasMapper();
+        public static IIssueAliasMapper Mapper = new IssueAliasMapper();
+
+        public static void OverrideMapper(IIssueAliasMapper mapper) { Mapper = mapper; }
 
         public static IIssueAlias MapToEntity(this IIssueAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Issues
 
     public class IssueAliasMapper : IIssueAliasMapper
     {
-        public IIssueAlias MapToEntity(IIssueAliasModel model)
+        public virtual IIssueAlias MapToEntity(IIssueAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<IssueAlias, IIssueAliasModel>(model);
             // IssueAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Issues
             return entity;
         }
 
-        public void MapToEntity(IIssueAliasModel model, ref IIssueAlias entity)
+        public virtual void MapToEntity(IIssueAliasModel model, ref IIssueAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Issues
             // <None>
         }
 
-        public IIssueAliasModel MapToModel(IIssueAlias entity)
+        public virtual IIssueAliasModel MapToModel(IIssueAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IIssueAlias, IssueAliasModel>(entity);
             // IssueAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueAliasModel MapToModelLite(IIssueAlias entity)
+        public virtual IIssueAliasModel MapToModelLite(IIssueAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IIssueAlias, IssueAliasModel>(entity);
             // IssueAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueAliasModel MapToModelListing(IIssueAlias entity)
+        public virtual IIssueAliasModel MapToModelListing(IIssueAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IIssueAlias, IssueAliasModel>(entity);
             // IssueAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Issues
             return model;
         }
 
-        public IIssueAliasSearchModel MapToSearchModel(IIssueAliasModel model)
+        public virtual IIssueAliasSearchModel MapToSearchModel(IIssueAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IIssueAliasModel, IssueAliasSearchModel>(model);
             // Search Properties
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IIssueAliasModel model, IIssueAlias entity)
+        public virtual bool AreEqual(IIssueAliasModel model, IIssueAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // IssueAlias Properties

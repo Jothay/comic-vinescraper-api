@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeWriterMapperExtensions
     {
-        public static readonly VolumeWriterMapper Mapper = new VolumeWriterMapper();
+        public static IVolumeWriterMapper Mapper = new VolumeWriterMapper();
+
+        public static void OverrideMapper(IVolumeWriterMapper mapper) { Mapper = mapper; }
 
         public static IVolumeWriter MapToEntity(this IVolumeWriterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeWriterMapper : IVolumeWriterMapper
     {
-        public IVolumeWriter MapToEntity(IVolumeWriterModel model)
+        public virtual IVolumeWriter MapToEntity(IVolumeWriterModel model)
         {
             var entity = EntityMapper.MapToEntity<VolumeWriter, IVolumeWriterModel>(model);
             // VolumeWriter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeWriterModel model, ref IVolumeWriter entity)
+        public virtual void MapToEntity(IVolumeWriterModel model, ref IVolumeWriter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeWriterModel MapToModel(IVolumeWriter entity)
+        public virtual IVolumeWriterModel MapToModel(IVolumeWriter entity)
         {
             var model = EntityMapper.MapToModel<IVolumeWriter, VolumeWriterModel>(entity);
             // VolumeWriter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeWriterModel MapToModelLite(IVolumeWriter entity)
+        public virtual IVolumeWriterModel MapToModelLite(IVolumeWriter entity)
         {
             var model = EntityMapper.MapToModelLite<IVolumeWriter, VolumeWriterModel>(entity);
             // VolumeWriter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeWriterModel MapToModelListing(IVolumeWriter entity)
+        public virtual IVolumeWriterModel MapToModelListing(IVolumeWriter entity)
         {
             var model = EntityMapper.MapToModelListing<IVolumeWriter, VolumeWriterModel>(entity);
             // VolumeWriter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeWriterSearchModel MapToSearchModel(IVolumeWriterModel model)
+        public virtual IVolumeWriterSearchModel MapToSearchModel(IVolumeWriterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IVolumeWriterModel, VolumeWriterSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.WriterId = model.WriterId;
             searchModel.WriterCustomKey = model.Writer?.CustomKey;
+            searchModel.WriterApiDetailUrl = model.Writer?.ApiDetailUrl;
+            searchModel.WriterSiteDetailUrl = model.Writer?.SiteDetailUrl;
             searchModel.WriterName = model.Writer?.Name;
+            searchModel.WriterShortDescription = model.Writer?.ShortDescription;
             searchModel.WriterDescription = model.Writer?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeWriterModel model, IVolumeWriter entity)
+        public virtual bool AreEqual(IVolumeWriterModel model, IVolumeWriter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // VolumeWriter Properties

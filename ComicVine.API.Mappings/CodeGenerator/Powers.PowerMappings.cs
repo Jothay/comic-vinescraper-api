@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Powers
 
     public static class PowerMapperExtensions
     {
-        public static readonly PowerMapper Mapper = new PowerMapper();
+        public static IPowerMapper Mapper = new PowerMapper();
+
+        public static void OverrideMapper(IPowerMapper mapper) { Mapper = mapper; }
 
         public static IPower MapToEntity(this IPowerModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Powers
 
     public class PowerMapper : IPowerMapper
     {
-        public IPower MapToEntity(IPowerModel model)
+        public virtual IPower MapToEntity(IPowerModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Power, IPowerModel>(model);
             // Power Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Powers
             return entity;
         }
 
-        public void MapToEntity(IPowerModel model, ref IPower entity)
+        public virtual void MapToEntity(IPowerModel model, ref IPower entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -76,11 +78,11 @@ namespace ComicVine.API.Mappings//.Powers
             // Related Objects
             // <None>
             // Associated Objects
-            entity.CharacterPowers = (ICollection<ICharacterPower>)model.CharacterPowers?.Where(i => i.Active).Select(CharacterPowerMapperExtensions.MapToEntity).Cast<CharacterPower>();
-            entity.PowerAliases = (ICollection<IPowerAlias>)model.PowerAliases?.Where(i => i.Active).Select(PowerAliasMapperExtensions.MapToEntity).Cast<PowerAlias>();
+            entity.CharacterPowers = model.CharacterPowers?.Where(i => i.Active).Select(CharacterPowerMapperExtensions.MapToEntity).ToList();
+            entity.PowerAliases = model.PowerAliases?.Where(i => i.Active).Select(PowerAliasMapperExtensions.MapToEntity).ToList();
         }
 
-        public IPowerModel MapToModel(IPower entity)
+        public virtual IPowerModel MapToModel(IPower entity)
         {
             var model = NameableEntityMapper.MapToModel<IPower, PowerModel>(entity);
             // Power Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Powers
             return model;
         }
 
-        public IPowerModel MapToModelLite(IPower entity)
+        public virtual IPowerModel MapToModelLite(IPower entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPower, PowerModel>(entity);
             // Power Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Powers
             return model;
         }
 
-        public IPowerModel MapToModelListing(IPower entity)
+        public virtual IPowerModel MapToModelListing(IPower entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPower, PowerModel>(entity);
             // Power Properties
@@ -116,7 +118,7 @@ namespace ComicVine.API.Mappings//.Powers
             return model;
         }
 
-        public IPowerSearchModel MapToSearchModel(IPowerModel model)
+        public virtual IPowerSearchModel MapToSearchModel(IPowerModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPowerModel, PowerSearchModel>(model);
             // Search Properties
@@ -124,7 +126,7 @@ namespace ComicVine.API.Mappings//.Powers
             return searchModel;
         }
 
-        public bool AreEqual(IPowerModel model, IPower entity)
+        public virtual bool AreEqual(IPowerModel model, IPower entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Power Properties

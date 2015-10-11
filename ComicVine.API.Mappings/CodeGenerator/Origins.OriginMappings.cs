@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Origins
 
     public static class OriginMapperExtensions
     {
-        public static readonly OriginMapper Mapper = new OriginMapper();
+        public static IOriginMapper Mapper = new OriginMapper();
+
+        public static void OverrideMapper(IOriginMapper mapper) { Mapper = mapper; }
 
         public static IOrigin MapToEntity(this IOriginModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Origins
 
     public class OriginMapper : IOriginMapper
     {
-        public IOrigin MapToEntity(IOriginModel model)
+        public virtual IOrigin MapToEntity(IOriginModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Origin, IOriginModel>(model);
             // Origin Properties
@@ -66,7 +68,7 @@ namespace ComicVine.API.Mappings//.Origins
             return entity;
         }
 
-        public void MapToEntity(IOriginModel model, ref IOrigin entity)
+        public virtual void MapToEntity(IOriginModel model, ref IOrigin entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -75,10 +77,10 @@ namespace ComicVine.API.Mappings//.Origins
             // Related Objects
             // <None>
             // Associated Objects
-            entity.OriginProfiles = (ICollection<IOriginProfile>)model.OriginProfiles?.Where(i => i.Active).Select(OriginProfileMapperExtensions.MapToEntity).Cast<OriginProfile>();
+            entity.OriginProfiles = model.OriginProfiles?.Where(i => i.Active).Select(OriginProfileMapperExtensions.MapToEntity).ToList();
         }
 
-        public IOriginModel MapToModel(IOrigin entity)
+        public virtual IOriginModel MapToModel(IOrigin entity)
         {
             var model = NameableEntityMapper.MapToModel<IOrigin, OriginModel>(entity);
             // Origin Properties
@@ -91,7 +93,7 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginModel MapToModelLite(IOrigin entity)
+        public virtual IOriginModel MapToModelLite(IOrigin entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IOrigin, OriginModel>(entity);
             // Origin Properties
@@ -102,7 +104,7 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginModel MapToModelListing(IOrigin entity)
+        public virtual IOriginModel MapToModelListing(IOrigin entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IOrigin, OriginModel>(entity);
             // Origin Properties
@@ -113,7 +115,7 @@ namespace ComicVine.API.Mappings//.Origins
             return model;
         }
 
-        public IOriginSearchModel MapToSearchModel(IOriginModel model)
+        public virtual IOriginSearchModel MapToSearchModel(IOriginModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IOriginModel, OriginSearchModel>(model);
             // Search Properties
@@ -121,7 +123,7 @@ namespace ComicVine.API.Mappings//.Origins
             return searchModel;
         }
 
-        public bool AreEqual(IOriginModel model, IOrigin entity)
+        public virtual bool AreEqual(IOriginModel model, IOrigin entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Origin Properties

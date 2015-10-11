@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Objects
 
     public static class ObjectIssueMapperExtensions
     {
-        public static readonly ObjectIssueMapper Mapper = new ObjectIssueMapper();
+        public static IObjectIssueMapper Mapper = new ObjectIssueMapper();
+
+        public static void OverrideMapper(IObjectIssueMapper mapper) { Mapper = mapper; }
 
         public static IObjectIssue MapToEntity(this IObjectIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Objects
 
     public class ObjectIssueMapper : IObjectIssueMapper
     {
-        public IObjectIssue MapToEntity(IObjectIssueModel model)
+        public virtual IObjectIssue MapToEntity(IObjectIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<ObjectIssue, IObjectIssueModel>(model);
             // ObjectIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Objects
             return entity;
         }
 
-        public void MapToEntity(IObjectIssueModel model, ref IObjectIssue entity)
+        public virtual void MapToEntity(IObjectIssueModel model, ref IObjectIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Objects
             // <None>
         }
 
-        public IObjectIssueModel MapToModel(IObjectIssue entity)
+        public virtual IObjectIssueModel MapToModel(IObjectIssue entity)
         {
             var model = EntityMapper.MapToModel<IObjectIssue, ObjectIssueModel>(entity);
             // ObjectIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectIssueModel MapToModelLite(IObjectIssue entity)
+        public virtual IObjectIssueModel MapToModelLite(IObjectIssue entity)
         {
             var model = EntityMapper.MapToModelLite<IObjectIssue, ObjectIssueModel>(entity);
             // ObjectIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectIssueModel MapToModelListing(IObjectIssue entity)
+        public virtual IObjectIssueModel MapToModelListing(IObjectIssue entity)
         {
             var model = EntityMapper.MapToModelListing<IObjectIssue, ObjectIssueModel>(entity);
             // ObjectIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectIssueSearchModel MapToSearchModel(IObjectIssueModel model)
+        public virtual IObjectIssueSearchModel MapToSearchModel(IObjectIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IObjectIssueModel, ObjectIssueSearchModel>(model);
             // Search Properties
             searchModel.ObjectId = model.ObjectId;
             searchModel.ObjectCustomKey = model.Object?.CustomKey;
+            searchModel.ObjectApiDetailUrl = model.Object?.ApiDetailUrl;
+            searchModel.ObjectSiteDetailUrl = model.Object?.SiteDetailUrl;
             searchModel.ObjectName = model.Object?.Name;
+            searchModel.ObjectShortDescription = model.Object?.ShortDescription;
             searchModel.ObjectDescription = model.Object?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IObjectIssueModel model, IObjectIssue entity)
+        public virtual bool AreEqual(IObjectIssueModel model, IObjectIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ObjectIssue Properties

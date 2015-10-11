@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterAliasMapperExtensions
     {
-        public static readonly CharacterAliasMapper Mapper = new CharacterAliasMapper();
+        public static ICharacterAliasMapper Mapper = new CharacterAliasMapper();
+
+        public static void OverrideMapper(ICharacterAliasMapper mapper) { Mapper = mapper; }
 
         public static ICharacterAlias MapToEntity(this ICharacterAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterAliasMapper : ICharacterAliasMapper
     {
-        public ICharacterAlias MapToEntity(ICharacterAliasModel model)
+        public virtual ICharacterAlias MapToEntity(ICharacterAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<CharacterAlias, ICharacterAliasModel>(model);
             // CharacterAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterAliasModel model, ref ICharacterAlias entity)
+        public virtual void MapToEntity(ICharacterAliasModel model, ref ICharacterAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterAliasModel MapToModel(ICharacterAlias entity)
+        public virtual ICharacterAliasModel MapToModel(ICharacterAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<ICharacterAlias, CharacterAliasModel>(entity);
             // CharacterAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAliasModel MapToModelLite(ICharacterAlias entity)
+        public virtual ICharacterAliasModel MapToModelLite(ICharacterAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ICharacterAlias, CharacterAliasModel>(entity);
             // CharacterAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAliasModel MapToModelListing(ICharacterAlias entity)
+        public virtual ICharacterAliasModel MapToModelListing(ICharacterAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ICharacterAlias, CharacterAliasModel>(entity);
             // CharacterAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAliasSearchModel MapToSearchModel(ICharacterAliasModel model)
+        public virtual ICharacterAliasSearchModel MapToSearchModel(ICharacterAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ICharacterAliasModel, CharacterAliasSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterAliasModel model, ICharacterAlias entity)
+        public virtual bool AreEqual(ICharacterAliasModel model, ICharacterAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // CharacterAlias Properties

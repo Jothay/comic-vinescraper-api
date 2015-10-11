@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterIssueMapperExtensions
     {
-        public static readonly CharacterIssueMapper Mapper = new CharacterIssueMapper();
+        public static ICharacterIssueMapper Mapper = new CharacterIssueMapper();
+
+        public static void OverrideMapper(ICharacterIssueMapper mapper) { Mapper = mapper; }
 
         public static ICharacterIssue MapToEntity(this ICharacterIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterIssueMapper : ICharacterIssueMapper
     {
-        public ICharacterIssue MapToEntity(ICharacterIssueModel model)
+        public virtual ICharacterIssue MapToEntity(ICharacterIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterIssue, ICharacterIssueModel>(model);
             // CharacterIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterIssueModel model, ref ICharacterIssue entity)
+        public virtual void MapToEntity(ICharacterIssueModel model, ref ICharacterIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterIssueModel MapToModel(ICharacterIssue entity)
+        public virtual ICharacterIssueModel MapToModel(ICharacterIssue entity)
         {
             var model = EntityMapper.MapToModel<ICharacterIssue, CharacterIssueModel>(entity);
             // CharacterIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterIssueModel MapToModelLite(ICharacterIssue entity)
+        public virtual ICharacterIssueModel MapToModelLite(ICharacterIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterIssue, CharacterIssueModel>(entity);
             // CharacterIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterIssueModel MapToModelListing(ICharacterIssue entity)
+        public virtual ICharacterIssueModel MapToModelListing(ICharacterIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterIssue, CharacterIssueModel>(entity);
             // CharacterIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterIssueSearchModel MapToSearchModel(ICharacterIssueModel model)
+        public virtual ICharacterIssueSearchModel MapToSearchModel(ICharacterIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterIssueModel, CharacterIssueSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterIssueModel model, ICharacterIssue entity)
+        public virtual bool AreEqual(ICharacterIssueModel model, ICharacterIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterIssue Properties

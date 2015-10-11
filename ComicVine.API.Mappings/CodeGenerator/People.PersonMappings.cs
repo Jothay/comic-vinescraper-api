@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.People
 
     public static class PersonMapperExtensions
     {
-        public static readonly PersonMapper Mapper = new PersonMapper();
+        public static IPersonMapper Mapper = new PersonMapper();
+
+        public static void OverrideMapper(IPersonMapper mapper) { Mapper = mapper; }
 
         public static IPerson MapToEntity(this IPersonModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.People
 
     public class PersonMapper : IPersonMapper
     {
-        public IPerson MapToEntity(IPersonModel model)
+        public virtual IPerson MapToEntity(IPersonModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Person, IPersonModel>(model);
             // Person Properties
@@ -81,7 +83,7 @@ namespace ComicVine.API.Mappings//.People
             return entity;
         }
 
-        public void MapToEntity(IPersonModel model, ref IPerson entity)
+        public virtual void MapToEntity(IPersonModel model, ref IPerson entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -98,17 +100,17 @@ namespace ComicVine.API.Mappings//.People
             entity.GenderId = model.GenderId;
             entity.Gender = (Gender)model.Gender?.MapToEntity();
             // Associated Objects
-            entity.CharactersCreated = (ICollection<ICreatorCharacter>)model.CharactersCreated?.Where(i => i.Active).Select(CreatorCharacterMapperExtensions.MapToEntity).Cast<CreatorCharacter>();
-            entity.PersonAliases = (ICollection<IPersonAlias>)model.PersonAliases?.Where(i => i.Active).Select(PersonAliasMapperExtensions.MapToEntity).Cast<PersonAlias>();
-            entity.IssuesWritten = (ICollection<IIssueWriter>)model.IssuesWritten?.Where(i => i.Active).Select(IssueWriterMapperExtensions.MapToEntity).Cast<IssueWriter>();
-            entity.MoviesProduced = (ICollection<IMovieProducer>)model.MoviesProduced?.Where(i => i.Active).Select(MovieProducerMapperExtensions.MapToEntity).Cast<MovieProducer>();
-            entity.MoviesWritten = (ICollection<IMovieWriter>)model.MoviesWritten?.Where(i => i.Active).Select(MovieWriterMapperExtensions.MapToEntity).Cast<MovieWriter>();
-            entity.PromosWritten = (ICollection<IPromo>)model.PromosWritten?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).Cast<Promo>();
-            entity.StoryArcsWritten = (ICollection<IStoryArcWriter>)model.StoryArcsWritten?.Where(i => i.Active).Select(StoryArcWriterMapperExtensions.MapToEntity).Cast<StoryArcWriter>();
-            entity.VolumesWritten = (ICollection<IVolumeWriter>)model.VolumesWritten?.Where(i => i.Active).Select(VolumeWriterMapperExtensions.MapToEntity).Cast<VolumeWriter>();
+            entity.CharactersCreated = model.CharactersCreated?.Where(i => i.Active).Select(CreatorCharacterMapperExtensions.MapToEntity).ToList();
+            entity.PersonAliases = model.PersonAliases?.Where(i => i.Active).Select(PersonAliasMapperExtensions.MapToEntity).ToList();
+            entity.IssuesWritten = model.IssuesWritten?.Where(i => i.Active).Select(IssueWriterMapperExtensions.MapToEntity).ToList();
+            entity.MoviesProduced = model.MoviesProduced?.Where(i => i.Active).Select(MovieProducerMapperExtensions.MapToEntity).ToList();
+            entity.MoviesWritten = model.MoviesWritten?.Where(i => i.Active).Select(MovieWriterMapperExtensions.MapToEntity).ToList();
+            entity.PromosWritten = model.PromosWritten?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).ToList();
+            entity.StoryArcsWritten = model.StoryArcsWritten?.Where(i => i.Active).Select(StoryArcWriterMapperExtensions.MapToEntity).ToList();
+            entity.VolumesWritten = model.VolumesWritten?.Where(i => i.Active).Select(VolumeWriterMapperExtensions.MapToEntity).ToList();
         }
 
-        public IPersonModel MapToModel(IPerson entity)
+        public virtual IPersonModel MapToModel(IPerson entity)
         {
             var model = NameableEntityMapper.MapToModel<IPerson, PersonModel>(entity);
             // Person Properties
@@ -136,7 +138,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonModel MapToModelLite(IPerson entity)
+        public virtual IPersonModel MapToModelLite(IPerson entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPerson, PersonModel>(entity);
             // Person Properties
@@ -153,7 +155,7 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonModel MapToModelListing(IPerson entity)
+        public virtual IPersonModel MapToModelListing(IPerson entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPerson, PersonModel>(entity);
             // Person Properties
@@ -170,23 +172,29 @@ namespace ComicVine.API.Mappings//.People
             return model;
         }
 
-        public IPersonSearchModel MapToSearchModel(IPersonModel model)
+        public virtual IPersonSearchModel MapToSearchModel(IPersonModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPersonModel, PersonSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.GenderId = model.GenderId;
             searchModel.GenderCustomKey = model.Gender?.CustomKey;
+            searchModel.GenderApiDetailUrl = model.Gender?.ApiDetailUrl;
+            searchModel.GenderSiteDetailUrl = model.Gender?.SiteDetailUrl;
             searchModel.GenderName = model.Gender?.Name;
+            searchModel.GenderShortDescription = model.Gender?.ShortDescription;
             searchModel.GenderDescription = model.Gender?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IPersonModel model, IPerson entity)
+        public virtual bool AreEqual(IPersonModel model, IPerson entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Person Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeMapperExtensions
     {
-        public static readonly VolumeMapper Mapper = new VolumeMapper();
+        public static IVolumeMapper Mapper = new VolumeMapper();
+
+        public static void OverrideMapper(IVolumeMapper mapper) { Mapper = mapper; }
 
         public static IVolume MapToEntity(this IVolumeModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeMapper : IVolumeMapper
     {
-        public IVolume MapToEntity(IVolumeModel model)
+        public virtual IVolume MapToEntity(IVolumeModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Volume, IVolumeModel>(model);
             // Volume Properties
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeModel model, ref IVolume entity)
+        public virtual void MapToEntity(IVolumeModel model, ref IVolume entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -96,17 +98,17 @@ namespace ComicVine.API.Mappings//.Volumes
             entity.PublisherId = model.PublisherId;
             entity.Publisher = (Publisher)model.Publisher?.MapToEntity();
             // Associated Objects
-            entity.Issues = (ICollection<IIssue>)model.Issues?.Where(i => i.Active).Select(IssueMapperExtensions.MapToEntity).Cast<Issue>();
-            entity.VolumeAliases = (ICollection<IVolumeAlias>)model.VolumeAliases?.Where(i => i.Active).Select(VolumeAliasMapperExtensions.MapToEntity).Cast<VolumeAlias>();
-            entity.VolumeCharacters = (ICollection<IVolumeCharacter>)model.VolumeCharacters?.Where(i => i.Active).Select(VolumeCharacterMapperExtensions.MapToEntity).Cast<VolumeCharacter>();
-            entity.VolumeConcepts = (ICollection<IVolumeConcept>)model.VolumeConcepts?.Where(i => i.Active).Select(VolumeConceptMapperExtensions.MapToEntity).Cast<VolumeConcept>();
-            entity.VolumeLocations = (ICollection<IVolumeLocation>)model.VolumeLocations?.Where(i => i.Active).Select(VolumeLocationMapperExtensions.MapToEntity).Cast<VolumeLocation>();
-            entity.VolumeObjects = (ICollection<IVolumeObject>)model.VolumeObjects?.Where(i => i.Active).Select(VolumeObjectMapperExtensions.MapToEntity).Cast<VolumeObject>();
-            entity.VolumeTeams = (ICollection<IVolumeTeam>)model.VolumeTeams?.Where(i => i.Active).Select(VolumeTeamMapperExtensions.MapToEntity).Cast<VolumeTeam>();
-            entity.VolumeWriters = (ICollection<IVolumeWriter>)model.VolumeWriters?.Where(i => i.Active).Select(VolumeWriterMapperExtensions.MapToEntity).Cast<VolumeWriter>();
+            entity.Issues = model.Issues?.Where(i => i.Active).Select(IssueMapperExtensions.MapToEntity).ToList();
+            entity.VolumeAliases = model.VolumeAliases?.Where(i => i.Active).Select(VolumeAliasMapperExtensions.MapToEntity).ToList();
+            entity.VolumeCharacters = model.VolumeCharacters?.Where(i => i.Active).Select(VolumeCharacterMapperExtensions.MapToEntity).ToList();
+            entity.VolumeConcepts = model.VolumeConcepts?.Where(i => i.Active).Select(VolumeConceptMapperExtensions.MapToEntity).ToList();
+            entity.VolumeLocations = model.VolumeLocations?.Where(i => i.Active).Select(VolumeLocationMapperExtensions.MapToEntity).ToList();
+            entity.VolumeObjects = model.VolumeObjects?.Where(i => i.Active).Select(VolumeObjectMapperExtensions.MapToEntity).ToList();
+            entity.VolumeTeams = model.VolumeTeams?.Where(i => i.Active).Select(VolumeTeamMapperExtensions.MapToEntity).ToList();
+            entity.VolumeWriters = model.VolumeWriters?.Where(i => i.Active).Select(VolumeWriterMapperExtensions.MapToEntity).ToList();
         }
 
-        public IVolumeModel MapToModel(IVolume entity)
+        public virtual IVolumeModel MapToModel(IVolume entity)
         {
             var model = NameableEntityMapper.MapToModel<IVolume, VolumeModel>(entity);
             // Volume Properties
@@ -133,7 +135,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeModel MapToModelLite(IVolume entity)
+        public virtual IVolumeModel MapToModelLite(IVolume entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IVolume, VolumeModel>(entity);
             // Volume Properties
@@ -147,7 +149,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeModel MapToModelListing(IVolume entity)
+        public virtual IVolumeModel MapToModelListing(IVolume entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IVolume, VolumeModel>(entity);
             // Volume Properties
@@ -161,31 +163,43 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeSearchModel MapToSearchModel(IVolumeModel model)
+        public virtual IVolumeSearchModel MapToSearchModel(IVolumeModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IVolumeModel, VolumeSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.FirstIssueId = model.FirstIssueId;
             searchModel.FirstIssueCustomKey = model.FirstIssue?.CustomKey;
+            searchModel.FirstIssueApiDetailUrl = model.FirstIssue?.ApiDetailUrl;
+            searchModel.FirstIssueSiteDetailUrl = model.FirstIssue?.SiteDetailUrl;
             searchModel.FirstIssueName = model.FirstIssue?.Name;
+            searchModel.FirstIssueShortDescription = model.FirstIssue?.ShortDescription;
             searchModel.FirstIssueDescription = model.FirstIssue?.Description;
             searchModel.LastIssueId = model.LastIssueId;
             searchModel.LastIssueCustomKey = model.LastIssue?.CustomKey;
+            searchModel.LastIssueApiDetailUrl = model.LastIssue?.ApiDetailUrl;
+            searchModel.LastIssueSiteDetailUrl = model.LastIssue?.SiteDetailUrl;
             searchModel.LastIssueName = model.LastIssue?.Name;
+            searchModel.LastIssueShortDescription = model.LastIssue?.ShortDescription;
             searchModel.LastIssueDescription = model.LastIssue?.Description;
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeModel model, IVolume entity)
+        public virtual bool AreEqual(IVolumeModel model, IVolume entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Volume Properties

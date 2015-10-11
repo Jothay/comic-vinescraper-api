@@ -158,18 +158,21 @@ namespace ComicVine.API.Repositories//.<#= nameSpace #>
                 .FilterBy<#= property.name.Replace("Id", "CustomKey").Replace("ID", "CustomKey") #>(searchModel.<#=property.name.Replace("Id", "CustomKey").Replace("ID", "CustomKey")#>)
 <#+				} // End If (entityClass.properties.Any(p => p.name == property.name.Replace("Id", "").Replace("ID", ""))) #>
 <#+				if (property.name == "RequiredLevelId") { // Create a Min/Max #>
-                .FilterByMinLevel(searchModel.Min)
-                .FilterByMaxLevel(searchModel.Max)
+                .FilterByMinLevel(searchModel.MinLevel)
+                .FilterByMaxLevel(searchModel.MaxLevel)
 <#+				} // End If (property.name == "RequiredLevelId") #>
 <#+			} // End If (IsIdentifierProperty(property)) #>
 <#+			if (property.isNameable) { #>
-                .FilterBy<#= property.name #>Name(searchModel.Name)
-                .FilterBy<#= property.name #>Description(searchModel.Description)
+                .FilterBy<#= property.name #>ApiDetailUrl(searchModel.<#= property.name #>ApiDetailUrl)
+                .FilterBy<#= property.name #>SiteDetailUrl(searchModel.<#= property.name #>SiteDetailUrl)
+                .FilterBy<#= property.name #>Name(searchModel.<#= property.name #>Name)
+                .FilterBy<#= property.name #>ShortDescription(searchModel.<#= property.name #>ShortDescription)
+                .FilterBy<#= property.name #>Description(searchModel.<#= property.name #>Description)
 <#+			} // End If (property.isNameable) #>
 <#+			if (property.isContactable) { #>
-                .FilterBy<#= property.name #>Phone(searchModel.Phone)
-                .FilterBy<#= property.name #>Fax(searchModel.Fax)
-                .FilterBy<#= property.name #>Email(searchModel.Email)
+                .FilterBy<#= property.name #>Phone(searchModel.<#= property.name #>Phone)
+                .FilterBy<#= property.name #>Fax(searchModel.<#= property.name #>Fax)
+                .FilterBy<#= property.name #>Email(searchModel.<#= property.name #>Email)
 <#+			} // End If (property.isContactable) #>
 <#+		} // End ForEach Loop (var property in entityClass.properties) // Related #>
 <#+	} // End If (hasRelatedProperties) #>
@@ -225,11 +228,32 @@ namespace ComicVine.API.Repositories//.<#= nameSpace #>
 <#+				} // End If (property.name == "RequiredLevelId") #>
 <#+			} // End If (IsIdentifierProperty(property)) #>
 <#+			if (property.isNameable) { #>
+        public static IQueryable<<#= thisClassName #>> FilterBy<#= property.name #>ApiDetailUrl(this IQueryable<<#= thisClassName #>> query, string url)
+        {
+            if (string.IsNullOrWhiteSpace(url)) { return query; }
+            var search = url.ToLower();
+            return query.Where(i => i.<#= property.name #> != null && i.<#= property.name #>.ApiDetailUrl.ToLower().Contains(search));
+        }
+
+        public static IQueryable<<#= thisClassName #>> FilterBy<#= property.name #>SiteDetailUrl(this IQueryable<<#= thisClassName #>> query, string url)
+        {
+            if (string.IsNullOrWhiteSpace(url)) { return query; }
+            var search = url.ToLower();
+            return query.Where(i => i.<#= property.name #> != null && i.<#= property.name #>.SiteDetailUrl.ToLower().Contains(search));
+        }
+
         public static IQueryable<<#= thisClassName #>> FilterBy<#= property.name #>Name(this IQueryable<<#= thisClassName #>> query, string name)
         {
             if (string.IsNullOrWhiteSpace(name)) { return query; }
             var search = name.ToLower();
             return query.Where(i => i.<#= property.name #> != null && i.<#= property.name #>.Name.ToLower().Contains(search));
+        }
+
+        public static IQueryable<<#= thisClassName #>> FilterBy<#= property.name #>ShortDescription(this IQueryable<<#= thisClassName #>> query, string description)
+        {
+            if (string.IsNullOrWhiteSpace(description)) { return query; }
+            var search = description.ToLower();
+            return query.Where(i => i.<#= property.name #> != null && i.<#= property.name #>.ShortDescription.ToLower().Contains(search));
         }
 
         public static IQueryable<<#= thisClassName #>> FilterBy<#= property.name #>Description(this IQueryable<<#= thisClassName #>> query, string description)

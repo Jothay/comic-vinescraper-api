@@ -111,8 +111,345 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BusinessWorkflows\Authors\AuthorsBusinessWorkflowsTests.cs" />
+    <Compile Include="BusinessWorkflows\CodeGenerator\AuthorExample.cs" />
     <Compile Include="BusinessWorkflows\BusinessWorkflowsBaseTests.cs" />
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterAppearedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterCreatorMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterDiedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterEnemyMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterEnemyTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterFriendlyTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterFriendMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterMovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterPowerMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Characters.CharacterVolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Chats.ChatMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptAppearedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptMovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Concepts.ConceptVolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeCharacterDiedMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeCharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeConceptFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeConceptMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeLocationFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeLocationMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeObjectFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeObjectMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodePersonMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeTeamFirstAppearanceMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Episodes.EpisodeTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Issues.IssueAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Issues.IssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Issues.IssueWriterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationAppearedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationMovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Locations.LocationVolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\BusinessWorkflowsTestingFile.cs">
+      <DependentUpon>BusinessWorkflowsTestingFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Media.ImageFileMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieCharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieConceptMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieLocationMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieObjectMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieProducerMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieStudioMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Movies.MovieWriterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectAppearedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectMovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Objects.ObjectVolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Origins.OriginMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Origins.OriginProfileMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\People.CreatorCharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\People.GenderMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\People.PersonAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\People.PersonMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Powers.PowerAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Powers.PowerMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Profiles.ProfileMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Promos.PromoMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Promos.ResourceTypeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Publishers.PublisherAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Publishers.PublisherMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Series.SeriesAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Series.SeriesCharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Series.SeriesLocationMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Series.SeriesMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\StoryArcs.StoryArcAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\StoryArcs.StoryArcIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\StoryArcs.StoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\StoryArcs.StoryArcWriterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Studios.StudioMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamAppearedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamCharacterEnemyMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamCharacterFriendMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamDisbandedInIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamIssueMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamMemberMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamMovieMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamStoryArcMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Teams.TeamVolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Videos.VideoMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Videos.VideoTypeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeAliasMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeCharacterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeConceptMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeLocationMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeObjectMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeTeamMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessWorkflows\CodeGenerator\Volumes.VolumeWriterMappingTests.cs">
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="BusinessWorkflows\WorkflowRegistryTests.cs" />
     <Compile Include="Mocking\AuthorsMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +462,10 @@
     <ProjectReference Include="..\ComicVine.API.BusinessWorkflows\06.ComicVine.API.BusinessWorkflows.csproj">
       <Project>{39F476D8-BF0D-44CB-8A05-5876CF436BC5}</Project>
       <Name>06.RepositoryPattern.BusinessWorkflows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVine.API.DataModel.csproj">
+      <Project>{941FD95D-2CF5-4378-99CC-1CE808027781}</Project>
+      <Name>02.ComicVine.API.DataModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\ComicVine.API.Mappings\05.ComicVine.API.Mappings.csproj">
       <Project>{668FA6D2-5064-4343-9C6C-A6D5E0215796}</Project>
@@ -143,7 +484,28 @@
       <Name>01.RepositoryPattern</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="BusinessWorkflows\CodeGenerator\BusinessWorkflowsTestingFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BusinessWorkflowsTestingFileMaster.tt</DependentUpon>
+    </Content>
+    <Content Include="BusinessWorkflows\CodeGenerator\BusinessWorkflowsTestingFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BusinessWorkflowsTestingFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="BusinessWorkflows\CodeGenerator\BusinessWorkflowsTestingFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BusinessWorkflowsTestingFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="BusinessWorkflows\CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

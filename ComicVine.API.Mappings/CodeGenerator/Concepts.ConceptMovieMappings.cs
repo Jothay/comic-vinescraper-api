@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptMovieMapperExtensions
     {
-        public static readonly ConceptMovieMapper Mapper = new ConceptMovieMapper();
+        public static IConceptMovieMapper Mapper = new ConceptMovieMapper();
+
+        public static void OverrideMapper(IConceptMovieMapper mapper) { Mapper = mapper; }
 
         public static IConceptMovie MapToEntity(this IConceptMovieModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptMovieMapper : IConceptMovieMapper
     {
-        public IConceptMovie MapToEntity(IConceptMovieModel model)
+        public virtual IConceptMovie MapToEntity(IConceptMovieModel model)
         {
             var entity = EntityMapper.MapToEntity<ConceptMovie, IConceptMovieModel>(model);
             // ConceptMovie Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptMovieModel model, ref IConceptMovie entity)
+        public virtual void MapToEntity(IConceptMovieModel model, ref IConceptMovie entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Concepts
             // <None>
         }
 
-        public IConceptMovieModel MapToModel(IConceptMovie entity)
+        public virtual IConceptMovieModel MapToModel(IConceptMovie entity)
         {
             var model = EntityMapper.MapToModel<IConceptMovie, ConceptMovieModel>(entity);
             // ConceptMovie Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptMovieModel MapToModelLite(IConceptMovie entity)
+        public virtual IConceptMovieModel MapToModelLite(IConceptMovie entity)
         {
             var model = EntityMapper.MapToModelLite<IConceptMovie, ConceptMovieModel>(entity);
             // ConceptMovie Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptMovieModel MapToModelListing(IConceptMovie entity)
+        public virtual IConceptMovieModel MapToModelListing(IConceptMovie entity)
         {
             var model = EntityMapper.MapToModelListing<IConceptMovie, ConceptMovieModel>(entity);
             // ConceptMovie Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptMovieSearchModel MapToSearchModel(IConceptMovieModel model)
+        public virtual IConceptMovieSearchModel MapToSearchModel(IConceptMovieModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IConceptMovieModel, ConceptMovieSearchModel>(model);
             // Search Properties
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptMovieModel model, IConceptMovie entity)
+        public virtual bool AreEqual(IConceptMovieModel model, IConceptMovie entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ConceptMovie Properties

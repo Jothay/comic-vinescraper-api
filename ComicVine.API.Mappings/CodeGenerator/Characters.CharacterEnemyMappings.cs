@@ -21,7 +21,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterEnemyMapperExtensions
     {
-        public static readonly CharacterEnemyMapper Mapper = new CharacterEnemyMapper();
+        public static ICharacterEnemyMapper Mapper = new CharacterEnemyMapper();
+
+        public static void OverrideMapper(ICharacterEnemyMapper mapper) { Mapper = mapper; }
 
         public static ICharacterEnemy MapToEntity(this ICharacterEnemyModel model)
         {
@@ -55,7 +57,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterEnemyMapper : ICharacterEnemyMapper
     {
-        public ICharacterEnemy MapToEntity(ICharacterEnemyModel model)
+        public virtual ICharacterEnemy MapToEntity(ICharacterEnemyModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterEnemy, ICharacterEnemyModel>(model);
             // CharacterEnemy Properties
@@ -71,7 +73,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterEnemyModel model, ref ICharacterEnemy entity)
+        public virtual void MapToEntity(ICharacterEnemyModel model, ref ICharacterEnemy entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -86,7 +88,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterEnemyModel MapToModel(ICharacterEnemy entity)
+        public virtual ICharacterEnemyModel MapToModel(ICharacterEnemy entity)
         {
             var model = EntityMapper.MapToModel<ICharacterEnemy, CharacterEnemyModel>(entity);
             // CharacterEnemy Properties
@@ -102,7 +104,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemyModel MapToModelLite(ICharacterEnemy entity)
+        public virtual ICharacterEnemyModel MapToModelLite(ICharacterEnemy entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterEnemy, CharacterEnemyModel>(entity);
             // CharacterEnemy Properties
@@ -114,7 +116,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemyModel MapToModelListing(ICharacterEnemy entity)
+        public virtual ICharacterEnemyModel MapToModelListing(ICharacterEnemy entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterEnemy, CharacterEnemyModel>(entity);
             // CharacterEnemy Properties
@@ -126,23 +128,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterEnemySearchModel MapToSearchModel(ICharacterEnemyModel model)
+        public virtual ICharacterEnemySearchModel MapToSearchModel(ICharacterEnemyModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterEnemyModel, CharacterEnemySearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.EnemyId = model.EnemyId;
             searchModel.EnemyCustomKey = model.Enemy?.CustomKey;
+            searchModel.EnemyApiDetailUrl = model.Enemy?.ApiDetailUrl;
+            searchModel.EnemySiteDetailUrl = model.Enemy?.SiteDetailUrl;
             searchModel.EnemyName = model.Enemy?.Name;
+            searchModel.EnemyShortDescription = model.Enemy?.ShortDescription;
             searchModel.EnemyDescription = model.Enemy?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterEnemyModel model, ICharacterEnemy entity)
+        public virtual bool AreEqual(ICharacterEnemyModel model, ICharacterEnemy entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterEnemy Properties

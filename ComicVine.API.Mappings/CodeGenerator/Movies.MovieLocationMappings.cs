@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieLocationMapperExtensions
     {
-        public static readonly MovieLocationMapper Mapper = new MovieLocationMapper();
+        public static IMovieLocationMapper Mapper = new MovieLocationMapper();
+
+        public static void OverrideMapper(IMovieLocationMapper mapper) { Mapper = mapper; }
 
         public static IMovieLocation MapToEntity(this IMovieLocationModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieLocationMapper : IMovieLocationMapper
     {
-        public IMovieLocation MapToEntity(IMovieLocationModel model)
+        public virtual IMovieLocation MapToEntity(IMovieLocationModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieLocation, IMovieLocationModel>(model);
             // MovieLocation Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieLocationModel model, ref IMovieLocation entity)
+        public virtual void MapToEntity(IMovieLocationModel model, ref IMovieLocation entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieLocationModel MapToModel(IMovieLocation entity)
+        public virtual IMovieLocationModel MapToModel(IMovieLocation entity)
         {
             var model = EntityMapper.MapToModel<IMovieLocation, MovieLocationModel>(entity);
             // MovieLocation Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieLocationModel MapToModelLite(IMovieLocation entity)
+        public virtual IMovieLocationModel MapToModelLite(IMovieLocation entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieLocation, MovieLocationModel>(entity);
             // MovieLocation Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieLocationModel MapToModelListing(IMovieLocation entity)
+        public virtual IMovieLocationModel MapToModelListing(IMovieLocation entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieLocation, MovieLocationModel>(entity);
             // MovieLocation Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieLocationSearchModel MapToSearchModel(IMovieLocationModel model)
+        public virtual IMovieLocationSearchModel MapToSearchModel(IMovieLocationModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieLocationModel, MovieLocationSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieLocationModel model, IMovieLocation entity)
+        public virtual bool AreEqual(IMovieLocationModel model, IMovieLocation entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieLocation Properties

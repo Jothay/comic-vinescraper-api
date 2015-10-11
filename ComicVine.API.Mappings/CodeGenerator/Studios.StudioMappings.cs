@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Studios
 
     public static class StudioMapperExtensions
     {
-        public static readonly StudioMapper Mapper = new StudioMapper();
+        public static IStudioMapper Mapper = new StudioMapper();
+
+        public static void OverrideMapper(IStudioMapper mapper) { Mapper = mapper; }
 
         public static IStudio MapToEntity(this IStudioModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Studios
 
     public class StudioMapper : IStudioMapper
     {
-        public IStudio MapToEntity(IStudioModel model)
+        public virtual IStudio MapToEntity(IStudioModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Studio, IStudioModel>(model);
             // Studio Properties
@@ -66,7 +68,7 @@ namespace ComicVine.API.Mappings//.Studios
             return entity;
         }
 
-        public void MapToEntity(IStudioModel model, ref IStudio entity)
+        public virtual void MapToEntity(IStudioModel model, ref IStudio entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -75,10 +77,10 @@ namespace ComicVine.API.Mappings//.Studios
             // Related Objects
             // <None>
             // Associated Objects
-            entity.MovieStudios = (ICollection<IMovieStudio>)model.MovieStudios?.Where(i => i.Active).Select(MovieStudioMapperExtensions.MapToEntity).Cast<MovieStudio>();
+            entity.MovieStudios = model.MovieStudios?.Where(i => i.Active).Select(MovieStudioMapperExtensions.MapToEntity).ToList();
         }
 
-        public IStudioModel MapToModel(IStudio entity)
+        public virtual IStudioModel MapToModel(IStudio entity)
         {
             var model = NameableEntityMapper.MapToModel<IStudio, StudioModel>(entity);
             // Studio Properties
@@ -91,7 +93,7 @@ namespace ComicVine.API.Mappings//.Studios
             return model;
         }
 
-        public IStudioModel MapToModelLite(IStudio entity)
+        public virtual IStudioModel MapToModelLite(IStudio entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IStudio, StudioModel>(entity);
             // Studio Properties
@@ -102,7 +104,7 @@ namespace ComicVine.API.Mappings//.Studios
             return model;
         }
 
-        public IStudioModel MapToModelListing(IStudio entity)
+        public virtual IStudioModel MapToModelListing(IStudio entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IStudio, StudioModel>(entity);
             // Studio Properties
@@ -113,7 +115,7 @@ namespace ComicVine.API.Mappings//.Studios
             return model;
         }
 
-        public IStudioSearchModel MapToSearchModel(IStudioModel model)
+        public virtual IStudioSearchModel MapToSearchModel(IStudioModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IStudioModel, StudioSearchModel>(model);
             // Search Properties
@@ -121,7 +123,7 @@ namespace ComicVine.API.Mappings//.Studios
             return searchModel;
         }
 
-        public bool AreEqual(IStudioModel model, IStudio entity)
+        public virtual bool AreEqual(IStudioModel model, IStudio entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Studio Properties

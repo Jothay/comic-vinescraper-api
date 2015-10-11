@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Profiles
 
     public static class ProfileMapperExtensions
     {
-        public static readonly ProfileMapper Mapper = new ProfileMapper();
+        public static IProfileMapper Mapper = new ProfileMapper();
+
+        public static void OverrideMapper(IProfileMapper mapper) { Mapper = mapper; }
 
         public static IProfile MapToEntity(this IProfileModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Profiles
 
     public class ProfileMapper : IProfileMapper
     {
-        public IProfile MapToEntity(IProfileModel model)
+        public virtual IProfile MapToEntity(IProfileModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Profile, IProfileModel>(model);
             // Profile Properties
@@ -66,7 +68,7 @@ namespace ComicVine.API.Mappings//.Profiles
             return entity;
         }
 
-        public void MapToEntity(IProfileModel model, ref IProfile entity)
+        public virtual void MapToEntity(IProfileModel model, ref IProfile entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -75,10 +77,10 @@ namespace ComicVine.API.Mappings//.Profiles
             // Related Objects
             // <None>
             // Associated Objects
-            entity.OriginProfiles = (ICollection<IOriginProfile>)model.OriginProfiles?.Where(i => i.Active).Select(OriginProfileMapperExtensions.MapToEntity).Cast<OriginProfile>();
+            entity.OriginProfiles = model.OriginProfiles?.Where(i => i.Active).Select(OriginProfileMapperExtensions.MapToEntity).ToList();
         }
 
-        public IProfileModel MapToModel(IProfile entity)
+        public virtual IProfileModel MapToModel(IProfile entity)
         {
             var model = NameableEntityMapper.MapToModel<IProfile, ProfileModel>(entity);
             // Profile Properties
@@ -91,7 +93,7 @@ namespace ComicVine.API.Mappings//.Profiles
             return model;
         }
 
-        public IProfileModel MapToModelLite(IProfile entity)
+        public virtual IProfileModel MapToModelLite(IProfile entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IProfile, ProfileModel>(entity);
             // Profile Properties
@@ -102,7 +104,7 @@ namespace ComicVine.API.Mappings//.Profiles
             return model;
         }
 
-        public IProfileModel MapToModelListing(IProfile entity)
+        public virtual IProfileModel MapToModelListing(IProfile entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IProfile, ProfileModel>(entity);
             // Profile Properties
@@ -113,7 +115,7 @@ namespace ComicVine.API.Mappings//.Profiles
             return model;
         }
 
-        public IProfileSearchModel MapToSearchModel(IProfileModel model)
+        public virtual IProfileSearchModel MapToSearchModel(IProfileModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IProfileModel, ProfileSearchModel>(model);
             // Search Properties
@@ -121,7 +123,7 @@ namespace ComicVine.API.Mappings//.Profiles
             return searchModel;
         }
 
-        public bool AreEqual(IProfileModel model, IProfile entity)
+        public virtual bool AreEqual(IProfileModel model, IProfile entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Profile Properties

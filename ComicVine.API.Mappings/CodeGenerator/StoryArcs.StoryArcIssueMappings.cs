@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public static class StoryArcIssueMapperExtensions
     {
-        public static readonly StoryArcIssueMapper Mapper = new StoryArcIssueMapper();
+        public static IStoryArcIssueMapper Mapper = new StoryArcIssueMapper();
+
+        public static void OverrideMapper(IStoryArcIssueMapper mapper) { Mapper = mapper; }
 
         public static IStoryArcIssue MapToEntity(this IStoryArcIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public class StoryArcIssueMapper : IStoryArcIssueMapper
     {
-        public IStoryArcIssue MapToEntity(IStoryArcIssueModel model)
+        public virtual IStoryArcIssue MapToEntity(IStoryArcIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<StoryArcIssue, IStoryArcIssueModel>(model);
             // StoryArcIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return entity;
         }
 
-        public void MapToEntity(IStoryArcIssueModel model, ref IStoryArcIssue entity)
+        public virtual void MapToEntity(IStoryArcIssueModel model, ref IStoryArcIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             // <None>
         }
 
-        public IStoryArcIssueModel MapToModel(IStoryArcIssue entity)
+        public virtual IStoryArcIssueModel MapToModel(IStoryArcIssue entity)
         {
             var model = EntityMapper.MapToModel<IStoryArcIssue, StoryArcIssueModel>(entity);
             // StoryArcIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcIssueModel MapToModelLite(IStoryArcIssue entity)
+        public virtual IStoryArcIssueModel MapToModelLite(IStoryArcIssue entity)
         {
             var model = EntityMapper.MapToModelLite<IStoryArcIssue, StoryArcIssueModel>(entity);
             // StoryArcIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcIssueModel MapToModelListing(IStoryArcIssue entity)
+        public virtual IStoryArcIssueModel MapToModelListing(IStoryArcIssue entity)
         {
             var model = EntityMapper.MapToModelListing<IStoryArcIssue, StoryArcIssueModel>(entity);
             // StoryArcIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcIssueSearchModel MapToSearchModel(IStoryArcIssueModel model)
+        public virtual IStoryArcIssueSearchModel MapToSearchModel(IStoryArcIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IStoryArcIssueModel, StoryArcIssueSearchModel>(model);
             // Search Properties
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IStoryArcIssueModel model, IStoryArcIssue entity)
+        public virtual bool AreEqual(IStoryArcIssueModel model, IStoryArcIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // StoryArcIssue Properties

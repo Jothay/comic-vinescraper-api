@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public static class ConceptMapperExtensions
     {
-        public static readonly ConceptMapper Mapper = new ConceptMapper();
+        public static IConceptMapper Mapper = new ConceptMapper();
+
+        public static void OverrideMapper(IConceptMapper mapper) { Mapper = mapper; }
 
         public static IConcept MapToEntity(this IConceptModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Concepts
 
     public class ConceptMapper : IConceptMapper
     {
-        public IConcept MapToEntity(IConceptModel model)
+        public virtual IConcept MapToEntity(IConceptModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Concept, IConceptModel>(model);
             // Concept Properties
@@ -73,7 +75,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return entity;
         }
 
-        public void MapToEntity(IConceptModel model, ref IConcept entity)
+        public virtual void MapToEntity(IConceptModel model, ref IConcept entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -85,14 +87,14 @@ namespace ComicVine.API.Mappings//.Concepts
             entity.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             entity.FirstIssueAppearance = (Issue)model.FirstIssueAppearance?.MapToEntity();
             // Associated Objects
-            entity.ConceptAliases = (ICollection<IConceptAlias>)model.ConceptAliases?.Where(i => i.Active).Select(ConceptAliasMapperExtensions.MapToEntity).Cast<ConceptAlias>();
-            entity.ConceptIssuesAppearedIn = (ICollection<IConceptAppearedInIssue>)model.ConceptIssuesAppearedIn?.Where(i => i.Active).Select(ConceptAppearedInIssueMapperExtensions.MapToEntity).Cast<ConceptAppearedInIssue>();
-            entity.ConceptIssues = (ICollection<IConceptIssue>)model.ConceptIssues?.Where(i => i.Active).Select(ConceptIssueMapperExtensions.MapToEntity).Cast<ConceptIssue>();
-            entity.ConceptMovies = (ICollection<IConceptMovie>)model.ConceptMovies?.Where(i => i.Active).Select(ConceptMovieMapperExtensions.MapToEntity).Cast<ConceptMovie>();
-            entity.ConceptVolumes = (ICollection<IConceptVolume>)model.ConceptVolumes?.Where(i => i.Active).Select(ConceptVolumeMapperExtensions.MapToEntity).Cast<ConceptVolume>();
+            entity.ConceptAliases = model.ConceptAliases?.Where(i => i.Active).Select(ConceptAliasMapperExtensions.MapToEntity).ToList();
+            entity.ConceptIssuesAppearedIn = model.ConceptIssuesAppearedIn?.Where(i => i.Active).Select(ConceptAppearedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.ConceptIssues = model.ConceptIssues?.Where(i => i.Active).Select(ConceptIssueMapperExtensions.MapToEntity).ToList();
+            entity.ConceptMovies = model.ConceptMovies?.Where(i => i.Active).Select(ConceptMovieMapperExtensions.MapToEntity).ToList();
+            entity.ConceptVolumes = model.ConceptVolumes?.Where(i => i.Active).Select(ConceptVolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public IConceptModel MapToModel(IConcept entity)
+        public virtual IConceptModel MapToModel(IConcept entity)
         {
             var model = NameableEntityMapper.MapToModel<IConcept, ConceptModel>(entity);
             // Concept Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptModel MapToModelLite(IConcept entity)
+        public virtual IConceptModel MapToModelLite(IConcept entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IConcept, ConceptModel>(entity);
             // Concept Properties
@@ -124,7 +126,7 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptModel MapToModelListing(IConcept entity)
+        public virtual IConceptModel MapToModelListing(IConcept entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IConcept, ConceptModel>(entity);
             // Concept Properties
@@ -136,23 +138,29 @@ namespace ComicVine.API.Mappings//.Concepts
             return model;
         }
 
-        public IConceptSearchModel MapToSearchModel(IConceptModel model)
+        public virtual IConceptSearchModel MapToSearchModel(IConceptModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IConceptModel, ConceptSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IConceptModel model, IConcept entity)
+        public virtual bool AreEqual(IConceptModel model, IConcept entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Concept Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Series
 
     public static class SeriesMapperExtensions
     {
-        public static readonly SeriesMapper Mapper = new SeriesMapper();
+        public static ISeriesMapper Mapper = new SeriesMapper();
+
+        public static void OverrideMapper(ISeriesMapper mapper) { Mapper = mapper; }
 
         public static ISeries MapToEntity(this ISeriesModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Series
 
     public class SeriesMapper : ISeriesMapper
     {
-        public ISeries MapToEntity(ISeriesModel model)
+        public virtual ISeries MapToEntity(ISeriesModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Series, ISeriesModel>(model);
             // Series Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.Series
             return entity;
         }
 
-        public void MapToEntity(ISeriesModel model, ref ISeries entity)
+        public virtual void MapToEntity(ISeriesModel model, ref ISeries entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -88,13 +90,13 @@ namespace ComicVine.API.Mappings//.Series
             entity.LastEpisodeId = model.LastEpisodeId;
             entity.LastEpisode = (Episode)model.LastEpisode?.MapToEntity();
             // Associated Objects
-            entity.Episodes = (ICollection<IEpisode>)model.Episodes?.Where(i => i.Active).Select(EpisodeMapperExtensions.MapToEntity).Cast<Episode>();
-            entity.SeriesAliases = (ICollection<ISeriesAlias>)model.SeriesAliases?.Where(i => i.Active).Select(SeriesAliasMapperExtensions.MapToEntity).Cast<SeriesAlias>();
-            entity.SeriesCharacters = (ICollection<ISeriesCharacter>)model.SeriesCharacters?.Where(i => i.Active).Select(SeriesCharacterMapperExtensions.MapToEntity).Cast<SeriesCharacter>();
-            entity.SeriesLocations = (ICollection<ISeriesLocation>)model.SeriesLocations?.Where(i => i.Active).Select(SeriesLocationMapperExtensions.MapToEntity).Cast<SeriesLocation>();
+            entity.Episodes = model.Episodes?.Where(i => i.Active).Select(EpisodeMapperExtensions.MapToEntity).ToList();
+            entity.SeriesAliases = model.SeriesAliases?.Where(i => i.Active).Select(SeriesAliasMapperExtensions.MapToEntity).ToList();
+            entity.SeriesCharacters = model.SeriesCharacters?.Where(i => i.Active).Select(SeriesCharacterMapperExtensions.MapToEntity).ToList();
+            entity.SeriesLocations = model.SeriesLocations?.Where(i => i.Active).Select(SeriesLocationMapperExtensions.MapToEntity).ToList();
         }
 
-        public ISeriesModel MapToModel(ISeries entity)
+        public virtual ISeriesModel MapToModel(ISeries entity)
         {
             var model = NameableEntityMapper.MapToModel<ISeries, SeriesModel>(entity);
             // Series Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesModel MapToModelLite(ISeries entity)
+        public virtual ISeriesModel MapToModelLite(ISeries entity)
         {
             var model = NameableEntityMapper.MapToModelLite<ISeries, SeriesModel>(entity);
             // Series Properties
@@ -128,7 +130,7 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesModel MapToModelListing(ISeries entity)
+        public virtual ISeriesModel MapToModelListing(ISeries entity)
         {
             var model = NameableEntityMapper.MapToModelListing<ISeries, SeriesModel>(entity);
             // Series Properties
@@ -141,27 +143,36 @@ namespace ComicVine.API.Mappings//.Series
             return model;
         }
 
-        public ISeriesSearchModel MapToSearchModel(ISeriesModel model)
+        public virtual ISeriesSearchModel MapToSearchModel(ISeriesModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<ISeriesModel, SeriesSearchModel>(model);
             // Search Properties
             searchModel.PublisherId = model.PublisherId;
             searchModel.PublisherCustomKey = model.Publisher?.CustomKey;
+            searchModel.PublisherApiDetailUrl = model.Publisher?.ApiDetailUrl;
+            searchModel.PublisherSiteDetailUrl = model.Publisher?.SiteDetailUrl;
             searchModel.PublisherName = model.Publisher?.Name;
+            searchModel.PublisherShortDescription = model.Publisher?.ShortDescription;
             searchModel.PublisherDescription = model.Publisher?.Description;
             searchModel.FirstEpisodeId = model.FirstEpisodeId;
             searchModel.FirstEpisodeCustomKey = model.FirstEpisode?.CustomKey;
+            searchModel.FirstEpisodeApiDetailUrl = model.FirstEpisode?.ApiDetailUrl;
+            searchModel.FirstEpisodeSiteDetailUrl = model.FirstEpisode?.SiteDetailUrl;
             searchModel.FirstEpisodeName = model.FirstEpisode?.Name;
+            searchModel.FirstEpisodeShortDescription = model.FirstEpisode?.ShortDescription;
             searchModel.FirstEpisodeDescription = model.FirstEpisode?.Description;
             searchModel.LastEpisodeId = model.LastEpisodeId;
             searchModel.LastEpisodeCustomKey = model.LastEpisode?.CustomKey;
+            searchModel.LastEpisodeApiDetailUrl = model.LastEpisode?.ApiDetailUrl;
+            searchModel.LastEpisodeSiteDetailUrl = model.LastEpisode?.SiteDetailUrl;
             searchModel.LastEpisodeName = model.LastEpisode?.Name;
+            searchModel.LastEpisodeShortDescription = model.LastEpisode?.ShortDescription;
             searchModel.LastEpisodeDescription = model.LastEpisode?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ISeriesModel model, ISeries entity)
+        public virtual bool AreEqual(ISeriesModel model, ISeries entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Series Properties

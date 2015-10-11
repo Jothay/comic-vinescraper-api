@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeTeamMapperExtensions
     {
-        public static readonly VolumeTeamMapper Mapper = new VolumeTeamMapper();
+        public static IVolumeTeamMapper Mapper = new VolumeTeamMapper();
+
+        public static void OverrideMapper(IVolumeTeamMapper mapper) { Mapper = mapper; }
 
         public static IVolumeTeam MapToEntity(this IVolumeTeamModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeTeamMapper : IVolumeTeamMapper
     {
-        public IVolumeTeam MapToEntity(IVolumeTeamModel model)
+        public virtual IVolumeTeam MapToEntity(IVolumeTeamModel model)
         {
             var entity = EntityMapper.MapToEntity<VolumeTeam, IVolumeTeamModel>(model);
             // VolumeTeam Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeTeamModel model, ref IVolumeTeam entity)
+        public virtual void MapToEntity(IVolumeTeamModel model, ref IVolumeTeam entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeTeamModel MapToModel(IVolumeTeam entity)
+        public virtual IVolumeTeamModel MapToModel(IVolumeTeam entity)
         {
             var model = EntityMapper.MapToModel<IVolumeTeam, VolumeTeamModel>(entity);
             // VolumeTeam Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeTeamModel MapToModelLite(IVolumeTeam entity)
+        public virtual IVolumeTeamModel MapToModelLite(IVolumeTeam entity)
         {
             var model = EntityMapper.MapToModelLite<IVolumeTeam, VolumeTeamModel>(entity);
             // VolumeTeam Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeTeamModel MapToModelListing(IVolumeTeam entity)
+        public virtual IVolumeTeamModel MapToModelListing(IVolumeTeam entity)
         {
             var model = EntityMapper.MapToModelListing<IVolumeTeam, VolumeTeamModel>(entity);
             // VolumeTeam Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeTeamSearchModel MapToSearchModel(IVolumeTeamModel model)
+        public virtual IVolumeTeamSearchModel MapToSearchModel(IVolumeTeamModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IVolumeTeamModel, VolumeTeamSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeTeamModel model, IVolumeTeam entity)
+        public virtual bool AreEqual(IVolumeTeamModel model, IVolumeTeam entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // VolumeTeam Properties

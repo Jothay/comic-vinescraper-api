@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public static class VolumeAliasMapperExtensions
     {
-        public static readonly VolumeAliasMapper Mapper = new VolumeAliasMapper();
+        public static IVolumeAliasMapper Mapper = new VolumeAliasMapper();
+
+        public static void OverrideMapper(IVolumeAliasMapper mapper) { Mapper = mapper; }
 
         public static IVolumeAlias MapToEntity(this IVolumeAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Volumes
 
     public class VolumeAliasMapper : IVolumeAliasMapper
     {
-        public IVolumeAlias MapToEntity(IVolumeAliasModel model)
+        public virtual IVolumeAlias MapToEntity(IVolumeAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<VolumeAlias, IVolumeAliasModel>(model);
             // VolumeAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return entity;
         }
 
-        public void MapToEntity(IVolumeAliasModel model, ref IVolumeAlias entity)
+        public virtual void MapToEntity(IVolumeAliasModel model, ref IVolumeAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Volumes
             // <None>
         }
 
-        public IVolumeAliasModel MapToModel(IVolumeAlias entity)
+        public virtual IVolumeAliasModel MapToModel(IVolumeAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IVolumeAlias, VolumeAliasModel>(entity);
             // VolumeAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeAliasModel MapToModelLite(IVolumeAlias entity)
+        public virtual IVolumeAliasModel MapToModelLite(IVolumeAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IVolumeAlias, VolumeAliasModel>(entity);
             // VolumeAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeAliasModel MapToModelListing(IVolumeAlias entity)
+        public virtual IVolumeAliasModel MapToModelListing(IVolumeAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IVolumeAlias, VolumeAliasModel>(entity);
             // VolumeAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Volumes
             return model;
         }
 
-        public IVolumeAliasSearchModel MapToSearchModel(IVolumeAliasModel model)
+        public virtual IVolumeAliasSearchModel MapToSearchModel(IVolumeAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IVolumeAliasModel, VolumeAliasSearchModel>(model);
             // Search Properties
             searchModel.VolumeId = model.VolumeId;
             searchModel.VolumeCustomKey = model.Volume?.CustomKey;
+            searchModel.VolumeApiDetailUrl = model.Volume?.ApiDetailUrl;
+            searchModel.VolumeSiteDetailUrl = model.Volume?.SiteDetailUrl;
             searchModel.VolumeName = model.Volume?.Name;
+            searchModel.VolumeShortDescription = model.Volume?.ShortDescription;
             searchModel.VolumeDescription = model.Volume?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IVolumeAliasModel model, IVolumeAlias entity)
+        public virtual bool AreEqual(IVolumeAliasModel model, IVolumeAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // VolumeAlias Properties

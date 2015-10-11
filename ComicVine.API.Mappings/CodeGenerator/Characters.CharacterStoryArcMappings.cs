@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterStoryArcMapperExtensions
     {
-        public static readonly CharacterStoryArcMapper Mapper = new CharacterStoryArcMapper();
+        public static ICharacterStoryArcMapper Mapper = new CharacterStoryArcMapper();
+
+        public static void OverrideMapper(ICharacterStoryArcMapper mapper) { Mapper = mapper; }
 
         public static ICharacterStoryArc MapToEntity(this ICharacterStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterStoryArcMapper : ICharacterStoryArcMapper
     {
-        public ICharacterStoryArc MapToEntity(ICharacterStoryArcModel model)
+        public virtual ICharacterStoryArc MapToEntity(ICharacterStoryArcModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterStoryArc, ICharacterStoryArcModel>(model);
             // CharacterStoryArc Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterStoryArcModel model, ref ICharacterStoryArc entity)
+        public virtual void MapToEntity(ICharacterStoryArcModel model, ref ICharacterStoryArc entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterStoryArcModel MapToModel(ICharacterStoryArc entity)
+        public virtual ICharacterStoryArcModel MapToModel(ICharacterStoryArc entity)
         {
             var model = EntityMapper.MapToModel<ICharacterStoryArc, CharacterStoryArcModel>(entity);
             // CharacterStoryArc Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterStoryArcModel MapToModelLite(ICharacterStoryArc entity)
+        public virtual ICharacterStoryArcModel MapToModelLite(ICharacterStoryArc entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterStoryArc, CharacterStoryArcModel>(entity);
             // CharacterStoryArc Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterStoryArcModel MapToModelListing(ICharacterStoryArc entity)
+        public virtual ICharacterStoryArcModel MapToModelListing(ICharacterStoryArc entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterStoryArc, CharacterStoryArcModel>(entity);
             // CharacterStoryArc Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterStoryArcSearchModel MapToSearchModel(ICharacterStoryArcModel model)
+        public virtual ICharacterStoryArcSearchModel MapToSearchModel(ICharacterStoryArcModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterStoryArcModel, CharacterStoryArcSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterStoryArcModel model, ICharacterStoryArc entity)
+        public virtual bool AreEqual(ICharacterStoryArcModel model, ICharacterStoryArc entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterStoryArc Properties

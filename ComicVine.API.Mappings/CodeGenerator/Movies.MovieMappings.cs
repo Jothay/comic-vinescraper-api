@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieMapperExtensions
     {
-        public static readonly MovieMapper Mapper = new MovieMapper();
+        public static IMovieMapper Mapper = new MovieMapper();
+
+        public static void OverrideMapper(IMovieMapper mapper) { Mapper = mapper; }
 
         public static IMovie MapToEntity(this IMovieModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieMapper : IMovieMapper
     {
-        public IMovie MapToEntity(IMovieModel model)
+        public virtual IMovie MapToEntity(IMovieModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Movie, IMovieModel>(model);
             // Movie Properties
@@ -82,7 +84,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieModel model, ref IMovie entity)
+        public virtual void MapToEntity(IMovieModel model, ref IMovie entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -99,18 +101,18 @@ namespace ComicVine.API.Mappings//.Movies
             entity.PrimaryImageFileId = model.PrimaryImageFileId;
             entity.PrimaryImageFile = (ImageFile)model.PrimaryImageFile?.MapToEntity();
             // Associated Objects
-            entity.MovieCharacters = (ICollection<IMovieCharacter>)model.MovieCharacters?.Where(i => i.Active).Select(MovieCharacterMapperExtensions.MapToEntity).Cast<MovieCharacter>();
-            entity.MovieConcepts = (ICollection<IMovieConcept>)model.MovieConcepts?.Where(i => i.Active).Select(MovieConceptMapperExtensions.MapToEntity).Cast<MovieConcept>();
-            entity.MovieLocations = (ICollection<IMovieLocation>)model.MovieLocations?.Where(i => i.Active).Select(MovieLocationMapperExtensions.MapToEntity).Cast<MovieLocation>();
-            entity.MovieObjects = (ICollection<IMovieObject>)model.MovieObjects?.Where(i => i.Active).Select(MovieObjectMapperExtensions.MapToEntity).Cast<MovieObject>();
-            entity.MovieProducers = (ICollection<IMovieProducer>)model.MovieProducers?.Where(i => i.Active).Select(MovieProducerMapperExtensions.MapToEntity).Cast<MovieProducer>();
-            entity.MovieStoryArcs = (ICollection<IMovieStoryArc>)model.MovieStoryArcs?.Where(i => i.Active).Select(MovieStoryArcMapperExtensions.MapToEntity).Cast<MovieStoryArc>();
-            entity.MovieStudios = (ICollection<IMovieStudio>)model.MovieStudios?.Where(i => i.Active).Select(MovieStudioMapperExtensions.MapToEntity).Cast<MovieStudio>();
-            entity.MovieTeams = (ICollection<IMovieTeam>)model.MovieTeams?.Where(i => i.Active).Select(MovieTeamMapperExtensions.MapToEntity).Cast<MovieTeam>();
-            entity.MovieWriters = (ICollection<IMovieWriter>)model.MovieWriters?.Where(i => i.Active).Select(MovieWriterMapperExtensions.MapToEntity).Cast<MovieWriter>();
+            entity.MovieCharacters = model.MovieCharacters?.Where(i => i.Active).Select(MovieCharacterMapperExtensions.MapToEntity).ToList();
+            entity.MovieConcepts = model.MovieConcepts?.Where(i => i.Active).Select(MovieConceptMapperExtensions.MapToEntity).ToList();
+            entity.MovieLocations = model.MovieLocations?.Where(i => i.Active).Select(MovieLocationMapperExtensions.MapToEntity).ToList();
+            entity.MovieObjects = model.MovieObjects?.Where(i => i.Active).Select(MovieObjectMapperExtensions.MapToEntity).ToList();
+            entity.MovieProducers = model.MovieProducers?.Where(i => i.Active).Select(MovieProducerMapperExtensions.MapToEntity).ToList();
+            entity.MovieStoryArcs = model.MovieStoryArcs?.Where(i => i.Active).Select(MovieStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.MovieStudios = model.MovieStudios?.Where(i => i.Active).Select(MovieStudioMapperExtensions.MapToEntity).ToList();
+            entity.MovieTeams = model.MovieTeams?.Where(i => i.Active).Select(MovieTeamMapperExtensions.MapToEntity).ToList();
+            entity.MovieWriters = model.MovieWriters?.Where(i => i.Active).Select(MovieWriterMapperExtensions.MapToEntity).ToList();
         }
 
-        public IMovieModel MapToModel(IMovie entity)
+        public virtual IMovieModel MapToModel(IMovie entity)
         {
             var model = NameableEntityMapper.MapToModel<IMovie, MovieModel>(entity);
             // Movie Properties
@@ -139,7 +141,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieModel MapToModelLite(IMovie entity)
+        public virtual IMovieModel MapToModelLite(IMovie entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IMovie, MovieModel>(entity);
             // Movie Properties
@@ -157,7 +159,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieModel MapToModelListing(IMovie entity)
+        public virtual IMovieModel MapToModelListing(IMovie entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IMovie, MovieModel>(entity);
             // Movie Properties
@@ -175,13 +177,16 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieSearchModel MapToSearchModel(IMovieModel model)
+        public virtual IMovieSearchModel MapToSearchModel(IMovieModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IMovieModel, MovieSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.HasStaffReview = model.HasStaffReview;
             searchModel.Distributor = model.Distributor;
@@ -189,7 +194,7 @@ namespace ComicVine.API.Mappings//.Movies
             return searchModel;
         }
 
-        public bool AreEqual(IMovieModel model, IMovie entity)
+        public virtual bool AreEqual(IMovieModel model, IMovie entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Movie Properties

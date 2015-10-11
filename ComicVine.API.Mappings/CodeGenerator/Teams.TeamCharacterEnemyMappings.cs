@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Teams
 
     public static class TeamCharacterEnemyMapperExtensions
     {
-        public static readonly TeamCharacterEnemyMapper Mapper = new TeamCharacterEnemyMapper();
+        public static ITeamCharacterEnemyMapper Mapper = new TeamCharacterEnemyMapper();
+
+        public static void OverrideMapper(ITeamCharacterEnemyMapper mapper) { Mapper = mapper; }
 
         public static ITeamCharacterEnemy MapToEntity(this ITeamCharacterEnemyModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Teams
 
     public class TeamCharacterEnemyMapper : ITeamCharacterEnemyMapper
     {
-        public ITeamCharacterEnemy MapToEntity(ITeamCharacterEnemyModel model)
+        public virtual ITeamCharacterEnemy MapToEntity(ITeamCharacterEnemyModel model)
         {
             var entity = EntityMapper.MapToEntity<TeamCharacterEnemy, ITeamCharacterEnemyModel>(model);
             // TeamCharacterEnemy Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Teams
             return entity;
         }
 
-        public void MapToEntity(ITeamCharacterEnemyModel model, ref ITeamCharacterEnemy entity)
+        public virtual void MapToEntity(ITeamCharacterEnemyModel model, ref ITeamCharacterEnemy entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Teams
             // <None>
         }
 
-        public ITeamCharacterEnemyModel MapToModel(ITeamCharacterEnemy entity)
+        public virtual ITeamCharacterEnemyModel MapToModel(ITeamCharacterEnemy entity)
         {
             var model = EntityMapper.MapToModel<ITeamCharacterEnemy, TeamCharacterEnemyModel>(entity);
             // TeamCharacterEnemy Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamCharacterEnemyModel MapToModelLite(ITeamCharacterEnemy entity)
+        public virtual ITeamCharacterEnemyModel MapToModelLite(ITeamCharacterEnemy entity)
         {
             var model = EntityMapper.MapToModelLite<ITeamCharacterEnemy, TeamCharacterEnemyModel>(entity);
             // TeamCharacterEnemy Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamCharacterEnemyModel MapToModelListing(ITeamCharacterEnemy entity)
+        public virtual ITeamCharacterEnemyModel MapToModelListing(ITeamCharacterEnemy entity)
         {
             var model = EntityMapper.MapToModelListing<ITeamCharacterEnemy, TeamCharacterEnemyModel>(entity);
             // TeamCharacterEnemy Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Teams
             return model;
         }
 
-        public ITeamCharacterEnemySearchModel MapToSearchModel(ITeamCharacterEnemyModel model)
+        public virtual ITeamCharacterEnemySearchModel MapToSearchModel(ITeamCharacterEnemyModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ITeamCharacterEnemyModel, TeamCharacterEnemySearchModel>(model);
             // Search Properties
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             searchModel.EnemyId = model.EnemyId;
             searchModel.EnemyCustomKey = model.Enemy?.CustomKey;
+            searchModel.EnemyApiDetailUrl = model.Enemy?.ApiDetailUrl;
+            searchModel.EnemySiteDetailUrl = model.Enemy?.SiteDetailUrl;
             searchModel.EnemyName = model.Enemy?.Name;
+            searchModel.EnemyShortDescription = model.Enemy?.ShortDescription;
             searchModel.EnemyDescription = model.Enemy?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ITeamCharacterEnemyModel model, ITeamCharacterEnemy entity)
+        public virtual bool AreEqual(ITeamCharacterEnemyModel model, ITeamCharacterEnemy entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // TeamCharacterEnemy Properties

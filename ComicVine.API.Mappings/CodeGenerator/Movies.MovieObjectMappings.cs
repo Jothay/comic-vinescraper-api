@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieObjectMapperExtensions
     {
-        public static readonly MovieObjectMapper Mapper = new MovieObjectMapper();
+        public static IMovieObjectMapper Mapper = new MovieObjectMapper();
+
+        public static void OverrideMapper(IMovieObjectMapper mapper) { Mapper = mapper; }
 
         public static IMovieObject MapToEntity(this IMovieObjectModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieObjectMapper : IMovieObjectMapper
     {
-        public IMovieObject MapToEntity(IMovieObjectModel model)
+        public virtual IMovieObject MapToEntity(IMovieObjectModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieObject, IMovieObjectModel>(model);
             // MovieObject Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieObjectModel model, ref IMovieObject entity)
+        public virtual void MapToEntity(IMovieObjectModel model, ref IMovieObject entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieObjectModel MapToModel(IMovieObject entity)
+        public virtual IMovieObjectModel MapToModel(IMovieObject entity)
         {
             var model = EntityMapper.MapToModel<IMovieObject, MovieObjectModel>(entity);
             // MovieObject Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieObjectModel MapToModelLite(IMovieObject entity)
+        public virtual IMovieObjectModel MapToModelLite(IMovieObject entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieObject, MovieObjectModel>(entity);
             // MovieObject Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieObjectModel MapToModelListing(IMovieObject entity)
+        public virtual IMovieObjectModel MapToModelListing(IMovieObject entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieObject, MovieObjectModel>(entity);
             // MovieObject Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieObjectSearchModel MapToSearchModel(IMovieObjectModel model)
+        public virtual IMovieObjectSearchModel MapToSearchModel(IMovieObjectModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieObjectModel, MovieObjectSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.ObjectId = model.ObjectId;
             searchModel.ObjectCustomKey = model.Object?.CustomKey;
+            searchModel.ObjectApiDetailUrl = model.Object?.ApiDetailUrl;
+            searchModel.ObjectSiteDetailUrl = model.Object?.SiteDetailUrl;
             searchModel.ObjectName = model.Object?.Name;
+            searchModel.ObjectShortDescription = model.Object?.ShortDescription;
             searchModel.ObjectDescription = model.Object?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieObjectModel model, IMovieObject entity)
+        public virtual bool AreEqual(IMovieObjectModel model, IMovieObject entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieObject Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Promos
 
     public static class ResourceTypeMapperExtensions
     {
-        public static readonly ResourceTypeMapper Mapper = new ResourceTypeMapper();
+        public static IResourceTypeMapper Mapper = new ResourceTypeMapper();
+
+        public static void OverrideMapper(IResourceTypeMapper mapper) { Mapper = mapper; }
 
         public static IResourceType MapToEntity(this IResourceTypeModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Promos
 
     public class ResourceTypeMapper : IResourceTypeMapper
     {
-        public IResourceType MapToEntity(IResourceTypeModel model)
+        public virtual IResourceType MapToEntity(IResourceTypeModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<ResourceType, IResourceTypeModel>(model);
             // ResourceType Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Promos
             return entity;
         }
 
-        public void MapToEntity(IResourceTypeModel model, ref IResourceType entity)
+        public virtual void MapToEntity(IResourceTypeModel model, ref IResourceType entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -77,10 +79,10 @@ namespace ComicVine.API.Mappings//.Promos
             // Related Objects
             // <None>
             // Associated Objects
-            entity.Promos = (ICollection<IPromo>)model.Promos?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).Cast<Promo>();
+            entity.Promos = model.Promos?.Where(i => i.Active).Select(PromoMapperExtensions.MapToEntity).ToList();
         }
 
-        public IResourceTypeModel MapToModel(IResourceType entity)
+        public virtual IResourceTypeModel MapToModel(IResourceType entity)
         {
             var model = NameableEntityMapper.MapToModel<IResourceType, ResourceTypeModel>(entity);
             // ResourceType Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IResourceTypeModel MapToModelLite(IResourceType entity)
+        public virtual IResourceTypeModel MapToModelLite(IResourceType entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IResourceType, ResourceTypeModel>(entity);
             // ResourceType Properties
@@ -106,7 +108,7 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IResourceTypeModel MapToModelListing(IResourceType entity)
+        public virtual IResourceTypeModel MapToModelListing(IResourceType entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IResourceType, ResourceTypeModel>(entity);
             // ResourceType Properties
@@ -118,7 +120,7 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IResourceTypeSearchModel MapToSearchModel(IResourceTypeModel model)
+        public virtual IResourceTypeSearchModel MapToSearchModel(IResourceTypeModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IResourceTypeModel, ResourceTypeSearchModel>(model);
             // Search Properties
@@ -126,7 +128,7 @@ namespace ComicVine.API.Mappings//.Promos
             return searchModel;
         }
 
-        public bool AreEqual(IResourceTypeModel model, IResourceType entity)
+        public virtual bool AreEqual(IResourceTypeModel model, IResourceType entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // ResourceType Properties

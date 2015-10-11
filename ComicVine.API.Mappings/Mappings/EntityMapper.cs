@@ -16,9 +16,11 @@
             // Assign Properties
             if (model.Id.HasValue) { entity.Id = model.Id.Value; }
             entity.Active = model.Active;
-            entity.CustomKey = model.CustomKey;
             entity.CreatedDate = model.CreatedDate;
             entity.UpdatedDate = model.UpdatedDate;
+            entity.CustomKey = model.CustomKey;
+            entity.ApiDetailUrl = model.ApiDetailUrl;
+            entity.SiteDetailUrl = model.SiteDetailUrl;
             // Return the Result
             return entity;
         }
@@ -33,6 +35,8 @@
             entity.CreatedDate = model.CreatedDate;
             entity.UpdatedDate = model.UpdatedDate;
             entity.CustomKey = model.CustomKey;
+            entity.ApiDetailUrl = model.ApiDetailUrl;
+            entity.SiteDetailUrl = model.SiteDetailUrl;
         }
 
         public static TModel MapToModel<TEntity, TModel>(TEntity entity)
@@ -47,6 +51,8 @@
             model.CreatedDate = entity.CreatedDate;
             model.UpdatedDate = entity.UpdatedDate;
             model.CustomKey = entity.CustomKey;
+            model.ApiDetailUrl = entity.ApiDetailUrl;
+            model.SiteDetailUrl = entity.SiteDetailUrl;
             // Return the Result
             return model;
         }
@@ -63,6 +69,8 @@
             model.CreatedDate = entity.CreatedDate;
             model.UpdatedDate = entity.UpdatedDate;
             model.CustomKey = entity.CustomKey;
+            model.ApiDetailUrl = entity.ApiDetailUrl;
+            model.SiteDetailUrl = entity.SiteDetailUrl;
             // Return the Result
             return model;
         }
@@ -90,6 +98,8 @@
             // Assign Properties
             searchModel.Id = model.Id;
             searchModel.CustomKey = model.CustomKey;
+            searchModel.ApiDetailUrl = model.ApiDetailUrl;
+            searchModel.SiteDetailUrl = model.SiteDetailUrl;
             // Return the Result
             return searchModel;
         }
@@ -126,7 +136,9 @@
             // NOTE: Intentionally not checking dates
             return model.Id == entity.Id
                 && model.Active == entity.Active
-                && string.Equals(model.CustomKey, entity.CustomKey);
+                && string.Equals(model.CustomKey, entity.CustomKey)
+                && string.Equals(model.ApiDetailUrl, entity.ApiDetailUrl)
+                && string.Equals(model.SiteDetailUrl, entity.SiteDetailUrl);
         }
     }
 }

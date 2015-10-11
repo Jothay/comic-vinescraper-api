@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Objects
 
     public static class ObjectAppearedInIssueMapperExtensions
     {
-        public static readonly ObjectAppearedInIssueMapper Mapper = new ObjectAppearedInIssueMapper();
+        public static IObjectAppearedInIssueMapper Mapper = new ObjectAppearedInIssueMapper();
+
+        public static void OverrideMapper(IObjectAppearedInIssueMapper mapper) { Mapper = mapper; }
 
         public static IObjectAppearedInIssue MapToEntity(this IObjectAppearedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Objects
 
     public class ObjectAppearedInIssueMapper : IObjectAppearedInIssueMapper
     {
-        public IObjectAppearedInIssue MapToEntity(IObjectAppearedInIssueModel model)
+        public virtual IObjectAppearedInIssue MapToEntity(IObjectAppearedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<ObjectAppearedInIssue, IObjectAppearedInIssueModel>(model);
             // ObjectAppearedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Objects
             return entity;
         }
 
-        public void MapToEntity(IObjectAppearedInIssueModel model, ref IObjectAppearedInIssue entity)
+        public virtual void MapToEntity(IObjectAppearedInIssueModel model, ref IObjectAppearedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Objects
             // <None>
         }
 
-        public IObjectAppearedInIssueModel MapToModel(IObjectAppearedInIssue entity)
+        public virtual IObjectAppearedInIssueModel MapToModel(IObjectAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModel<IObjectAppearedInIssue, ObjectAppearedInIssueModel>(entity);
             // ObjectAppearedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAppearedInIssueModel MapToModelLite(IObjectAppearedInIssue entity)
+        public virtual IObjectAppearedInIssueModel MapToModelLite(IObjectAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<IObjectAppearedInIssue, ObjectAppearedInIssueModel>(entity);
             // ObjectAppearedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAppearedInIssueModel MapToModelListing(IObjectAppearedInIssue entity)
+        public virtual IObjectAppearedInIssueModel MapToModelListing(IObjectAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<IObjectAppearedInIssue, ObjectAppearedInIssueModel>(entity);
             // ObjectAppearedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectAppearedInIssueSearchModel MapToSearchModel(IObjectAppearedInIssueModel model)
+        public virtual IObjectAppearedInIssueSearchModel MapToSearchModel(IObjectAppearedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IObjectAppearedInIssueModel, ObjectAppearedInIssueSearchModel>(model);
             // Search Properties
             searchModel.ObjectId = model.ObjectId;
             searchModel.ObjectCustomKey = model.Object?.CustomKey;
+            searchModel.ObjectApiDetailUrl = model.Object?.ApiDetailUrl;
+            searchModel.ObjectSiteDetailUrl = model.Object?.SiteDetailUrl;
             searchModel.ObjectName = model.Object?.Name;
+            searchModel.ObjectShortDescription = model.Object?.ShortDescription;
             searchModel.ObjectDescription = model.Object?.Description;
             searchModel.AppearedInIssueId = model.AppearedInIssueId;
             searchModel.AppearedInIssueCustomKey = model.AppearedInIssue?.CustomKey;
+            searchModel.AppearedInIssueApiDetailUrl = model.AppearedInIssue?.ApiDetailUrl;
+            searchModel.AppearedInIssueSiteDetailUrl = model.AppearedInIssue?.SiteDetailUrl;
             searchModel.AppearedInIssueName = model.AppearedInIssue?.Name;
+            searchModel.AppearedInIssueShortDescription = model.AppearedInIssue?.ShortDescription;
             searchModel.AppearedInIssueDescription = model.AppearedInIssue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IObjectAppearedInIssueModel model, IObjectAppearedInIssue entity)
+        public virtual bool AreEqual(IObjectAppearedInIssueModel model, IObjectAppearedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // ObjectAppearedInIssue Properties

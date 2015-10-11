@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Promos
 
     public static class PromoMapperExtensions
     {
-        public static readonly PromoMapper Mapper = new PromoMapper();
+        public static IPromoMapper Mapper = new PromoMapper();
+
+        public static void OverrideMapper(IPromoMapper mapper) { Mapper = mapper; }
 
         public static IPromo MapToEntity(this IPromoModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Promos
 
     public class PromoMapper : IPromoMapper
     {
-        public IPromo MapToEntity(IPromoModel model)
+        public virtual IPromo MapToEntity(IPromoModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Promo, IPromoModel>(model);
             // Promo Properties
@@ -71,7 +73,7 @@ namespace ComicVine.API.Mappings//.Promos
             return entity;
         }
 
-        public void MapToEntity(IPromoModel model, ref IPromo entity)
+        public virtual void MapToEntity(IPromoModel model, ref IPromo entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -88,7 +90,7 @@ namespace ComicVine.API.Mappings//.Promos
             // <None>
         }
 
-        public IPromoModel MapToModel(IPromo entity)
+        public virtual IPromoModel MapToModel(IPromo entity)
         {
             var model = NameableEntityMapper.MapToModel<IPromo, PromoModel>(entity);
             // Promo Properties
@@ -106,7 +108,7 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IPromoModel MapToModelLite(IPromo entity)
+        public virtual IPromoModel MapToModelLite(IPromo entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IPromo, PromoModel>(entity);
             // Promo Properties
@@ -119,7 +121,7 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IPromoModel MapToModelListing(IPromo entity)
+        public virtual IPromoModel MapToModelListing(IPromo entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IPromo, PromoModel>(entity);
             // Promo Properties
@@ -132,27 +134,36 @@ namespace ComicVine.API.Mappings//.Promos
             return model;
         }
 
-        public IPromoSearchModel MapToSearchModel(IPromoModel model)
+        public virtual IPromoSearchModel MapToSearchModel(IPromoModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IPromoModel, PromoSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.AuthorId = model.AuthorId;
             searchModel.AuthorCustomKey = model.Author?.CustomKey;
+            searchModel.AuthorApiDetailUrl = model.Author?.ApiDetailUrl;
+            searchModel.AuthorSiteDetailUrl = model.Author?.SiteDetailUrl;
             searchModel.AuthorName = model.Author?.Name;
+            searchModel.AuthorShortDescription = model.Author?.ShortDescription;
             searchModel.AuthorDescription = model.Author?.Description;
             searchModel.ResourceTypeId = model.ResourceTypeId;
             searchModel.ResourceTypeCustomKey = model.ResourceType?.CustomKey;
+            searchModel.ResourceTypeApiDetailUrl = model.ResourceType?.ApiDetailUrl;
+            searchModel.ResourceTypeSiteDetailUrl = model.ResourceType?.SiteDetailUrl;
             searchModel.ResourceTypeName = model.ResourceType?.Name;
+            searchModel.ResourceTypeShortDescription = model.ResourceType?.ShortDescription;
             searchModel.ResourceTypeDescription = model.ResourceType?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IPromoModel model, IPromo entity)
+        public virtual bool AreEqual(IPromoModel model, IPromo entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Promo Properties

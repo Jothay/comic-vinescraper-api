@@ -209,7 +209,8 @@ namespace ComicVine.API.Interfaces.SearchModels
 <#+		if (property.type == "int" || property.type == "int?" || property.type == "bool" || property.type == "bool?" || property.type == "decimal" || property.type == "decimal?") { #>
         <#= property.type.Replace("?", "")#>? <#= filterNameTitle #> { get; set; }
 <#+		} #>
-<#+	} // End ForEach Loop (var property in entityClass.properties) // Searchable #>    }
+<#+	} // End ForEach Loop (var property in entityClass.properties) // Searchable #>
+    }
 }
 
 namespace ComicVine.API.Interfaces.Mappers

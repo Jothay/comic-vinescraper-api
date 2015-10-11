@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterDiedInIssueMapperExtensions
     {
-        public static readonly CharacterDiedInIssueMapper Mapper = new CharacterDiedInIssueMapper();
+        public static ICharacterDiedInIssueMapper Mapper = new CharacterDiedInIssueMapper();
+
+        public static void OverrideMapper(ICharacterDiedInIssueMapper mapper) { Mapper = mapper; }
 
         public static ICharacterDiedInIssue MapToEntity(this ICharacterDiedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterDiedInIssueMapper : ICharacterDiedInIssueMapper
     {
-        public ICharacterDiedInIssue MapToEntity(ICharacterDiedInIssueModel model)
+        public virtual ICharacterDiedInIssue MapToEntity(ICharacterDiedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterDiedInIssue, ICharacterDiedInIssueModel>(model);
             // CharacterDiedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterDiedInIssueModel model, ref ICharacterDiedInIssue entity)
+        public virtual void MapToEntity(ICharacterDiedInIssueModel model, ref ICharacterDiedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterDiedInIssueModel MapToModel(ICharacterDiedInIssue entity)
+        public virtual ICharacterDiedInIssueModel MapToModel(ICharacterDiedInIssue entity)
         {
             var model = EntityMapper.MapToModel<ICharacterDiedInIssue, CharacterDiedInIssueModel>(entity);
             // CharacterDiedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterDiedInIssueModel MapToModelLite(ICharacterDiedInIssue entity)
+        public virtual ICharacterDiedInIssueModel MapToModelLite(ICharacterDiedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterDiedInIssue, CharacterDiedInIssueModel>(entity);
             // CharacterDiedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterDiedInIssueModel MapToModelListing(ICharacterDiedInIssue entity)
+        public virtual ICharacterDiedInIssueModel MapToModelListing(ICharacterDiedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterDiedInIssue, CharacterDiedInIssueModel>(entity);
             // CharacterDiedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterDiedInIssueSearchModel MapToSearchModel(ICharacterDiedInIssueModel model)
+        public virtual ICharacterDiedInIssueSearchModel MapToSearchModel(ICharacterDiedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterDiedInIssueModel, CharacterDiedInIssueSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.DiedInIssueId = model.DiedInIssueId;
             searchModel.DiedInIssueCustomKey = model.DiedInIssue?.CustomKey;
+            searchModel.DiedInIssueApiDetailUrl = model.DiedInIssue?.ApiDetailUrl;
+            searchModel.DiedInIssueSiteDetailUrl = model.DiedInIssue?.SiteDetailUrl;
             searchModel.DiedInIssueName = model.DiedInIssue?.Name;
+            searchModel.DiedInIssueShortDescription = model.DiedInIssue?.ShortDescription;
             searchModel.DiedInIssueDescription = model.DiedInIssue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterDiedInIssueModel model, ICharacterDiedInIssue entity)
+        public virtual bool AreEqual(ICharacterDiedInIssueModel model, ICharacterDiedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterDiedInIssue Properties

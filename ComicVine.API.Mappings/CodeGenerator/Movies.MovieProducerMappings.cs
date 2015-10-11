@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieProducerMapperExtensions
     {
-        public static readonly MovieProducerMapper Mapper = new MovieProducerMapper();
+        public static IMovieProducerMapper Mapper = new MovieProducerMapper();
+
+        public static void OverrideMapper(IMovieProducerMapper mapper) { Mapper = mapper; }
 
         public static IMovieProducer MapToEntity(this IMovieProducerModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieProducerMapper : IMovieProducerMapper
     {
-        public IMovieProducer MapToEntity(IMovieProducerModel model)
+        public virtual IMovieProducer MapToEntity(IMovieProducerModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieProducer, IMovieProducerModel>(model);
             // MovieProducer Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieProducerModel model, ref IMovieProducer entity)
+        public virtual void MapToEntity(IMovieProducerModel model, ref IMovieProducer entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieProducerModel MapToModel(IMovieProducer entity)
+        public virtual IMovieProducerModel MapToModel(IMovieProducer entity)
         {
             var model = EntityMapper.MapToModel<IMovieProducer, MovieProducerModel>(entity);
             // MovieProducer Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieProducerModel MapToModelLite(IMovieProducer entity)
+        public virtual IMovieProducerModel MapToModelLite(IMovieProducer entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieProducer, MovieProducerModel>(entity);
             // MovieProducer Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieProducerModel MapToModelListing(IMovieProducer entity)
+        public virtual IMovieProducerModel MapToModelListing(IMovieProducer entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieProducer, MovieProducerModel>(entity);
             // MovieProducer Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieProducerSearchModel MapToSearchModel(IMovieProducerModel model)
+        public virtual IMovieProducerSearchModel MapToSearchModel(IMovieProducerModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieProducerModel, MovieProducerSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.ProducerId = model.ProducerId;
             searchModel.ProducerCustomKey = model.Producer?.CustomKey;
+            searchModel.ProducerApiDetailUrl = model.Producer?.ApiDetailUrl;
+            searchModel.ProducerSiteDetailUrl = model.Producer?.SiteDetailUrl;
             searchModel.ProducerName = model.Producer?.Name;
+            searchModel.ProducerShortDescription = model.Producer?.ShortDescription;
             searchModel.ProducerDescription = model.Producer?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieProducerModel model, IMovieProducer entity)
+        public virtual bool AreEqual(IMovieProducerModel model, IMovieProducer entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieProducer Properties

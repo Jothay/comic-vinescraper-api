@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeConceptMapperExtensions
     {
-        public static readonly EpisodeConceptMapper Mapper = new EpisodeConceptMapper();
+        public static IEpisodeConceptMapper Mapper = new EpisodeConceptMapper();
+
+        public static void OverrideMapper(IEpisodeConceptMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeConcept MapToEntity(this IEpisodeConceptModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeConceptMapper : IEpisodeConceptMapper
     {
-        public IEpisodeConcept MapToEntity(IEpisodeConceptModel model)
+        public virtual IEpisodeConcept MapToEntity(IEpisodeConceptModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeConcept, IEpisodeConceptModel>(model);
             // EpisodeConcept Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeConceptModel model, ref IEpisodeConcept entity)
+        public virtual void MapToEntity(IEpisodeConceptModel model, ref IEpisodeConcept entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeConceptModel MapToModel(IEpisodeConcept entity)
+        public virtual IEpisodeConceptModel MapToModel(IEpisodeConcept entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeConcept, EpisodeConceptModel>(entity);
             // EpisodeConcept Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeConceptModel MapToModelLite(IEpisodeConcept entity)
+        public virtual IEpisodeConceptModel MapToModelLite(IEpisodeConcept entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeConcept, EpisodeConceptModel>(entity);
             // EpisodeConcept Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeConceptModel MapToModelListing(IEpisodeConcept entity)
+        public virtual IEpisodeConceptModel MapToModelListing(IEpisodeConcept entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeConcept, EpisodeConceptModel>(entity);
             // EpisodeConcept Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeConceptSearchModel MapToSearchModel(IEpisodeConceptModel model)
+        public virtual IEpisodeConceptSearchModel MapToSearchModel(IEpisodeConceptModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeConceptModel, EpisodeConceptSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.ConceptId = model.ConceptId;
             searchModel.ConceptCustomKey = model.Concept?.CustomKey;
+            searchModel.ConceptApiDetailUrl = model.Concept?.ApiDetailUrl;
+            searchModel.ConceptSiteDetailUrl = model.Concept?.SiteDetailUrl;
             searchModel.ConceptName = model.Concept?.Name;
+            searchModel.ConceptShortDescription = model.Concept?.ShortDescription;
             searchModel.ConceptDescription = model.Concept?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeConceptModel model, IEpisodeConcept entity)
+        public virtual bool AreEqual(IEpisodeConceptModel model, IEpisodeConcept entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeConcept Properties

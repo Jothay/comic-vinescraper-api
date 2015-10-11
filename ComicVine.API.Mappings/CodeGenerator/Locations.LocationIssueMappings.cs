@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Locations
 
     public static class LocationIssueMapperExtensions
     {
-        public static readonly LocationIssueMapper Mapper = new LocationIssueMapper();
+        public static ILocationIssueMapper Mapper = new LocationIssueMapper();
+
+        public static void OverrideMapper(ILocationIssueMapper mapper) { Mapper = mapper; }
 
         public static ILocationIssue MapToEntity(this ILocationIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Locations
 
     public class LocationIssueMapper : ILocationIssueMapper
     {
-        public ILocationIssue MapToEntity(ILocationIssueModel model)
+        public virtual ILocationIssue MapToEntity(ILocationIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<LocationIssue, ILocationIssueModel>(model);
             // LocationIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Locations
             return entity;
         }
 
-        public void MapToEntity(ILocationIssueModel model, ref ILocationIssue entity)
+        public virtual void MapToEntity(ILocationIssueModel model, ref ILocationIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Locations
             // <None>
         }
 
-        public ILocationIssueModel MapToModel(ILocationIssue entity)
+        public virtual ILocationIssueModel MapToModel(ILocationIssue entity)
         {
             var model = EntityMapper.MapToModel<ILocationIssue, LocationIssueModel>(entity);
             // LocationIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationIssueModel MapToModelLite(ILocationIssue entity)
+        public virtual ILocationIssueModel MapToModelLite(ILocationIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ILocationIssue, LocationIssueModel>(entity);
             // LocationIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationIssueModel MapToModelListing(ILocationIssue entity)
+        public virtual ILocationIssueModel MapToModelListing(ILocationIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ILocationIssue, LocationIssueModel>(entity);
             // LocationIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Locations
             return model;
         }
 
-        public ILocationIssueSearchModel MapToSearchModel(ILocationIssueModel model)
+        public virtual ILocationIssueSearchModel MapToSearchModel(ILocationIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ILocationIssueModel, LocationIssueSearchModel>(model);
             // Search Properties
             searchModel.LocationId = model.LocationId;
             searchModel.LocationCustomKey = model.Location?.CustomKey;
+            searchModel.LocationApiDetailUrl = model.Location?.ApiDetailUrl;
+            searchModel.LocationSiteDetailUrl = model.Location?.SiteDetailUrl;
             searchModel.LocationName = model.Location?.Name;
+            searchModel.LocationShortDescription = model.Location?.ShortDescription;
             searchModel.LocationDescription = model.Location?.Description;
             searchModel.IssueId = model.IssueId;
             searchModel.IssueCustomKey = model.Issue?.CustomKey;
+            searchModel.IssueApiDetailUrl = model.Issue?.ApiDetailUrl;
+            searchModel.IssueSiteDetailUrl = model.Issue?.SiteDetailUrl;
             searchModel.IssueName = model.Issue?.Name;
+            searchModel.IssueShortDescription = model.Issue?.ShortDescription;
             searchModel.IssueDescription = model.Issue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ILocationIssueModel model, ILocationIssue entity)
+        public virtual bool AreEqual(ILocationIssueModel model, ILocationIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // LocationIssue Properties

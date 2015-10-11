@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Objects
 
     public static class ObjectMapperExtensions
     {
-        public static readonly ObjectMapper Mapper = new ObjectMapper();
+        public static IObjectMapper Mapper = new ObjectMapper();
+
+        public static void OverrideMapper(IObjectMapper mapper) { Mapper = mapper; }
 
         public static IObject MapToEntity(this IObjectModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Objects
 
     public class ObjectMapper : IObjectMapper
     {
-        public IObject MapToEntity(IObjectModel model)
+        public virtual IObject MapToEntity(IObjectModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Object, IObjectModel>(model);
             // Object Properties
@@ -74,7 +76,7 @@ namespace ComicVine.API.Mappings//.Objects
             return entity;
         }
 
-        public void MapToEntity(IObjectModel model, ref IObject entity)
+        public virtual void MapToEntity(IObjectModel model, ref IObject entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -86,15 +88,15 @@ namespace ComicVine.API.Mappings//.Objects
             entity.PrimaryImageFileId = model.PrimaryImageFileId;
             entity.PrimaryImageFile = (ImageFile)model.PrimaryImageFile?.MapToEntity();
             // Associated Objects
-            entity.ObjectAliases = (ICollection<IObjectAlias>)model.ObjectAliases?.Where(i => i.Active).Select(ObjectAliasMapperExtensions.MapToEntity).Cast<ObjectAlias>();
-            entity.ObjectIssuesAppearedIn = (ICollection<IObjectAppearedInIssue>)model.ObjectIssuesAppearedIn?.Where(i => i.Active).Select(ObjectAppearedInIssueMapperExtensions.MapToEntity).Cast<ObjectAppearedInIssue>();
-            entity.ObjectIssues = (ICollection<IObjectIssue>)model.ObjectIssues?.Where(i => i.Active).Select(ObjectIssueMapperExtensions.MapToEntity).Cast<ObjectIssue>();
-            entity.ObjectMovies = (ICollection<IObjectMovie>)model.ObjectMovies?.Where(i => i.Active).Select(ObjectMovieMapperExtensions.MapToEntity).Cast<ObjectMovie>();
-            entity.ObjectStoryArcs = (ICollection<IObjectStoryArc>)model.ObjectStoryArcs?.Where(i => i.Active).Select(ObjectStoryArcMapperExtensions.MapToEntity).Cast<ObjectStoryArc>();
-            entity.ObjectVolumes = (ICollection<IObjectVolume>)model.ObjectVolumes?.Where(i => i.Active).Select(ObjectVolumeMapperExtensions.MapToEntity).Cast<ObjectVolume>();
+            entity.ObjectAliases = model.ObjectAliases?.Where(i => i.Active).Select(ObjectAliasMapperExtensions.MapToEntity).ToList();
+            entity.ObjectIssuesAppearedIn = model.ObjectIssuesAppearedIn?.Where(i => i.Active).Select(ObjectAppearedInIssueMapperExtensions.MapToEntity).ToList();
+            entity.ObjectIssues = model.ObjectIssues?.Where(i => i.Active).Select(ObjectIssueMapperExtensions.MapToEntity).ToList();
+            entity.ObjectMovies = model.ObjectMovies?.Where(i => i.Active).Select(ObjectMovieMapperExtensions.MapToEntity).ToList();
+            entity.ObjectStoryArcs = model.ObjectStoryArcs?.Where(i => i.Active).Select(ObjectStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.ObjectVolumes = model.ObjectVolumes?.Where(i => i.Active).Select(ObjectVolumeMapperExtensions.MapToEntity).ToList();
         }
 
-        public IObjectModel MapToModel(IObject entity)
+        public virtual IObjectModel MapToModel(IObject entity)
         {
             var model = NameableEntityMapper.MapToModel<IObject, ObjectModel>(entity);
             // Object Properties
@@ -115,7 +117,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectModel MapToModelLite(IObject entity)
+        public virtual IObjectModel MapToModelLite(IObject entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IObject, ObjectModel>(entity);
             // Object Properties
@@ -127,7 +129,7 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectModel MapToModelListing(IObject entity)
+        public virtual IObjectModel MapToModelListing(IObject entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IObject, ObjectModel>(entity);
             // Object Properties
@@ -139,23 +141,29 @@ namespace ComicVine.API.Mappings//.Objects
             return model;
         }
 
-        public IObjectSearchModel MapToSearchModel(IObjectModel model)
+        public virtual IObjectSearchModel MapToSearchModel(IObjectModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IObjectModel, ObjectSearchModel>(model);
             // Search Properties
             searchModel.FirstIssueAppearanceId = model.FirstIssueAppearanceId;
             searchModel.FirstIssueAppearanceCustomKey = model.FirstIssueAppearance?.CustomKey;
+            searchModel.FirstIssueAppearanceApiDetailUrl = model.FirstIssueAppearance?.ApiDetailUrl;
+            searchModel.FirstIssueAppearanceSiteDetailUrl = model.FirstIssueAppearance?.SiteDetailUrl;
             searchModel.FirstIssueAppearanceName = model.FirstIssueAppearance?.Name;
+            searchModel.FirstIssueAppearanceShortDescription = model.FirstIssueAppearance?.ShortDescription;
             searchModel.FirstIssueAppearanceDescription = model.FirstIssueAppearance?.Description;
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IObjectModel model, IObject entity)
+        public virtual bool AreEqual(IObjectModel model, IObject entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Object Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeMapperExtensions
     {
-        public static readonly EpisodeMapper Mapper = new EpisodeMapper();
+        public static IEpisodeMapper Mapper = new EpisodeMapper();
+
+        public static void OverrideMapper(IEpisodeMapper mapper) { Mapper = mapper; }
 
         public static IEpisode MapToEntity(this IEpisodeModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeMapper : IEpisodeMapper
     {
-        public IEpisode MapToEntity(IEpisodeModel model)
+        public virtual IEpisode MapToEntity(IEpisodeModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<Episode, IEpisodeModel>(model);
             // Episode Properties
@@ -87,7 +89,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeModel model, ref IEpisode entity)
+        public virtual void MapToEntity(IEpisodeModel model, ref IEpisode entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -103,24 +105,24 @@ namespace ComicVine.API.Mappings//.Episodes
             entity.SeriesId = model.SeriesId;
             entity.Series = (Series)model.Series?.MapToEntity();
             // Associated Objects
-            entity.EpisodeAliases = (ICollection<IEpisodeAlias>)model.EpisodeAliases?.Where(i => i.Active).Select(EpisodeAliasMapperExtensions.MapToEntity).Cast<EpisodeAlias>();
-            entity.EpisodeCharacters = (ICollection<IEpisodeCharacter>)model.EpisodeCharacters?.Where(i => i.Active).Select(EpisodeCharacterMapperExtensions.MapToEntity).Cast<EpisodeCharacter>();
-            entity.EpisodeCharactersDied = (ICollection<IEpisodeCharacterDied>)model.EpisodeCharactersDied?.Where(i => i.Active).Select(EpisodeCharacterDiedMapperExtensions.MapToEntity).Cast<EpisodeCharacterDied>();
-            entity.EpisodeCharacterFirstAppearances = (ICollection<IEpisodeCharacterFirstAppearance>)model.EpisodeCharacterFirstAppearances?.Where(i => i.Active).Select(EpisodeCharacterFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeCharacterFirstAppearance>();
-            entity.EpisodeConcepts = (ICollection<IEpisodeConcept>)model.EpisodeConcepts?.Where(i => i.Active).Select(EpisodeConceptMapperExtensions.MapToEntity).Cast<EpisodeConcept>();
-            entity.EpisodeConceptFirstAppearances = (ICollection<IEpisodeConceptFirstAppearance>)model.EpisodeConceptFirstAppearances?.Where(i => i.Active).Select(EpisodeConceptFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeConceptFirstAppearance>();
-            entity.EpisodeLocations = (ICollection<IEpisodeLocation>)model.EpisodeLocations?.Where(i => i.Active).Select(EpisodeLocationMapperExtensions.MapToEntity).Cast<EpisodeLocation>();
-            entity.EpisodeLocationFirstAppearances = (ICollection<IEpisodeLocationFirstAppearance>)model.EpisodeLocationFirstAppearances?.Where(i => i.Active).Select(EpisodeLocationFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeLocationFirstAppearance>();
-            entity.EpisodeObjects = (ICollection<IEpisodeObject>)model.EpisodeObjects?.Where(i => i.Active).Select(EpisodeObjectMapperExtensions.MapToEntity).Cast<EpisodeObject>();
-            entity.EpisodeObjectFirstAppearances = (ICollection<IEpisodeObjectFirstAppearance>)model.EpisodeObjectFirstAppearances?.Where(i => i.Active).Select(EpisodeObjectFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeObjectFirstAppearance>();
-            entity.EpisodePeople = (ICollection<IEpisodePerson>)model.EpisodePeople?.Where(i => i.Active).Select(EpisodePersonMapperExtensions.MapToEntity).Cast<EpisodePerson>();
-            entity.EpisodeStoryArcs = (ICollection<IEpisodeStoryArc>)model.EpisodeStoryArcs?.Where(i => i.Active).Select(EpisodeStoryArcMapperExtensions.MapToEntity).Cast<EpisodeStoryArc>();
-            entity.EpisodeStoryArcFirstAppearances = (ICollection<IEpisodeStoryArcFirstAppearance>)model.EpisodeStoryArcFirstAppearances?.Where(i => i.Active).Select(EpisodeStoryArcFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeStoryArcFirstAppearance>();
-            entity.EpisodeTeams = (ICollection<IEpisodeTeam>)model.EpisodeTeams?.Where(i => i.Active).Select(EpisodeTeamMapperExtensions.MapToEntity).Cast<EpisodeTeam>();
-            entity.EpisodeTeamFirstAppearances = (ICollection<IEpisodeTeamFirstAppearance>)model.EpisodeTeamFirstAppearances?.Where(i => i.Active).Select(EpisodeTeamFirstAppearanceMapperExtensions.MapToEntity).Cast<EpisodeTeamFirstAppearance>();
+            entity.EpisodeAliases = model.EpisodeAliases?.Where(i => i.Active).Select(EpisodeAliasMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeCharacters = model.EpisodeCharacters?.Where(i => i.Active).Select(EpisodeCharacterMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeCharactersDied = model.EpisodeCharactersDied?.Where(i => i.Active).Select(EpisodeCharacterDiedMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeCharacterFirstAppearances = model.EpisodeCharacterFirstAppearances?.Where(i => i.Active).Select(EpisodeCharacterFirstAppearanceMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeConcepts = model.EpisodeConcepts?.Where(i => i.Active).Select(EpisodeConceptMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeConceptFirstAppearances = model.EpisodeConceptFirstAppearances?.Where(i => i.Active).Select(EpisodeConceptFirstAppearanceMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeLocations = model.EpisodeLocations?.Where(i => i.Active).Select(EpisodeLocationMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeLocationFirstAppearances = model.EpisodeLocationFirstAppearances?.Where(i => i.Active).Select(EpisodeLocationFirstAppearanceMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeObjects = model.EpisodeObjects?.Where(i => i.Active).Select(EpisodeObjectMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeObjectFirstAppearances = model.EpisodeObjectFirstAppearances?.Where(i => i.Active).Select(EpisodeObjectFirstAppearanceMapperExtensions.MapToEntity).ToList();
+            entity.EpisodePeople = model.EpisodePeople?.Where(i => i.Active).Select(EpisodePersonMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeStoryArcs = model.EpisodeStoryArcs?.Where(i => i.Active).Select(EpisodeStoryArcMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeStoryArcFirstAppearances = model.EpisodeStoryArcFirstAppearances?.Where(i => i.Active).Select(EpisodeStoryArcFirstAppearanceMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeTeams = model.EpisodeTeams?.Where(i => i.Active).Select(EpisodeTeamMapperExtensions.MapToEntity).ToList();
+            entity.EpisodeTeamFirstAppearances = model.EpisodeTeamFirstAppearances?.Where(i => i.Active).Select(EpisodeTeamFirstAppearanceMapperExtensions.MapToEntity).ToList();
         }
 
-        public IEpisodeModel MapToModel(IEpisode entity)
+        public virtual IEpisodeModel MapToModel(IEpisode entity)
         {
             var model = NameableEntityMapper.MapToModel<IEpisode, EpisodeModel>(entity);
             // Episode Properties
@@ -154,7 +156,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeModel MapToModelLite(IEpisode entity)
+        public virtual IEpisodeModel MapToModelLite(IEpisode entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IEpisode, EpisodeModel>(entity);
             // Episode Properties
@@ -170,7 +172,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeModel MapToModelListing(IEpisode entity)
+        public virtual IEpisodeModel MapToModelListing(IEpisode entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IEpisode, EpisodeModel>(entity);
             // Episode Properties
@@ -186,24 +188,30 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeSearchModel MapToSearchModel(IEpisodeModel model)
+        public virtual IEpisodeSearchModel MapToSearchModel(IEpisodeModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IEpisodeModel, EpisodeSearchModel>(model);
             // Search Properties
             searchModel.PrimaryImageFileId = model.PrimaryImageFileId;
             searchModel.PrimaryImageFileCustomKey = model.PrimaryImageFile?.CustomKey;
+            searchModel.PrimaryImageFileApiDetailUrl = model.PrimaryImageFile?.ApiDetailUrl;
+            searchModel.PrimaryImageFileSiteDetailUrl = model.PrimaryImageFile?.SiteDetailUrl;
             searchModel.PrimaryImageFileName = model.PrimaryImageFile?.Name;
+            searchModel.PrimaryImageFileShortDescription = model.PrimaryImageFile?.ShortDescription;
             searchModel.PrimaryImageFileDescription = model.PrimaryImageFile?.Description;
             searchModel.SeriesId = model.SeriesId;
             searchModel.SeriesCustomKey = model.Series?.CustomKey;
+            searchModel.SeriesApiDetailUrl = model.Series?.ApiDetailUrl;
+            searchModel.SeriesSiteDetailUrl = model.Series?.SiteDetailUrl;
             searchModel.SeriesName = model.Series?.Name;
+            searchModel.SeriesShortDescription = model.Series?.ShortDescription;
             searchModel.SeriesDescription = model.Series?.Description;
             searchModel.HasStaffReview = model.HasStaffReview;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeModel model, IEpisode entity)
+        public virtual bool AreEqual(IEpisodeModel model, IEpisode entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // Episode Properties

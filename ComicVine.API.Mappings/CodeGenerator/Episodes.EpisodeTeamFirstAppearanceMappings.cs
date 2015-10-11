@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeTeamFirstAppearanceMapperExtensions
     {
-        public static readonly EpisodeTeamFirstAppearanceMapper Mapper = new EpisodeTeamFirstAppearanceMapper();
+        public static IEpisodeTeamFirstAppearanceMapper Mapper = new EpisodeTeamFirstAppearanceMapper();
+
+        public static void OverrideMapper(IEpisodeTeamFirstAppearanceMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeTeamFirstAppearance MapToEntity(this IEpisodeTeamFirstAppearanceModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeTeamFirstAppearanceMapper : IEpisodeTeamFirstAppearanceMapper
     {
-        public IEpisodeTeamFirstAppearance MapToEntity(IEpisodeTeamFirstAppearanceModel model)
+        public virtual IEpisodeTeamFirstAppearance MapToEntity(IEpisodeTeamFirstAppearanceModel model)
         {
             var entity = EntityMapper.MapToEntity<EpisodeTeamFirstAppearance, IEpisodeTeamFirstAppearanceModel>(model);
             // EpisodeTeamFirstAppearance Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeTeamFirstAppearanceModel model, ref IEpisodeTeamFirstAppearance entity)
+        public virtual void MapToEntity(IEpisodeTeamFirstAppearanceModel model, ref IEpisodeTeamFirstAppearance entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeTeamFirstAppearanceModel MapToModel(IEpisodeTeamFirstAppearance entity)
+        public virtual IEpisodeTeamFirstAppearanceModel MapToModel(IEpisodeTeamFirstAppearance entity)
         {
             var model = EntityMapper.MapToModel<IEpisodeTeamFirstAppearance, EpisodeTeamFirstAppearanceModel>(entity);
             // EpisodeTeamFirstAppearance Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamFirstAppearanceModel MapToModelLite(IEpisodeTeamFirstAppearance entity)
+        public virtual IEpisodeTeamFirstAppearanceModel MapToModelLite(IEpisodeTeamFirstAppearance entity)
         {
             var model = EntityMapper.MapToModelLite<IEpisodeTeamFirstAppearance, EpisodeTeamFirstAppearanceModel>(entity);
             // EpisodeTeamFirstAppearance Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamFirstAppearanceModel MapToModelListing(IEpisodeTeamFirstAppearance entity)
+        public virtual IEpisodeTeamFirstAppearanceModel MapToModelListing(IEpisodeTeamFirstAppearance entity)
         {
             var model = EntityMapper.MapToModelListing<IEpisodeTeamFirstAppearance, EpisodeTeamFirstAppearanceModel>(entity);
             // EpisodeTeamFirstAppearance Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeTeamFirstAppearanceSearchModel MapToSearchModel(IEpisodeTeamFirstAppearanceModel model)
+        public virtual IEpisodeTeamFirstAppearanceSearchModel MapToSearchModel(IEpisodeTeamFirstAppearanceModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IEpisodeTeamFirstAppearanceModel, EpisodeTeamFirstAppearanceSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeTeamFirstAppearanceModel model, IEpisodeTeamFirstAppearance entity)
+        public virtual bool AreEqual(IEpisodeTeamFirstAppearanceModel model, IEpisodeTeamFirstAppearance entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // EpisodeTeamFirstAppearance Properties

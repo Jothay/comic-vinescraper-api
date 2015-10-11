@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterTeamMapperExtensions
     {
-        public static readonly CharacterTeamMapper Mapper = new CharacterTeamMapper();
+        public static ICharacterTeamMapper Mapper = new CharacterTeamMapper();
+
+        public static void OverrideMapper(ICharacterTeamMapper mapper) { Mapper = mapper; }
 
         public static ICharacterTeam MapToEntity(this ICharacterTeamModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterTeamMapper : ICharacterTeamMapper
     {
-        public ICharacterTeam MapToEntity(ICharacterTeamModel model)
+        public virtual ICharacterTeam MapToEntity(ICharacterTeamModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterTeam, ICharacterTeamModel>(model);
             // CharacterTeam Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterTeamModel model, ref ICharacterTeam entity)
+        public virtual void MapToEntity(ICharacterTeamModel model, ref ICharacterTeam entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterTeamModel MapToModel(ICharacterTeam entity)
+        public virtual ICharacterTeamModel MapToModel(ICharacterTeam entity)
         {
             var model = EntityMapper.MapToModel<ICharacterTeam, CharacterTeamModel>(entity);
             // CharacterTeam Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterTeamModel MapToModelLite(ICharacterTeam entity)
+        public virtual ICharacterTeamModel MapToModelLite(ICharacterTeam entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterTeam, CharacterTeamModel>(entity);
             // CharacterTeam Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterTeamModel MapToModelListing(ICharacterTeam entity)
+        public virtual ICharacterTeamModel MapToModelListing(ICharacterTeam entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterTeam, CharacterTeamModel>(entity);
             // CharacterTeam Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterTeamSearchModel MapToSearchModel(ICharacterTeamModel model)
+        public virtual ICharacterTeamSearchModel MapToSearchModel(ICharacterTeamModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterTeamModel, CharacterTeamSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.TeamId = model.TeamId;
             searchModel.TeamCustomKey = model.Team?.CustomKey;
+            searchModel.TeamApiDetailUrl = model.Team?.ApiDetailUrl;
+            searchModel.TeamSiteDetailUrl = model.Team?.SiteDetailUrl;
             searchModel.TeamName = model.Team?.Name;
+            searchModel.TeamShortDescription = model.Team?.ShortDescription;
             searchModel.TeamDescription = model.Team?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterTeamModel model, ICharacterTeam entity)
+        public virtual bool AreEqual(ICharacterTeamModel model, ICharacterTeam entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterTeam Properties

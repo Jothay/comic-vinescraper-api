@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public static class EpisodeAliasMapperExtensions
     {
-        public static readonly EpisodeAliasMapper Mapper = new EpisodeAliasMapper();
+        public static IEpisodeAliasMapper Mapper = new EpisodeAliasMapper();
+
+        public static void OverrideMapper(IEpisodeAliasMapper mapper) { Mapper = mapper; }
 
         public static IEpisodeAlias MapToEntity(this IEpisodeAliasModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Episodes
 
     public class EpisodeAliasMapper : IEpisodeAliasMapper
     {
-        public IEpisodeAlias MapToEntity(IEpisodeAliasModel model)
+        public virtual IEpisodeAlias MapToEntity(IEpisodeAliasModel model)
         {
             var entity = NameableEntityMapper.MapToEntity<EpisodeAlias, IEpisodeAliasModel>(model);
             // EpisodeAlias Properties
@@ -67,7 +69,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return entity;
         }
 
-        public void MapToEntity(IEpisodeAliasModel model, ref IEpisodeAlias entity)
+        public virtual void MapToEntity(IEpisodeAliasModel model, ref IEpisodeAlias entity)
         {
             // Assign Base properties
             NameableEntityMapper.MapToEntity(model, ref entity);
@@ -80,7 +82,7 @@ namespace ComicVine.API.Mappings//.Episodes
             // <None>
         }
 
-        public IEpisodeAliasModel MapToModel(IEpisodeAlias entity)
+        public virtual IEpisodeAliasModel MapToModel(IEpisodeAlias entity)
         {
             var model = NameableEntityMapper.MapToModel<IEpisodeAlias, EpisodeAliasModel>(entity);
             // EpisodeAlias Properties
@@ -94,7 +96,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeAliasModel MapToModelLite(IEpisodeAlias entity)
+        public virtual IEpisodeAliasModel MapToModelLite(IEpisodeAlias entity)
         {
             var model = NameableEntityMapper.MapToModelLite<IEpisodeAlias, EpisodeAliasModel>(entity);
             // EpisodeAlias Properties
@@ -105,7 +107,7 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeAliasModel MapToModelListing(IEpisodeAlias entity)
+        public virtual IEpisodeAliasModel MapToModelListing(IEpisodeAlias entity)
         {
             var model = NameableEntityMapper.MapToModelListing<IEpisodeAlias, EpisodeAliasModel>(entity);
             // EpisodeAlias Properties
@@ -116,19 +118,22 @@ namespace ComicVine.API.Mappings//.Episodes
             return model;
         }
 
-        public IEpisodeAliasSearchModel MapToSearchModel(IEpisodeAliasModel model)
+        public virtual IEpisodeAliasSearchModel MapToSearchModel(IEpisodeAliasModel model)
         {
             var searchModel = NameableEntityMapper.MapToSearchModel<IEpisodeAliasModel, EpisodeAliasSearchModel>(model);
             // Search Properties
             searchModel.EpisodeId = model.EpisodeId;
             searchModel.EpisodeCustomKey = model.Episode?.CustomKey;
+            searchModel.EpisodeApiDetailUrl = model.Episode?.ApiDetailUrl;
+            searchModel.EpisodeSiteDetailUrl = model.Episode?.SiteDetailUrl;
             searchModel.EpisodeName = model.Episode?.Name;
+            searchModel.EpisodeShortDescription = model.Episode?.ShortDescription;
             searchModel.EpisodeDescription = model.Episode?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IEpisodeAliasModel model, IEpisodeAlias entity)
+        public virtual bool AreEqual(IEpisodeAliasModel model, IEpisodeAlias entity)
         {
             return NameableEntityMapper.AreEqual(model, entity)
                 // EpisodeAlias Properties

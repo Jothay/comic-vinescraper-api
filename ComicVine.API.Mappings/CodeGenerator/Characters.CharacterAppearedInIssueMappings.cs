@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Characters
 
     public static class CharacterAppearedInIssueMapperExtensions
     {
-        public static readonly CharacterAppearedInIssueMapper Mapper = new CharacterAppearedInIssueMapper();
+        public static ICharacterAppearedInIssueMapper Mapper = new CharacterAppearedInIssueMapper();
+
+        public static void OverrideMapper(ICharacterAppearedInIssueMapper mapper) { Mapper = mapper; }
 
         public static ICharacterAppearedInIssue MapToEntity(this ICharacterAppearedInIssueModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Characters
 
     public class CharacterAppearedInIssueMapper : ICharacterAppearedInIssueMapper
     {
-        public ICharacterAppearedInIssue MapToEntity(ICharacterAppearedInIssueModel model)
+        public virtual ICharacterAppearedInIssue MapToEntity(ICharacterAppearedInIssueModel model)
         {
             var entity = EntityMapper.MapToEntity<CharacterAppearedInIssue, ICharacterAppearedInIssueModel>(model);
             // CharacterAppearedInIssue Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Characters
             return entity;
         }
 
-        public void MapToEntity(ICharacterAppearedInIssueModel model, ref ICharacterAppearedInIssue entity)
+        public virtual void MapToEntity(ICharacterAppearedInIssueModel model, ref ICharacterAppearedInIssue entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Characters
             // <None>
         }
 
-        public ICharacterAppearedInIssueModel MapToModel(ICharacterAppearedInIssue entity)
+        public virtual ICharacterAppearedInIssueModel MapToModel(ICharacterAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModel<ICharacterAppearedInIssue, CharacterAppearedInIssueModel>(entity);
             // CharacterAppearedInIssue Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAppearedInIssueModel MapToModelLite(ICharacterAppearedInIssue entity)
+        public virtual ICharacterAppearedInIssueModel MapToModelLite(ICharacterAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelLite<ICharacterAppearedInIssue, CharacterAppearedInIssueModel>(entity);
             // CharacterAppearedInIssue Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAppearedInIssueModel MapToModelListing(ICharacterAppearedInIssue entity)
+        public virtual ICharacterAppearedInIssueModel MapToModelListing(ICharacterAppearedInIssue entity)
         {
             var model = EntityMapper.MapToModelListing<ICharacterAppearedInIssue, CharacterAppearedInIssueModel>(entity);
             // CharacterAppearedInIssue Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Characters
             return model;
         }
 
-        public ICharacterAppearedInIssueSearchModel MapToSearchModel(ICharacterAppearedInIssueModel model)
+        public virtual ICharacterAppearedInIssueSearchModel MapToSearchModel(ICharacterAppearedInIssueModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<ICharacterAppearedInIssueModel, CharacterAppearedInIssueSearchModel>(model);
             // Search Properties
             searchModel.CharacterId = model.CharacterId;
             searchModel.CharacterCustomKey = model.Character?.CustomKey;
+            searchModel.CharacterApiDetailUrl = model.Character?.ApiDetailUrl;
+            searchModel.CharacterSiteDetailUrl = model.Character?.SiteDetailUrl;
             searchModel.CharacterName = model.Character?.Name;
+            searchModel.CharacterShortDescription = model.Character?.ShortDescription;
             searchModel.CharacterDescription = model.Character?.Description;
             searchModel.AppearedInIssueId = model.AppearedInIssueId;
             searchModel.AppearedInIssueCustomKey = model.AppearedInIssue?.CustomKey;
+            searchModel.AppearedInIssueApiDetailUrl = model.AppearedInIssue?.ApiDetailUrl;
+            searchModel.AppearedInIssueSiteDetailUrl = model.AppearedInIssue?.SiteDetailUrl;
             searchModel.AppearedInIssueName = model.AppearedInIssue?.Name;
+            searchModel.AppearedInIssueShortDescription = model.AppearedInIssue?.ShortDescription;
             searchModel.AppearedInIssueDescription = model.AppearedInIssue?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(ICharacterAppearedInIssueModel model, ICharacterAppearedInIssue entity)
+        public virtual bool AreEqual(ICharacterAppearedInIssueModel model, ICharacterAppearedInIssue entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // CharacterAppearedInIssue Properties

@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public static class StoryArcWriterMapperExtensions
     {
-        public static readonly StoryArcWriterMapper Mapper = new StoryArcWriterMapper();
+        public static IStoryArcWriterMapper Mapper = new StoryArcWriterMapper();
+
+        public static void OverrideMapper(IStoryArcWriterMapper mapper) { Mapper = mapper; }
 
         public static IStoryArcWriter MapToEntity(this IStoryArcWriterModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
 
     public class StoryArcWriterMapper : IStoryArcWriterMapper
     {
-        public IStoryArcWriter MapToEntity(IStoryArcWriterModel model)
+        public virtual IStoryArcWriter MapToEntity(IStoryArcWriterModel model)
         {
             var entity = EntityMapper.MapToEntity<StoryArcWriter, IStoryArcWriterModel>(model);
             // StoryArcWriter Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return entity;
         }
 
-        public void MapToEntity(IStoryArcWriterModel model, ref IStoryArcWriter entity)
+        public virtual void MapToEntity(IStoryArcWriterModel model, ref IStoryArcWriter entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             // <None>
         }
 
-        public IStoryArcWriterModel MapToModel(IStoryArcWriter entity)
+        public virtual IStoryArcWriterModel MapToModel(IStoryArcWriter entity)
         {
             var model = EntityMapper.MapToModel<IStoryArcWriter, StoryArcWriterModel>(entity);
             // StoryArcWriter Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcWriterModel MapToModelLite(IStoryArcWriter entity)
+        public virtual IStoryArcWriterModel MapToModelLite(IStoryArcWriter entity)
         {
             var model = EntityMapper.MapToModelLite<IStoryArcWriter, StoryArcWriterModel>(entity);
             // StoryArcWriter Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcWriterModel MapToModelListing(IStoryArcWriter entity)
+        public virtual IStoryArcWriterModel MapToModelListing(IStoryArcWriter entity)
         {
             var model = EntityMapper.MapToModelListing<IStoryArcWriter, StoryArcWriterModel>(entity);
             // StoryArcWriter Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.StoryArcs
             return model;
         }
 
-        public IStoryArcWriterSearchModel MapToSearchModel(IStoryArcWriterModel model)
+        public virtual IStoryArcWriterSearchModel MapToSearchModel(IStoryArcWriterModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IStoryArcWriterModel, StoryArcWriterSearchModel>(model);
             // Search Properties
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             searchModel.WriterId = model.WriterId;
             searchModel.WriterCustomKey = model.Writer?.CustomKey;
+            searchModel.WriterApiDetailUrl = model.Writer?.ApiDetailUrl;
+            searchModel.WriterSiteDetailUrl = model.Writer?.SiteDetailUrl;
             searchModel.WriterName = model.Writer?.Name;
+            searchModel.WriterShortDescription = model.Writer?.ShortDescription;
             searchModel.WriterDescription = model.Writer?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IStoryArcWriterModel model, IStoryArcWriter entity)
+        public virtual bool AreEqual(IStoryArcWriterModel model, IStoryArcWriter entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // StoryArcWriter Properties

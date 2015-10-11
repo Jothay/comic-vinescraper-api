@@ -19,7 +19,9 @@ namespace ComicVine.API.Mappings//.Movies
 
     public static class MovieStoryArcMapperExtensions
     {
-        public static readonly MovieStoryArcMapper Mapper = new MovieStoryArcMapper();
+        public static IMovieStoryArcMapper Mapper = new MovieStoryArcMapper();
+
+        public static void OverrideMapper(IMovieStoryArcMapper mapper) { Mapper = mapper; }
 
         public static IMovieStoryArc MapToEntity(this IMovieStoryArcModel model)
         {
@@ -53,7 +55,7 @@ namespace ComicVine.API.Mappings//.Movies
 
     public class MovieStoryArcMapper : IMovieStoryArcMapper
     {
-        public IMovieStoryArc MapToEntity(IMovieStoryArcModel model)
+        public virtual IMovieStoryArc MapToEntity(IMovieStoryArcModel model)
         {
             var entity = EntityMapper.MapToEntity<MovieStoryArc, IMovieStoryArcModel>(model);
             // MovieStoryArc Properties
@@ -69,7 +71,7 @@ namespace ComicVine.API.Mappings//.Movies
             return entity;
         }
 
-        public void MapToEntity(IMovieStoryArcModel model, ref IMovieStoryArc entity)
+        public virtual void MapToEntity(IMovieStoryArcModel model, ref IMovieStoryArc entity)
         {
             // Assign Base properties
             EntityMapper.MapToEntity(model, ref entity);
@@ -84,7 +86,7 @@ namespace ComicVine.API.Mappings//.Movies
             // <None>
         }
 
-        public IMovieStoryArcModel MapToModel(IMovieStoryArc entity)
+        public virtual IMovieStoryArcModel MapToModel(IMovieStoryArc entity)
         {
             var model = EntityMapper.MapToModel<IMovieStoryArc, MovieStoryArcModel>(entity);
             // MovieStoryArc Properties
@@ -100,7 +102,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStoryArcModel MapToModelLite(IMovieStoryArc entity)
+        public virtual IMovieStoryArcModel MapToModelLite(IMovieStoryArc entity)
         {
             var model = EntityMapper.MapToModelLite<IMovieStoryArc, MovieStoryArcModel>(entity);
             // MovieStoryArc Properties
@@ -112,7 +114,7 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStoryArcModel MapToModelListing(IMovieStoryArc entity)
+        public virtual IMovieStoryArcModel MapToModelListing(IMovieStoryArc entity)
         {
             var model = EntityMapper.MapToModelListing<IMovieStoryArc, MovieStoryArcModel>(entity);
             // MovieStoryArc Properties
@@ -124,23 +126,29 @@ namespace ComicVine.API.Mappings//.Movies
             return model;
         }
 
-        public IMovieStoryArcSearchModel MapToSearchModel(IMovieStoryArcModel model)
+        public virtual IMovieStoryArcSearchModel MapToSearchModel(IMovieStoryArcModel model)
         {
             var searchModel = EntityMapper.MapToSearchModel<IMovieStoryArcModel, MovieStoryArcSearchModel>(model);
             // Search Properties
             searchModel.MovieId = model.MovieId;
             searchModel.MovieCustomKey = model.Movie?.CustomKey;
+            searchModel.MovieApiDetailUrl = model.Movie?.ApiDetailUrl;
+            searchModel.MovieSiteDetailUrl = model.Movie?.SiteDetailUrl;
             searchModel.MovieName = model.Movie?.Name;
+            searchModel.MovieShortDescription = model.Movie?.ShortDescription;
             searchModel.MovieDescription = model.Movie?.Description;
             searchModel.StoryArcId = model.StoryArcId;
             searchModel.StoryArcCustomKey = model.StoryArc?.CustomKey;
+            searchModel.StoryArcApiDetailUrl = model.StoryArc?.ApiDetailUrl;
+            searchModel.StoryArcSiteDetailUrl = model.StoryArc?.SiteDetailUrl;
             searchModel.StoryArcName = model.StoryArc?.Name;
+            searchModel.StoryArcShortDescription = model.StoryArc?.ShortDescription;
             searchModel.StoryArcDescription = model.StoryArc?.Description;
             // Return Search Model
             return searchModel;
         }
 
-        public bool AreEqual(IMovieStoryArcModel model, IMovieStoryArc entity)
+        public virtual bool AreEqual(IMovieStoryArcModel model, IMovieStoryArc entity)
         {
             return EntityMapper.AreEqual(model, entity)
                 // MovieStoryArc Properties
