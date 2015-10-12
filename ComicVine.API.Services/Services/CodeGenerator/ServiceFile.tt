@@ -259,7 +259,7 @@ namespace ComicVine.API.Services//.<#= nameSpace #>
         bool Any(Remove<#= thisClassName #>ByKey request);
     }
 
-    public class <#= thisClassNamePluralized #>Services : /*ServicesBase,*/ I<#= thisClassNamePluralized #>Services
+    public class <#= thisClassNamePluralized #>Services : Service, I<#= thisClassNamePluralized #>Services
     {
         private readonly I<#= thisClassNamePluralized #>BusinessWorkflow workflow;
 

@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Volumes
         bool Any(RemoveVolumeAliasByKey request);
     }
 
-    public class VolumeAliasesServices : /*ServicesBase,*/ IVolumeAliasesServices
+    public class VolumeAliasesServices : Service, IVolumeAliasesServices
     {
         private readonly IVolumeAliasesBusinessWorkflow workflow;
 

@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.StoryArcs
         bool Any(RemoveStoryArcAliasByKey request);
     }
 
-    public class StoryArcAliasesServices : /*ServicesBase,*/ IStoryArcAliasesServices
+    public class StoryArcAliasesServices : Service, IStoryArcAliasesServices
     {
         private readonly IStoryArcAliasesBusinessWorkflow workflow;
 

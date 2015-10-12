@@ -103,7 +103,7 @@ namespace ComicVine.API.Services//.Chats
         bool Any(RemoveChatByKey request);
     }
 
-    public class ChatsServices : /*ServicesBase,*/ IChatsServices
+    public class ChatsServices : Service, IChatsServices
     {
         private readonly IChatsBusinessWorkflow workflow;
 

@@ -148,7 +148,7 @@ namespace ComicVine.API.Services//.Series
         bool Any(RemoveSeriesByKey request);
     }
 
-    public class SeriesServices : /*ServicesBase,*/ ISeriesServices
+    public class SeriesServices : Service, ISeriesServices
     {
         private readonly ISeriesBusinessWorkflow workflow;
 

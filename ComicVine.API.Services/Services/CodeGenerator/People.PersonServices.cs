@@ -134,7 +134,7 @@ namespace ComicVine.API.Services//.People
         bool Any(RemovePersonByKey request);
     }
 
-    public class PeopleServices : /*ServicesBase,*/ IPeopleServices
+    public class PeopleServices : Service, IPeopleServices
     {
         private readonly IPeopleBusinessWorkflow workflow;
 

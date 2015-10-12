@@ -79,7 +79,7 @@ namespace ComicVine.API.Services//.Powers
         bool Any(RemovePowerByKey request);
     }
 
-    public class PowersServices : /*ServicesBase,*/ IPowersServices
+    public class PowersServices : Service, IPowersServices
     {
         private readonly IPowersBusinessWorkflow workflow;
 

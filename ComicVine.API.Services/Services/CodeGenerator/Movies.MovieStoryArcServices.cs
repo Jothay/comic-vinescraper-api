@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Movies
         bool Any(RemoveMovieStoryArcByKey request);
     }
 
-    public class MovieStoryArcsServices : /*ServicesBase,*/ IMovieStoryArcsServices
+    public class MovieStoryArcsServices : Service, IMovieStoryArcsServices
     {
         private readonly IMovieStoryArcsBusinessWorkflow workflow;
 

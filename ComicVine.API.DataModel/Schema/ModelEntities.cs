@@ -533,27 +533,27 @@ namespace ComicVine.API.DataModel
         public virtual IDbSet<VolumeWriter> VolumeWriters { get; set; }
         #endregion
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
             //if (modelBuilder == null) { return; }
             // Do Relationships with Fluent API
-            #region Characters
+            //#region Characters
             //modelBuilder.Entity<Character>().HasMany(e => e.CharacterCreators).WithMany(e => e.CharactersCreated);
-            #endregion
-            #region Movies
+            //#endregion
+            //#region Movies
             //modelBuilder.Entity<Movie>().HasMany(e => e.WriterCredits).WithMany(e => e.Movies);
-            #endregion
-            #region Origins
+            //#endregion
+            //#region Origins
             //modelBuilder.Entity<Origin>().HasMany(e => e.Profiles).WithMany(e => e.Origins);
-            #endregion
-            #region People
+            //#endregion
+            //#region People
             //modelBuilder.Entity<Person>().HasMany(e => e.CharactersCreated).WithMany(e => e.Creators);
             //modelBuilder.Entity<Person>().HasMany(e => e.Movies).WithMany(e => e.WriterCredits);
-            #endregion
-            #region Profile
+            //#endregion
+            //#region Profile
             //modelBuilder.Entity<Profile>().HasMany(e => e.Origins).WithMany(e => e.Profiles);
-            #endregion
-        }
+            //#endregion
+        //}
 
         // For Mocking
         public virtual void SetModified(object entity) { Entry(entity).State = EntityState.Modified; }

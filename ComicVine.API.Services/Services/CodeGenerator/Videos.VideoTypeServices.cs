@@ -78,7 +78,7 @@ namespace ComicVine.API.Services//.Videos
         bool Any(RemoveVideoTypeByKey request);
     }
 
-    public class VideoTypesServices : /*ServicesBase,*/ IVideoTypesServices
+    public class VideoTypesServices : Service, IVideoTypesServices
     {
         private readonly IVideoTypesBusinessWorkflow workflow;
 

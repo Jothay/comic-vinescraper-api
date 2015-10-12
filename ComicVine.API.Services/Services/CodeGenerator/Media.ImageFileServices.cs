@@ -92,7 +92,7 @@ namespace ComicVine.API.Services//.Media
         bool Any(RemoveImageFileByKey request);
     }
 
-    public class ImageFilesServices : /*ServicesBase,*/ IImageFilesServices
+    public class ImageFilesServices : Service, IImageFilesServices
     {
         private readonly IImageFilesBusinessWorkflow workflow;
 

@@ -78,7 +78,7 @@ namespace ComicVine.API.Services//.Profiles
         bool Any(RemoveProfileByKey request);
     }
 
-    public class ProfilesServices : /*ServicesBase,*/ IProfilesServices
+    public class ProfilesServices : Service, IProfilesServices
     {
         private readonly IProfilesBusinessWorkflow workflow;
 

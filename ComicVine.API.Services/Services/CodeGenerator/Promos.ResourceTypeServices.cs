@@ -79,7 +79,7 @@ namespace ComicVine.API.Services//.Promos
         bool Any(RemoveResourceTypeByKey request);
     }
 
-    public class ResourceTypesServices : /*ServicesBase,*/ IResourceTypesServices
+    public class ResourceTypesServices : Service, IResourceTypesServices
     {
         private readonly IResourceTypesBusinessWorkflow workflow;
 

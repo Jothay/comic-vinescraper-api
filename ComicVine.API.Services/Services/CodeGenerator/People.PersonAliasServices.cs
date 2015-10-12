@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.People
         bool Any(RemovePersonAliasByKey request);
     }
 
-    public class PersonAliasesServices : /*ServicesBase,*/ IPersonAliasesServices
+    public class PersonAliasesServices : Service, IPersonAliasesServices
     {
         private readonly IPersonAliasesBusinessWorkflow workflow;
 

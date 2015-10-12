@@ -145,7 +145,7 @@ namespace ComicVine.API.Services//.Promos
         bool Any(RemovePromoByKey request);
     }
 
-    public class PromosServices : /*ServicesBase,*/ IPromosServices
+    public class PromosServices : Service, IPromosServices
     {
         private readonly IPromosBusinessWorkflow workflow;
 

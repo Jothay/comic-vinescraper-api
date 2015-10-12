@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Concepts
         bool Any(RemoveConceptAppearedInIssueByKey request);
     }
 
-    public class ConceptAppearedInIssuesServices : /*ServicesBase,*/ IConceptAppearedInIssuesServices
+    public class ConceptAppearedInIssuesServices : Service, IConceptAppearedInIssuesServices
     {
         private readonly IConceptAppearedInIssuesBusinessWorkflow workflow;
 

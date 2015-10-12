@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Teams
         bool Any(RemoveTeamAppearedInIssueByKey request);
     }
 
-    public class TeamAppearedInIssuesServices : /*ServicesBase,*/ ITeamAppearedInIssuesServices
+    public class TeamAppearedInIssuesServices : Service, ITeamAppearedInIssuesServices
     {
         private readonly ITeamAppearedInIssuesBusinessWorkflow workflow;
 

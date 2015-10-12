@@ -126,7 +126,7 @@ namespace ComicVine.API.Services//.Concepts
         bool Any(RemoveConceptByKey request);
     }
 
-    public class ConceptsServices : /*ServicesBase,*/ IConceptsServices
+    public class ConceptsServices : Service, IConceptsServices
     {
         private readonly IConceptsBusinessWorkflow workflow;
 

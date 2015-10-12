@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Origins
         bool Any(RemoveOriginProfileByKey request);
     }
 
-    public class OriginProfilesServices : /*ServicesBase,*/ IOriginProfilesServices
+    public class OriginProfilesServices : Service, IOriginProfilesServices
     {
         private readonly IOriginProfilesBusinessWorkflow workflow;
 

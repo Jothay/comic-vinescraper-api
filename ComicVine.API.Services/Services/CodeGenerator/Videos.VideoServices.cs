@@ -150,7 +150,7 @@ namespace ComicVine.API.Services//.Videos
         bool Any(RemoveVideoByKey request);
     }
 
-    public class VideosServices : /*ServicesBase,*/ IVideosServices
+    public class VideosServices : Service, IVideosServices
     {
         private readonly IVideosBusinessWorkflow workflow;
 

@@ -78,7 +78,7 @@ namespace ComicVine.API.Services//.Origins
         bool Any(RemoveOriginByKey request);
     }
 
-    public class OriginsServices : /*ServicesBase,*/ IOriginsServices
+    public class OriginsServices : Service, IOriginsServices
     {
         private readonly IOriginsBusinessWorkflow workflow;
 

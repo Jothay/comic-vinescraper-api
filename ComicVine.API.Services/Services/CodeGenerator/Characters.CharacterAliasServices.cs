@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Characters
         bool Any(RemoveCharacterAliasByKey request);
     }
 
-    public class CharacterAliasesServices : /*ServicesBase,*/ ICharacterAliasesServices
+    public class CharacterAliasesServices : Service, ICharacterAliasesServices
     {
         private readonly ICharacterAliasesBusinessWorkflow workflow;
 

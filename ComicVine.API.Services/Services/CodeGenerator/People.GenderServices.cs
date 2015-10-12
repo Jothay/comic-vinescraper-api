@@ -79,7 +79,7 @@ namespace ComicVine.API.Services//.People
         bool Any(RemoveGenderByKey request);
     }
 
-    public class GendersServices : /*ServicesBase,*/ IGendersServices
+    public class GendersServices : Service, IGendersServices
     {
         private readonly IGendersBusinessWorkflow workflow;
 

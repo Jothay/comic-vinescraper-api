@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Powers
         bool Any(RemovePowerAliasByKey request);
     }
 
-    public class PowerAliasesServices : /*ServicesBase,*/ IPowerAliasesServices
+    public class PowerAliasesServices : Service, IPowerAliasesServices
     {
         private readonly IPowerAliasesBusinessWorkflow workflow;
 

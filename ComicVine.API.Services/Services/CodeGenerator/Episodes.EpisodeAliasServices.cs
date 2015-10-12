@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Episodes
         bool Any(RemoveEpisodeAliasByKey request);
     }
 
-    public class EpisodeAliasesServices : /*ServicesBase,*/ IEpisodeAliasesServices
+    public class EpisodeAliasesServices : Service, IEpisodeAliasesServices
     {
         private readonly IEpisodeAliasesBusinessWorkflow workflow;
 

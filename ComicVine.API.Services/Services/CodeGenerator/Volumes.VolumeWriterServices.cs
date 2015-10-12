@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Volumes
         bool Any(RemoveVolumeWriterByKey request);
     }
 
-    public class VolumeWritersServices : /*ServicesBase,*/ IVolumeWritersServices
+    public class VolumeWritersServices : Service, IVolumeWritersServices
     {
         private readonly IVolumeWritersBusinessWorkflow workflow;
 

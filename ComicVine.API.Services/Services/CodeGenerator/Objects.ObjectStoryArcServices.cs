@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Objects
         bool Any(RemoveObjectStoryArcByKey request);
     }
 
-    public class ObjectStoryArcsServices : /*ServicesBase,*/ IObjectStoryArcsServices
+    public class ObjectStoryArcsServices : Service, IObjectStoryArcsServices
     {
         private readonly IObjectStoryArcsBusinessWorkflow workflow;
 

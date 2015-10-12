@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Objects
         bool Any(RemoveObjectAliasByKey request);
     }
 
-    public class ObjectAliasesServices : /*ServicesBase,*/ IObjectAliasesServices
+    public class ObjectAliasesServices : Service, IObjectAliasesServices
     {
         private readonly IObjectAliasesBusinessWorkflow workflow;
 

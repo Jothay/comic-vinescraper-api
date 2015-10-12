@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Episodes
         bool Any(RemoveEpisodeStoryArcFirstAppearanceByKey request);
     }
 
-    public class EpisodeStoryArcFirstAppearancesServices : /*ServicesBase,*/ IEpisodeStoryArcFirstAppearancesServices
+    public class EpisodeStoryArcFirstAppearancesServices : Service, IEpisodeStoryArcFirstAppearancesServices
     {
         private readonly IEpisodeStoryArcFirstAppearancesBusinessWorkflow workflow;
 

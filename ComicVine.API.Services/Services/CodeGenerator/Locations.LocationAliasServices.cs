@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Locations
         bool Any(RemoveLocationAliasByKey request);
     }
 
-    public class LocationAliasesServices : /*ServicesBase,*/ ILocationAliasesServices
+    public class LocationAliasesServices : Service, ILocationAliasesServices
     {
         private readonly ILocationAliasesBusinessWorkflow workflow;
 

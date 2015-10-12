@@ -127,7 +127,7 @@ namespace ComicVine.API.Services//.Objects
         bool Any(RemoveObjectByKey request);
     }
 
-    public class ObjectsServices : /*ServicesBase,*/ IObjectsServices
+    public class ObjectsServices : Service, IObjectsServices
     {
         private readonly IObjectsBusinessWorkflow workflow;
 

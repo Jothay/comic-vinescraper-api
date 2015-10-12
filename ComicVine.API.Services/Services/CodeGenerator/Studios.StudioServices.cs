@@ -78,7 +78,7 @@ namespace ComicVine.API.Services//.Studios
         bool Any(RemoveStudioByKey request);
     }
 
-    public class StudiosServices : /*ServicesBase,*/ IStudiosServices
+    public class StudiosServices : Service, IStudiosServices
     {
         private readonly IStudiosBusinessWorkflow workflow;
 

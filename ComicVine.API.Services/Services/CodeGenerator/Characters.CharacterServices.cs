@@ -208,7 +208,7 @@ namespace ComicVine.API.Services//.Characters
         bool Any(RemoveCharacterByKey request);
     }
 
-    public class CharactersServices : /*ServicesBase,*/ ICharactersServices
+    public class CharactersServices : Service, ICharactersServices
     {
         private readonly ICharactersBusinessWorkflow workflow;
 

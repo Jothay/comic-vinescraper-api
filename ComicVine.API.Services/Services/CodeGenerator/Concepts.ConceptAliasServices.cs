@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Concepts
         bool Any(RemoveConceptAliasByKey request);
     }
 
-    public class ConceptAliasesServices : /*ServicesBase,*/ IConceptAliasesServices
+    public class ConceptAliasesServices : Service, IConceptAliasesServices
     {
         private readonly IConceptAliasesBusinessWorkflow workflow;
 

@@ -106,7 +106,7 @@ namespace ComicVine.API.Services//.Publishers
         bool Any(RemovePublisherByKey request);
     }
 
-    public class PublishersServices : /*ServicesBase,*/ IPublishersServices
+    public class PublishersServices : Service, IPublishersServices
     {
         private readonly IPublishersBusinessWorkflow workflow;
 

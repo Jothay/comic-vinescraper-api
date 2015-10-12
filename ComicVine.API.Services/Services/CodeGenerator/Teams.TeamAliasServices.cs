@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Teams
         bool Any(RemoveTeamAliasByKey request);
     }
 
-    public class TeamAliasesServices : /*ServicesBase,*/ ITeamAliasesServices
+    public class TeamAliasesServices : Service, ITeamAliasesServices
     {
         private readonly ITeamAliasesBusinessWorkflow workflow;
 

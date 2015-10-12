@@ -7,3 +7,5 @@
 /.vs/config/applicationhost.config
 /ComicVine.API.Services/App_Data/Models.mdf
 /ComicVine.API.Services/App_Data/Models_log.ldf
+/ComicVine.API.Services/web.appSettings.config
+/ComicVine.API.Services/web.connectionStrings.config

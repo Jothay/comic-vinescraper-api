@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Series
         bool Any(RemoveSeriesLocationByKey request);
     }
 
-    public class SeriesLocationsServices : /*ServicesBase,*/ ISeriesLocationsServices
+    public class SeriesLocationsServices : Service, ISeriesLocationsServices
     {
         private readonly ISeriesLocationsBusinessWorkflow workflow;
 

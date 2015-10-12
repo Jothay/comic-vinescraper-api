@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Episodes
         bool Any(RemoveEpisodeCharacterDiedByKey request);
     }
 
-    public class EpisodeCharactersDiedServices : /*ServicesBase,*/ IEpisodeCharactersDiedServices
+    public class EpisodeCharactersDiedServices : Service, IEpisodeCharactersDiedServices
     {
         private readonly IEpisodeCharactersDiedBusinessWorkflow workflow;
 

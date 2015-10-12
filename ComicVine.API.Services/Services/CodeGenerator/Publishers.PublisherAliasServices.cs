@@ -99,7 +99,7 @@ namespace ComicVine.API.Services//.Publishers
         bool Any(RemovePublisherAliasByKey request);
     }
 
-    public class PublisherAliasesServices : /*ServicesBase,*/ IPublisherAliasesServices
+    public class PublisherAliasesServices : Service, IPublisherAliasesServices
     {
         private readonly IPublisherAliasesBusinessWorkflow workflow;
 

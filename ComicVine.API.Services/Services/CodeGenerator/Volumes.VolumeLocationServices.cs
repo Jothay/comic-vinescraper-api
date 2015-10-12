@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Volumes
         bool Any(RemoveVolumeLocationByKey request);
     }
 
-    public class VolumeLocationsServices : /*ServicesBase,*/ IVolumeLocationsServices
+    public class VolumeLocationsServices : Service, IVolumeLocationsServices
     {
         private readonly IVolumeLocationsBusinessWorkflow workflow;
 

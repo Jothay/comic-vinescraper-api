@@ -122,7 +122,7 @@ namespace ComicVine.API.Services//.Movies
         bool Any(RemoveMovieObjectByKey request);
     }
 
-    public class MovieObjectsServices : /*ServicesBase,*/ IMovieObjectsServices
+    public class MovieObjectsServices : Service, IMovieObjectsServices
     {
         private readonly IMovieObjectsBusinessWorkflow workflow;
 
