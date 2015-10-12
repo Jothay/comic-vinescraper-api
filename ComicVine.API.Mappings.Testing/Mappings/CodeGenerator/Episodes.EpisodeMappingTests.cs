@@ -109,7 +109,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
 
     public class EpisodeMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -123,7 +123,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Episodes")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeModel>(), ref It.IsAny<IEpisode>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IEpisode>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -166,7 +166,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IEpisode>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IEpisode>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -194,7 +194,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IEpisodeModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -212,7 +212,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
 
     public class EpisodesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToEntity_AssignsEpisodeProperties()
         {
             // Arrange
@@ -262,7 +262,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             model.VerifyGet(x => x.EpisodeTeamFirstAppearances, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsEpisodeProperties()
         {
             // Arrange
@@ -313,7 +313,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             //Assert.Equal(model.Object.EpisodeTeamFirstAppearances?.Count, existingEntity.EpisodeTeamFirstAppearances?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModel_AssignsEpisodeProperties()
         {
             // Arrange
@@ -348,7 +348,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.Equal(entity.Object.EpisodeTeamFirstAppearances?.Count, model.EpisodeTeamFirstAppearances?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModelLite_AssignsLiteOnlyEpisodeProperties()
         {
             // Arrange
@@ -367,7 +367,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.Equal(entity.Object.SeriesId, model.SeriesId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToModelListing_AssignsListingOnlyEpisodeProperties()
         {
             // Arrange
@@ -387,7 +387,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_MapToSearchModel_AssignsEpisodeSearchProperties()
         {
             // Arrange
@@ -413,7 +413,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.Equal(model.Object.HasStaffReview, searchModel.HasStaffReview);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -426,7 +426,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Episodes")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

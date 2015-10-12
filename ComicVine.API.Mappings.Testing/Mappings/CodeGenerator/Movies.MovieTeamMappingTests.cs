@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
 
     public class MovieTeamMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieTeamModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "MovieTeams")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieTeamModel>(), ref It.IsAny<IMovieTeam>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IMovieTeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IMovieTeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IMovieTeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IMovieTeamModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
 
     public class MovieTeamsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToEntity_AssignsMovieTeamProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsMovieTeamProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModel_AssignsMovieTeamProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModelLite_AssignsLiteOnlyMovieTeamProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             Assert.Equal(entity.Object.TeamId, model.TeamId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToModelListing_AssignsListingOnlyMovieTeamProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_MapToSearchModel_AssignsMovieTeamSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             Assert.Equal(model.Object.Team?.Description, searchModel.TeamDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Movies
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "MovieTeams")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

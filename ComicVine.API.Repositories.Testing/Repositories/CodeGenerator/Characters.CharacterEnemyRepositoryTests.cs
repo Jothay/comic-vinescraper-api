@@ -45,7 +45,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
 
     public class CharacterEnemiesRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -59,7 +59,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             mockSetCharacterEnemies.Verify(x => x.Add(characterEnemies), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             mockSetCharacterEnemies.Verify(x => x.Remove((CharacterEnemy)characterEnemies), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             Assert.Equal(false, characterEnemies.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectCharacterEnemy()
         {
             // Arrange
@@ -115,7 +115,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
                         Assert.Equal("/TEST/KING-STEPHEN", characterEnemies.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectCharacterEnemy()
         {
             // Arrange
@@ -128,7 +128,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
                         Assert.Equal("/TEST/KING-STEPHEN", characterEnemies.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_List_Should_ReturnAListOfCharacterEnemiesWithData()
         {
             // Arrange
@@ -145,7 +145,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             Assert.Equal("/TEST/NIVEN-LARRY", characterEnemies[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Search_Should_ReturnAListOfCharacterEnemiesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -162,7 +162,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -179,7 +179,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfCharacterEnemiesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -199,7 +199,7 @@ namespace ComicVine.API.Testing.Repositories.Characters
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfCharacterEnemiesWithDataMatchingSearchParameters()
         {
             // Arrange

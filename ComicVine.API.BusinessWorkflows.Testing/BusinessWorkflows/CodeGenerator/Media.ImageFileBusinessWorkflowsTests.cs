@@ -120,7 +120,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
     public class ImageFilesBusinessWorkflowsTests
     {
         #region Read
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectObjectType()
         {
             // Arrange
@@ -132,7 +132,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.IsType<ImageFileModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.IsType<ImageFileModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Search_Should_ReturnAListOfImageFiles()
         {
             // Arrange
@@ -159,7 +159,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             mockImageFilesRepository.Verify(m => m.Search(It.IsAny<IImageFileSearchModel>(), It.IsAny<bool>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Search_AsListing_Should_ReturnAListOfImageFilesWithDataMatchingSearchParametersWithListingMapping()
         {
             // Arrange
@@ -175,7 +175,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
         }
         #endregion
         #region Create
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Create_Should_AddANewEntityObjectToTheDatabase()
         {
             // Arrange
@@ -189,7 +189,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             // Assert
             mockImageFilesRepository.Verify(m => m.Add(It.IsAny<IImageFile>()), Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Create_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -208,7 +208,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
         }
         #endregion
         #region Update
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Update_Should_SetUpdatedDate()
         {
             // Arrange
@@ -223,7 +223,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             // Assert
             mockImageFile.Verify(m => m.UpdatedDate, Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Update_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -244,7 +244,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
         }
         #endregion
         #region Deactivate
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Deactivate_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -261,7 +261,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Deactivate_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -278,7 +278,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Deactivate_ByID_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -291,7 +291,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.Throws<System.InvalidOperationException>(() => businessWorkflow.Deactivate(1));
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Deactivate_ByKey_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -305,7 +305,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
         }
         #endregion
         #region Remove
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Remove_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -322,7 +322,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Remove_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -339,7 +339,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Media
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_Remove_ANonExistingEntity_Should_ReturnTrue()
         {
             // Arrange

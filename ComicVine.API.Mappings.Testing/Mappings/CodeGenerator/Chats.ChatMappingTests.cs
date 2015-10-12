@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
 
     public class ChatMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Chats")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>(), ref It.IsAny<IChat>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -114,7 +114,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IChat>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -128,7 +128,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IChat>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -142,7 +142,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IChat>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -156,7 +156,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IChatModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -174,7 +174,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
 
     public class ChatsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToEntity_AssignsChatProperties()
         {
             // Arrange
@@ -191,7 +191,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsChatProperties()
         {
             // Arrange
@@ -209,7 +209,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModel_AssignsChatProperties()
         {
             // Arrange
@@ -226,7 +226,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModelLite_AssignsLiteOnlyChatProperties()
         {
             // Arrange
@@ -241,7 +241,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             Assert.Equal(entity.Object.ImageFileId, model.ImageFileId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToModelListing_AssignsListingOnlyChatProperties()
         {
             // Arrange
@@ -257,7 +257,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_MapToSearchModel_AssignsChatSearchProperties()
         {
             // Arrange
@@ -276,7 +276,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             Assert.Equal(model.Object.ChannelName, searchModel.ChannelName);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -289,7 +289,7 @@ namespace ComicVine.API.Testing.Mappings.Chats
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

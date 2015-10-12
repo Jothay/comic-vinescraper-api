@@ -67,7 +67,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
 
     public class VideoTypeMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -81,7 +81,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoTypeModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "VideoTypes")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -96,7 +96,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoTypeModel>(), ref It.IsAny<IVideoType>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IVideoType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IVideoType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IVideoType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IVideoTypeModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -170,7 +170,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
 
     public class VideoTypesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToEntity_AssignsVideoTypeProperties()
         {
             // Arrange
@@ -187,7 +187,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             model.VerifyGet(x => x.Videos, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsVideoTypeProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             //Assert.Equal(model.Object.Videos?.Count, existingEntity.Videos?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModel_AssignsVideoTypeProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             Assert.Equal(entity.Object.Videos?.Count, model.Videos?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModelLite_AssignsLiteOnlyVideoTypeProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToModelListing_AssignsListingOnlyVideoTypeProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_MapToSearchModel_AssignsVideoTypeSearchProperties()
         {
             // Arrange
@@ -261,7 +261,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -274,7 +274,7 @@ namespace ComicVine.API.Testing.Mappings.Videos
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VideoTypes")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

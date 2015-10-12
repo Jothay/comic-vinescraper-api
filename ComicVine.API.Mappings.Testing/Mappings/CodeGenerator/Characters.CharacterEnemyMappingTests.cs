@@ -75,7 +75,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
 
     public class CharacterEnemyMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -89,7 +89,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<ICharacterEnemyModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "CharacterEnemies")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -104,7 +104,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ICharacterEnemyModel>(), ref It.IsAny<ICharacterEnemy>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -118,7 +118,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             mockMapper.Verify(x => x.MapToModel(It.IsAny<ICharacterEnemy>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -132,7 +132,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ICharacterEnemy>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -146,7 +146,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ICharacterEnemy>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<ICharacterEnemyModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -178,7 +178,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
 
     public class CharacterEnemiesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToEntity_AssignsCharacterEnemyProperties()
         {
             // Arrange
@@ -195,7 +195,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsCharacterEnemyProperties()
         {
             // Arrange
@@ -213,7 +213,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModel_AssignsCharacterEnemyProperties()
         {
             // Arrange
@@ -230,7 +230,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModelLite_AssignsLiteOnlyCharacterEnemyProperties()
         {
             // Arrange
@@ -245,7 +245,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             Assert.Equal(entity.Object.EnemyId, model.EnemyId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToModelListing_AssignsListingOnlyCharacterEnemyProperties()
         {
             // Arrange
@@ -261,7 +261,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_MapToSearchModel_AssignsCharacterEnemySearchProperties()
         {
             // Arrange
@@ -286,7 +286,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             Assert.Equal(model.Object.Enemy?.Description, searchModel.EnemyDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -299,7 +299,7 @@ namespace ComicVine.API.Testing.Mappings.Characters
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "CharacterEnemies")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

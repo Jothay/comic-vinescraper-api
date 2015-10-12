@@ -95,7 +95,7 @@ namespace ComicVine.API.Testing.Mappings.Media
 
     public class ImageFileMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "ImageFiles")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Media
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>(), ref It.IsAny<IImageFile>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IImageFile>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IImageFile>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -166,7 +166,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IImageFile>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IImageFileModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -198,7 +198,7 @@ namespace ComicVine.API.Testing.Mappings.Media
 
     public class ImageFilesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToEntity_AssignsImageFileProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             model.VerifyGet(x => x.Volumes, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsImageFileProperties()
         {
             // Arrange
@@ -289,7 +289,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             //Assert.Equal(model.Object.Volumes?.Count, existingEntity.Volumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModel_AssignsImageFileProperties()
         {
             // Arrange
@@ -319,7 +319,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             Assert.Equal(entity.Object.Volumes?.Count, model.Volumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModelLite_AssignsLiteOnlyImageFileProperties()
         {
             // Arrange
@@ -333,7 +333,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToModelListing_AssignsListingOnlyImageFileProperties()
         {
             // Arrange
@@ -348,7 +348,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_MapToSearchModel_AssignsImageFileSearchProperties()
         {
             // Arrange
@@ -359,7 +359,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -372,7 +372,7 @@ namespace ComicVine.API.Testing.Mappings.Media
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ImageFiles")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

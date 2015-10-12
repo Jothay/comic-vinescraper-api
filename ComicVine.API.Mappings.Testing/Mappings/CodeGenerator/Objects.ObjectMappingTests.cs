@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -97,7 +97,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Objects")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectModel>(), ref It.IsAny<IObject>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IObject>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IObject>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IObject>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -168,7 +168,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IObjectModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -186,7 +186,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToEntity_AssignsObjectProperties()
         {
             // Arrange
@@ -214,7 +214,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             model.VerifyGet(x => x.ObjectVolumes, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsObjectProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             //Assert.Equal(model.Object.ObjectVolumes?.Count, existingEntity.ObjectVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModel_AssignsObjectProperties()
         {
             // Arrange
@@ -265,7 +265,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(entity.Object.ObjectVolumes?.Count, model.ObjectVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModelLite_AssignsLiteOnlyObjectProperties()
         {
             // Arrange
@@ -280,7 +280,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(entity.Object.PrimaryImageFileId, model.PrimaryImageFileId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToModelListing_AssignsListingOnlyObjectProperties()
         {
             // Arrange
@@ -296,7 +296,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_MapToSearchModel_AssignsObjectSearchProperties()
         {
             // Arrange
@@ -321,7 +321,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(model.Object.PrimaryImageFile?.Description, searchModel.PrimaryImageFileDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -334,7 +334,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

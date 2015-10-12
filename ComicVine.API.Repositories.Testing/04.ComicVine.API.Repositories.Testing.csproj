@@ -450,9 +450,8 @@
       <DependentUpon>RepositoryTestingFileMaster.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\RepositoryBaseTests.cs" />
-    <Compile Include="Repositories\CodeGenerator\PeopleRepositoryTestsExample.cs" />
+    <Compile Include="Repositories\CodeGenerator\PeopleExample.cs" />
     <Compile Include="Repositories\RepositoryRegistryTests.cs" />
-    <Compile Include="Mocking\PeopleMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

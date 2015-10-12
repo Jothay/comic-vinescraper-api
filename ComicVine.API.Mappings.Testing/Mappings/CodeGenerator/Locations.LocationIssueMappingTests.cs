@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
 
     public class LocationIssueMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationIssueModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "LocationIssues")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationIssueModel>(), ref It.IsAny<ILocationIssue>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<ILocationIssueModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
 
     public class LocationIssuesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToEntity_AssignsLocationIssueProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsLocationIssueProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModel_AssignsLocationIssueProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModelLite_AssignsLiteOnlyLocationIssueProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             Assert.Equal(entity.Object.IssueId, model.IssueId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToModelListing_AssignsListingOnlyLocationIssueProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_MapToSearchModel_AssignsLocationIssueSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             Assert.Equal(model.Object.Issue?.Description, searchModel.IssueDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Locations
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "LocationIssues")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

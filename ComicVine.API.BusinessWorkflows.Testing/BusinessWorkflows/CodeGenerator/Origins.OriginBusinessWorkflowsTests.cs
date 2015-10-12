@@ -92,7 +92,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
     public class OriginsBusinessWorkflowsTests
     {
         #region Read
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectObjectType()
         {
             // Arrange
@@ -104,7 +104,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.IsType<OriginModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.IsType<OriginModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Search_Should_ReturnAListOfOrigins()
         {
             // Arrange
@@ -131,7 +131,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             mockOriginsRepository.Verify(m => m.Search(It.IsAny<IOriginSearchModel>(), It.IsAny<bool>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Search_AsListing_Should_ReturnAListOfOriginsWithDataMatchingSearchParametersWithListingMapping()
         {
             // Arrange
@@ -147,7 +147,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
         }
         #endregion
         #region Create
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Create_Should_AddANewEntityObjectToTheDatabase()
         {
             // Arrange
@@ -161,7 +161,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             // Assert
             mockOriginsRepository.Verify(m => m.Add(It.IsAny<IOrigin>()), Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Create_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
         }
         #endregion
         #region Update
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Update_Should_SetUpdatedDate()
         {
             // Arrange
@@ -195,7 +195,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             // Assert
             mockOrigin.Verify(m => m.UpdatedDate, Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Update_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -216,7 +216,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
         }
         #endregion
         #region Deactivate
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Deactivate_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -233,7 +233,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Deactivate_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Deactivate_ByID_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -263,7 +263,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.Throws<System.InvalidOperationException>(() => businessWorkflow.Deactivate(1));
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Deactivate_ByKey_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -277,7 +277,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
         }
         #endregion
         #region Remove
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Remove_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -294,7 +294,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Remove_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -311,7 +311,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Origins
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_Remove_ANonExistingEntity_Should_ReturnTrue()
         {
             // Arrange

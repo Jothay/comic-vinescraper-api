@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
     public class VideosBusinessWorkflowsTests
     {
         #region Read
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectObjectType()
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.IsType<VideoModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -136,7 +136,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.IsType<VideoModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Search_Should_ReturnAListOfVideos()
         {
             // Arrange
@@ -151,7 +151,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             mockVideosRepository.Verify(m => m.Search(It.IsAny<IVideoSearchModel>(), It.IsAny<bool>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Search_AsListing_Should_ReturnAListOfVideosWithDataMatchingSearchParametersWithListingMapping()
         {
             // Arrange
@@ -167,7 +167,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
         }
         #endregion
         #region Create
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Create_Should_AddANewEntityObjectToTheDatabase()
         {
             // Arrange
@@ -181,7 +181,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             // Assert
             mockVideosRepository.Verify(m => m.Add(It.IsAny<IVideo>()), Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Create_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -200,7 +200,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
         }
         #endregion
         #region Update
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Update_Should_SetUpdatedDate()
         {
             // Arrange
@@ -215,7 +215,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             // Assert
             mockVideo.Verify(m => m.UpdatedDate, Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Update_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -236,7 +236,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
         }
         #endregion
         #region Deactivate
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Deactivate_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -253,7 +253,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Deactivate_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -270,7 +270,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Deactivate_ByID_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -283,7 +283,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.Throws<System.InvalidOperationException>(() => businessWorkflow.Deactivate(1));
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Deactivate_ByKey_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
         }
         #endregion
         #region Remove
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Remove_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -314,7 +314,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Remove_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -331,7 +331,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Videos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Videos")]
         public void Verify_Remove_ANonExistingEntity_Should_ReturnTrue()
         {
             // Arrange

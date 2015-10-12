@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.People
 
     public class PersonAliasMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "PersonAliases")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.People
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), ref It.IsAny<IPersonAlias>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IPersonAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPersonAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPersonAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IPersonAliasModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.People
 
     public class PersonAliasesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToEntity_AssignsPersonAliasProperties()
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsPersonAliasProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModel_AssignsPersonAliasProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModelLite_AssignsLiteOnlyPersonAliasProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.People
             Assert.Equal(entity.Object.PersonId, model.PersonId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToModelListing_AssignsListingOnlyPersonAliasProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_MapToSearchModel_AssignsPersonAliasSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.People
             Assert.Equal(model.Object.Person?.Description, searchModel.PersonDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.People
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

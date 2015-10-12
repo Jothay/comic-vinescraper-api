@@ -220,7 +220,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 
     public class <#= thisClassName #>MappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -234,7 +234,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -249,7 +249,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), ref It.IsAny<I<#= thisClassName #>>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -263,7 +263,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             mockMapper.Verify(x => x.MapToModel(It.IsAny<I<#= thisClassName #>>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -277,7 +277,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<I<#= thisClassName #>>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -291,7 +291,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<I<#= thisClassName #>>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -305,7 +305,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<I<#= thisClassName #>Model>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -323,7 +323,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 
     public class <#= thisClassNamePluralized #>MappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToEntity_Assigns<#= thisClassName #>Properties()
         {
             // Arrange
@@ -364,7 +364,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 <#+	} // End If (!hasAssociatedProperties) #>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToEntity_WithExistingEntity_Assigns<#= thisClassName #>Properties()
         {
             // Arrange
@@ -406,7 +406,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 <#+	} // End If (!hasAssociatedProperties) #>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModel_Assigns<#= thisClassName #>Properties()
         {
             // Arrange
@@ -446,7 +446,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 <#+	} // End If (!hasAssociatedProperties) #>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModelLite_AssignsLiteOnly<#= thisClassName #>Properties()
         {
             // Arrange
@@ -476,7 +476,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 <#+	} // End If (!hasRelatedProperties) #>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToModelListing_AssignsListingOnly<#= thisClassName #>Properties()
         {
             // Arrange
@@ -507,7 +507,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_MapToSearchModel_Assigns<#= thisClassName #>SearchProperties()
         {
             // Arrange
@@ -558,7 +558,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
 <#+	} // End ForEach Loop (var property in entityClass.properties) // Searchable #>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -571,7 +571,7 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
 
     public class StoryArcsRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockSetStoryArcs.Verify(x => x.Add(storyArcs), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockSetStoryArcs.Verify(x => x.Remove((StoryArc)storyArcs), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal(false, storyArcs.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectStoryArc()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Stephen King", storyArcs.Name);            Assert.Equal("/TEST/KING-STEPHEN", storyArcs.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectStoryArc()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Stephen King", storyArcs.Name);            Assert.Equal("/TEST/KING-STEPHEN", storyArcs.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_List_Should_ReturnAListOfStoryArcsWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Larry Niven", storyArcs[1].Name);            Assert.Equal("/TEST/NIVEN-LARRY", storyArcs[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Search_Should_ReturnAListOfStoryArcsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfStoryArcsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcs")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfStoryArcsWithDataMatchingSearchParameters()
         {
             // Arrange

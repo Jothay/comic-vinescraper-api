@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
 
     public class ObjectsRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             mockSetObjects.Verify(x => x.Add(objects), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             mockSetObjects.Verify(x => x.Remove((Object)objects), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             Assert.Equal(false, objects.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             Assert.Equal("Stephen King", objects.Name);            Assert.Equal("/TEST/KING-STEPHEN", objects.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             Assert.Equal("Stephen King", objects.Name);            Assert.Equal("/TEST/KING-STEPHEN", objects.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_List_Should_ReturnAListOfObjectsWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             Assert.Equal("Larry Niven", objects[1].Name);            Assert.Equal("/TEST/NIVEN-LARRY", objects[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Search_Should_ReturnAListOfObjectsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfObjectsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.Objects
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Objects")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfObjectsWithDataMatchingSearchParameters()
         {
             // Arrange

@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
 
     public class StoryArcAliasMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "StoryArcAliases")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), ref It.IsAny<IStoryArcAlias>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IStoryArcAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStoryArcAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStoryArcAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IStoryArcAliasModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
 
     public class StoryArcAliasesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToEntity_AssignsStoryArcAliasProperties()
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsStoryArcAliasProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModel_AssignsStoryArcAliasProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModelLite_AssignsLiteOnlyStoryArcAliasProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             Assert.Equal(entity.Object.StoryArcId, model.StoryArcId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToModelListing_AssignsListingOnlyStoryArcAliasProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_MapToSearchModel_AssignsStoryArcAliasSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             Assert.Equal(model.Object.StoryArc?.Description, searchModel.StoryArcDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

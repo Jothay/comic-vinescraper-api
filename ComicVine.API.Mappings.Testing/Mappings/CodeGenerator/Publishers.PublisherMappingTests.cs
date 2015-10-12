@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
 
     public class PublisherMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -97,7 +97,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Publishers")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>(), ref It.IsAny<IPublisher>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IPublisher>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPublisher>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPublisher>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -168,7 +168,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IPublisherModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -186,7 +186,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
 
     public class PublishersMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToEntity_AssignsPublisherProperties()
         {
             // Arrange
@@ -215,7 +215,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             model.VerifyGet(x => x.VolumesPublished, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsPublisherProperties()
         {
             // Arrange
@@ -245,7 +245,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             //Assert.Equal(model.Object.VolumesPublished?.Count, existingEntity.VolumesPublished?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModel_AssignsPublisherProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             Assert.Equal(entity.Object.VolumesPublished?.Count, model.VolumesPublished?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModelLite_AssignsLiteOnlyPublisherProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             Assert.Equal(entity.Object.PrimaryImageFileId, model.PrimaryImageFileId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToModelListing_AssignsListingOnlyPublisherProperties()
         {
             // Arrange
@@ -301,7 +301,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_MapToSearchModel_AssignsPublisherSearchProperties()
         {
             // Arrange
@@ -319,7 +319,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             Assert.Equal(model.Object.PrimaryImageFile?.Description, searchModel.PrimaryImageFileDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -332,7 +332,7 @@ namespace ComicVine.API.Testing.Mappings.Publishers
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Publishers")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

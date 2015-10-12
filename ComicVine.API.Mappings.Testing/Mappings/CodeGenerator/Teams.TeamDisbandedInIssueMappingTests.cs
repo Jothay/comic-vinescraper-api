@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
 
     public class TeamDisbandedInIssueMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamDisbandedInIssueModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "TeamDisbandedInIssues")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamDisbandedInIssueModel>(), ref It.IsAny<ITeamDisbandedInIssue>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamDisbandedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamDisbandedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamDisbandedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<ITeamDisbandedInIssueModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
 
     public class TeamDisbandedInIssuesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToEntity_AssignsTeamDisbandedInIssueProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsTeamDisbandedInIssueProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModel_AssignsTeamDisbandedInIssueProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModelLite_AssignsLiteOnlyTeamDisbandedInIssueProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.Equal(entity.Object.IssueId, model.IssueId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToModelListing_AssignsListingOnlyTeamDisbandedInIssueProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_MapToSearchModel_AssignsTeamDisbandedInIssueSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.Equal(model.Object.Issue?.Description, searchModel.IssueDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "TeamDisbandedInIssues")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

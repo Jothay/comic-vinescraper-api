@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
 
     public class ResourceTypeMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "ResourceTypes")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), ref It.IsAny<IResourceType>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IResourceType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IResourceType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IResourceType>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IResourceTypeModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
 
     public class ResourceTypesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToEntity_AssignsResourceTypeProperties()
         {
             // Arrange
@@ -190,7 +190,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             model.VerifyGet(x => x.Promos, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsResourceTypeProperties()
         {
             // Arrange
@@ -209,7 +209,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             //Assert.Equal(model.Object.Promos?.Count, existingEntity.Promos?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModel_AssignsResourceTypeProperties()
         {
             // Arrange
@@ -226,7 +226,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             Assert.Equal(entity.Object.Promos?.Count, model.Promos?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModelLite_AssignsLiteOnlyResourceTypeProperties()
         {
             // Arrange
@@ -241,7 +241,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToModelListing_AssignsListingOnlyResourceTypeProperties()
         {
             // Arrange
@@ -257,7 +257,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_MapToSearchModel_AssignsResourceTypeSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ResourceTypes")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

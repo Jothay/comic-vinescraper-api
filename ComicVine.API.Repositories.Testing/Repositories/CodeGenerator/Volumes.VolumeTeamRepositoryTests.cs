@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
 
     public class VolumeTeamsRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             mockSetVolumeTeams.Verify(x => x.Add(volumeTeams), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             mockSetVolumeTeams.Verify(x => x.Remove((VolumeTeam)volumeTeams), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             Assert.Equal(false, volumeTeams.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectVolumeTeam()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
                         Assert.Equal("/TEST/KING-STEPHEN", volumeTeams.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectVolumeTeam()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
                         Assert.Equal("/TEST/KING-STEPHEN", volumeTeams.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_List_Should_ReturnAListOfVolumeTeamsWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             Assert.Equal("/TEST/NIVEN-LARRY", volumeTeams[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Search_Should_ReturnAListOfVolumeTeamsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfVolumeTeamsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.Volumes
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "VolumeTeams")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfVolumeTeamsWithDataMatchingSearchParameters()
         {
             // Arrange

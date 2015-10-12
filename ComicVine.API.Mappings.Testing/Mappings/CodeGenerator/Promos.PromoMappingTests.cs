@@ -77,7 +77,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
 
     public class PromoMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -91,7 +91,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Promos")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -106,7 +106,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>(), ref It.IsAny<IPromo>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -120,7 +120,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IPromo>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -134,7 +134,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPromo>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -148,7 +148,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPromo>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -162,7 +162,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IPromoModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
 
     public class PromosMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToEntity_AssignsPromoProperties()
         {
             // Arrange
@@ -198,7 +198,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsPromoProperties()
         {
             // Arrange
@@ -217,7 +217,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModel_AssignsPromoProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModelLite_AssignsLiteOnlyPromoProperties()
         {
             // Arrange
@@ -251,7 +251,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             Assert.Equal(entity.Object.ResourceTypeId, model.ResourceTypeId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToModelListing_AssignsListingOnlyPromoProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_MapToSearchModel_AssignsPromoSearchProperties()
         {
             // Arrange
@@ -300,7 +300,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             Assert.Equal(model.Object.ResourceType?.Description, searchModel.ResourceTypeDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -313,7 +313,7 @@ namespace ComicVine.API.Testing.Mappings.Promos
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

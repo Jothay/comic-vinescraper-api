@@ -112,9 +112,345 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Services\BaseServicesTests.cs" />
-    <Compile Include="Services\Authors\AuthorsServicesTests.cs" />
+    <Compile Include="Services\CodeGenerator\AuthorExample.cs" />
+    <Compile Include="Services\CodeGenerator\Characters.CharacterAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterAppearedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterCreatorServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterDiedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterEnemyServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterEnemyTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterFriendlyTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterFriendServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterMovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterPowerServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Characters.CharacterVolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Chats.ChatServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptAppearedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptMovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Concepts.ConceptVolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterDiedServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeCharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeConceptFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeConceptServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeLocationFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeLocationServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeObjectFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeObjectServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodePersonServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeTeamFirstAppearanceServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Episodes.EpisodeTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Issues.IssueWriterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationAppearedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationMovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Locations.LocationVolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Media.ImageFileServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieCharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieConceptServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieLocationServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieObjectServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieProducerServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieStudioServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Movies.MovieWriterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectAppearedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectMovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Objects.ObjectVolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Origins.OriginProfileServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Origins.OriginServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.CreatorCharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.GenderServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.PersonAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\People.PersonServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Powers.PowerAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Powers.PowerServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Profiles.ProfileServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Promos.PromoServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Promos.ResourceTypeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Publishers.PublisherAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Publishers.PublisherServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesCharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesLocationServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Series.SeriesServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\ServicesTestingFile.cs">
+      <DependentUpon>ServicesTestingFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\StoryArcs.StoryArcWriterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Studios.StudioServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamAppearedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamCharacterEnemyServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamCharacterFriendServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamDisbandedInIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamIssueServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamMemberServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamMovieServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamStoryArcServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Teams.TeamVolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Videos.VideoServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Videos.VideoTypeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeAliasServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeCharacterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeConceptServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeLocationServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeObjectServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeTeamServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CodeGenerator\Volumes.VolumeWriterServicesTests.cs">
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\ServicesBaseTestsWithTearDown.cs" />
-    <Compile Include="Mocking\AuthorsMockingSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +471,28 @@
       <Name>01.RepositoryPattern</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Services\CodeGenerator\ServicesTestingFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServicesTestingFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\ServicesTestingFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServicesTestingFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\CodeGenerator\ServicesTestingFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServicesTestingFileMaster.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

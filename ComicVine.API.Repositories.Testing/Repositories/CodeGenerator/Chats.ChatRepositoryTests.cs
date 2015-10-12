@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
 
     public class ChatsRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             mockSetChats.Verify(x => x.Add(chats), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             mockSetChats.Verify(x => x.Remove((Chat)chats), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             Assert.Equal(false, chats.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectChat()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             Assert.Equal("Stephen King", chats.Name);            Assert.Equal("/TEST/KING-STEPHEN", chats.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectChat()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             Assert.Equal("Stephen King", chats.Name);            Assert.Equal("/TEST/KING-STEPHEN", chats.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_List_Should_ReturnAListOfChatsWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             Assert.Equal("Larry Niven", chats[1].Name);            Assert.Equal("/TEST/NIVEN-LARRY", chats[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Search_Should_ReturnAListOfChatsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfChatsWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.Chats
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Chats")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfChatsWithDataMatchingSearchParameters()
         {
             // Arrange

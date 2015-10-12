@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
     public class PromosBusinessWorkflowsTests
     {
         #region Read
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectObjectType()
         {
             // Arrange
@@ -114,7 +114,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.IsType<PromoModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectObject()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.IsType<PromoModel>(person);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Search_Should_ReturnAListOfPromos()
         {
             // Arrange
@@ -141,7 +141,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             mockPromosRepository.Verify(m => m.Search(It.IsAny<IPromoSearchModel>(), It.IsAny<bool>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Search_AsListing_Should_ReturnAListOfPromosWithDataMatchingSearchParametersWithListingMapping()
         {
             // Arrange
@@ -157,7 +157,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
         }
         #endregion
         #region Create
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Create_Should_AddANewEntityObjectToTheDatabase()
         {
             // Arrange
@@ -171,7 +171,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             // Assert
             mockPromosRepository.Verify(m => m.Add(It.IsAny<IPromo>()), Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Create_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -190,7 +190,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
         }
         #endregion
         #region Update
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Update_Should_SetUpdatedDate()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             // Assert
             mockPromo.Verify(m => m.UpdatedDate, Times.Once);
         }
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Update_WithDuplicateData_Should_NotAddAndReturnOriginal()
         {
             // Arrange
@@ -226,7 +226,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
         }
         #endregion
         #region Deactivate
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Deactivate_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Deactivate_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -260,7 +260,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Deactivate_ByID_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -273,7 +273,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.Throws<System.InvalidOperationException>(() => businessWorkflow.Deactivate(1));
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Deactivate_ByKey_ANonExistingEntity_Should_ThrowAnInvalidOperationException()
         {
             // Arrange
@@ -287,7 +287,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
         }
         #endregion
         #region Remove
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Remove_ByID_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -304,7 +304,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Remove_ByKey_Should_DeactivateTheObjectAndReturnTrue()
         {
             // Arrange
@@ -321,7 +321,7 @@ namespace ComicVine.API.Testing.BusinessWorkflows.Promos
             Assert.Equal(true, result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Promos")]
         public void Verify_Remove_ANonExistingEntity_Should_ReturnTrue()
         {
             // Arrange

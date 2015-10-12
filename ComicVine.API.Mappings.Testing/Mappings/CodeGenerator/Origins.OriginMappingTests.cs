@@ -67,7 +67,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
 
     public class OriginMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -81,7 +81,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Origins")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -96,7 +96,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginModel>(), ref It.IsAny<IOrigin>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IOrigin>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IOrigin>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IOrigin>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IOriginModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -170,7 +170,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
 
     public class OriginsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToEntity_AssignsOriginProperties()
         {
             // Arrange
@@ -187,7 +187,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             model.VerifyGet(x => x.OriginProfiles, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsOriginProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             //Assert.Equal(model.Object.OriginProfiles?.Count, existingEntity.OriginProfiles?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModel_AssignsOriginProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             Assert.Equal(entity.Object.OriginProfiles?.Count, model.OriginProfiles?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModelLite_AssignsLiteOnlyOriginProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToModelListing_AssignsListingOnlyOriginProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_MapToSearchModel_AssignsOriginSearchProperties()
         {
             // Arrange
@@ -261,7 +261,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -274,7 +274,7 @@ namespace ComicVine.API.Testing.Mappings.Origins
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Origins")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

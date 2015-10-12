@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
 
     public class StoryArcAliasesRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockSetStoryArcAliases.Verify(x => x.Add(storyArcAliases), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockSetStoryArcAliases.Verify(x => x.Remove((StoryArcAlias)storyArcAliases), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal(false, storyArcAliases.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectStoryArcAlias()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Stephen King", storyArcAliases.Name);            Assert.Equal("/TEST/KING-STEPHEN", storyArcAliases.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectStoryArcAlias()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Stephen King", storyArcAliases.Name);            Assert.Equal("/TEST/KING-STEPHEN", storyArcAliases.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_List_Should_ReturnAListOfStoryArcAliasesWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             Assert.Equal("Larry Niven", storyArcAliases[1].Name);            Assert.Equal("/TEST/NIVEN-LARRY", storyArcAliases[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Search_Should_ReturnAListOfStoryArcAliasesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfStoryArcAliasesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.StoryArcs
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "StoryArcAliases")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfStoryArcAliasesWithDataMatchingSearchParameters()
         {
             // Arrange

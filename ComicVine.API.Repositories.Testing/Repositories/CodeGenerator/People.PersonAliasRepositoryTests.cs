@@ -43,7 +43,7 @@ namespace ComicVine.API.Testing.Repositories.People
 
     public class PersonAliasesRepositoryTests
     {
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Add_Should_AddTheEntityToTheContext()
         {
             // Arrange
@@ -57,7 +57,7 @@ namespace ComicVine.API.Testing.Repositories.People
             mockSetPersonAliases.Verify(x => x.Add(personAliases), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Remove_Should_RemoveTheEntityFromTheContext()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace ComicVine.API.Testing.Repositories.People
             mockSetPersonAliases.Verify(x => x.Remove((PersonAlias)personAliases), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Deactivate_Should_SetTheActivePropertyToFalseOnTheEntity()
         {
             // Arrange
@@ -85,7 +85,7 @@ namespace ComicVine.API.Testing.Repositories.People
             Assert.Equal(false, personAliases.Active);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Update_Should_SetTheEntityStateToModified()
         {
             // Arrange
@@ -100,7 +100,7 @@ namespace ComicVine.API.Testing.Repositories.People
             mockContext.Verify(x => x.SetModified(It.IsAny<object>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Get_ByID_Should_ReturnTheCorrectPersonAlias()
         {
             // Arrange
@@ -113,7 +113,7 @@ namespace ComicVine.API.Testing.Repositories.People
             Assert.Equal("Stephen King", personAliases.Name);            Assert.Equal("/TEST/KING-STEPHEN", personAliases.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Get_ByKey_Should_ReturnTheCorrectPersonAlias()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Repositories.People
             Assert.Equal("Stephen King", personAliases.Name);            Assert.Equal("/TEST/KING-STEPHEN", personAliases.ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_List_Should_ReturnAListOfPersonAliasesWithData()
         {
             // Arrange
@@ -143,7 +143,7 @@ namespace ComicVine.API.Testing.Repositories.People
             Assert.Equal("Larry Niven", personAliases[1].Name);            Assert.Equal("/TEST/NIVEN-LARRY", personAliases[1].ApiDetailUrl);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Search_Should_ReturnAListOfPersonAliasesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -160,7 +160,7 @@ namespace ComicVine.API.Testing.Repositories.People
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Search_WithSelectStatement_Should_ReturnAListOfDynamicObjects()
         {
             // Arrange
@@ -177,7 +177,7 @@ namespace ComicVine.API.Testing.Repositories.People
             // Stephen King was filtered out because he was Inactive
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Search_WithModifiedSince_Should_ReturnAListOfPersonAliasesWithDataMatchingSearchParameters()
         {
             // Arrange
@@ -197,7 +197,7 @@ namespace ComicVine.API.Testing.Repositories.People
             // Stephen King was filtered out because he was created before the modified since date
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PersonAliases")]
         public void Verify_Search_WithPaging_Should_ReturnAListOfPersonAliasesWithDataMatchingSearchParameters()
         {
             // Arrange

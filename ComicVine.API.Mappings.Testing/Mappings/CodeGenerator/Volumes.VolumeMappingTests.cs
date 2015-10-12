@@ -95,7 +95,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
 
     public class VolumeMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVolumeModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Volumes")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVolumeModel>(), ref It.IsAny<IVolume>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IVolume>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IVolume>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -166,7 +166,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IVolume>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IVolumeModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -198,7 +198,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
 
     public class VolumesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToEntity_AssignsVolumeProperties()
         {
             // Arrange
@@ -232,7 +232,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             model.VerifyGet(x => x.VolumeWriters, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsVolumeProperties()
         {
             // Arrange
@@ -267,7 +267,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             //Assert.Equal(model.Object.VolumeWriters?.Count, existingEntity.VolumeWriters?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModel_AssignsVolumeProperties()
         {
             // Arrange
@@ -293,7 +293,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             Assert.Equal(entity.Object.VolumeWriters?.Count, model.VolumeWriters?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModelLite_AssignsLiteOnlyVolumeProperties()
         {
             // Arrange
@@ -310,7 +310,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             Assert.Equal(entity.Object.PublisherId, model.PublisherId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToModelListing_AssignsListingOnlyVolumeProperties()
         {
             // Arrange
@@ -328,7 +328,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_MapToSearchModel_AssignsVolumeSearchProperties()
         {
             // Arrange
@@ -367,7 +367,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             Assert.Equal(model.Object.Publisher?.Description, searchModel.PublisherDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -380,7 +380,7 @@ namespace ComicVine.API.Testing.Mappings.Volumes
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Volumes")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

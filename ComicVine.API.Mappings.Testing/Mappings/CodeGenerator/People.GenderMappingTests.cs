@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.People
 
     public class GenderMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Genders")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.People
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>(), ref It.IsAny<IGender>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IGender>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IGender>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IGender>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.People
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IGenderModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.People
 
     public class GendersMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToEntity_AssignsGenderProperties()
         {
             // Arrange
@@ -191,7 +191,7 @@ namespace ComicVine.API.Testing.Mappings.People
             model.VerifyGet(x => x.People, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsGenderProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.People
             //Assert.Equal(model.Object.People?.Count, existingEntity.People?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModel_AssignsGenderProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.People
             Assert.Equal(entity.Object.People?.Count, model.People?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModelLite_AssignsLiteOnlyGenderProperties()
         {
             // Arrange
@@ -242,7 +242,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToModelListing_AssignsListingOnlyGenderProperties()
         {
             // Arrange
@@ -257,7 +257,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_MapToSearchModel_AssignsGenderSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.People
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.People
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Genders")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

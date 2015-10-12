@@ -67,7 +67,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
 
     public class StudioMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -81,7 +81,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Studios")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -96,7 +96,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>(), ref It.IsAny<IStudio>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IStudio>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStudio>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStudio>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IStudioModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -170,7 +170,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
 
     public class StudiosMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToEntity_AssignsStudioProperties()
         {
             // Arrange
@@ -187,7 +187,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             model.VerifyGet(x => x.MovieStudios, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsStudioProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             //Assert.Equal(model.Object.MovieStudios?.Count, existingEntity.MovieStudios?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModel_AssignsStudioProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             Assert.Equal(entity.Object.MovieStudios?.Count, model.MovieStudios?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModelLite_AssignsLiteOnlyStudioProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToModelListing_AssignsListingOnlyStudioProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_MapToSearchModel_AssignsStudioSearchProperties()
         {
             // Arrange
@@ -261,7 +261,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             // Assert
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -274,7 +274,7 @@ namespace ComicVine.API.Testing.Mappings.Studios
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Studios")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

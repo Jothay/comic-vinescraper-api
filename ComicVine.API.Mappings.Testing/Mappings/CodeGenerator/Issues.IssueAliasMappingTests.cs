@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
 
     public class IssueAliasMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "IssueAliases")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), ref It.IsAny<IIssueAlias>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IIssueAliasModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
 
     public class IssueAliasesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToEntity_AssignsIssueAliasProperties()
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsIssueAliasProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModel_AssignsIssueAliasProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModelLite_AssignsLiteOnlyIssueAliasProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.Equal(entity.Object.IssueId, model.IssueId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToModelListing_AssignsListingOnlyIssueAliasProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_MapToSearchModel_AssignsIssueAliasSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.Equal(model.Object.Issue?.Description, searchModel.IssueDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueAliases")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

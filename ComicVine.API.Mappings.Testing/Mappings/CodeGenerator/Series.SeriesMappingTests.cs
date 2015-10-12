@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Series
 
     public class SeriesMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -97,7 +97,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<ISeriesModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Series")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Series
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ISeriesModel>(), ref It.IsAny<ISeries>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             mockMapper.Verify(x => x.MapToModel(It.IsAny<ISeries>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ISeries>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ISeries>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -168,7 +168,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<ISeriesModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -186,7 +186,7 @@ namespace ComicVine.API.Testing.Mappings.Series
 
     public class SeriesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToEntity_AssignsSeriesProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             model.VerifyGet(x => x.SeriesLocations, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsSeriesProperties()
         {
             // Arrange
@@ -237,7 +237,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             //Assert.Equal(model.Object.SeriesLocations?.Count, existingEntity.SeriesLocations?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModel_AssignsSeriesProperties()
         {
             // Arrange
@@ -258,7 +258,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             Assert.Equal(entity.Object.SeriesLocations?.Count, model.SeriesLocations?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModelLite_AssignsLiteOnlySeriesProperties()
         {
             // Arrange
@@ -274,7 +274,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             Assert.Equal(entity.Object.LastEpisodeId, model.LastEpisodeId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToModelListing_AssignsListingOnlySeriesProperties()
         {
             // Arrange
@@ -291,7 +291,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_MapToSearchModel_AssignsSeriesSearchProperties()
         {
             // Arrange
@@ -323,7 +323,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             Assert.Equal(model.Object.LastEpisode?.Description, searchModel.LastEpisodeDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -336,7 +336,7 @@ namespace ComicVine.API.Testing.Mappings.Series
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Series")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

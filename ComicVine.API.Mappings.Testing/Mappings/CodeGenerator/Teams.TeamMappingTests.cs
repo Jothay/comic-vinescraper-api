@@ -95,7 +95,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
 
     public class TeamMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -109,7 +109,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Teams")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamModel>(), ref It.IsAny<ITeam>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -166,7 +166,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeam>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<ITeamModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -198,7 +198,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
 
     public class TeamsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToEntity_AssignsTeamProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             model.VerifyGet(x => x.TeamVolumes, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsTeamProperties()
         {
             // Arrange
@@ -273,7 +273,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             //Assert.Equal(model.Object.TeamVolumes?.Count, existingEntity.TeamVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModel_AssignsTeamProperties()
         {
             // Arrange
@@ -300,7 +300,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.Equal(entity.Object.TeamVolumes?.Count, model.TeamVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModelLite_AssignsLiteOnlyTeamProperties()
         {
             // Arrange
@@ -316,7 +316,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.Equal(entity.Object.PublisherId, model.PublisherId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToModelListing_AssignsListingOnlyTeamProperties()
         {
             // Arrange
@@ -333,7 +333,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_MapToSearchModel_AssignsTeamSearchProperties()
         {
             // Arrange
@@ -365,7 +365,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.Equal(model.Object.Publisher?.Description, searchModel.PublisherDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -378,7 +378,7 @@ namespace ComicVine.API.Testing.Mappings.Teams
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Teams")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

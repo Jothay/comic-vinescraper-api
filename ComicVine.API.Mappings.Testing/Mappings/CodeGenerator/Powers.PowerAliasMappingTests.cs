@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
 
     public class PowerAliasMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "PowerAliases")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), ref It.IsAny<IPowerAlias>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IPowerAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPowerAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPowerAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IPowerAliasModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
 
     public class PowerAliasesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToEntity_AssignsPowerAliasProperties()
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsPowerAliasProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModel_AssignsPowerAliasProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModelLite_AssignsLiteOnlyPowerAliasProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             Assert.Equal(entity.Object.PowerId, model.PowerId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToModelListing_AssignsListingOnlyPowerAliasProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_MapToSearchModel_AssignsPowerAliasSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             Assert.Equal(model.Object.Power?.Description, searchModel.PowerDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.Powers
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "PowerAliases")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

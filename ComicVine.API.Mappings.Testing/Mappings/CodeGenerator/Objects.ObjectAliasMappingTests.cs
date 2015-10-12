@@ -69,7 +69,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectAliasMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -83,7 +83,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectAliasModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "ObjectAliases")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -98,7 +98,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectAliasModel>(), ref It.IsAny<IObjectAlias>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -112,7 +112,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IObjectAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -126,7 +126,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IObjectAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -140,7 +140,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IObjectAlias>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -154,7 +154,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IObjectAliasModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -172,7 +172,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectAliasesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToEntity_AssignsObjectAliasProperties()
         {
             // Arrange
@@ -188,7 +188,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsObjectAliasProperties()
         {
             // Arrange
@@ -205,7 +205,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModel_AssignsObjectAliasProperties()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModelLite_AssignsLiteOnlyObjectAliasProperties()
         {
             // Arrange
@@ -235,7 +235,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(entity.Object.ObjectId, model.ObjectId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToModelListing_AssignsListingOnlyObjectAliasProperties()
         {
             // Arrange
@@ -250,7 +250,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_MapToSearchModel_AssignsObjectAliasSearchProperties()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(model.Object.Object?.Description, searchModel.ObjectDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAliases")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

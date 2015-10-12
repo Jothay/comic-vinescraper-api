@@ -81,7 +81,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
 
     public class ConceptMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -95,7 +95,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "Concepts")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -110,7 +110,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>(), ref It.IsAny<IConcept>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -124,7 +124,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IConcept>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConcept>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -152,7 +152,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConcept>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -166,7 +166,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IConceptModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -184,7 +184,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
 
     public class ConceptsMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToEntity_AssignsConceptProperties()
         {
             // Arrange
@@ -210,7 +210,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             model.VerifyGet(x => x.ConceptVolumes, Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsConceptProperties()
         {
             // Arrange
@@ -237,7 +237,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             //Assert.Equal(model.Object.ConceptVolumes?.Count, existingEntity.ConceptVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModel_AssignsConceptProperties()
         {
             // Arrange
@@ -258,7 +258,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             Assert.Equal(entity.Object.ConceptVolumes?.Count, model.ConceptVolumes?.Count);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModelLite_AssignsLiteOnlyConceptProperties()
         {
             // Arrange
@@ -273,7 +273,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             Assert.Equal(entity.Object.FirstIssueAppearanceId, model.FirstIssueAppearanceId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToModelListing_AssignsListingOnlyConceptProperties()
         {
             // Arrange
@@ -289,7 +289,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_MapToSearchModel_AssignsConceptSearchProperties()
         {
             // Arrange
@@ -314,7 +314,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             Assert.Equal(model.Object.FirstIssueAppearance?.Description, searchModel.FirstIssueAppearanceDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -327,7 +327,7 @@ namespace ComicVine.API.Testing.Mappings.Concepts
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "Concepts")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectAppearedInIssueMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectAppearedInIssueModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "ObjectAppearedInIssues")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IObjectAppearedInIssueModel>(), ref It.IsAny<IObjectAppearedInIssue>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IObjectAppearedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IObjectAppearedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IObjectAppearedInIssue>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IObjectAppearedInIssueModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
 
     public class ObjectAppearedInIssuesMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToEntity_AssignsObjectAppearedInIssueProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsObjectAppearedInIssueProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModel_AssignsObjectAppearedInIssueProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModelLite_AssignsLiteOnlyObjectAppearedInIssueProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(entity.Object.AppearedInIssueId, model.AppearedInIssueId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToModelListing_AssignsListingOnlyObjectAppearedInIssueProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_MapToSearchModel_AssignsObjectAppearedInIssueSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.Equal(model.Object.AppearedInIssue?.Description, searchModel.AppearedInIssueDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Objects
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "ObjectAppearedInIssues")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

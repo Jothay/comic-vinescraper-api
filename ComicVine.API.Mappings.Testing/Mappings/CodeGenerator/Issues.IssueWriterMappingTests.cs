@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
 
     public class IssueWriterMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "IssueWriters")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), ref It.IsAny<IIssueWriter>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueWriter>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueWriter>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueWriter>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IIssueWriterModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
 
     public class IssueWritersMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToEntity_AssignsIssueWriterProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsIssueWriterProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModel_AssignsIssueWriterProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModelLite_AssignsLiteOnlyIssueWriterProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.Equal(entity.Object.WriterId, model.WriterId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToModelListing_AssignsListingOnlyIssueWriterProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_MapToSearchModel_AssignsIssueWriterSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.Equal(model.Object.Writer?.Description, searchModel.WriterDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Issues
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "IssueWriters")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange

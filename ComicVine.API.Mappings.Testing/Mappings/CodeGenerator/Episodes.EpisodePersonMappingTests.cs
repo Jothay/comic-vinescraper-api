@@ -73,7 +73,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
 
     public class EpisodePersonMappingExtensionsTests
     {
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToEntityExtension_CallsMapToEntity()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodePersonModel>()), Times.Once);
         }
 
-        //[Fact]
+        //[Fact][Trait("Category", "EpisodePeople")]
         //public void Verify_MapToEntityWithExistingExtension_CallsMapToEntity()
         //{
         //    // Arrange
@@ -102,7 +102,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodePersonModel>(), ref It.IsAny<IEpisodePerson>()), Times.Once);
         //}
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -116,7 +116,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModel(It.IsAny<IEpisodePerson>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModelLiteExtension_CallsMapToModel()
         {
             // Arrange
@@ -130,7 +130,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IEpisodePerson>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModelListingExtension_CallsMapToModel()
         {
             // Arrange
@@ -144,7 +144,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IEpisodePerson>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToSearchModelExtension_CallsMapToModel()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             mockMapper.Verify(x => x.MapToSearchModel(It.IsAny<IEpisodePersonModel>()), Times.Once);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_AreEqualExtension_CallsAreEqual()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
 
     public class EpisodePeopleMappingTests
     {
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToEntity_AssignsEpisodePersonProperties()
         {
             // Arrange
@@ -193,7 +193,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToEntity_WithExistingEntity_AssignsEpisodePersonProperties()
         {
             // Arrange
@@ -211,7 +211,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModel_AssignsEpisodePersonProperties()
         {
             // Arrange
@@ -228,7 +228,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             // <None>
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModelLite_AssignsLiteOnlyEpisodePersonProperties()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.Equal(entity.Object.PersonId, model.PersonId);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToModelListing_AssignsListingOnlyEpisodePersonProperties()
         {
             // Arrange
@@ -259,7 +259,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             // Return Entity
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_MapToSearchModel_AssignsEpisodePersonSearchProperties()
         {
             // Arrange
@@ -284,7 +284,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.Equal(model.Object.Person?.Description, searchModel.PersonDescription);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_AreEqual_WithEqualObjects_ReturnsTrue()
         {
             // Arrange
@@ -297,7 +297,7 @@ namespace ComicVine.API.Testing.Mappings.Episodes
             Assert.True(result);
         }
 
-        [Fact]
+        [Fact][Trait("Category", "EpisodePeople")]
         public void Verify_AreEqual_WithDifferentObjects_ReturnsFalse()
         {
             // Arrange
