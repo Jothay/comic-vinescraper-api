@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.StoryArcs
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class StoryArcAliasModelBase : NameableEntityModelBase, IStoryArcAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.StoryArcs
     [Route("/StoryArcAliases/{CustomKey}/ByKey", "GET", Summary = "Gets StoryArcAlias by Key")]
     public class GetStoryArcAliasByKey : ImplementsKey, IReturn<IStoryArcAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/Create", "POST", Summary = "Creates an StoryArcAlias with these contents")]
     public class CreateStoryArcAlias : StoryArcAliasModelBase, IReturn<IStoryArcAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/Update", "POST", Summary = "Updates an StoryArcAlias with new contents")]
     public class UpdateStoryArcAlias : StoryArcAliasModelBase, IReturn<IStoryArcAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an StoryArcAlias by Identifier")]
     public class DeactivateStoryArcAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an StoryArcAlias by Key")]
     public class DeactivateStoryArcAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/{ID}/Remove", "POST", Summary = "Removes an StoryArcAlias by Identifier")]
     public class RemoveStoryArcAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an StoryArcAlias by Key")]
     public class RemoveStoryArcAliasByKey : ImplementsKey, IReturn<bool> { }
 

@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("DiedInIssue")]
         public int DiedInIssueId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Issue DiedInIssue { get; set; }
         IIssue ICharacterDiedInIssue.DiedInIssue { get { return DiedInIssue; } set { DiedInIssue = value as Issue; } }
     }

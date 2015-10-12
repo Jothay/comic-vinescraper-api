@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Concepts
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ConceptIssueModelBase : NameableEntityModelBase, IConceptIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Concepts
     [Route("/ConceptIssues/{CustomKey}/ByKey", "GET", Summary = "Gets ConceptIssue by Key")]
     public class GetConceptIssueByKey : ImplementsKey, IReturn<IConceptIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/Create", "POST", Summary = "Creates an ConceptIssue with these contents")]
     public class CreateConceptIssue : ConceptIssueModelBase, IReturn<IConceptIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/Update", "POST", Summary = "Updates an ConceptIssue with new contents")]
     public class UpdateConceptIssue : ConceptIssueModelBase, IReturn<IConceptIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an ConceptIssue by Identifier")]
     public class DeactivateConceptIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ConceptIssue by Key")]
     public class DeactivateConceptIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/{ID}/Remove", "POST", Summary = "Removes an ConceptIssue by Identifier")]
     public class RemoveConceptIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ConceptIssue by Key")]
     public class RemoveConceptIssueByKey : ImplementsKey, IReturn<bool> { }
 

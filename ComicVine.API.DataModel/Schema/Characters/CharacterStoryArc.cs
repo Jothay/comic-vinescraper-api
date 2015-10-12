@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("StoryArc")]
         public int StoryArcId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual StoryArc StoryArc { get; set; }
         IStoryArc ICharacterStoryArc.StoryArc { get { return StoryArc; } set { StoryArc = value as StoryArc; } }
     }

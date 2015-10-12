@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectStoryArcModelBase : NameableEntityModelBase, IObjectStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/ObjectStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets ObjectStoryArc by Key")]
     public class GetObjectStoryArcByKey : ImplementsKey, IReturn<IObjectStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/Create", "POST", Summary = "Creates an ObjectStoryArc with these contents")]
     public class CreateObjectStoryArc : ObjectStoryArcModelBase, IReturn<IObjectStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/Update", "POST", Summary = "Updates an ObjectStoryArc with new contents")]
     public class UpdateObjectStoryArc : ObjectStoryArcModelBase, IReturn<IObjectStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an ObjectStoryArc by Identifier")]
     public class DeactivateObjectStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ObjectStoryArc by Key")]
     public class DeactivateObjectStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/{ID}/Remove", "POST", Summary = "Removes an ObjectStoryArc by Identifier")]
     public class RemoveObjectStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ObjectStoryArc by Key")]
     public class RemoveObjectStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

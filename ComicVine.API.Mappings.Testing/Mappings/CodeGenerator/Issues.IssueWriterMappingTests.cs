@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueWriterMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueWriterModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), It.IsAny<int>()));
             var mockModel = IssueWritersMockingSetup.DoMockingSetupForIssueWriterModel(1);
             IssueWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "IssueWriters")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Issues
         //{
         //    // Arrange
         //    var mockMapper = new Mock<IssueWriterMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), ref It.IsAny<IIssueWriter>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), ref It.IsAny<IIssueWriter>(), It.IsAny<int>()));
         //    var mockModel = IssueWritersMockingSetup.DoMockingSetupForIssueWriterModel(1);
         //    var mockEntity = IssueWritersMockingSetup.DoMockingSetupForIssueWriter(1);
         //    IssueWriterMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), ref It.IsAny<IIssueWriter>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueWriterModel>(), ref It.IsAny<IIssueWriter>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "IssueWriters")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueWriterMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IIssueWriter>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IIssueWriter>(), It.IsAny<int>()));
             var mockEntity = IssueWritersMockingSetup.DoMockingSetupForIssueWriter(1);
             IssueWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueWriters")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueWriterMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IIssueWriter>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IIssueWriter>(), It.IsAny<int>()));
             var mockEntity = IssueWritersMockingSetup.DoMockingSetupForIssueWriter(1);
             IssueWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueWriters")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueWriterMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IIssueWriter>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IIssueWriter>(), It.IsAny<int>()));
             var mockEntity = IssueWritersMockingSetup.DoMockingSetupForIssueWriter(1);
             IssueWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueWriters")]

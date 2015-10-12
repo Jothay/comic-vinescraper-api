@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterAliasModelBase : NameableEntityModelBase, ICharacterAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterAliases/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterAlias by Key")]
     public class GetCharacterAliasByKey : ImplementsKey, IReturn<ICharacterAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/Create", "POST", Summary = "Creates an CharacterAlias with these contents")]
     public class CreateCharacterAlias : CharacterAliasModelBase, IReturn<ICharacterAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/Update", "POST", Summary = "Updates an CharacterAlias with new contents")]
     public class UpdateCharacterAlias : CharacterAliasModelBase, IReturn<ICharacterAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterAlias by Identifier")]
     public class DeactivateCharacterAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterAlias by Key")]
     public class DeactivateCharacterAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/{ID}/Remove", "POST", Summary = "Removes an CharacterAlias by Identifier")]
     public class RemoveCharacterAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterAlias by Key")]
     public class RemoveCharacterAliasByKey : ImplementsKey, IReturn<bool> { }
 

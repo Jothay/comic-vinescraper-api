@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Promos
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ResourceTypeModelBase : NameableEntityModelBase, IResourceTypeModel
     {
@@ -41,27 +42,27 @@ namespace ComicVine.API.Services//.Promos
     [Route("/ResourceTypes/{CustomKey}/ByKey", "GET", Summary = "Gets ResourceType by Key")]
     public class GetResourceTypeByKey : ImplementsKey, IReturn<IResourceTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/Create", "POST", Summary = "Creates an ResourceType with these contents")]
     public class CreateResourceType : ResourceTypeModelBase, IReturn<IResourceTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/Update", "POST", Summary = "Updates an ResourceType with new contents")]
     public class UpdateResourceType : ResourceTypeModelBase, IReturn<IResourceTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/{ID}/Deactivate", "POST", Summary = "Deactivates an ResourceType by Identifier")]
     public class DeactivateResourceType : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ResourceType by Key")]
     public class DeactivateResourceTypeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/{ID}/Remove", "POST", Summary = "Removes an ResourceType by Identifier")]
     public class RemoveResourceType : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ResourceTypes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ResourceType by Key")]
     public class RemoveResourceTypeByKey : ImplementsKey, IReturn<bool> { }
 

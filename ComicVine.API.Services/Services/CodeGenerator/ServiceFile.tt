@@ -100,6 +100,7 @@ namespace ComicVine.API.Services//.<#= nameSpace #>
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class <#= thisClassName #>ModelBase : NameableEntityModelBase, I<#= thisClassName #>Model
     {
@@ -221,27 +222,27 @@ namespace ComicVine.API.Services//.<#= nameSpace #>
     [Route("/<#= thisClassNamePluralized #>/{CustomKey}/ByKey", "GET", Summary = "Gets <#= thisClassName #> by Key")]
     public class Get<#= thisClassName #>ByKey : ImplementsKey, IReturn<I<#= thisClassName #>Model> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/Create", "POST", Summary = "Creates an <#= thisClassName #> with these contents")]
     public class Create<#= thisClassName #> : <#= thisClassName #>ModelBase, IReturn<I<#= thisClassName #>Model> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/Update", "POST", Summary = "Updates an <#= thisClassName #> with new contents")]
     public class Update<#= thisClassName #> : <#= thisClassName #>ModelBase, IReturn<I<#= thisClassName #>Model> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/{ID}/Deactivate", "POST", Summary = "Deactivates an <#= thisClassName #> by Identifier")]
     public class Deactivate<#= thisClassName #> : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an <#= thisClassName #> by Key")]
     public class Deactivate<#= thisClassName #>ByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/{ID}/Remove", "POST", Summary = "Removes an <#= thisClassName #> by Identifier")]
     public class Remove<#= thisClassName #> : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/<#= thisClassNamePluralized #>/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an <#= thisClassName #> by Key")]
     public class Remove<#= thisClassName #>ByKey : ImplementsKey, IReturn<bool> { }
 

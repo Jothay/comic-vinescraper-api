@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Publishers
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PublisherAliasModelBase : NameableEntityModelBase, IPublisherAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Publishers
     [Route("/PublisherAliases/{CustomKey}/ByKey", "GET", Summary = "Gets PublisherAlias by Key")]
     public class GetPublisherAliasByKey : ImplementsKey, IReturn<IPublisherAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/Create", "POST", Summary = "Creates an PublisherAlias with these contents")]
     public class CreatePublisherAlias : PublisherAliasModelBase, IReturn<IPublisherAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/Update", "POST", Summary = "Updates an PublisherAlias with new contents")]
     public class UpdatePublisherAlias : PublisherAliasModelBase, IReturn<IPublisherAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an PublisherAlias by Identifier")]
     public class DeactivatePublisherAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an PublisherAlias by Key")]
     public class DeactivatePublisherAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/{ID}/Remove", "POST", Summary = "Removes an PublisherAlias by Identifier")]
     public class RemovePublisherAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PublisherAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an PublisherAlias by Key")]
     public class RemovePublisherAliasByKey : ImplementsKey, IReturn<bool> { }
 

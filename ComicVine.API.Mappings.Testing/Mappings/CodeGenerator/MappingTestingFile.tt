@@ -225,13 +225,13 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         {
             // Arrange
             var mockMapper = new Mock<<#= thisClassName #>Mapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), It.IsAny<int>()));
             var mockModel = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>Model(1);
             <#= thisClassName #>MapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
@@ -239,14 +239,14 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         //{
         //    // Arrange
         //    var mockMapper = new Mock<<#= thisClassName #>Mapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), ref It.IsAny<I<#= thisClassName #>>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), ref It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()));
         //    var mockModel = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>Model(1);
         //    var mockEntity = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>(1);
         //    <#= thisClassName #>MapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), ref It.IsAny<I<#= thisClassName #>>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<I<#= thisClassName #>Model>(), ref It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
@@ -254,13 +254,13 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         {
             // Arrange
             var mockMapper = new Mock<<#= thisClassName #>Mapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<I<#= thisClassName #>>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()));
             var mockEntity = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>(1);
             <#= thisClassName #>MapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<I<#= thisClassName #>>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
@@ -268,13 +268,13 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         {
             // Arrange
             var mockMapper = new Mock<<#= thisClassName #>Mapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<I<#= thisClassName #>>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()));
             var mockEntity = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>(1);
             <#= thisClassName #>MapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<I<#= thisClassName #>>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]
@@ -282,13 +282,13 @@ namespace ComicVine.API.Testing.Mappings.<#= nameSpace #>
         {
             // Arrange
             var mockMapper = new Mock<<#= thisClassName #>Mapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<I<#= thisClassName #>>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()));
             var mockEntity = <#= thisClassNamePluralized #>MockingSetup.DoMockingSetupFor<#= thisClassName #>(1);
             <#= thisClassName #>MapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<I<#= thisClassName #>>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<I<#= thisClassName #>>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "<#= thisClassNamePluralized #>")]

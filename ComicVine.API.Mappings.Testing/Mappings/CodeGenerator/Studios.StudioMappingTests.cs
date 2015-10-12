@@ -72,13 +72,13 @@ namespace ComicVine.API.Testing.Mappings.Studios
         {
             // Arrange
             var mockMapper = new Mock<StudioMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStudioModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStudioModel>(), It.IsAny<int>()));
             var mockModel = StudiosMockingSetup.DoMockingSetupForStudioModel(1);
             StudioMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Studios")]
@@ -86,14 +86,14 @@ namespace ComicVine.API.Testing.Mappings.Studios
         //{
         //    // Arrange
         //    var mockMapper = new Mock<StudioMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStudioModel>(), ref It.IsAny<IStudio>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStudioModel>(), ref It.IsAny<IStudio>(), It.IsAny<int>()));
         //    var mockModel = StudiosMockingSetup.DoMockingSetupForStudioModel(1);
         //    var mockEntity = StudiosMockingSetup.DoMockingSetupForStudio(1);
         //    StudioMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>(), ref It.IsAny<IStudio>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStudioModel>(), ref It.IsAny<IStudio>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Studios")]
@@ -101,13 +101,13 @@ namespace ComicVine.API.Testing.Mappings.Studios
         {
             // Arrange
             var mockMapper = new Mock<StudioMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStudio>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStudio>(), It.IsAny<int>()));
             var mockEntity = StudiosMockingSetup.DoMockingSetupForStudio(1);
             StudioMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStudio>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStudio>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Studios")]
@@ -115,13 +115,13 @@ namespace ComicVine.API.Testing.Mappings.Studios
         {
             // Arrange
             var mockMapper = new Mock<StudioMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStudio>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStudio>(), It.IsAny<int>()));
             var mockEntity = StudiosMockingSetup.DoMockingSetupForStudio(1);
             StudioMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStudio>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStudio>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Studios")]
@@ -129,13 +129,13 @@ namespace ComicVine.API.Testing.Mappings.Studios
         {
             // Arrange
             var mockMapper = new Mock<StudioMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStudio>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStudio>(), It.IsAny<int>()));
             var mockEntity = StudiosMockingSetup.DoMockingSetupForStudio(1);
             StudioMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStudio>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStudio>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Studios")]

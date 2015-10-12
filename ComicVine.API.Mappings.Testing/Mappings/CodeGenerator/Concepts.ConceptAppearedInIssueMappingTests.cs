@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), It.IsAny<int>()));
             var mockModel = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssueModel(1);
             ConceptAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "ConceptAppearedInIssues")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ConceptAppearedInIssueMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), ref It.IsAny<IConceptAppearedInIssue>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), ref It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()));
         //    var mockModel = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssueModel(1);
         //    var mockEntity = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssue(1);
         //    ConceptAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), ref It.IsAny<IConceptAppearedInIssue>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAppearedInIssueModel>(), ref It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "ConceptAppearedInIssues")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConceptAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssue(1);
             ConceptAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConceptAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAppearedInIssues")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConceptAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssue(1);
             ConceptAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConceptAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAppearedInIssues")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConceptAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = ConceptAppearedInIssuesMockingSetup.DoMockingSetupForConceptAppearedInIssue(1);
             ConceptAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConceptAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConceptAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAppearedInIssues")]

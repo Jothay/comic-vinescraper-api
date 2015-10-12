@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.People
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PersonAliasModelBase : NameableEntityModelBase, IPersonAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.People
     [Route("/PersonAliases/{CustomKey}/ByKey", "GET", Summary = "Gets PersonAlias by Key")]
     public class GetPersonAliasByKey : ImplementsKey, IReturn<IPersonAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/Create", "POST", Summary = "Creates an PersonAlias with these contents")]
     public class CreatePersonAlias : PersonAliasModelBase, IReturn<IPersonAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/Update", "POST", Summary = "Updates an PersonAlias with new contents")]
     public class UpdatePersonAlias : PersonAliasModelBase, IReturn<IPersonAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an PersonAlias by Identifier")]
     public class DeactivatePersonAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an PersonAlias by Key")]
     public class DeactivatePersonAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/{ID}/Remove", "POST", Summary = "Removes an PersonAlias by Identifier")]
     public class RemovePersonAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PersonAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an PersonAlias by Key")]
     public class RemovePersonAliasByKey : ImplementsKey, IReturn<bool> { }
 

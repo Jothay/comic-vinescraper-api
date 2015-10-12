@@ -15,6 +15,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterEnemyModelBase : NameableEntityModelBase, ICharacterEnemyModel
     {
@@ -86,27 +87,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterEnemies/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterEnemy by Key")]
     public class GetCharacterEnemyByKey : ImplementsKey, IReturn<ICharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/Create", "POST", Summary = "Creates an CharacterEnemy with these contents")]
     public class CreateCharacterEnemy : CharacterEnemyModelBase, IReturn<ICharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/Update", "POST", Summary = "Updates an CharacterEnemy with new contents")]
     public class UpdateCharacterEnemy : CharacterEnemyModelBase, IReturn<ICharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterEnemy by Identifier")]
     public class DeactivateCharacterEnemy : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterEnemy by Key")]
     public class DeactivateCharacterEnemyByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/{ID}/Remove", "POST", Summary = "Removes an CharacterEnemy by Identifier")]
     public class RemoveCharacterEnemy : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterEnemies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterEnemy by Key")]
     public class RemoveCharacterEnemyByKey : ImplementsKey, IReturn<bool> { }
 

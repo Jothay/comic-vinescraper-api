@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterFriendModelBase : NameableEntityModelBase, ICharacterFriendModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterFriends/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterFriend by Key")]
     public class GetCharacterFriendByKey : ImplementsKey, IReturn<ICharacterFriendModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/Create", "POST", Summary = "Creates an CharacterFriend with these contents")]
     public class CreateCharacterFriend : CharacterFriendModelBase, IReturn<ICharacterFriendModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/Update", "POST", Summary = "Updates an CharacterFriend with new contents")]
     public class UpdateCharacterFriend : CharacterFriendModelBase, IReturn<ICharacterFriendModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterFriend by Identifier")]
     public class DeactivateCharacterFriend : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterFriend by Key")]
     public class DeactivateCharacterFriendByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/{ID}/Remove", "POST", Summary = "Removes an CharacterFriend by Identifier")]
     public class RemoveCharacterFriend : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriends/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterFriend by Key")]
     public class RemoveCharacterFriendByKey : ImplementsKey, IReturn<bool> { }
 

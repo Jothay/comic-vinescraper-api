@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<PersonAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPersonAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), It.IsAny<int>()));
             var mockModel = PersonAliasesMockingSetup.DoMockingSetupForPersonAliasModel(1);
             PersonAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "PersonAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.People
         //{
         //    // Arrange
         //    var mockMapper = new Mock<PersonAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), ref It.IsAny<IPersonAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), ref It.IsAny<IPersonAlias>(), It.IsAny<int>()));
         //    var mockModel = PersonAliasesMockingSetup.DoMockingSetupForPersonAliasModel(1);
         //    var mockEntity = PersonAliasesMockingSetup.DoMockingSetupForPersonAlias(1);
         //    PersonAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), ref It.IsAny<IPersonAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPersonAliasModel>(), ref It.IsAny<IPersonAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "PersonAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<PersonAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPersonAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPersonAlias>(), It.IsAny<int>()));
             var mockEntity = PersonAliasesMockingSetup.DoMockingSetupForPersonAlias(1);
             PersonAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPersonAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPersonAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PersonAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<PersonAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPersonAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPersonAlias>(), It.IsAny<int>()));
             var mockEntity = PersonAliasesMockingSetup.DoMockingSetupForPersonAlias(1);
             PersonAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPersonAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPersonAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PersonAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<PersonAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPersonAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPersonAlias>(), It.IsAny<int>()));
             var mockEntity = PersonAliasesMockingSetup.DoMockingSetupForPersonAlias(1);
             PersonAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPersonAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPersonAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PersonAliases")]

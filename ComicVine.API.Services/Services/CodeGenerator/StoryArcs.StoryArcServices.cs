@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.StoryArcs
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class StoryArcModelBase : NameableEntityModelBase, IStoryArcModel
     {
@@ -110,27 +111,27 @@ namespace ComicVine.API.Services//.StoryArcs
     [Route("/StoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets StoryArc by Key")]
     public class GetStoryArcByKey : ImplementsKey, IReturn<IStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/Create", "POST", Summary = "Creates an StoryArc with these contents")]
     public class CreateStoryArc : StoryArcModelBase, IReturn<IStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/Update", "POST", Summary = "Updates an StoryArc with new contents")]
     public class UpdateStoryArc : StoryArcModelBase, IReturn<IStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an StoryArc by Identifier")]
     public class DeactivateStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an StoryArc by Key")]
     public class DeactivateStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/{ID}/Remove", "POST", Summary = "Removes an StoryArc by Identifier")]
     public class RemoveStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an StoryArc by Key")]
     public class RemoveStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Profiles
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ProfileModelBase : NameableEntityModelBase, IProfileModel
     {
@@ -40,27 +41,27 @@ namespace ComicVine.API.Services//.Profiles
     [Route("/Profiles/{CustomKey}/ByKey", "GET", Summary = "Gets Profile by Key")]
     public class GetProfileByKey : ImplementsKey, IReturn<IProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/Create", "POST", Summary = "Creates an Profile with these contents")]
     public class CreateProfile : ProfileModelBase, IReturn<IProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/Update", "POST", Summary = "Updates an Profile with new contents")]
     public class UpdateProfile : ProfileModelBase, IReturn<IProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/{ID}/Deactivate", "POST", Summary = "Deactivates an Profile by Identifier")]
     public class DeactivateProfile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Profile by Key")]
     public class DeactivateProfileByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/{ID}/Remove", "POST", Summary = "Removes an Profile by Identifier")]
     public class RemoveProfile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Profiles/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Profile by Key")]
     public class RemoveProfileByKey : ImplementsKey, IReturn<bool> { }
 

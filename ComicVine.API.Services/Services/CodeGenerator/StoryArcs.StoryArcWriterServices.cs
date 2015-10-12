@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.StoryArcs
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class StoryArcWriterModelBase : NameableEntityModelBase, IStoryArcWriterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.StoryArcs
     [Route("/StoryArcWriters/{CustomKey}/ByKey", "GET", Summary = "Gets StoryArcWriter by Key")]
     public class GetStoryArcWriterByKey : ImplementsKey, IReturn<IStoryArcWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/Create", "POST", Summary = "Creates an StoryArcWriter with these contents")]
     public class CreateStoryArcWriter : StoryArcWriterModelBase, IReturn<IStoryArcWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/Update", "POST", Summary = "Updates an StoryArcWriter with new contents")]
     public class UpdateStoryArcWriter : StoryArcWriterModelBase, IReturn<IStoryArcWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/{ID}/Deactivate", "POST", Summary = "Deactivates an StoryArcWriter by Identifier")]
     public class DeactivateStoryArcWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an StoryArcWriter by Key")]
     public class DeactivateStoryArcWriterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/{ID}/Remove", "POST", Summary = "Removes an StoryArcWriter by Identifier")]
     public class RemoveStoryArcWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcWriters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an StoryArcWriter by Key")]
     public class RemoveStoryArcWriterByKey : ImplementsKey, IReturn<bool> { }
 

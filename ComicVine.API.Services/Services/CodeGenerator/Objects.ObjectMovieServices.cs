@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectMovieModelBase : NameableEntityModelBase, IObjectMovieModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/ObjectMovies/{CustomKey}/ByKey", "GET", Summary = "Gets ObjectMovie by Key")]
     public class GetObjectMovieByKey : ImplementsKey, IReturn<IObjectMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/Create", "POST", Summary = "Creates an ObjectMovie with these contents")]
     public class CreateObjectMovie : ObjectMovieModelBase, IReturn<IObjectMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/Update", "POST", Summary = "Updates an ObjectMovie with new contents")]
     public class UpdateObjectMovie : ObjectMovieModelBase, IReturn<IObjectMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/{ID}/Deactivate", "POST", Summary = "Deactivates an ObjectMovie by Identifier")]
     public class DeactivateObjectMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ObjectMovie by Key")]
     public class DeactivateObjectMovieByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/{ID}/Remove", "POST", Summary = "Removes an ObjectMovie by Identifier")]
     public class RemoveObjectMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectMovies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ObjectMovie by Key")]
     public class RemoveObjectMovieByKey : ImplementsKey, IReturn<bool> { }
 

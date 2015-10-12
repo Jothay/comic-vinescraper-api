@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Concepts
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ConceptAppearedInIssueModelBase : NameableEntityModelBase, IConceptAppearedInIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Concepts
     [Route("/ConceptAppearedInIssues/{CustomKey}/ByKey", "GET", Summary = "Gets ConceptAppearedInIssue by Key")]
     public class GetConceptAppearedInIssueByKey : ImplementsKey, IReturn<IConceptAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/Create", "POST", Summary = "Creates an ConceptAppearedInIssue with these contents")]
     public class CreateConceptAppearedInIssue : ConceptAppearedInIssueModelBase, IReturn<IConceptAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/Update", "POST", Summary = "Updates an ConceptAppearedInIssue with new contents")]
     public class UpdateConceptAppearedInIssue : ConceptAppearedInIssueModelBase, IReturn<IConceptAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an ConceptAppearedInIssue by Identifier")]
     public class DeactivateConceptAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ConceptAppearedInIssue by Key")]
     public class DeactivateConceptAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/{ID}/Remove", "POST", Summary = "Removes an ConceptAppearedInIssue by Identifier")]
     public class RemoveConceptAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAppearedInIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ConceptAppearedInIssue by Key")]
     public class RemoveConceptAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 

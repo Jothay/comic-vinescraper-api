@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Promos
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PromoModelBase : NameableEntityModelBase, IPromoModel
     {
@@ -107,27 +108,27 @@ namespace ComicVine.API.Services//.Promos
     [Route("/Promos/{CustomKey}/ByKey", "GET", Summary = "Gets Promo by Key")]
     public class GetPromoByKey : ImplementsKey, IReturn<IPromoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/Create", "POST", Summary = "Creates an Promo with these contents")]
     public class CreatePromo : PromoModelBase, IReturn<IPromoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/Update", "POST", Summary = "Updates an Promo with new contents")]
     public class UpdatePromo : PromoModelBase, IReturn<IPromoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/{ID}/Deactivate", "POST", Summary = "Deactivates an Promo by Identifier")]
     public class DeactivatePromo : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Promo by Key")]
     public class DeactivatePromoByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/{ID}/Remove", "POST", Summary = "Removes an Promo by Identifier")]
     public class RemovePromo : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Promos/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Promo by Key")]
     public class RemovePromoByKey : ImplementsKey, IReturn<bool> { }
 

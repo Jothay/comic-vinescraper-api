@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), It.IsAny<int>()));
             var mockModel = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssueModel(1);
             TeamAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "TeamAppearedInIssues")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Teams
         //{
         //    // Arrange
         //    var mockMapper = new Mock<TeamAppearedInIssueMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), ref It.IsAny<ITeamAppearedInIssue>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), ref It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()));
         //    var mockModel = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssueModel(1);
         //    var mockEntity = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssue(1);
         //    TeamAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), ref It.IsAny<ITeamAppearedInIssue>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAppearedInIssueModel>(), ref It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "TeamAppearedInIssues")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssue(1);
             TeamAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAppearedInIssues")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssue(1);
             TeamAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAppearedInIssues")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAppearedInIssueMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamAppearedInIssue>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()));
             var mockEntity = TeamAppearedInIssuesMockingSetup.DoMockingSetupForTeamAppearedInIssue(1);
             TeamAppearedInIssueMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamAppearedInIssue>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamAppearedInIssue>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAppearedInIssues")]

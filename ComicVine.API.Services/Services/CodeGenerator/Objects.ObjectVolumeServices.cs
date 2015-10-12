@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectVolumeModelBase : NameableEntityModelBase, IObjectVolumeModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/ObjectVolumes/{CustomKey}/ByKey", "GET", Summary = "Gets ObjectVolume by Key")]
     public class GetObjectVolumeByKey : ImplementsKey, IReturn<IObjectVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/Create", "POST", Summary = "Creates an ObjectVolume with these contents")]
     public class CreateObjectVolume : ObjectVolumeModelBase, IReturn<IObjectVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/Update", "POST", Summary = "Updates an ObjectVolume with new contents")]
     public class UpdateObjectVolume : ObjectVolumeModelBase, IReturn<IObjectVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/{ID}/Deactivate", "POST", Summary = "Deactivates an ObjectVolume by Identifier")]
     public class DeactivateObjectVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ObjectVolume by Key")]
     public class DeactivateObjectVolumeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/{ID}/Remove", "POST", Summary = "Removes an ObjectVolume by Identifier")]
     public class RemoveObjectVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectVolumes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ObjectVolume by Key")]
     public class RemoveObjectVolumeByKey : ImplementsKey, IReturn<bool> { }
 

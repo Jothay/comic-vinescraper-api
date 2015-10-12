@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerModel>(), It.IsAny<int>()));
             var mockModel = PowersMockingSetup.DoMockingSetupForPowerModel(1);
             PowerMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Powers")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Powers
         //{
         //    // Arrange
         //    var mockMapper = new Mock<PowerMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerModel>(), ref It.IsAny<IPower>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerModel>(), ref It.IsAny<IPower>(), It.IsAny<int>()));
         //    var mockModel = PowersMockingSetup.DoMockingSetupForPowerModel(1);
         //    var mockEntity = PowersMockingSetup.DoMockingSetupForPower(1);
         //    PowerMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerModel>(), ref It.IsAny<IPower>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerModel>(), ref It.IsAny<IPower>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Powers")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPower>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPower>(), It.IsAny<int>()));
             var mockEntity = PowersMockingSetup.DoMockingSetupForPower(1);
             PowerMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPower>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPower>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Powers")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPower>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPower>(), It.IsAny<int>()));
             var mockEntity = PowersMockingSetup.DoMockingSetupForPower(1);
             PowerMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPower>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPower>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Powers")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPower>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPower>(), It.IsAny<int>()));
             var mockEntity = PowersMockingSetup.DoMockingSetupForPower(1);
             PowerMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPower>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPower>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Powers")]

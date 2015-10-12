@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Series
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class SeriesAliasModelBase : NameableEntityModelBase, ISeriesAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Series
     [Route("/SeriesAliases/{CustomKey}/ByKey", "GET", Summary = "Gets SeriesAlias by Key")]
     public class GetSeriesAliasByKey : ImplementsKey, IReturn<ISeriesAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/Create", "POST", Summary = "Creates an SeriesAlias with these contents")]
     public class CreateSeriesAlias : SeriesAliasModelBase, IReturn<ISeriesAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/Update", "POST", Summary = "Updates an SeriesAlias with new contents")]
     public class UpdateSeriesAlias : SeriesAliasModelBase, IReturn<ISeriesAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an SeriesAlias by Identifier")]
     public class DeactivateSeriesAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an SeriesAlias by Key")]
     public class DeactivateSeriesAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/{ID}/Remove", "POST", Summary = "Removes an SeriesAlias by Identifier")]
     public class RemoveSeriesAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an SeriesAlias by Key")]
     public class RemoveSeriesAliasByKey : ImplementsKey, IReturn<bool> { }
 

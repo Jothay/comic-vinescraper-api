@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Movies
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class MovieModelBase : NameableEntityModelBase, IMovieModel
     {
@@ -82,27 +83,27 @@ namespace ComicVine.API.Services//.Movies
     [Route("/Movies/{CustomKey}/ByKey", "GET", Summary = "Gets Movie by Key")]
     public class GetMovieByKey : ImplementsKey, IReturn<IMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/Create", "POST", Summary = "Creates an Movie with these contents")]
     public class CreateMovie : MovieModelBase, IReturn<IMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/Update", "POST", Summary = "Updates an Movie with new contents")]
     public class UpdateMovie : MovieModelBase, IReturn<IMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/{ID}/Deactivate", "POST", Summary = "Deactivates an Movie by Identifier")]
     public class DeactivateMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Movie by Key")]
     public class DeactivateMovieByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/{ID}/Remove", "POST", Summary = "Removes an Movie by Identifier")]
     public class RemoveMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Movies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Movie by Key")]
     public class RemoveMovieByKey : ImplementsKey, IReturn<bool> { }
 

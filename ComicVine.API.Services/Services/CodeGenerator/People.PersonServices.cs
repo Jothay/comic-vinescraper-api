@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.People
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PersonModelBase : NameableEntityModelBase, IPersonModel
     {
@@ -96,27 +97,27 @@ namespace ComicVine.API.Services//.People
     [Route("/People/{CustomKey}/ByKey", "GET", Summary = "Gets Person by Key")]
     public class GetPersonByKey : ImplementsKey, IReturn<IPersonModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/Create", "POST", Summary = "Creates an Person with these contents")]
     public class CreatePerson : PersonModelBase, IReturn<IPersonModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/Update", "POST", Summary = "Updates an Person with new contents")]
     public class UpdatePerson : PersonModelBase, IReturn<IPersonModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/{ID}/Deactivate", "POST", Summary = "Deactivates an Person by Identifier")]
     public class DeactivatePerson : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Person by Key")]
     public class DeactivatePersonByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/{ID}/Remove", "POST", Summary = "Removes an Person by Identifier")]
     public class RemovePerson : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/People/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Person by Key")]
     public class RemovePersonByKey : ImplementsKey, IReturn<bool> { }
 

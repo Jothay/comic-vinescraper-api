@@ -86,13 +86,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptModel>(), It.IsAny<int>()));
             var mockModel = ConceptsMockingSetup.DoMockingSetupForConceptModel(1);
             ConceptMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Concepts")]
@@ -100,14 +100,14 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ConceptMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptModel>(), ref It.IsAny<IConcept>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptModel>(), ref It.IsAny<IConcept>(), It.IsAny<int>()));
         //    var mockModel = ConceptsMockingSetup.DoMockingSetupForConceptModel(1);
         //    var mockEntity = ConceptsMockingSetup.DoMockingSetupForConcept(1);
         //    ConceptMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>(), ref It.IsAny<IConcept>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptModel>(), ref It.IsAny<IConcept>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Concepts")]
@@ -115,13 +115,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConcept>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConcept>(), It.IsAny<int>()));
             var mockEntity = ConceptsMockingSetup.DoMockingSetupForConcept(1);
             ConceptMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConcept>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConcept>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Concepts")]
@@ -129,13 +129,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConcept>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConcept>(), It.IsAny<int>()));
             var mockEntity = ConceptsMockingSetup.DoMockingSetupForConcept(1);
             ConceptMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConcept>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConcept>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Concepts")]
@@ -143,13 +143,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConcept>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConcept>(), It.IsAny<int>()));
             var mockEntity = ConceptsMockingSetup.DoMockingSetupForConcept(1);
             ConceptMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConcept>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConcept>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Concepts")]

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Issues
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class IssueModelBase : NameableEntityModelBase, IIssueModel
     {
@@ -92,27 +93,27 @@ namespace ComicVine.API.Services//.Issues
     [Route("/Issues/{CustomKey}/ByKey", "GET", Summary = "Gets Issue by Key")]
     public class GetIssueByKey : ImplementsKey, IReturn<IIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/Create", "POST", Summary = "Creates an Issue with these contents")]
     public class CreateIssue : IssueModelBase, IReturn<IIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/Update", "POST", Summary = "Updates an Issue with new contents")]
     public class UpdateIssue : IssueModelBase, IReturn<IIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/{ID}/Deactivate", "POST", Summary = "Deactivates an Issue by Identifier")]
     public class DeactivateIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Issue by Key")]
     public class DeactivateIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/{ID}/Remove", "POST", Summary = "Removes an Issue by Identifier")]
     public class RemoveIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Issues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Issue by Key")]
     public class RemoveIssueByKey : ImplementsKey, IReturn<bool> { }
 

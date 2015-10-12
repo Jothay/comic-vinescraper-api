@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Volumes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VolumeAliasModelBase : NameableEntityModelBase, IVolumeAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Volumes
     [Route("/VolumeAliases/{CustomKey}/ByKey", "GET", Summary = "Gets VolumeAlias by Key")]
     public class GetVolumeAliasByKey : ImplementsKey, IReturn<IVolumeAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/Create", "POST", Summary = "Creates an VolumeAlias with these contents")]
     public class CreateVolumeAlias : VolumeAliasModelBase, IReturn<IVolumeAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/Update", "POST", Summary = "Updates an VolumeAlias with new contents")]
     public class UpdateVolumeAlias : VolumeAliasModelBase, IReturn<IVolumeAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an VolumeAlias by Identifier")]
     public class DeactivateVolumeAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an VolumeAlias by Key")]
     public class DeactivateVolumeAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/{ID}/Remove", "POST", Summary = "Removes an VolumeAlias by Identifier")]
     public class RemoveVolumeAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an VolumeAlias by Key")]
     public class RemoveVolumeAliasByKey : ImplementsKey, IReturn<bool> { }
 

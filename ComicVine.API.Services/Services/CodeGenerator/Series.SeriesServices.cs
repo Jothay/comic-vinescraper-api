@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Series
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class SeriesModelBase : NameableEntityModelBase, ISeriesModel
     {
@@ -110,27 +111,27 @@ namespace ComicVine.API.Services//.Series
     [Route("/Series/{CustomKey}/ByKey", "GET", Summary = "Gets Series by Key")]
     public class GetSeriesByKey : ImplementsKey, IReturn<ISeriesModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/Create", "POST", Summary = "Creates an Series with these contents")]
     public class CreateSeries : SeriesModelBase, IReturn<ISeriesModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/Update", "POST", Summary = "Updates an Series with new contents")]
     public class UpdateSeries : SeriesModelBase, IReturn<ISeriesModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/{ID}/Deactivate", "POST", Summary = "Deactivates an Series by Identifier")]
     public class DeactivateSeries : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Series by Key")]
     public class DeactivateSeriesByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/{ID}/Remove", "POST", Summary = "Removes an Series by Identifier")]
     public class RemoveSeries : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Series/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Series by Key")]
     public class RemoveSeriesByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterFriendlyTeamModelBase : NameableEntityModelBase, ICharacterFriendlyTeamModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterFriendlyTeams/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterFriendlyTeam by Key")]
     public class GetCharacterFriendlyTeamByKey : ImplementsKey, IReturn<ICharacterFriendlyTeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/Create", "POST", Summary = "Creates an CharacterFriendlyTeam with these contents")]
     public class CreateCharacterFriendlyTeam : CharacterFriendlyTeamModelBase, IReturn<ICharacterFriendlyTeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/Update", "POST", Summary = "Updates an CharacterFriendlyTeam with new contents")]
     public class UpdateCharacterFriendlyTeam : CharacterFriendlyTeamModelBase, IReturn<ICharacterFriendlyTeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterFriendlyTeam by Identifier")]
     public class DeactivateCharacterFriendlyTeam : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterFriendlyTeam by Key")]
     public class DeactivateCharacterFriendlyTeamByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/{ID}/Remove", "POST", Summary = "Removes an CharacterFriendlyTeam by Identifier")]
     public class RemoveCharacterFriendlyTeam : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterFriendlyTeams/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterFriendlyTeam by Key")]
     public class RemoveCharacterFriendlyTeamByKey : ImplementsKey, IReturn<bool> { }
 

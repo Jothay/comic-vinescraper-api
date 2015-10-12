@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Powers
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PowerAliasModelBase : NameableEntityModelBase, IPowerAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Powers
     [Route("/PowerAliases/{CustomKey}/ByKey", "GET", Summary = "Gets PowerAlias by Key")]
     public class GetPowerAliasByKey : ImplementsKey, IReturn<IPowerAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/Create", "POST", Summary = "Creates an PowerAlias with these contents")]
     public class CreatePowerAlias : PowerAliasModelBase, IReturn<IPowerAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/Update", "POST", Summary = "Updates an PowerAlias with new contents")]
     public class UpdatePowerAlias : PowerAliasModelBase, IReturn<IPowerAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an PowerAlias by Identifier")]
     public class DeactivatePowerAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an PowerAlias by Key")]
     public class DeactivatePowerAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/{ID}/Remove", "POST", Summary = "Removes an PowerAlias by Identifier")]
     public class RemovePowerAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/PowerAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an PowerAlias by Key")]
     public class RemovePowerAliasByKey : ImplementsKey, IReturn<bool> { }
 

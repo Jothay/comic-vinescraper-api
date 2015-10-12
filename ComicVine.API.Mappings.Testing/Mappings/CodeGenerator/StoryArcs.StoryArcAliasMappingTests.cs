@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), It.IsAny<int>()));
             var mockModel = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAliasModel(1);
             StoryArcAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "StoryArcAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         //{
         //    // Arrange
         //    var mockMapper = new Mock<StoryArcAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), ref It.IsAny<IStoryArcAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), ref It.IsAny<IStoryArcAlias>(), It.IsAny<int>()));
         //    var mockModel = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAliasModel(1);
         //    var mockEntity = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAlias(1);
         //    StoryArcAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), ref It.IsAny<IStoryArcAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcAliasModel>(), ref It.IsAny<IStoryArcAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "StoryArcAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStoryArcAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()));
             var mockEntity = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAlias(1);
             StoryArcAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStoryArcAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStoryArcAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()));
             var mockEntity = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAlias(1);
             StoryArcAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStoryArcAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStoryArcAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()));
             var mockEntity = StoryArcAliasesMockingSetup.DoMockingSetupForStoryArcAlias(1);
             StoryArcAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStoryArcAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStoryArcAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcAliases")]

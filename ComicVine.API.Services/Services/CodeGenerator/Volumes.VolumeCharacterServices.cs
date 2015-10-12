@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Volumes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VolumeCharacterModelBase : NameableEntityModelBase, IVolumeCharacterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Volumes
     [Route("/VolumeCharacters/{CustomKey}/ByKey", "GET", Summary = "Gets VolumeCharacter by Key")]
     public class GetVolumeCharacterByKey : ImplementsKey, IReturn<IVolumeCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/Create", "POST", Summary = "Creates an VolumeCharacter with these contents")]
     public class CreateVolumeCharacter : VolumeCharacterModelBase, IReturn<IVolumeCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/Update", "POST", Summary = "Updates an VolumeCharacter with new contents")]
     public class UpdateVolumeCharacter : VolumeCharacterModelBase, IReturn<IVolumeCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/{ID}/Deactivate", "POST", Summary = "Deactivates an VolumeCharacter by Identifier")]
     public class DeactivateVolumeCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an VolumeCharacter by Key")]
     public class DeactivateVolumeCharacterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/{ID}/Remove", "POST", Summary = "Removes an VolumeCharacter by Identifier")]
     public class RemoveVolumeCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeCharacters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an VolumeCharacter by Key")]
     public class RemoveVolumeCharacterByKey : ImplementsKey, IReturn<bool> { }
 

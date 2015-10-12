@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Teams
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class TeamAppearedInIssueModelBase : NameableEntityModelBase, ITeamAppearedInIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Teams
     [Route("/TeamAppearedInIssues/{CustomKey}/ByKey", "GET", Summary = "Gets TeamAppearedInIssue by Key")]
     public class GetTeamAppearedInIssueByKey : ImplementsKey, IReturn<ITeamAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/Create", "POST", Summary = "Creates an TeamAppearedInIssue with these contents")]
     public class CreateTeamAppearedInIssue : TeamAppearedInIssueModelBase, IReturn<ITeamAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/Update", "POST", Summary = "Updates an TeamAppearedInIssue with new contents")]
     public class UpdateTeamAppearedInIssue : TeamAppearedInIssueModelBase, IReturn<ITeamAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an TeamAppearedInIssue by Identifier")]
     public class DeactivateTeamAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an TeamAppearedInIssue by Key")]
     public class DeactivateTeamAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/{ID}/Remove", "POST", Summary = "Removes an TeamAppearedInIssue by Identifier")]
     public class RemoveTeamAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamAppearedInIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an TeamAppearedInIssue by Key")]
     public class RemoveTeamAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 

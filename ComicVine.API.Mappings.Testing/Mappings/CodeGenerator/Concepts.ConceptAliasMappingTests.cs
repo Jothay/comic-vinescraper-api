@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), It.IsAny<int>()));
             var mockModel = ConceptAliasesMockingSetup.DoMockingSetupForConceptAliasModel(1);
             ConceptAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "ConceptAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ConceptAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), ref It.IsAny<IConceptAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), ref It.IsAny<IConceptAlias>(), It.IsAny<int>()));
         //    var mockModel = ConceptAliasesMockingSetup.DoMockingSetupForConceptAliasModel(1);
         //    var mockEntity = ConceptAliasesMockingSetup.DoMockingSetupForConceptAlias(1);
         //    ConceptAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), ref It.IsAny<IConceptAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IConceptAliasModel>(), ref It.IsAny<IConceptAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "ConceptAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConceptAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IConceptAlias>(), It.IsAny<int>()));
             var mockEntity = ConceptAliasesMockingSetup.DoMockingSetupForConceptAlias(1);
             ConceptAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConceptAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IConceptAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConceptAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IConceptAlias>(), It.IsAny<int>()));
             var mockEntity = ConceptAliasesMockingSetup.DoMockingSetupForConceptAlias(1);
             ConceptAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConceptAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IConceptAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Concepts
         {
             // Arrange
             var mockMapper = new Mock<ConceptAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConceptAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IConceptAlias>(), It.IsAny<int>()));
             var mockEntity = ConceptAliasesMockingSetup.DoMockingSetupForConceptAlias(1);
             ConceptAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConceptAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IConceptAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ConceptAliases")]

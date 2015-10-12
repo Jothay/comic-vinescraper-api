@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Origins
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class OriginModelBase : NameableEntityModelBase, IOriginModel
     {
@@ -40,27 +41,27 @@ namespace ComicVine.API.Services//.Origins
     [Route("/Origins/{CustomKey}/ByKey", "GET", Summary = "Gets Origin by Key")]
     public class GetOriginByKey : ImplementsKey, IReturn<IOriginModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/Create", "POST", Summary = "Creates an Origin with these contents")]
     public class CreateOrigin : OriginModelBase, IReturn<IOriginModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/Update", "POST", Summary = "Updates an Origin with new contents")]
     public class UpdateOrigin : OriginModelBase, IReturn<IOriginModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/{ID}/Deactivate", "POST", Summary = "Deactivates an Origin by Identifier")]
     public class DeactivateOrigin : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Origin by Key")]
     public class DeactivateOriginByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/{ID}/Remove", "POST", Summary = "Removes an Origin by Identifier")]
     public class RemoveOrigin : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Origins/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Origin by Key")]
     public class RemoveOriginByKey : ImplementsKey, IReturn<bool> { }
 

@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), It.IsAny<int>()));
             var mockModel = PowerAliasesMockingSetup.DoMockingSetupForPowerAliasModel(1);
             PowerAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "PowerAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Powers
         //{
         //    // Arrange
         //    var mockMapper = new Mock<PowerAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), ref It.IsAny<IPowerAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), ref It.IsAny<IPowerAlias>(), It.IsAny<int>()));
         //    var mockModel = PowerAliasesMockingSetup.DoMockingSetupForPowerAliasModel(1);
         //    var mockEntity = PowerAliasesMockingSetup.DoMockingSetupForPowerAlias(1);
         //    PowerAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), ref It.IsAny<IPowerAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPowerAliasModel>(), ref It.IsAny<IPowerAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "PowerAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPowerAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPowerAlias>(), It.IsAny<int>()));
             var mockEntity = PowerAliasesMockingSetup.DoMockingSetupForPowerAlias(1);
             PowerAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPowerAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPowerAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PowerAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPowerAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPowerAlias>(), It.IsAny<int>()));
             var mockEntity = PowerAliasesMockingSetup.DoMockingSetupForPowerAlias(1);
             PowerAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPowerAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPowerAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PowerAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Powers
         {
             // Arrange
             var mockMapper = new Mock<PowerAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPowerAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPowerAlias>(), It.IsAny<int>()));
             var mockEntity = PowerAliasesMockingSetup.DoMockingSetupForPowerAlias(1);
             PowerAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPowerAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPowerAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "PowerAliases")]

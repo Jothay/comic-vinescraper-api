@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectModelBase : NameableEntityModelBase, IObjectModel
     {
@@ -89,27 +90,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/Objects/{CustomKey}/ByKey", "GET", Summary = "Gets Object by Key")]
     public class GetObjectByKey : ImplementsKey, IReturn<IObjectModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/Create", "POST", Summary = "Creates an Object with these contents")]
     public class CreateObject : ObjectModelBase, IReturn<IObjectModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/Update", "POST", Summary = "Updates an Object with new contents")]
     public class UpdateObject : ObjectModelBase, IReturn<IObjectModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/{ID}/Deactivate", "POST", Summary = "Deactivates an Object by Identifier")]
     public class DeactivateObject : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Object by Key")]
     public class DeactivateObjectByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/{ID}/Remove", "POST", Summary = "Removes an Object by Identifier")]
     public class RemoveObject : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Objects/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Object by Key")]
     public class RemoveObjectByKey : ImplementsKey, IReturn<bool> { }
 

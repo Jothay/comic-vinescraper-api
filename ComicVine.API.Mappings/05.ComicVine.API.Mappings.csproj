@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\MngRecAndSec.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -378,6 +380,7 @@
     <Compile Include="CodeGenerator\Volumes.VolumeWriterMappings.cs">
       <DependentUpon>MappingFileMaster.tt</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\EntityMapperHelper.cs" />
     <Compile Include="Mappings\NameableEntityMapper.cs" />
     <Compile Include="Mappings\EntityMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

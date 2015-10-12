@@ -1,4 +1,4 @@
-﻿// ReSharper disable ClassNeverInstantiated.Global
+﻿// ReSharper disable ClassNeverInstantiated.Global, ClassWithVirtualMembersNeverInherited.Global
 namespace ComicVine.API.DataModel.Schema
 {
     using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("AppearedInIssue")]
         public int AppearedInIssueId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Issue AppearedInIssue { get; set; }
         IIssue ICharacterAppearedInIssue.AppearedInIssue { get { return AppearedInIssue; } set { AppearedInIssue = value as Issue; } }
     }

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Movies
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class MovieStoryArcModelBase : NameableEntityModelBase, IMovieStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Movies
     [Route("/MovieStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets MovieStoryArc by Key")]
     public class GetMovieStoryArcByKey : ImplementsKey, IReturn<IMovieStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/Create", "POST", Summary = "Creates an MovieStoryArc with these contents")]
     public class CreateMovieStoryArc : MovieStoryArcModelBase, IReturn<IMovieStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/Update", "POST", Summary = "Updates an MovieStoryArc with new contents")]
     public class UpdateMovieStoryArc : MovieStoryArcModelBase, IReturn<IMovieStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an MovieStoryArc by Identifier")]
     public class DeactivateMovieStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an MovieStoryArc by Key")]
     public class DeactivateMovieStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/{ID}/Remove", "POST", Summary = "Removes an MovieStoryArc by Identifier")]
     public class RemoveMovieStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an MovieStoryArc by Key")]
     public class RemoveMovieStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

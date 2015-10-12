@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Locations
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class LocationIssueModelBase : NameableEntityModelBase, ILocationIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Locations
     [Route("/LocationIssues/{CustomKey}/ByKey", "GET", Summary = "Gets LocationIssue by Key")]
     public class GetLocationIssueByKey : ImplementsKey, IReturn<ILocationIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/Create", "POST", Summary = "Creates an LocationIssue with these contents")]
     public class CreateLocationIssue : LocationIssueModelBase, IReturn<ILocationIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/Update", "POST", Summary = "Updates an LocationIssue with new contents")]
     public class UpdateLocationIssue : LocationIssueModelBase, IReturn<ILocationIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an LocationIssue by Identifier")]
     public class DeactivateLocationIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an LocationIssue by Key")]
     public class DeactivateLocationIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/{ID}/Remove", "POST", Summary = "Removes an LocationIssue by Identifier")]
     public class RemoveLocationIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an LocationIssue by Key")]
     public class RemoveLocationIssueByKey : ImplementsKey, IReturn<bool> { }
 

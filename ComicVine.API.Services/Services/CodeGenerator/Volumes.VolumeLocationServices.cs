@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Volumes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VolumeLocationModelBase : NameableEntityModelBase, IVolumeLocationModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Volumes
     [Route("/VolumeLocations/{CustomKey}/ByKey", "GET", Summary = "Gets VolumeLocation by Key")]
     public class GetVolumeLocationByKey : ImplementsKey, IReturn<IVolumeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/Create", "POST", Summary = "Creates an VolumeLocation with these contents")]
     public class CreateVolumeLocation : VolumeLocationModelBase, IReturn<IVolumeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/Update", "POST", Summary = "Updates an VolumeLocation with new contents")]
     public class UpdateVolumeLocation : VolumeLocationModelBase, IReturn<IVolumeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/{ID}/Deactivate", "POST", Summary = "Deactivates an VolumeLocation by Identifier")]
     public class DeactivateVolumeLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an VolumeLocation by Key")]
     public class DeactivateVolumeLocationByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/{ID}/Remove", "POST", Summary = "Removes an VolumeLocation by Identifier")]
     public class RemoveVolumeLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeLocations/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an VolumeLocation by Key")]
     public class RemoveVolumeLocationByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Concepts
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ConceptModelBase : NameableEntityModelBase, IConceptModel
     {
@@ -88,27 +89,27 @@ namespace ComicVine.API.Services//.Concepts
     [Route("/Concepts/{CustomKey}/ByKey", "GET", Summary = "Gets Concept by Key")]
     public class GetConceptByKey : ImplementsKey, IReturn<IConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/Create", "POST", Summary = "Creates an Concept with these contents")]
     public class CreateConcept : ConceptModelBase, IReturn<IConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/Update", "POST", Summary = "Updates an Concept with new contents")]
     public class UpdateConcept : ConceptModelBase, IReturn<IConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/{ID}/Deactivate", "POST", Summary = "Deactivates an Concept by Identifier")]
     public class DeactivateConcept : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Concept by Key")]
     public class DeactivateConceptByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/{ID}/Remove", "POST", Summary = "Removes an Concept by Identifier")]
     public class RemoveConcept : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Concepts/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Concept by Key")]
     public class RemoveConceptByKey : ImplementsKey, IReturn<bool> { }
 

@@ -88,13 +88,13 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         {
             // Arrange
             var mockMapper = new Mock<PublisherMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPublisherModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPublisherModel>(), It.IsAny<int>()));
             var mockModel = PublishersMockingSetup.DoMockingSetupForPublisherModel(1);
             PublisherMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Publishers")]
@@ -102,14 +102,14 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         //{
         //    // Arrange
         //    var mockMapper = new Mock<PublisherMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPublisherModel>(), ref It.IsAny<IPublisher>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPublisherModel>(), ref It.IsAny<IPublisher>(), It.IsAny<int>()));
         //    var mockModel = PublishersMockingSetup.DoMockingSetupForPublisherModel(1);
         //    var mockEntity = PublishersMockingSetup.DoMockingSetupForPublisher(1);
         //    PublisherMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>(), ref It.IsAny<IPublisher>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPublisherModel>(), ref It.IsAny<IPublisher>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Publishers")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         {
             // Arrange
             var mockMapper = new Mock<PublisherMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPublisher>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPublisher>(), It.IsAny<int>()));
             var mockEntity = PublishersMockingSetup.DoMockingSetupForPublisher(1);
             PublisherMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPublisher>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPublisher>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Publishers")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         {
             // Arrange
             var mockMapper = new Mock<PublisherMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPublisher>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPublisher>(), It.IsAny<int>()));
             var mockEntity = PublishersMockingSetup.DoMockingSetupForPublisher(1);
             PublisherMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPublisher>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPublisher>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Publishers")]
@@ -145,13 +145,13 @@ namespace ComicVine.API.Testing.Mappings.Publishers
         {
             // Arrange
             var mockMapper = new Mock<PublisherMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPublisher>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPublisher>(), It.IsAny<int>()));
             var mockEntity = PublishersMockingSetup.DoMockingSetupForPublisher(1);
             PublisherMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPublisher>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPublisher>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Publishers")]

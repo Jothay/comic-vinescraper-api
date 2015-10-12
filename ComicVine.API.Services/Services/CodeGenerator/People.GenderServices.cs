@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.People
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class GenderModelBase : NameableEntityModelBase, IGenderModel
     {
@@ -41,27 +42,27 @@ namespace ComicVine.API.Services//.People
     [Route("/Genders/{CustomKey}/ByKey", "GET", Summary = "Gets Gender by Key")]
     public class GetGenderByKey : ImplementsKey, IReturn<IGenderModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/Create", "POST", Summary = "Creates an Gender with these contents")]
     public class CreateGender : GenderModelBase, IReturn<IGenderModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/Update", "POST", Summary = "Updates an Gender with new contents")]
     public class UpdateGender : GenderModelBase, IReturn<IGenderModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/{ID}/Deactivate", "POST", Summary = "Deactivates an Gender by Identifier")]
     public class DeactivateGender : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Gender by Key")]
     public class DeactivateGenderByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/{ID}/Remove", "POST", Summary = "Removes an Gender by Identifier")]
     public class RemoveGender : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Genders/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Gender by Key")]
     public class RemoveGenderByKey : ImplementsKey, IReturn<bool> { }
 

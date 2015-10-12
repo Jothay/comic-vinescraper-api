@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterAppearedInIssueModelBase : NameableEntityModelBase, ICharacterAppearedInIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterAppearedInIssues/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterAppearedInIssue by Key")]
     public class GetCharacterAppearedInIssueByKey : ImplementsKey, IReturn<ICharacterAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/Create", "POST", Summary = "Creates an CharacterAppearedInIssue with these contents")]
     public class CreateCharacterAppearedInIssue : CharacterAppearedInIssueModelBase, IReturn<ICharacterAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/Update", "POST", Summary = "Updates an CharacterAppearedInIssue with new contents")]
     public class UpdateCharacterAppearedInIssue : CharacterAppearedInIssueModelBase, IReturn<ICharacterAppearedInIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterAppearedInIssue by Identifier")]
     public class DeactivateCharacterAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterAppearedInIssue by Key")]
     public class DeactivateCharacterAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/{ID}/Remove", "POST", Summary = "Removes an CharacterAppearedInIssue by Identifier")]
     public class RemoveCharacterAppearedInIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterAppearedInIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterAppearedInIssue by Key")]
     public class RemoveCharacterAppearedInIssueByKey : ImplementsKey, IReturn<bool> { }
 

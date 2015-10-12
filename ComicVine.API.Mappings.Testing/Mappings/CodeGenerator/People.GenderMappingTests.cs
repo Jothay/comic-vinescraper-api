@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<GenderMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IGenderModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IGenderModel>(), It.IsAny<int>()));
             var mockModel = GendersMockingSetup.DoMockingSetupForGenderModel(1);
             GenderMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Genders")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.People
         //{
         //    // Arrange
         //    var mockMapper = new Mock<GenderMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IGenderModel>(), ref It.IsAny<IGender>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IGenderModel>(), ref It.IsAny<IGender>(), It.IsAny<int>()));
         //    var mockModel = GendersMockingSetup.DoMockingSetupForGenderModel(1);
         //    var mockEntity = GendersMockingSetup.DoMockingSetupForGender(1);
         //    GenderMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>(), ref It.IsAny<IGender>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IGenderModel>(), ref It.IsAny<IGender>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Genders")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<GenderMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IGender>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IGender>(), It.IsAny<int>()));
             var mockEntity = GendersMockingSetup.DoMockingSetupForGender(1);
             GenderMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IGender>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IGender>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Genders")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<GenderMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IGender>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IGender>(), It.IsAny<int>()));
             var mockEntity = GendersMockingSetup.DoMockingSetupForGender(1);
             GenderMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IGender>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IGender>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Genders")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.People
         {
             // Arrange
             var mockMapper = new Mock<GenderMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IGender>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IGender>(), It.IsAny<int>()));
             var mockEntity = GendersMockingSetup.DoMockingSetupForGender(1);
             GenderMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IGender>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IGender>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Genders")]

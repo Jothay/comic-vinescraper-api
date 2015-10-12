@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeStoryArcModelBase : NameableEntityModelBase, IEpisodeStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeStoryArc by Key")]
     public class GetEpisodeStoryArcByKey : ImplementsKey, IReturn<IEpisodeStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/Create", "POST", Summary = "Creates an EpisodeStoryArc with these contents")]
     public class CreateEpisodeStoryArc : EpisodeStoryArcModelBase, IReturn<IEpisodeStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/Update", "POST", Summary = "Updates an EpisodeStoryArc with new contents")]
     public class UpdateEpisodeStoryArc : EpisodeStoryArcModelBase, IReturn<IEpisodeStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeStoryArc by Identifier")]
     public class DeactivateEpisodeStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeStoryArc by Key")]
     public class DeactivateEpisodeStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/{ID}/Remove", "POST", Summary = "Removes an EpisodeStoryArc by Identifier")]
     public class RemoveEpisodeStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeStoryArc by Key")]
     public class RemoveEpisodeStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

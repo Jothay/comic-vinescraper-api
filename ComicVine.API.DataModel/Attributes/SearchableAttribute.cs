@@ -128,21 +128,21 @@ namespace ComicVine.API.DataModel
             ComparisonType = StringComparisonType.Contains;
         }
 
-        public SearchableStringAttribute(StringComparisonType comparisonType)
-        {
-            SearchName = null;
-            SearchDescription = null;
-            TypeString = typeof(string).ToString();
-            ComparisonType = comparisonType;
-        }
+        //public SearchableStringAttribute(StringComparisonType comparisonType)
+        //{
+        //    SearchName = null;
+        //    SearchDescription = null;
+        //    TypeString = typeof(string).ToString();
+        //    ComparisonType = comparisonType;
+        //}
 
-        public SearchableStringAttribute(StringComparisonType comparisonType, string searchName, string searchDescription)
-        {
-            SearchName = searchName;
-            SearchDescription = searchDescription;
-            TypeString = typeof(string).ToString();
-            ComparisonType = comparisonType;
-        }
+        //public SearchableStringAttribute(StringComparisonType comparisonType, string searchName, string searchDescription)
+        //{
+        //    SearchName = searchName;
+        //    SearchDescription = searchDescription;
+        //    TypeString = typeof(string).ToString();
+        //    ComparisonType = comparisonType;
+        //}
 
         public string SearchName { get; }
         public string SearchDescription { get; }

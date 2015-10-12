@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Concepts
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ConceptVolumeModelBase : NameableEntityModelBase, IConceptVolumeModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Concepts
     [Route("/ConceptVolumes/{CustomKey}/ByKey", "GET", Summary = "Gets ConceptVolume by Key")]
     public class GetConceptVolumeByKey : ImplementsKey, IReturn<IConceptVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/Create", "POST", Summary = "Creates an ConceptVolume with these contents")]
     public class CreateConceptVolume : ConceptVolumeModelBase, IReturn<IConceptVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/Update", "POST", Summary = "Updates an ConceptVolume with new contents")]
     public class UpdateConceptVolume : ConceptVolumeModelBase, IReturn<IConceptVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/{ID}/Deactivate", "POST", Summary = "Deactivates an ConceptVolume by Identifier")]
     public class DeactivateConceptVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ConceptVolume by Key")]
     public class DeactivateConceptVolumeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/{ID}/Remove", "POST", Summary = "Removes an ConceptVolume by Identifier")]
     public class RemoveConceptVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptVolumes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ConceptVolume by Key")]
     public class RemoveConceptVolumeByKey : ImplementsKey, IReturn<bool> { }
 

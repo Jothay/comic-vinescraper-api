@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Power")]
         public int PowerId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Power Power { get; set; }
         IPower ICharacterPower.Power { get { return Power; } set { Power = value as Power; } }
     }

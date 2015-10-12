@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), It.IsAny<int>()));
             var mockModel = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArcModel(1);
             LocationStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "LocationStoryArcs")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Locations
         //{
         //    // Arrange
         //    var mockMapper = new Mock<LocationStoryArcMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), ref It.IsAny<ILocationStoryArc>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), ref It.IsAny<ILocationStoryArc>(), It.IsAny<int>()));
         //    var mockModel = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArcModel(1);
         //    var mockEntity = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArc(1);
         //    LocationStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), ref It.IsAny<ILocationStoryArc>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationStoryArcModel>(), ref It.IsAny<ILocationStoryArc>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "LocationStoryArcs")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationStoryArc>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()));
             var mockEntity = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArc(1);
             LocationStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationStoryArcs")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationStoryArc>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()));
             var mockEntity = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArc(1);
             LocationStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationStoryArcs")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationStoryArc>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()));
             var mockEntity = LocationStoryArcsMockingSetup.DoMockingSetupForLocationStoryArc(1);
             LocationStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationStoryArcs")]

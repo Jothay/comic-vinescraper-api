@@ -100,13 +100,13 @@ namespace ComicVine.API.Testing.Mappings.Media
         {
             // Arrange
             var mockMapper = new Mock<ImageFileMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IImageFileModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IImageFileModel>(), It.IsAny<int>()));
             var mockModel = ImageFilesMockingSetup.DoMockingSetupForImageFileModel(1);
             ImageFileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "ImageFiles")]
@@ -114,14 +114,14 @@ namespace ComicVine.API.Testing.Mappings.Media
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ImageFileMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IImageFileModel>(), ref It.IsAny<IImageFile>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IImageFileModel>(), ref It.IsAny<IImageFile>(), It.IsAny<int>()));
         //    var mockModel = ImageFilesMockingSetup.DoMockingSetupForImageFileModel(1);
         //    var mockEntity = ImageFilesMockingSetup.DoMockingSetupForImageFile(1);
         //    ImageFileMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>(), ref It.IsAny<IImageFile>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IImageFileModel>(), ref It.IsAny<IImageFile>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "ImageFiles")]
@@ -129,13 +129,13 @@ namespace ComicVine.API.Testing.Mappings.Media
         {
             // Arrange
             var mockMapper = new Mock<ImageFileMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IImageFile>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IImageFile>(), It.IsAny<int>()));
             var mockEntity = ImageFilesMockingSetup.DoMockingSetupForImageFile(1);
             ImageFileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IImageFile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IImageFile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ImageFiles")]
@@ -143,13 +143,13 @@ namespace ComicVine.API.Testing.Mappings.Media
         {
             // Arrange
             var mockMapper = new Mock<ImageFileMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IImageFile>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IImageFile>(), It.IsAny<int>()));
             var mockEntity = ImageFilesMockingSetup.DoMockingSetupForImageFile(1);
             ImageFileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IImageFile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IImageFile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ImageFiles")]
@@ -157,13 +157,13 @@ namespace ComicVine.API.Testing.Mappings.Media
         {
             // Arrange
             var mockMapper = new Mock<ImageFileMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IImageFile>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IImageFile>(), It.IsAny<int>()));
             var mockEntity = ImageFilesMockingSetup.DoMockingSetupForImageFile(1);
             ImageFileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IImageFile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IImageFile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ImageFiles")]

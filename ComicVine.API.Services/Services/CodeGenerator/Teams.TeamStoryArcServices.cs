@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Teams
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class TeamStoryArcModelBase : NameableEntityModelBase, ITeamStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Teams
     [Route("/TeamStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets TeamStoryArc by Key")]
     public class GetTeamStoryArcByKey : ImplementsKey, IReturn<ITeamStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/Create", "POST", Summary = "Creates an TeamStoryArc with these contents")]
     public class CreateTeamStoryArc : TeamStoryArcModelBase, IReturn<ITeamStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/Update", "POST", Summary = "Updates an TeamStoryArc with new contents")]
     public class UpdateTeamStoryArc : TeamStoryArcModelBase, IReturn<ITeamStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an TeamStoryArc by Identifier")]
     public class DeactivateTeamStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an TeamStoryArc by Key")]
     public class DeactivateTeamStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/{ID}/Remove", "POST", Summary = "Removes an TeamStoryArc by Identifier")]
     public class RemoveTeamStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an TeamStoryArc by Key")]
     public class RemoveTeamStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

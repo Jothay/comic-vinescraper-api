@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterModelBase : NameableEntityModelBase, ICharacterModel
     {
@@ -170,27 +171,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/Characters/{CustomKey}/ByKey", "GET", Summary = "Gets Character by Key")]
     public class GetCharacterByKey : ImplementsKey, IReturn<ICharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/Create", "POST", Summary = "Creates an Character with these contents")]
     public class CreateCharacter : CharacterModelBase, IReturn<ICharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/Update", "POST", Summary = "Updates an Character with new contents")]
     public class UpdateCharacter : CharacterModelBase, IReturn<ICharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/{ID}/Deactivate", "POST", Summary = "Deactivates an Character by Identifier")]
     public class DeactivateCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Character by Key")]
     public class DeactivateCharacterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/{ID}/Remove", "POST", Summary = "Removes an Character by Identifier")]
     public class RemoveCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Characters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Character by Key")]
     public class RemoveCharacterByKey : ImplementsKey, IReturn<bool> { }
 

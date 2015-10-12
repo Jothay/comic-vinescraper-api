@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Series
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class SeriesLocationModelBase : NameableEntityModelBase, ISeriesLocationModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Series
     [Route("/SeriesLocations/{CustomKey}/ByKey", "GET", Summary = "Gets SeriesLocation by Key")]
     public class GetSeriesLocationByKey : ImplementsKey, IReturn<ISeriesLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/Create", "POST", Summary = "Creates an SeriesLocation with these contents")]
     public class CreateSeriesLocation : SeriesLocationModelBase, IReturn<ISeriesLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/Update", "POST", Summary = "Updates an SeriesLocation with new contents")]
     public class UpdateSeriesLocation : SeriesLocationModelBase, IReturn<ISeriesLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/{ID}/Deactivate", "POST", Summary = "Deactivates an SeriesLocation by Identifier")]
     public class DeactivateSeriesLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an SeriesLocation by Key")]
     public class DeactivateSeriesLocationByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/{ID}/Remove", "POST", Summary = "Removes an SeriesLocation by Identifier")]
     public class RemoveSeriesLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesLocations/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an SeriesLocation by Key")]
     public class RemoveSeriesLocationByKey : ImplementsKey, IReturn<bool> { }
 

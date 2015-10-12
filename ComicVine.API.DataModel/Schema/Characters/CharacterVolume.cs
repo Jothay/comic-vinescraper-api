@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Volume")]
         public int VolumeId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Volume Volume { get; set; }
         IVolume ICharacterVolume.Volume { get { return Volume; } set { Volume = value as Volume; } }
     }

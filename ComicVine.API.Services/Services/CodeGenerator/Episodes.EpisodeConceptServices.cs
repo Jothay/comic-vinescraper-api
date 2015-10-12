@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeConceptModelBase : NameableEntityModelBase, IEpisodeConceptModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeConcepts/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeConcept by Key")]
     public class GetEpisodeConceptByKey : ImplementsKey, IReturn<IEpisodeConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/Create", "POST", Summary = "Creates an EpisodeConcept with these contents")]
     public class CreateEpisodeConcept : EpisodeConceptModelBase, IReturn<IEpisodeConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/Update", "POST", Summary = "Updates an EpisodeConcept with new contents")]
     public class UpdateEpisodeConcept : EpisodeConceptModelBase, IReturn<IEpisodeConceptModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeConcept by Identifier")]
     public class DeactivateEpisodeConcept : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeConcept by Key")]
     public class DeactivateEpisodeConceptByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/{ID}/Remove", "POST", Summary = "Removes an EpisodeConcept by Identifier")]
     public class RemoveEpisodeConcept : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConcepts/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeConcept by Key")]
     public class RemoveEpisodeConceptByKey : ImplementsKey, IReturn<bool> { }
 

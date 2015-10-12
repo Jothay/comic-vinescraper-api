@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterStoryArcModelBase : NameableEntityModelBase, ICharacterStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterStoryArc by Key")]
     public class GetCharacterStoryArcByKey : ImplementsKey, IReturn<ICharacterStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/Create", "POST", Summary = "Creates an CharacterStoryArc with these contents")]
     public class CreateCharacterStoryArc : CharacterStoryArcModelBase, IReturn<ICharacterStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/Update", "POST", Summary = "Updates an CharacterStoryArc with new contents")]
     public class UpdateCharacterStoryArc : CharacterStoryArcModelBase, IReturn<ICharacterStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterStoryArc by Identifier")]
     public class DeactivateCharacterStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterStoryArc by Key")]
     public class DeactivateCharacterStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/{ID}/Remove", "POST", Summary = "Removes an CharacterStoryArc by Identifier")]
     public class RemoveCharacterStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterStoryArc by Key")]
     public class RemoveCharacterStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

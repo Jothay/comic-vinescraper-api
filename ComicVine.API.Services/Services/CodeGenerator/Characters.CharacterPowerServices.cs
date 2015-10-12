@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Characters
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CharacterPowerModelBase : NameableEntityModelBase, ICharacterPowerModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Characters
     [Route("/CharacterPowers/{CustomKey}/ByKey", "GET", Summary = "Gets CharacterPower by Key")]
     public class GetCharacterPowerByKey : ImplementsKey, IReturn<ICharacterPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/Create", "POST", Summary = "Creates an CharacterPower with these contents")]
     public class CreateCharacterPower : CharacterPowerModelBase, IReturn<ICharacterPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/Update", "POST", Summary = "Updates an CharacterPower with new contents")]
     public class UpdateCharacterPower : CharacterPowerModelBase, IReturn<ICharacterPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/{ID}/Deactivate", "POST", Summary = "Deactivates an CharacterPower by Identifier")]
     public class DeactivateCharacterPower : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CharacterPower by Key")]
     public class DeactivateCharacterPowerByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/{ID}/Remove", "POST", Summary = "Removes an CharacterPower by Identifier")]
     public class RemoveCharacterPower : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CharacterPowers/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CharacterPower by Key")]
     public class RemoveCharacterPowerByKey : ImplementsKey, IReturn<bool> { }
 

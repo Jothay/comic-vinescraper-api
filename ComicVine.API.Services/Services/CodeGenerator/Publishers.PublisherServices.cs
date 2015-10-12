@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Publishers
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PublisherModelBase : NameableEntityModelBase, IPublisherModel
     {
@@ -68,27 +69,27 @@ namespace ComicVine.API.Services//.Publishers
     [Route("/Publishers/{CustomKey}/ByKey", "GET", Summary = "Gets Publisher by Key")]
     public class GetPublisherByKey : ImplementsKey, IReturn<IPublisherModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/Create", "POST", Summary = "Creates an Publisher with these contents")]
     public class CreatePublisher : PublisherModelBase, IReturn<IPublisherModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/Update", "POST", Summary = "Updates an Publisher with new contents")]
     public class UpdatePublisher : PublisherModelBase, IReturn<IPublisherModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/{ID}/Deactivate", "POST", Summary = "Deactivates an Publisher by Identifier")]
     public class DeactivatePublisher : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Publisher by Key")]
     public class DeactivatePublisherByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/{ID}/Remove", "POST", Summary = "Removes an Publisher by Identifier")]
     public class RemovePublisher : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Publishers/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Publisher by Key")]
     public class RemovePublisherByKey : ImplementsKey, IReturn<bool> { }
 

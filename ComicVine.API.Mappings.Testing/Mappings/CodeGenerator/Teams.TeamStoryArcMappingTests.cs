@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), It.IsAny<int>()));
             var mockModel = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArcModel(1);
             TeamStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "TeamStoryArcs")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Teams
         //{
         //    // Arrange
         //    var mockMapper = new Mock<TeamStoryArcMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), ref It.IsAny<ITeamStoryArc>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), ref It.IsAny<ITeamStoryArc>(), It.IsAny<int>()));
         //    var mockModel = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArcModel(1);
         //    var mockEntity = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArc(1);
         //    TeamStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), ref It.IsAny<ITeamStoryArc>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamStoryArcModel>(), ref It.IsAny<ITeamStoryArc>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "TeamStoryArcs")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamStoryArc>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()));
             var mockEntity = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArc(1);
             TeamStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamStoryArcs")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamStoryArc>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()));
             var mockEntity = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArc(1);
             TeamStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamStoryArcs")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamStoryArcMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamStoryArc>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()));
             var mockEntity = TeamStoryArcsMockingSetup.DoMockingSetupForTeamStoryArc(1);
             TeamStoryArcMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamStoryArc>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamStoryArc>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamStoryArcs")]

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeLocationModelBase : NameableEntityModelBase, IEpisodeLocationModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeLocations/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeLocation by Key")]
     public class GetEpisodeLocationByKey : ImplementsKey, IReturn<IEpisodeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/Create", "POST", Summary = "Creates an EpisodeLocation with these contents")]
     public class CreateEpisodeLocation : EpisodeLocationModelBase, IReturn<IEpisodeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/Update", "POST", Summary = "Updates an EpisodeLocation with new contents")]
     public class UpdateEpisodeLocation : EpisodeLocationModelBase, IReturn<IEpisodeLocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeLocation by Identifier")]
     public class DeactivateEpisodeLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeLocation by Key")]
     public class DeactivateEpisodeLocationByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/{ID}/Remove", "POST", Summary = "Removes an EpisodeLocation by Identifier")]
     public class RemoveEpisodeLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocations/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeLocation by Key")]
     public class RemoveEpisodeLocationByKey : ImplementsKey, IReturn<bool> { }
 

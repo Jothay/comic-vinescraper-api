@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), It.IsAny<int>()));
             var mockModel = TeamAliasesMockingSetup.DoMockingSetupForTeamAliasModel(1);
             TeamAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "TeamAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Teams
         //{
         //    // Arrange
         //    var mockMapper = new Mock<TeamAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), ref It.IsAny<ITeamAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), ref It.IsAny<ITeamAlias>(), It.IsAny<int>()));
         //    var mockModel = TeamAliasesMockingSetup.DoMockingSetupForTeamAliasModel(1);
         //    var mockEntity = TeamAliasesMockingSetup.DoMockingSetupForTeamAlias(1);
         //    TeamAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), ref It.IsAny<ITeamAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ITeamAliasModel>(), ref It.IsAny<ITeamAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "TeamAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ITeamAlias>(), It.IsAny<int>()));
             var mockEntity = TeamAliasesMockingSetup.DoMockingSetupForTeamAlias(1);
             TeamAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ITeamAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ITeamAlias>(), It.IsAny<int>()));
             var mockEntity = TeamAliasesMockingSetup.DoMockingSetupForTeamAlias(1);
             TeamAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ITeamAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Teams
         {
             // Arrange
             var mockMapper = new Mock<TeamAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ITeamAlias>(), It.IsAny<int>()));
             var mockEntity = TeamAliasesMockingSetup.DoMockingSetupForTeamAlias(1);
             TeamAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ITeamAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "TeamAliases")]

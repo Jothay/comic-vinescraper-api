@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Enemy")]
         public int EnemyId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Character Enemy { get; set; }
         ICharacter ICharacterEnemy.Enemy { get { return Enemy; } set { Enemy = value as Character; } }
     }

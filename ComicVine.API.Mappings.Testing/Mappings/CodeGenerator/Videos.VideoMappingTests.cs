@@ -92,13 +92,13 @@ namespace ComicVine.API.Testing.Mappings.Videos
         {
             // Arrange
             var mockMapper = new Mock<VideoMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IVideoModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IVideoModel>(), It.IsAny<int>()));
             var mockModel = VideosMockingSetup.DoMockingSetupForVideoModel(1);
             VideoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Videos")]
@@ -106,14 +106,14 @@ namespace ComicVine.API.Testing.Mappings.Videos
         //{
         //    // Arrange
         //    var mockMapper = new Mock<VideoMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IVideoModel>(), ref It.IsAny<IVideo>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IVideoModel>(), ref It.IsAny<IVideo>(), It.IsAny<int>()));
         //    var mockModel = VideosMockingSetup.DoMockingSetupForVideoModel(1);
         //    var mockEntity = VideosMockingSetup.DoMockingSetupForVideo(1);
         //    VideoMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoModel>(), ref It.IsAny<IVideo>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IVideoModel>(), ref It.IsAny<IVideo>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Videos")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Videos
         {
             // Arrange
             var mockMapper = new Mock<VideoMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IVideo>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IVideo>(), It.IsAny<int>()));
             var mockEntity = VideosMockingSetup.DoMockingSetupForVideo(1);
             VideoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IVideo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IVideo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Videos")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Videos
         {
             // Arrange
             var mockMapper = new Mock<VideoMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IVideo>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IVideo>(), It.IsAny<int>()));
             var mockEntity = VideosMockingSetup.DoMockingSetupForVideo(1);
             VideoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IVideo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IVideo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Videos")]
@@ -149,13 +149,13 @@ namespace ComicVine.API.Testing.Mappings.Videos
         {
             // Arrange
             var mockMapper = new Mock<VideoMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IVideo>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IVideo>(), It.IsAny<int>()));
             var mockEntity = VideosMockingSetup.DoMockingSetupForVideo(1);
             VideoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IVideo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IVideo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Videos")]

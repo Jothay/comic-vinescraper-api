@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Videos
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VideoModelBase : NameableEntityModelBase, IVideoModel
     {
@@ -112,27 +113,27 @@ namespace ComicVine.API.Services//.Videos
     [Route("/Videos/{CustomKey}/ByKey", "GET", Summary = "Gets Video by Key")]
     public class GetVideoByKey : ImplementsKey, IReturn<IVideoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/Create", "POST", Summary = "Creates an Video with these contents")]
     public class CreateVideo : VideoModelBase, IReturn<IVideoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/Update", "POST", Summary = "Updates an Video with new contents")]
     public class UpdateVideo : VideoModelBase, IReturn<IVideoModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/{ID}/Deactivate", "POST", Summary = "Deactivates an Video by Identifier")]
     public class DeactivateVideo : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Video by Key")]
     public class DeactivateVideoByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/{ID}/Remove", "POST", Summary = "Removes an Video by Identifier")]
     public class RemoveVideo : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Videos/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Video by Key")]
     public class RemoveVideoByKey : ImplementsKey, IReturn<bool> { }
 

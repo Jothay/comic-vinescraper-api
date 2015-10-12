@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectIssueModelBase : NameableEntityModelBase, IObjectIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/ObjectIssues/{CustomKey}/ByKey", "GET", Summary = "Gets ObjectIssue by Key")]
     public class GetObjectIssueByKey : ImplementsKey, IReturn<IObjectIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/Create", "POST", Summary = "Creates an ObjectIssue with these contents")]
     public class CreateObjectIssue : ObjectIssueModelBase, IReturn<IObjectIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/Update", "POST", Summary = "Updates an ObjectIssue with new contents")]
     public class UpdateObjectIssue : ObjectIssueModelBase, IReturn<IObjectIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an ObjectIssue by Identifier")]
     public class DeactivateObjectIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ObjectIssue by Key")]
     public class DeactivateObjectIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/{ID}/Remove", "POST", Summary = "Removes an ObjectIssue by Identifier")]
     public class RemoveObjectIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ObjectIssue by Key")]
     public class RemoveObjectIssueByKey : ImplementsKey, IReturn<bool> { }
 

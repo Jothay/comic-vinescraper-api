@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Videos
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VideoTypeModelBase : NameableEntityModelBase, IVideoTypeModel
     {
@@ -40,27 +41,27 @@ namespace ComicVine.API.Services//.Videos
     [Route("/VideoTypes/{CustomKey}/ByKey", "GET", Summary = "Gets VideoType by Key")]
     public class GetVideoTypeByKey : ImplementsKey, IReturn<IVideoTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/Create", "POST", Summary = "Creates an VideoType with these contents")]
     public class CreateVideoType : VideoTypeModelBase, IReturn<IVideoTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/Update", "POST", Summary = "Updates an VideoType with new contents")]
     public class UpdateVideoType : VideoTypeModelBase, IReturn<IVideoTypeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/{ID}/Deactivate", "POST", Summary = "Deactivates an VideoType by Identifier")]
     public class DeactivateVideoType : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an VideoType by Key")]
     public class DeactivateVideoTypeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/{ID}/Remove", "POST", Summary = "Removes an VideoType by Identifier")]
     public class RemoveVideoType : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VideoTypes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an VideoType by Key")]
     public class RemoveVideoTypeByKey : ImplementsKey, IReturn<bool> { }
 

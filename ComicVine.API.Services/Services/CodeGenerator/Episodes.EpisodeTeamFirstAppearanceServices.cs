@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeTeamFirstAppearanceModelBase : NameableEntityModelBase, IEpisodeTeamFirstAppearanceModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeTeamFirstAppearances/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeTeamFirstAppearance by Key")]
     public class GetEpisodeTeamFirstAppearanceByKey : ImplementsKey, IReturn<IEpisodeTeamFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/Create", "POST", Summary = "Creates an EpisodeTeamFirstAppearance with these contents")]
     public class CreateEpisodeTeamFirstAppearance : EpisodeTeamFirstAppearanceModelBase, IReturn<IEpisodeTeamFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/Update", "POST", Summary = "Updates an EpisodeTeamFirstAppearance with new contents")]
     public class UpdateEpisodeTeamFirstAppearance : EpisodeTeamFirstAppearanceModelBase, IReturn<IEpisodeTeamFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeTeamFirstAppearance by Identifier")]
     public class DeactivateEpisodeTeamFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeTeamFirstAppearance by Key")]
     public class DeactivateEpisodeTeamFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/{ID}/Remove", "POST", Summary = "Removes an EpisodeTeamFirstAppearance by Identifier")]
     public class RemoveEpisodeTeamFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeTeamFirstAppearances/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeTeamFirstAppearance by Key")]
     public class RemoveEpisodeTeamFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Series
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class SeriesCharacterModelBase : NameableEntityModelBase, ISeriesCharacterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Series
     [Route("/SeriesCharacters/{CustomKey}/ByKey", "GET", Summary = "Gets SeriesCharacter by Key")]
     public class GetSeriesCharacterByKey : ImplementsKey, IReturn<ISeriesCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/Create", "POST", Summary = "Creates an SeriesCharacter with these contents")]
     public class CreateSeriesCharacter : SeriesCharacterModelBase, IReturn<ISeriesCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/Update", "POST", Summary = "Updates an SeriesCharacter with new contents")]
     public class UpdateSeriesCharacter : SeriesCharacterModelBase, IReturn<ISeriesCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/{ID}/Deactivate", "POST", Summary = "Deactivates an SeriesCharacter by Identifier")]
     public class DeactivateSeriesCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an SeriesCharacter by Key")]
     public class DeactivateSeriesCharacterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/{ID}/Remove", "POST", Summary = "Removes an SeriesCharacter by Identifier")]
     public class RemoveSeriesCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/SeriesCharacters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an SeriesCharacter by Key")]
     public class RemoveSeriesCharacterByKey : ImplementsKey, IReturn<bool> { }
 

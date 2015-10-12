@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Locations
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class LocationAliasModelBase : NameableEntityModelBase, ILocationAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Locations
     [Route("/LocationAliases/{CustomKey}/ByKey", "GET", Summary = "Gets LocationAlias by Key")]
     public class GetLocationAliasByKey : ImplementsKey, IReturn<ILocationAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/Create", "POST", Summary = "Creates an LocationAlias with these contents")]
     public class CreateLocationAlias : LocationAliasModelBase, IReturn<ILocationAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/Update", "POST", Summary = "Updates an LocationAlias with new contents")]
     public class UpdateLocationAlias : LocationAliasModelBase, IReturn<ILocationAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an LocationAlias by Identifier")]
     public class DeactivateLocationAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an LocationAlias by Key")]
     public class DeactivateLocationAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/{ID}/Remove", "POST", Summary = "Removes an LocationAlias by Identifier")]
     public class RemoveLocationAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an LocationAlias by Key")]
     public class RemoveLocationAliasByKey : ImplementsKey, IReturn<bool> { }
 

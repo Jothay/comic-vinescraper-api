@@ -76,13 +76,13 @@ namespace ComicVine.API.Testing.Mappings.Chats
         {
             // Arrange
             var mockMapper = new Mock<ChatMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IChatModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IChatModel>(), It.IsAny<int>()));
             var mockModel = ChatsMockingSetup.DoMockingSetupForChatModel(1);
             ChatMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Chats")]
@@ -90,14 +90,14 @@ namespace ComicVine.API.Testing.Mappings.Chats
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ChatMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IChatModel>(), ref It.IsAny<IChat>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IChatModel>(), ref It.IsAny<IChat>(), It.IsAny<int>()));
         //    var mockModel = ChatsMockingSetup.DoMockingSetupForChatModel(1);
         //    var mockEntity = ChatsMockingSetup.DoMockingSetupForChat(1);
         //    ChatMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>(), ref It.IsAny<IChat>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IChatModel>(), ref It.IsAny<IChat>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Chats")]
@@ -105,13 +105,13 @@ namespace ComicVine.API.Testing.Mappings.Chats
         {
             // Arrange
             var mockMapper = new Mock<ChatMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IChat>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IChat>(), It.IsAny<int>()));
             var mockEntity = ChatsMockingSetup.DoMockingSetupForChat(1);
             ChatMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IChat>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IChat>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Chats")]
@@ -119,13 +119,13 @@ namespace ComicVine.API.Testing.Mappings.Chats
         {
             // Arrange
             var mockMapper = new Mock<ChatMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IChat>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IChat>(), It.IsAny<int>()));
             var mockEntity = ChatsMockingSetup.DoMockingSetupForChat(1);
             ChatMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IChat>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IChat>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Chats")]
@@ -133,13 +133,13 @@ namespace ComicVine.API.Testing.Mappings.Chats
         {
             // Arrange
             var mockMapper = new Mock<ChatMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IChat>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IChat>(), It.IsAny<int>()));
             var mockEntity = ChatsMockingSetup.DoMockingSetupForChat(1);
             ChatMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IChat>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IChat>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Chats")]

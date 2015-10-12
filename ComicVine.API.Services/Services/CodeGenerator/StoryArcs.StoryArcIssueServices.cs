@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.StoryArcs
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class StoryArcIssueModelBase : NameableEntityModelBase, IStoryArcIssueModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.StoryArcs
     [Route("/StoryArcIssues/{CustomKey}/ByKey", "GET", Summary = "Gets StoryArcIssue by Key")]
     public class GetStoryArcIssueByKey : ImplementsKey, IReturn<IStoryArcIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/Create", "POST", Summary = "Creates an StoryArcIssue with these contents")]
     public class CreateStoryArcIssue : StoryArcIssueModelBase, IReturn<IStoryArcIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/Update", "POST", Summary = "Updates an StoryArcIssue with new contents")]
     public class UpdateStoryArcIssue : StoryArcIssueModelBase, IReturn<IStoryArcIssueModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/{ID}/Deactivate", "POST", Summary = "Deactivates an StoryArcIssue by Identifier")]
     public class DeactivateStoryArcIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an StoryArcIssue by Key")]
     public class DeactivateStoryArcIssueByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/{ID}/Remove", "POST", Summary = "Removes an StoryArcIssue by Identifier")]
     public class RemoveStoryArcIssue : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/StoryArcIssues/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an StoryArcIssue by Key")]
     public class RemoveStoryArcIssueByKey : ImplementsKey, IReturn<bool> { }
 

@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<ResourceTypeMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IResourceTypeModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), It.IsAny<int>()));
             var mockModel = ResourceTypesMockingSetup.DoMockingSetupForResourceTypeModel(1);
             ResourceTypeMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "ResourceTypes")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Promos
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ResourceTypeMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), ref It.IsAny<IResourceType>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), ref It.IsAny<IResourceType>(), It.IsAny<int>()));
         //    var mockModel = ResourceTypesMockingSetup.DoMockingSetupForResourceTypeModel(1);
         //    var mockEntity = ResourceTypesMockingSetup.DoMockingSetupForResourceType(1);
         //    ResourceTypeMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), ref It.IsAny<IResourceType>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IResourceTypeModel>(), ref It.IsAny<IResourceType>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "ResourceTypes")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<ResourceTypeMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IResourceType>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IResourceType>(), It.IsAny<int>()));
             var mockEntity = ResourceTypesMockingSetup.DoMockingSetupForResourceType(1);
             ResourceTypeMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IResourceType>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IResourceType>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ResourceTypes")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<ResourceTypeMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IResourceType>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IResourceType>(), It.IsAny<int>()));
             var mockEntity = ResourceTypesMockingSetup.DoMockingSetupForResourceType(1);
             ResourceTypeMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IResourceType>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IResourceType>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ResourceTypes")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<ResourceTypeMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IResourceType>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IResourceType>(), It.IsAny<int>()));
             var mockEntity = ResourceTypesMockingSetup.DoMockingSetupForResourceType(1);
             ResourceTypeMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IResourceType>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IResourceType>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "ResourceTypes")]

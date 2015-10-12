@@ -82,13 +82,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<PromoMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPromoModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPromoModel>(), It.IsAny<int>()));
             var mockModel = PromosMockingSetup.DoMockingSetupForPromoModel(1);
             PromoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Promos")]
@@ -96,14 +96,14 @@ namespace ComicVine.API.Testing.Mappings.Promos
         //{
         //    // Arrange
         //    var mockMapper = new Mock<PromoMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPromoModel>(), ref It.IsAny<IPromo>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IPromoModel>(), ref It.IsAny<IPromo>(), It.IsAny<int>()));
         //    var mockModel = PromosMockingSetup.DoMockingSetupForPromoModel(1);
         //    var mockEntity = PromosMockingSetup.DoMockingSetupForPromo(1);
         //    PromoMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>(), ref It.IsAny<IPromo>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IPromoModel>(), ref It.IsAny<IPromo>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Promos")]
@@ -111,13 +111,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<PromoMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPromo>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IPromo>(), It.IsAny<int>()));
             var mockEntity = PromosMockingSetup.DoMockingSetupForPromo(1);
             PromoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPromo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IPromo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Promos")]
@@ -125,13 +125,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<PromoMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPromo>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IPromo>(), It.IsAny<int>()));
             var mockEntity = PromosMockingSetup.DoMockingSetupForPromo(1);
             PromoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPromo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IPromo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Promos")]
@@ -139,13 +139,13 @@ namespace ComicVine.API.Testing.Mappings.Promos
         {
             // Arrange
             var mockMapper = new Mock<PromoMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPromo>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IPromo>(), It.IsAny<int>()));
             var mockEntity = PromosMockingSetup.DoMockingSetupForPromo(1);
             PromoMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPromo>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IPromo>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Promos")]

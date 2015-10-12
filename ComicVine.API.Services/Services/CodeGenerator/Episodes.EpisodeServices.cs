@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeModelBase : NameableEntityModelBase, IEpisodeModel
     {
@@ -105,27 +106,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/Episodes/{CustomKey}/ByKey", "GET", Summary = "Gets Episode by Key")]
     public class GetEpisodeByKey : ImplementsKey, IReturn<IEpisodeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/Create", "POST", Summary = "Creates an Episode with these contents")]
     public class CreateEpisode : EpisodeModelBase, IReturn<IEpisodeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/Update", "POST", Summary = "Updates an Episode with new contents")]
     public class UpdateEpisode : EpisodeModelBase, IReturn<IEpisodeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/{ID}/Deactivate", "POST", Summary = "Deactivates an Episode by Identifier")]
     public class DeactivateEpisode : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Episode by Key")]
     public class DeactivateEpisodeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/{ID}/Remove", "POST", Summary = "Removes an Episode by Identifier")]
     public class RemoveEpisode : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Episodes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Episode by Key")]
     public class RemoveEpisodeByKey : ImplementsKey, IReturn<bool> { }
 

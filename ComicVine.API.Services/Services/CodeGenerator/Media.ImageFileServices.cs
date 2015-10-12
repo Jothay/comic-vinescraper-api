@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Media
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ImageFileModelBase : NameableEntityModelBase, IImageFileModel
     {
@@ -54,27 +55,27 @@ namespace ComicVine.API.Services//.Media
     [Route("/ImageFiles/{CustomKey}/ByKey", "GET", Summary = "Gets ImageFile by Key")]
     public class GetImageFileByKey : ImplementsKey, IReturn<IImageFileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/Create", "POST", Summary = "Creates an ImageFile with these contents")]
     public class CreateImageFile : ImageFileModelBase, IReturn<IImageFileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/Update", "POST", Summary = "Updates an ImageFile with new contents")]
     public class UpdateImageFile : ImageFileModelBase, IReturn<IImageFileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/{ID}/Deactivate", "POST", Summary = "Deactivates an ImageFile by Identifier")]
     public class DeactivateImageFile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ImageFile by Key")]
     public class DeactivateImageFileByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/{ID}/Remove", "POST", Summary = "Removes an ImageFile by Identifier")]
     public class RemoveImageFile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ImageFiles/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ImageFile by Key")]
     public class RemoveImageFileByKey : ImplementsKey, IReturn<bool> { }
 

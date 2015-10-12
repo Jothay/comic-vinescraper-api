@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Teams
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class TeamModelBase : NameableEntityModelBase, ITeamModel
     {
@@ -116,27 +117,27 @@ namespace ComicVine.API.Services//.Teams
     [Route("/Teams/{CustomKey}/ByKey", "GET", Summary = "Gets Team by Key")]
     public class GetTeamByKey : ImplementsKey, IReturn<ITeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/Create", "POST", Summary = "Creates an Team with these contents")]
     public class CreateTeam : TeamModelBase, IReturn<ITeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/Update", "POST", Summary = "Updates an Team with new contents")]
     public class UpdateTeam : TeamModelBase, IReturn<ITeamModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/{ID}/Deactivate", "POST", Summary = "Deactivates an Team by Identifier")]
     public class DeactivateTeam : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Team by Key")]
     public class DeactivateTeamByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/{ID}/Remove", "POST", Summary = "Removes an Team by Identifier")]
     public class RemoveTeam : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Teams/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Team by Key")]
     public class RemoveTeamByKey : ImplementsKey, IReturn<bool> { }
 

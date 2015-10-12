@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeConceptFirstAppearanceModelBase : NameableEntityModelBase, IEpisodeConceptFirstAppearanceModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeConceptFirstAppearances/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeConceptFirstAppearance by Key")]
     public class GetEpisodeConceptFirstAppearanceByKey : ImplementsKey, IReturn<IEpisodeConceptFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/Create", "POST", Summary = "Creates an EpisodeConceptFirstAppearance with these contents")]
     public class CreateEpisodeConceptFirstAppearance : EpisodeConceptFirstAppearanceModelBase, IReturn<IEpisodeConceptFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/Update", "POST", Summary = "Updates an EpisodeConceptFirstAppearance with new contents")]
     public class UpdateEpisodeConceptFirstAppearance : EpisodeConceptFirstAppearanceModelBase, IReturn<IEpisodeConceptFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeConceptFirstAppearance by Identifier")]
     public class DeactivateEpisodeConceptFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeConceptFirstAppearance by Key")]
     public class DeactivateEpisodeConceptFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/{ID}/Remove", "POST", Summary = "Removes an EpisodeConceptFirstAppearance by Identifier")]
     public class RemoveEpisodeConceptFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeConceptFirstAppearances/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeConceptFirstAppearance by Key")]
     public class RemoveEpisodeConceptFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 

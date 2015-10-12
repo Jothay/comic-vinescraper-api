@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), It.IsAny<int>()));
             var mockModel = IssueAliasesMockingSetup.DoMockingSetupForIssueAliasModel(1);
             IssueAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "IssueAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Issues
         //{
         //    // Arrange
         //    var mockMapper = new Mock<IssueAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), ref It.IsAny<IIssueAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), ref It.IsAny<IIssueAlias>(), It.IsAny<int>()));
         //    var mockModel = IssueAliasesMockingSetup.DoMockingSetupForIssueAliasModel(1);
         //    var mockEntity = IssueAliasesMockingSetup.DoMockingSetupForIssueAlias(1);
         //    IssueAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), ref It.IsAny<IIssueAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IIssueAliasModel>(), ref It.IsAny<IIssueAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "IssueAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IIssueAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IIssueAlias>(), It.IsAny<int>()));
             var mockEntity = IssueAliasesMockingSetup.DoMockingSetupForIssueAlias(1);
             IssueAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IIssueAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IIssueAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IIssueAlias>(), It.IsAny<int>()));
             var mockEntity = IssueAliasesMockingSetup.DoMockingSetupForIssueAlias(1);
             IssueAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IIssueAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Issues
         {
             // Arrange
             var mockMapper = new Mock<IssueAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IIssueAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IIssueAlias>(), It.IsAny<int>()));
             var mockEntity = IssueAliasesMockingSetup.DoMockingSetupForIssueAlias(1);
             IssueAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IIssueAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "IssueAliases")]

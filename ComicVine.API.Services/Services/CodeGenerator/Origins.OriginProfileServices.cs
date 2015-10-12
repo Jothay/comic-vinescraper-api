@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Origins
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class OriginProfileModelBase : NameableEntityModelBase, IOriginProfileModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Origins
     [Route("/OriginProfiles/{CustomKey}/ByKey", "GET", Summary = "Gets OriginProfile by Key")]
     public class GetOriginProfileByKey : ImplementsKey, IReturn<IOriginProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/Create", "POST", Summary = "Creates an OriginProfile with these contents")]
     public class CreateOriginProfile : OriginProfileModelBase, IReturn<IOriginProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/Update", "POST", Summary = "Updates an OriginProfile with new contents")]
     public class UpdateOriginProfile : OriginProfileModelBase, IReturn<IOriginProfileModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/{ID}/Deactivate", "POST", Summary = "Deactivates an OriginProfile by Identifier")]
     public class DeactivateOriginProfile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an OriginProfile by Key")]
     public class DeactivateOriginProfileByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/{ID}/Remove", "POST", Summary = "Removes an OriginProfile by Identifier")]
     public class RemoveOriginProfile : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/OriginProfiles/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an OriginProfile by Key")]
     public class RemoveOriginProfileByKey : ImplementsKey, IReturn<bool> { }
 

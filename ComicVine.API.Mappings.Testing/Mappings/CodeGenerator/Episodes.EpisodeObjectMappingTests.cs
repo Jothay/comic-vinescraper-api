@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         {
             // Arrange
             var mockMapper = new Mock<EpisodeObjectMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), It.IsAny<int>()));
             var mockModel = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObjectModel(1);
             EpisodeObjectMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "EpisodeObjects")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         //{
         //    // Arrange
         //    var mockMapper = new Mock<EpisodeObjectMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), ref It.IsAny<IEpisodeObject>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), ref It.IsAny<IEpisodeObject>(), It.IsAny<int>()));
         //    var mockModel = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObjectModel(1);
         //    var mockEntity = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObject(1);
         //    EpisodeObjectMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), ref It.IsAny<IEpisodeObject>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IEpisodeObjectModel>(), ref It.IsAny<IEpisodeObject>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "EpisodeObjects")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         {
             // Arrange
             var mockMapper = new Mock<EpisodeObjectMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IEpisodeObject>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IEpisodeObject>(), It.IsAny<int>()));
             var mockEntity = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObject(1);
             EpisodeObjectMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IEpisodeObject>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IEpisodeObject>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "EpisodeObjects")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         {
             // Arrange
             var mockMapper = new Mock<EpisodeObjectMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IEpisodeObject>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IEpisodeObject>(), It.IsAny<int>()));
             var mockEntity = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObject(1);
             EpisodeObjectMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IEpisodeObject>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IEpisodeObject>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "EpisodeObjects")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Episodes
         {
             // Arrange
             var mockMapper = new Mock<EpisodeObjectMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IEpisodeObject>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IEpisodeObject>(), It.IsAny<int>()));
             var mockEntity = EpisodeObjectsMockingSetup.DoMockingSetupForEpisodeObject(1);
             EpisodeObjectMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IEpisodeObject>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IEpisodeObject>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "EpisodeObjects")]

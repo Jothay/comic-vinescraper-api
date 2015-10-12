@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Teams
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class TeamMovieModelBase : NameableEntityModelBase, ITeamMovieModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Teams
     [Route("/TeamMovies/{CustomKey}/ByKey", "GET", Summary = "Gets TeamMovie by Key")]
     public class GetTeamMovieByKey : ImplementsKey, IReturn<ITeamMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/Create", "POST", Summary = "Creates an TeamMovie with these contents")]
     public class CreateTeamMovie : TeamMovieModelBase, IReturn<ITeamMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/Update", "POST", Summary = "Updates an TeamMovie with new contents")]
     public class UpdateTeamMovie : TeamMovieModelBase, IReturn<ITeamMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/{ID}/Deactivate", "POST", Summary = "Deactivates an TeamMovie by Identifier")]
     public class DeactivateTeamMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an TeamMovie by Key")]
     public class DeactivateTeamMovieByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/{ID}/Remove", "POST", Summary = "Removes an TeamMovie by Identifier")]
     public class RemoveTeamMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamMovies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an TeamMovie by Key")]
     public class RemoveTeamMovieByKey : ImplementsKey, IReturn<bool> { }
 

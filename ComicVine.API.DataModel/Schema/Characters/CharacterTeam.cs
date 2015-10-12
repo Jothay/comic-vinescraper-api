@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Team")]
         public int TeamId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Team Team { get; set; }
         ITeam ICharacterTeam.Team { get { return Team; } set { Team = value as Team; } }
     }

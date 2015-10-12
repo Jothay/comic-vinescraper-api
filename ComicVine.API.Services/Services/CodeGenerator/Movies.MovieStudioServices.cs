@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Movies
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class MovieStudioModelBase : NameableEntityModelBase, IMovieStudioModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Movies
     [Route("/MovieStudios/{CustomKey}/ByKey", "GET", Summary = "Gets MovieStudio by Key")]
     public class GetMovieStudioByKey : ImplementsKey, IReturn<IMovieStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/Create", "POST", Summary = "Creates an MovieStudio with these contents")]
     public class CreateMovieStudio : MovieStudioModelBase, IReturn<IMovieStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/Update", "POST", Summary = "Updates an MovieStudio with new contents")]
     public class UpdateMovieStudio : MovieStudioModelBase, IReturn<IMovieStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/{ID}/Deactivate", "POST", Summary = "Deactivates an MovieStudio by Identifier")]
     public class DeactivateMovieStudio : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an MovieStudio by Key")]
     public class DeactivateMovieStudioByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/{ID}/Remove", "POST", Summary = "Removes an MovieStudio by Identifier")]
     public class RemoveMovieStudio : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieStudios/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an MovieStudio by Key")]
     public class RemoveMovieStudioByKey : ImplementsKey, IReturn<bool> { }
 

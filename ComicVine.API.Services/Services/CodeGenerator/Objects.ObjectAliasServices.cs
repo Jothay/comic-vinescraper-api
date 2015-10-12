@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Objects
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ObjectAliasModelBase : NameableEntityModelBase, IObjectAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Objects
     [Route("/ObjectAliases/{CustomKey}/ByKey", "GET", Summary = "Gets ObjectAlias by Key")]
     public class GetObjectAliasByKey : ImplementsKey, IReturn<IObjectAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/Create", "POST", Summary = "Creates an ObjectAlias with these contents")]
     public class CreateObjectAlias : ObjectAliasModelBase, IReturn<IObjectAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/Update", "POST", Summary = "Updates an ObjectAlias with new contents")]
     public class UpdateObjectAlias : ObjectAliasModelBase, IReturn<IObjectAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an ObjectAlias by Identifier")]
     public class DeactivateObjectAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ObjectAlias by Key")]
     public class DeactivateObjectAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/{ID}/Remove", "POST", Summary = "Removes an ObjectAlias by Identifier")]
     public class RemoveObjectAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ObjectAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ObjectAlias by Key")]
     public class RemoveObjectAliasByKey : ImplementsKey, IReturn<bool> { }
 

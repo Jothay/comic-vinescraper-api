@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Locations
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class LocationStoryArcModelBase : NameableEntityModelBase, ILocationStoryArcModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Locations
     [Route("/LocationStoryArcs/{CustomKey}/ByKey", "GET", Summary = "Gets LocationStoryArc by Key")]
     public class GetLocationStoryArcByKey : ImplementsKey, IReturn<ILocationStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/Create", "POST", Summary = "Creates an LocationStoryArc with these contents")]
     public class CreateLocationStoryArc : LocationStoryArcModelBase, IReturn<ILocationStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/Update", "POST", Summary = "Updates an LocationStoryArc with new contents")]
     public class UpdateLocationStoryArc : LocationStoryArcModelBase, IReturn<ILocationStoryArcModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/{ID}/Deactivate", "POST", Summary = "Deactivates an LocationStoryArc by Identifier")]
     public class DeactivateLocationStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an LocationStoryArc by Key")]
     public class DeactivateLocationStoryArcByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/{ID}/Remove", "POST", Summary = "Removes an LocationStoryArc by Identifier")]
     public class RemoveLocationStoryArc : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationStoryArcs/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an LocationStoryArc by Key")]
     public class RemoveLocationStoryArcByKey : ImplementsKey, IReturn<bool> { }
 

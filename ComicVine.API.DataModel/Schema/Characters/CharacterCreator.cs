@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Creator")]
         public int CreatorId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Person Creator { get; set; }
         IPerson ICharacterCreator.Creator { get { return Creator; } set { Creator = value as Person; } }
     }

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Chats
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ChatModelBase : NameableEntityModelBase, IChatModel
     {
@@ -65,27 +66,27 @@ namespace ComicVine.API.Services//.Chats
     [Route("/Chats/{CustomKey}/ByKey", "GET", Summary = "Gets Chat by Key")]
     public class GetChatByKey : ImplementsKey, IReturn<IChatModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/Create", "POST", Summary = "Creates an Chat with these contents")]
     public class CreateChat : ChatModelBase, IReturn<IChatModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/Update", "POST", Summary = "Updates an Chat with new contents")]
     public class UpdateChat : ChatModelBase, IReturn<IChatModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/{ID}/Deactivate", "POST", Summary = "Deactivates an Chat by Identifier")]
     public class DeactivateChat : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Chat by Key")]
     public class DeactivateChatByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/{ID}/Remove", "POST", Summary = "Removes an Chat by Identifier")]
     public class RemoveChat : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Chats/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Chat by Key")]
     public class RemoveChatByKey : ImplementsKey, IReturn<bool> { }
 

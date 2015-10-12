@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Powers
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class PowerModelBase : NameableEntityModelBase, IPowerModel
     {
@@ -41,27 +42,27 @@ namespace ComicVine.API.Services//.Powers
     [Route("/Powers/{CustomKey}/ByKey", "GET", Summary = "Gets Power by Key")]
     public class GetPowerByKey : ImplementsKey, IReturn<IPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/Create", "POST", Summary = "Creates an Power with these contents")]
     public class CreatePower : PowerModelBase, IReturn<IPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/Update", "POST", Summary = "Updates an Power with new contents")]
     public class UpdatePower : PowerModelBase, IReturn<IPowerModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/{ID}/Deactivate", "POST", Summary = "Deactivates an Power by Identifier")]
     public class DeactivatePower : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Power by Key")]
     public class DeactivatePowerByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/{ID}/Remove", "POST", Summary = "Removes an Power by Identifier")]
     public class RemovePower : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Powers/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Power by Key")]
     public class RemovePowerByKey : ImplementsKey, IReturn<bool> { }
 

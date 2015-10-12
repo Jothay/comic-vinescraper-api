@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Teams
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class TeamCharacterEnemyModelBase : NameableEntityModelBase, ITeamCharacterEnemyModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Teams
     [Route("/TeamCharacterEnemies/{CustomKey}/ByKey", "GET", Summary = "Gets TeamCharacterEnemy by Key")]
     public class GetTeamCharacterEnemyByKey : ImplementsKey, IReturn<ITeamCharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/Create", "POST", Summary = "Creates an TeamCharacterEnemy with these contents")]
     public class CreateTeamCharacterEnemy : TeamCharacterEnemyModelBase, IReturn<ITeamCharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/Update", "POST", Summary = "Updates an TeamCharacterEnemy with new contents")]
     public class UpdateTeamCharacterEnemy : TeamCharacterEnemyModelBase, IReturn<ITeamCharacterEnemyModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/{ID}/Deactivate", "POST", Summary = "Deactivates an TeamCharacterEnemy by Identifier")]
     public class DeactivateTeamCharacterEnemy : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an TeamCharacterEnemy by Key")]
     public class DeactivateTeamCharacterEnemyByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/{ID}/Remove", "POST", Summary = "Removes an TeamCharacterEnemy by Identifier")]
     public class RemoveTeamCharacterEnemy : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/TeamCharacterEnemies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an TeamCharacterEnemy by Key")]
     public class RemoveTeamCharacterEnemyByKey : ImplementsKey, IReturn<bool> { }
 

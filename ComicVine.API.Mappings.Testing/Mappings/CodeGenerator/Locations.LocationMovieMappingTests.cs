@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationMovieMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationMovieModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), It.IsAny<int>()));
             var mockModel = LocationMoviesMockingSetup.DoMockingSetupForLocationMovieModel(1);
             LocationMovieMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationMovieModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "LocationMovies")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Locations
         //{
         //    // Arrange
         //    var mockMapper = new Mock<LocationMovieMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), ref It.IsAny<ILocationMovie>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), ref It.IsAny<ILocationMovie>(), It.IsAny<int>()));
         //    var mockModel = LocationMoviesMockingSetup.DoMockingSetupForLocationMovieModel(1);
         //    var mockEntity = LocationMoviesMockingSetup.DoMockingSetupForLocationMovie(1);
         //    LocationMovieMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), ref It.IsAny<ILocationMovie>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationMovieModel>(), ref It.IsAny<ILocationMovie>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "LocationMovies")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationMovieMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationMovie>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationMovie>(), It.IsAny<int>()));
             var mockEntity = LocationMoviesMockingSetup.DoMockingSetupForLocationMovie(1);
             LocationMovieMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationMovie>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationMovie>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationMovies")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationMovieMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationMovie>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationMovie>(), It.IsAny<int>()));
             var mockEntity = LocationMoviesMockingSetup.DoMockingSetupForLocationMovie(1);
             LocationMovieMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationMovie>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationMovie>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationMovies")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationMovieMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationMovie>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationMovie>(), It.IsAny<int>()));
             var mockEntity = LocationMoviesMockingSetup.DoMockingSetupForLocationMovie(1);
             LocationMovieMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationMovie>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationMovie>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationMovies")]

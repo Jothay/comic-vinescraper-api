@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Volumes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VolumeWriterModelBase : NameableEntityModelBase, IVolumeWriterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Volumes
     [Route("/VolumeWriters/{CustomKey}/ByKey", "GET", Summary = "Gets VolumeWriter by Key")]
     public class GetVolumeWriterByKey : ImplementsKey, IReturn<IVolumeWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/Create", "POST", Summary = "Creates an VolumeWriter with these contents")]
     public class CreateVolumeWriter : VolumeWriterModelBase, IReturn<IVolumeWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/Update", "POST", Summary = "Updates an VolumeWriter with new contents")]
     public class UpdateVolumeWriter : VolumeWriterModelBase, IReturn<IVolumeWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/{ID}/Deactivate", "POST", Summary = "Deactivates an VolumeWriter by Identifier")]
     public class DeactivateVolumeWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an VolumeWriter by Key")]
     public class DeactivateVolumeWriterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/{ID}/Remove", "POST", Summary = "Removes an VolumeWriter by Identifier")]
     public class RemoveVolumeWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/VolumeWriters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an VolumeWriter by Key")]
     public class RemoveVolumeWriterByKey : ImplementsKey, IReturn<bool> { }
 

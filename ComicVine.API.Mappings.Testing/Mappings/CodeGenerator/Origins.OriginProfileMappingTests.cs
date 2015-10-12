@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Origins
         {
             // Arrange
             var mockMapper = new Mock<OriginProfileMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IOriginProfileModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), It.IsAny<int>()));
             var mockModel = OriginProfilesMockingSetup.DoMockingSetupForOriginProfileModel(1);
             OriginProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginProfileModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "OriginProfiles")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Origins
         //{
         //    // Arrange
         //    var mockMapper = new Mock<OriginProfileMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), ref It.IsAny<IOriginProfile>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), ref It.IsAny<IOriginProfile>(), It.IsAny<int>()));
         //    var mockModel = OriginProfilesMockingSetup.DoMockingSetupForOriginProfileModel(1);
         //    var mockEntity = OriginProfilesMockingSetup.DoMockingSetupForOriginProfile(1);
         //    OriginProfileMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), ref It.IsAny<IOriginProfile>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IOriginProfileModel>(), ref It.IsAny<IOriginProfile>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "OriginProfiles")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Origins
         {
             // Arrange
             var mockMapper = new Mock<OriginProfileMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IOriginProfile>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IOriginProfile>(), It.IsAny<int>()));
             var mockEntity = OriginProfilesMockingSetup.DoMockingSetupForOriginProfile(1);
             OriginProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IOriginProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IOriginProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "OriginProfiles")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Origins
         {
             // Arrange
             var mockMapper = new Mock<OriginProfileMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IOriginProfile>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IOriginProfile>(), It.IsAny<int>()));
             var mockEntity = OriginProfilesMockingSetup.DoMockingSetupForOriginProfile(1);
             OriginProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IOriginProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IOriginProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "OriginProfiles")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Origins
         {
             // Arrange
             var mockMapper = new Mock<OriginProfileMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IOriginProfile>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IOriginProfile>(), It.IsAny<int>()));
             var mockEntity = OriginProfilesMockingSetup.DoMockingSetupForOriginProfile(1);
             OriginProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IOriginProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IOriginProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "OriginProfiles")]

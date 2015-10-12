@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeCharacterDiedModelBase : NameableEntityModelBase, IEpisodeCharacterDiedModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeCharactersDied/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeCharacterDied by Key")]
     public class GetEpisodeCharacterDiedByKey : ImplementsKey, IReturn<IEpisodeCharacterDiedModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/Create", "POST", Summary = "Creates an EpisodeCharacterDied with these contents")]
     public class CreateEpisodeCharacterDied : EpisodeCharacterDiedModelBase, IReturn<IEpisodeCharacterDiedModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/Update", "POST", Summary = "Updates an EpisodeCharacterDied with new contents")]
     public class UpdateEpisodeCharacterDied : EpisodeCharacterDiedModelBase, IReturn<IEpisodeCharacterDiedModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeCharacterDied by Identifier")]
     public class DeactivateEpisodeCharacterDied : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeCharacterDied by Key")]
     public class DeactivateEpisodeCharacterDiedByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/{ID}/Remove", "POST", Summary = "Removes an EpisodeCharacterDied by Identifier")]
     public class RemoveEpisodeCharacterDied : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeCharactersDied/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeCharacterDied by Key")]
     public class RemoveEpisodeCharacterDiedByKey : ImplementsKey, IReturn<bool> { }
 

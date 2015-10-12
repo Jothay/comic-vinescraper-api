@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Studios
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class StudioModelBase : NameableEntityModelBase, IStudioModel
     {
@@ -40,27 +41,27 @@ namespace ComicVine.API.Services//.Studios
     [Route("/Studios/{CustomKey}/ByKey", "GET", Summary = "Gets Studio by Key")]
     public class GetStudioByKey : ImplementsKey, IReturn<IStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/Create", "POST", Summary = "Creates an Studio with these contents")]
     public class CreateStudio : StudioModelBase, IReturn<IStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/Update", "POST", Summary = "Updates an Studio with new contents")]
     public class UpdateStudio : StudioModelBase, IReturn<IStudioModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/{ID}/Deactivate", "POST", Summary = "Deactivates an Studio by Identifier")]
     public class DeactivateStudio : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Studio by Key")]
     public class DeactivateStudioByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/{ID}/Remove", "POST", Summary = "Removes an Studio by Identifier")]
     public class RemoveStudio : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Studios/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Studio by Key")]
     public class RemoveStudioByKey : ImplementsKey, IReturn<bool> { }
 

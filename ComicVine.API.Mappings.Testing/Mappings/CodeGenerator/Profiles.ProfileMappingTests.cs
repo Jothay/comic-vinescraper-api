@@ -72,13 +72,13 @@ namespace ComicVine.API.Testing.Mappings.Profiles
         {
             // Arrange
             var mockMapper = new Mock<ProfileMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IProfileModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IProfileModel>(), It.IsAny<int>()));
             var mockModel = ProfilesMockingSetup.DoMockingSetupForProfileModel(1);
             ProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IProfileModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IProfileModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "Profiles")]
@@ -86,14 +86,14 @@ namespace ComicVine.API.Testing.Mappings.Profiles
         //{
         //    // Arrange
         //    var mockMapper = new Mock<ProfileMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IProfileModel>(), ref It.IsAny<IProfile>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IProfileModel>(), ref It.IsAny<IProfile>(), It.IsAny<int>()));
         //    var mockModel = ProfilesMockingSetup.DoMockingSetupForProfileModel(1);
         //    var mockEntity = ProfilesMockingSetup.DoMockingSetupForProfile(1);
         //    ProfileMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IProfileModel>(), ref It.IsAny<IProfile>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IProfileModel>(), ref It.IsAny<IProfile>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "Profiles")]
@@ -101,13 +101,13 @@ namespace ComicVine.API.Testing.Mappings.Profiles
         {
             // Arrange
             var mockMapper = new Mock<ProfileMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IProfile>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IProfile>(), It.IsAny<int>()));
             var mockEntity = ProfilesMockingSetup.DoMockingSetupForProfile(1);
             ProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Profiles")]
@@ -115,13 +115,13 @@ namespace ComicVine.API.Testing.Mappings.Profiles
         {
             // Arrange
             var mockMapper = new Mock<ProfileMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IProfile>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IProfile>(), It.IsAny<int>()));
             var mockEntity = ProfilesMockingSetup.DoMockingSetupForProfile(1);
             ProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Profiles")]
@@ -129,13 +129,13 @@ namespace ComicVine.API.Testing.Mappings.Profiles
         {
             // Arrange
             var mockMapper = new Mock<ProfileMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IProfile>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IProfile>(), It.IsAny<int>()));
             var mockEntity = ProfilesMockingSetup.DoMockingSetupForProfile(1);
             ProfileMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IProfile>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IProfile>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "Profiles")]

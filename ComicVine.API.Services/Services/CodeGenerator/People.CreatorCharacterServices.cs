@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.People
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class CreatorCharacterModelBase : NameableEntityModelBase, ICreatorCharacterModel
     {
@@ -81,27 +82,27 @@ namespace ComicVine.API.Services//.People
     [Route("/CreatorCharacters/{CustomKey}/ByKey", "GET", Summary = "Gets CreatorCharacter by Key")]
     public class GetCreatorCharacterByKey : ImplementsKey, IReturn<ICreatorCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/Create", "POST", Summary = "Creates an CreatorCharacter with these contents")]
     public class CreateCreatorCharacter : CreatorCharacterModelBase, IReturn<ICreatorCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/Update", "POST", Summary = "Updates an CreatorCharacter with new contents")]
     public class UpdateCreatorCharacter : CreatorCharacterModelBase, IReturn<ICreatorCharacterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/{ID}/Deactivate", "POST", Summary = "Deactivates an CreatorCharacter by Identifier")]
     public class DeactivateCreatorCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an CreatorCharacter by Key")]
     public class DeactivateCreatorCharacterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/{ID}/Remove", "POST", Summary = "Removes an CreatorCharacter by Identifier")]
     public class RemoveCreatorCharacter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/CreatorCharacters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an CreatorCharacter by Key")]
     public class RemoveCreatorCharacterByKey : ImplementsKey, IReturn<bool> { }
 

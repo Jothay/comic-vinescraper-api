@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Locations
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class LocationMovieModelBase : NameableEntityModelBase, ILocationMovieModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Locations
     [Route("/LocationMovies/{CustomKey}/ByKey", "GET", Summary = "Gets LocationMovie by Key")]
     public class GetLocationMovieByKey : ImplementsKey, IReturn<ILocationMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/Create", "POST", Summary = "Creates an LocationMovie with these contents")]
     public class CreateLocationMovie : LocationMovieModelBase, IReturn<ILocationMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/Update", "POST", Summary = "Updates an LocationMovie with new contents")]
     public class UpdateLocationMovie : LocationMovieModelBase, IReturn<ILocationMovieModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/{ID}/Deactivate", "POST", Summary = "Deactivates an LocationMovie by Identifier")]
     public class DeactivateLocationMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an LocationMovie by Key")]
     public class DeactivateLocationMovieByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/{ID}/Remove", "POST", Summary = "Removes an LocationMovie by Identifier")]
     public class RemoveLocationMovie : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/LocationMovies/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an LocationMovie by Key")]
     public class RemoveLocationMovieByKey : ImplementsKey, IReturn<bool> { }
 

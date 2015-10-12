@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Movies
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class MovieWriterModelBase : NameableEntityModelBase, IMovieWriterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Movies
     [Route("/MovieWriters/{CustomKey}/ByKey", "GET", Summary = "Gets MovieWriter by Key")]
     public class GetMovieWriterByKey : ImplementsKey, IReturn<IMovieWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/Create", "POST", Summary = "Creates an MovieWriter with these contents")]
     public class CreateMovieWriter : MovieWriterModelBase, IReturn<IMovieWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/Update", "POST", Summary = "Updates an MovieWriter with new contents")]
     public class UpdateMovieWriter : MovieWriterModelBase, IReturn<IMovieWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/{ID}/Deactivate", "POST", Summary = "Deactivates an MovieWriter by Identifier")]
     public class DeactivateMovieWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an MovieWriter by Key")]
     public class DeactivateMovieWriterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/{ID}/Remove", "POST", Summary = "Removes an MovieWriter by Identifier")]
     public class RemoveMovieWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/MovieWriters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an MovieWriter by Key")]
     public class RemoveMovieWriterByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Volumes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class VolumeModelBase : NameableEntityModelBase, IVolumeModel
     {
@@ -137,27 +138,27 @@ namespace ComicVine.API.Services//.Volumes
     [Route("/Volumes/{CustomKey}/ByKey", "GET", Summary = "Gets Volume by Key")]
     public class GetVolumeByKey : ImplementsKey, IReturn<IVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/Create", "POST", Summary = "Creates an Volume with these contents")]
     public class CreateVolume : VolumeModelBase, IReturn<IVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/Update", "POST", Summary = "Updates an Volume with new contents")]
     public class UpdateVolume : VolumeModelBase, IReturn<IVolumeModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/{ID}/Deactivate", "POST", Summary = "Deactivates an Volume by Identifier")]
     public class DeactivateVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Volume by Key")]
     public class DeactivateVolumeByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/{ID}/Remove", "POST", Summary = "Removes an Volume by Identifier")]
     public class RemoveVolume : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Volumes/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Volume by Key")]
     public class RemoveVolumeByKey : ImplementsKey, IReturn<bool> { }
 

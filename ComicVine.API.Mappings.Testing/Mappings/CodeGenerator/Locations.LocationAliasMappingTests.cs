@@ -74,13 +74,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationAliasMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationAliasModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), It.IsAny<int>()));
             var mockModel = LocationAliasesMockingSetup.DoMockingSetupForLocationAliasModel(1);
             LocationAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationAliasModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "LocationAliases")]
@@ -88,14 +88,14 @@ namespace ComicVine.API.Testing.Mappings.Locations
         //{
         //    // Arrange
         //    var mockMapper = new Mock<LocationAliasMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), ref It.IsAny<ILocationAlias>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), ref It.IsAny<ILocationAlias>(), It.IsAny<int>()));
         //    var mockModel = LocationAliasesMockingSetup.DoMockingSetupForLocationAliasModel(1);
         //    var mockEntity = LocationAliasesMockingSetup.DoMockingSetupForLocationAlias(1);
         //    LocationAliasMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), ref It.IsAny<ILocationAlias>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<ILocationAliasModel>(), ref It.IsAny<ILocationAlias>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "LocationAliases")]
@@ -103,13 +103,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationAliasMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationAlias>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<ILocationAlias>(), It.IsAny<int>()));
             var mockEntity = LocationAliasesMockingSetup.DoMockingSetupForLocationAlias(1);
             LocationAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<ILocationAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationAliases")]
@@ -117,13 +117,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationAlias>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<ILocationAlias>(), It.IsAny<int>()));
             var mockEntity = LocationAliasesMockingSetup.DoMockingSetupForLocationAlias(1);
             LocationAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<ILocationAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationAliases")]
@@ -131,13 +131,13 @@ namespace ComicVine.API.Testing.Mappings.Locations
         {
             // Arrange
             var mockMapper = new Mock<LocationAliasMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationAlias>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<ILocationAlias>(), It.IsAny<int>()));
             var mockEntity = LocationAliasesMockingSetup.DoMockingSetupForLocationAlias(1);
             LocationAliasMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationAlias>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<ILocationAlias>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "LocationAliases")]

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Concepts
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class ConceptAliasModelBase : NameableEntityModelBase, IConceptAliasModel
     {
@@ -61,27 +62,27 @@ namespace ComicVine.API.Services//.Concepts
     [Route("/ConceptAliases/{CustomKey}/ByKey", "GET", Summary = "Gets ConceptAlias by Key")]
     public class GetConceptAliasByKey : ImplementsKey, IReturn<IConceptAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/Create", "POST", Summary = "Creates an ConceptAlias with these contents")]
     public class CreateConceptAlias : ConceptAliasModelBase, IReturn<IConceptAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/Update", "POST", Summary = "Updates an ConceptAlias with new contents")]
     public class UpdateConceptAlias : ConceptAliasModelBase, IReturn<IConceptAliasModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/{ID}/Deactivate", "POST", Summary = "Deactivates an ConceptAlias by Identifier")]
     public class DeactivateConceptAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an ConceptAlias by Key")]
     public class DeactivateConceptAliasByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/{ID}/Remove", "POST", Summary = "Removes an ConceptAlias by Identifier")]
     public class RemoveConceptAlias : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/ConceptAliases/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an ConceptAlias by Key")]
     public class RemoveConceptAliasByKey : ImplementsKey, IReturn<bool> { }
 

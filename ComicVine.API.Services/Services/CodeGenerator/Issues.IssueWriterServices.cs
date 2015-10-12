@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Issues
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class IssueWriterModelBase : NameableEntityModelBase, IIssueWriterModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Issues
     [Route("/IssueWriters/{CustomKey}/ByKey", "GET", Summary = "Gets IssueWriter by Key")]
     public class GetIssueWriterByKey : ImplementsKey, IReturn<IIssueWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/Create", "POST", Summary = "Creates an IssueWriter with these contents")]
     public class CreateIssueWriter : IssueWriterModelBase, IReturn<IIssueWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/Update", "POST", Summary = "Updates an IssueWriter with new contents")]
     public class UpdateIssueWriter : IssueWriterModelBase, IReturn<IIssueWriterModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/{ID}/Deactivate", "POST", Summary = "Deactivates an IssueWriter by Identifier")]
     public class DeactivateIssueWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an IssueWriter by Key")]
     public class DeactivateIssueWriterByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/{ID}/Remove", "POST", Summary = "Removes an IssueWriter by Identifier")]
     public class RemoveIssueWriter : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/IssueWriters/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an IssueWriter by Key")]
     public class RemoveIssueWriterByKey : ImplementsKey, IReturn<bool> { }
 

@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeStoryArcFirstAppearanceModelBase : NameableEntityModelBase, IEpisodeStoryArcFirstAppearanceModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeStoryArcFirstAppearances/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeStoryArcFirstAppearance by Key")]
     public class GetEpisodeStoryArcFirstAppearanceByKey : ImplementsKey, IReturn<IEpisodeStoryArcFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/Create", "POST", Summary = "Creates an EpisodeStoryArcFirstAppearance with these contents")]
     public class CreateEpisodeStoryArcFirstAppearance : EpisodeStoryArcFirstAppearanceModelBase, IReturn<IEpisodeStoryArcFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/Update", "POST", Summary = "Updates an EpisodeStoryArcFirstAppearance with new contents")]
     public class UpdateEpisodeStoryArcFirstAppearance : EpisodeStoryArcFirstAppearanceModelBase, IReturn<IEpisodeStoryArcFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeStoryArcFirstAppearance by Identifier")]
     public class DeactivateEpisodeStoryArcFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeStoryArcFirstAppearance by Key")]
     public class DeactivateEpisodeStoryArcFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/{ID}/Remove", "POST", Summary = "Removes an EpisodeStoryArcFirstAppearance by Identifier")]
     public class RemoveEpisodeStoryArcFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeStoryArcFirstAppearances/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeStoryArcFirstAppearance by Key")]
     public class RemoveEpisodeStoryArcFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 

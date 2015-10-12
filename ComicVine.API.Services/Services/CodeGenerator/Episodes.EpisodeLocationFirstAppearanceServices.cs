@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Episodes
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class EpisodeLocationFirstAppearanceModelBase : NameableEntityModelBase, IEpisodeLocationFirstAppearanceModel
     {
@@ -84,27 +85,27 @@ namespace ComicVine.API.Services//.Episodes
     [Route("/EpisodeLocationFirstAppearances/{CustomKey}/ByKey", "GET", Summary = "Gets EpisodeLocationFirstAppearance by Key")]
     public class GetEpisodeLocationFirstAppearanceByKey : ImplementsKey, IReturn<IEpisodeLocationFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/Create", "POST", Summary = "Creates an EpisodeLocationFirstAppearance with these contents")]
     public class CreateEpisodeLocationFirstAppearance : EpisodeLocationFirstAppearanceModelBase, IReturn<IEpisodeLocationFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/Update", "POST", Summary = "Updates an EpisodeLocationFirstAppearance with new contents")]
     public class UpdateEpisodeLocationFirstAppearance : EpisodeLocationFirstAppearanceModelBase, IReturn<IEpisodeLocationFirstAppearanceModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/{ID}/Deactivate", "POST", Summary = "Deactivates an EpisodeLocationFirstAppearance by Identifier")]
     public class DeactivateEpisodeLocationFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an EpisodeLocationFirstAppearance by Key")]
     public class DeactivateEpisodeLocationFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/{ID}/Remove", "POST", Summary = "Removes an EpisodeLocationFirstAppearance by Identifier")]
     public class RemoveEpisodeLocationFirstAppearance : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/EpisodeLocationFirstAppearances/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an EpisodeLocationFirstAppearance by Key")]
     public class RemoveEpisodeLocationFirstAppearanceByKey : ImplementsKey, IReturn<bool> { }
 

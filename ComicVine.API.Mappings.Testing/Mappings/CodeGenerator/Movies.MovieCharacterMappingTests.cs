@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.Movies
         {
             // Arrange
             var mockMapper = new Mock<MovieCharacterMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), It.IsAny<int>()));
             var mockModel = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacterModel(1);
             MovieCharacterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "MovieCharacters")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.Movies
         //{
         //    // Arrange
         //    var mockMapper = new Mock<MovieCharacterMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), ref It.IsAny<IMovieCharacter>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), ref It.IsAny<IMovieCharacter>(), It.IsAny<int>()));
         //    var mockModel = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacterModel(1);
         //    var mockEntity = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacter(1);
         //    MovieCharacterMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), ref It.IsAny<IMovieCharacter>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IMovieCharacterModel>(), ref It.IsAny<IMovieCharacter>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "MovieCharacters")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.Movies
         {
             // Arrange
             var mockMapper = new Mock<MovieCharacterMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IMovieCharacter>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IMovieCharacter>(), It.IsAny<int>()));
             var mockEntity = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacter(1);
             MovieCharacterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IMovieCharacter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IMovieCharacter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "MovieCharacters")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.Movies
         {
             // Arrange
             var mockMapper = new Mock<MovieCharacterMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IMovieCharacter>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IMovieCharacter>(), It.IsAny<int>()));
             var mockEntity = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacter(1);
             MovieCharacterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IMovieCharacter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IMovieCharacter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "MovieCharacters")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.Movies
         {
             // Arrange
             var mockMapper = new Mock<MovieCharacterMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IMovieCharacter>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IMovieCharacter>(), It.IsAny<int>()));
             var mockEntity = MovieCharactersMockingSetup.DoMockingSetupForMovieCharacter(1);
             MovieCharacterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IMovieCharacter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IMovieCharacter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "MovieCharacters")]

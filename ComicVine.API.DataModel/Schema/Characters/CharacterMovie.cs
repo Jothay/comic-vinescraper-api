@@ -16,6 +16,7 @@ namespace ComicVine.API.DataModel.Schema
 
         [InverseProperty("Id")][ForeignKey("Movie")]
         public int MovieId { get; set; }
+        [MapLiteDepthAllowed(Depth = 1)]
         public virtual Movie Movie { get; set; }
         IMovie ICharacterMovie.Movie { get { return Movie; } set { Movie = value as Movie; } }
     }

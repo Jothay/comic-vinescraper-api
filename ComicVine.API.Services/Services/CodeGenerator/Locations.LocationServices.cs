@@ -13,6 +13,7 @@ namespace ComicVine.API.Services//.Locations
     using Interfaces.Models;
     using Interfaces.SearchModels;
     using ServiceStack;
+    using ServiceStack.DataAnnotations;
 
     public class LocationModelBase : NameableEntityModelBase, ILocationModel
     {
@@ -89,27 +90,27 @@ namespace ComicVine.API.Services//.Locations
     [Route("/Locations/{CustomKey}/ByKey", "GET", Summary = "Gets Location by Key")]
     public class GetLocationByKey : ImplementsKey, IReturn<ILocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/Create", "POST", Summary = "Creates an Location with these contents")]
     public class CreateLocation : LocationModelBase, IReturn<ILocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/Update", "POST", Summary = "Updates an Location with new contents")]
     public class UpdateLocation : LocationModelBase, IReturn<ILocationModel> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/{ID}/Deactivate", "POST", Summary = "Deactivates an Location by Identifier")]
     public class DeactivateLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/{CustomKey}/DeactivateByKey", "POST", Summary = "Deactivates an Location by Key")]
     public class DeactivateLocationByKey : ImplementsKey, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/{ID}/Remove", "POST", Summary = "Removes an Location by Identifier")]
     public class RemoveLocation : ImplementsID, IReturn<bool> { }
 
-    //[Authenticate]
+    [Authenticate][Exclude(Feature.Metadata)][Restrict(VisibilityTo = RequestAttributes.None)]
     [Route("/Locations/{CustomKey}/RemoveByKey", "POST", Summary = "Removes an Location by Key")]
     public class RemoveLocationByKey : ImplementsKey, IReturn<bool> { }
 

@@ -33,6 +33,8 @@
                         throw HttpError.Unauthorized("Unauthorized");
                     }
                 });
+            typeof(Resources).AddAttributes(new RestrictAttribute { VisibilityTo = RequestAttributes.None });
+            typeof(ResourceRequest).AddAttributes(new RestrictAttribute { VisibilityTo = RequestAttributes.None });
             appHost.Init();
         }
     }

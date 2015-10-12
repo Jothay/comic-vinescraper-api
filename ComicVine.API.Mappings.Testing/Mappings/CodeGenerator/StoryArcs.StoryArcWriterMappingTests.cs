@@ -78,13 +78,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcWriterMapper>();
-            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>()));
+            mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), It.IsAny<int>()));
             var mockModel = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriterModel(1);
             StoryArcWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockModel.Object.MapToEntity();
             // Assert
-            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>()), Times.Once);
+            mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), It.IsAny<int>()), Times.Once);
         }
 
         //[Fact][Trait("Category", "StoryArcWriters")]
@@ -92,14 +92,14 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         //{
         //    // Arrange
         //    var mockMapper = new Mock<StoryArcWriterMapper>();
-        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), ref It.IsAny<IStoryArcWriter>()));
+        //    mockMapper.Setup(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), ref It.IsAny<IStoryArcWriter>(), It.IsAny<int>()));
         //    var mockModel = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriterModel(1);
         //    var mockEntity = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriter(1);
         //    StoryArcWriterMapperExtensions.OverrideMapper(mockMapper.Object);
         //    // Act
         //    mockModel.Object.MapToEntity(ref mockEntity);
         //    // Assert
-        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), ref It.IsAny<IStoryArcWriter>()), Times.Once);
+        //    mockMapper.Verify(x => x.MapToEntity(It.IsAny<IStoryArcWriterModel>(), ref It.IsAny<IStoryArcWriter>(), It.IsAny<int>()), Times.Once);
         //}
 
         [Fact][Trait("Category", "StoryArcWriters")]
@@ -107,13 +107,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcWriterMapper>();
-            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStoryArcWriter>()));
+            mockMapper.Setup(x => x.MapToModel(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()));
             var mockEntity = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriter(1);
             StoryArcWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModel();
             // Assert
-            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStoryArcWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModel(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcWriters")]
@@ -121,13 +121,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcWriterMapper>();
-            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStoryArcWriter>()));
+            mockMapper.Setup(x => x.MapToModelLite(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()));
             var mockEntity = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriter(1);
             StoryArcWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelLite();
             // Assert
-            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStoryArcWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelLite(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcWriters")]
@@ -135,13 +135,13 @@ namespace ComicVine.API.Testing.Mappings.StoryArcs
         {
             // Arrange
             var mockMapper = new Mock<StoryArcWriterMapper>();
-            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStoryArcWriter>()));
+            mockMapper.Setup(x => x.MapToModelListing(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()));
             var mockEntity = StoryArcWritersMockingSetup.DoMockingSetupForStoryArcWriter(1);
             StoryArcWriterMapperExtensions.OverrideMapper(mockMapper.Object);
             // Act
             mockEntity.Object.MapToModelListing();
             // Assert
-            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStoryArcWriter>()), Times.Once);
+            mockMapper.Verify(x => x.MapToModelListing(It.IsAny<IStoryArcWriter>(), It.IsAny<int>()), Times.Once);
         }
 
         [Fact][Trait("Category", "StoryArcWriters")]
