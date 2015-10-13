@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Models
+﻿namespace ComicVineScraper.API.Models
 {
     using System;
 
@@ -14,7 +14,7 @@
     }
 }
 
-namespace ComicVine.API.SearchModels
+namespace ComicVineScraper.API.SearchModels
 {
     using System;
     using Interfaces.SearchModels;

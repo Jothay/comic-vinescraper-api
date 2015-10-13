@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Repositories
+﻿namespace ComicVineScraper.API.Repositories
 {
     using StructureMap.Configuration.DSL;
     using DataModel;

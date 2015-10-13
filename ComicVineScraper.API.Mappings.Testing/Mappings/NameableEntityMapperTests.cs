@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Testing.Mappings
+﻿namespace ComicVineScraper.API.Testing.Mappings
 {
     using API.Mappings;
     using DataModel.Schema;

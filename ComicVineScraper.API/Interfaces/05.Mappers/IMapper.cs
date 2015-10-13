@@ -1,4 +1,4 @@
-namespace ComicVine.API.Interfaces.Mappers
+namespace ComicVineScraper.API.Interfaces.Mappers
 {
     public interface IMapper<TEntity, TModel, TSearchModel>
         where TEntity : DataModels.IEntity

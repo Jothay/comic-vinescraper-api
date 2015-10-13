@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ComicVine.API.Services.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ComicVineScraper.API.Services.Global" Language="C#" %>

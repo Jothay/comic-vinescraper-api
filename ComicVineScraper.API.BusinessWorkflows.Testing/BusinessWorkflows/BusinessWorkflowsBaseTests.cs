@@ -1,7 +1,7 @@
-﻿namespace ComicVine.API.Testing.BusinessWorkflows
+﻿namespace ComicVineScraper.API.Testing.BusinessWorkflows
 {
     using System;
-    using ComicVine.API.BusinessWorkflows;
+    using API.BusinessWorkflows;
     using Xunit;
 
     public class BusinessWorkflowsBaseTests

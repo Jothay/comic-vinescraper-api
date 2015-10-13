@@ -1,5 +1,5 @@
 ﻿// ReSharper disable ClassNeverInstantiated.Global
-namespace ComicVine.API.DataModel.Schema
+namespace ComicVineScraper.API.DataModel.Schema
 {
     using System;
     using System.Collections.Generic;

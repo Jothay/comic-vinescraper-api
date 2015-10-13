@@ -2,7 +2,7 @@
 // Copyright (c) 2015 Clarity Ventures, Inc. All rights reserved.
 // </copyright>
 // <summary>Implements the string is unicode attribute class</summary>
-namespace ComicVine.API.DataModel
+namespace ComicVineScraper.API.DataModel
 {
     using System;
 

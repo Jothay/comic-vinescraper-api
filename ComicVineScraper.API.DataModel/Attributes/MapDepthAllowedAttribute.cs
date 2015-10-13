@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.DataModel
+﻿namespace ComicVineScraper.API.DataModel
 {
     using System;
 

@@ -1,0 +1,22 @@
+﻿<#@ output extension="txt" #>
+<#@ include file="..\..\CodeGenerator\MultiOutput.tt" #>
+<#@ include file="..\..\CodeGenerator\NamespaceParser.tt" #>
+<#@ include file="RepositoryTestingFile.tt" #>
+<#
+// Set up global knowledge
+var root = "ComicVineScraper.API";
+var company = "jothay.com";
+var copyright = "Jothay Tech, Inc.";
+
+// Parse the DataModel
+var spaces = DataModelParser(root);
+foreach(var space in spaces)
+{
+    foreach(var entityClass in space.Value)
+    {
+        GenerateRepositoryTestingFile(root, space.Key, entityClass, company, copyright);
+        SaveOutput(space.Key, entityClass.name.Replace("Schema.", "") + "RepositoryTests.cs");
+    }
+}
+DeleteOldOutputs();
+#>

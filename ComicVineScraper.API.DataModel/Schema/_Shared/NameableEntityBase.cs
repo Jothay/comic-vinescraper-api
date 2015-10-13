@@ -2,14 +2,14 @@
 // Copyright (c) 2015 Clarity Ventures, Inc. All rights reserved.
 // </copyright>
 // <summary>Implements the nameable entity base class</summary>
-namespace ComicVine.API.DataModel.Schema.Shared
+namespace ComicVineScraper.API.DataModel.Schema.Shared
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>A nameable entity base.</summary>
-    /// <seealso cref="T:ComicVine.API.DataModel.Schema.Shared.EntityBase"/>
-    /// <seealso cref="T:ComicVine.API.Interfaces.DataModels.INameableEntity"/>
+    /// <seealso cref="T:ComicVineScraper.API.DataModel.Schema.Shared.EntityBase"/>
+    /// <seealso cref="T:ComicVineScraper.API.Interfaces.DataModels.INameableEntity"/>
     public class NameableEntityBase : EntityBase, Interfaces.DataModels.INameableEntity
     {
         /// <summary>Gets or sets the name.</summary>

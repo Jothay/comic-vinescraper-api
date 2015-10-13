@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Testing.Services
+﻿namespace ComicVineScraper.API.Testing.Services
 {
     using API.Services;
     using Interfaces.BusinessWorkflows;

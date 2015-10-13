@@ -1,4 +1,4 @@
-namespace ComicVine.API.Interfaces.SearchModels
+namespace ComicVineScraper.API.Interfaces.SearchModels
 {
     public interface INameableEntitySearchModel : IEntitySearchModel
     {

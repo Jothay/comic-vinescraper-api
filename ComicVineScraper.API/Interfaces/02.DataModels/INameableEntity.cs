@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Interfaces.DataModels
+﻿namespace ComicVineScraper.API.Interfaces.DataModels
 {
     public interface INameableEntity : IEntity
     {

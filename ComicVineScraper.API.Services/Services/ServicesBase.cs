@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Services
+﻿namespace ComicVineScraper.API.Services
 {
     using System;
     using Interfaces.Models;

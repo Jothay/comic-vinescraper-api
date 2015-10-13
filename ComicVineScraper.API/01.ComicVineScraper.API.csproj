@@ -21,9 +21,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\MngRecAndSec.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\ComicVineScraper.API.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -72,6 +73,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CodeGenerator\MultiOutput.cs">
+      <Link>CodeGenerator\MultiOutput.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\CodeGenerator\NamespaceParser.cs">
+      <Link>CodeGenerator\NamespaceParser.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NamespaceParser.tt</DependentUpon>
+    </Compile>
     <Compile Include="CodeGenerator\Characters.CharacterAliasInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
@@ -120,7 +133,6 @@
     <Compile Include="CodeGenerator\Chats.ChatInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\Class1.cs" />
     <Compile Include="CodeGenerator\Concepts.ConceptAliasInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Compile>
@@ -254,11 +266,6 @@
     </Compile>
     <Compile Include="CodeGenerator\Movies.MovieWriterInterfaces.cs">
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CodeGenerator\MultiOutput.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MultiOutput.tt</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\02.DataModels\INameableEntity.cs" />
     <Compile Include="Interfaces\03.Models\INameableEntityModel.cs" />
@@ -428,6 +435,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\CodeGenerator\MultiOutput.tt">
+      <Link>CodeGenerator\MultiOutput.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="..\CodeGenerator\NamespaceParser.tt">
+      <Link>CodeGenerator\NamespaceParser.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NamespaceParser.cs</LastGenOutput>
+    </Content>
     <Content Include="CodeGenerator\InterfaceFile.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>InterfaceFile.cs</LastGenOutput>
@@ -441,22 +458,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InterfaceFileMaster.tt</DependentUpon>
     </Content>
-    <Content Include="CodeGenerator\MultiOutput.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MultiOutput.cs</LastGenOutput>
-    </Content>
-    <Content Include="CodeGenerator\NamespaceParser.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NamespaceParser.txt</LastGenOutput>
-    </Content>
-    <Content Include="CodeGenerator\NamespaceParser.txt">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NamespaceParser.tt</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeGenerator\CodeGenerator.csproj">
+      <Project>{51c42a85-b933-4a12-ab7d-67be4055a2f5}</Project>
+      <Name>CodeGenerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

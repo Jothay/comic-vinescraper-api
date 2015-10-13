@@ -2,14 +2,14 @@
 // Copyright (c) 2015 Clarity Ventures, Inc. All rights reserved.
 // </copyright>
 // <summary>Implements the entity base class</summary>
-namespace ComicVine.API.DataModel.Schema.Shared
+namespace ComicVineScraper.API.DataModel.Schema.Shared
 {
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>An entity base.</summary>
-    /// <seealso cref="T:ComicVine.API.Interfaces.DataModels.IEntity"/>
+    /// <seealso cref="T:ComicVineScraper.API.Interfaces.DataModels.IEntity"/>
     public class EntityBase : Interfaces.DataModels.IEntity
     {
         /// <summary>Gets or sets the identifier.</summary>

@@ -21,9 +21,10 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\MngRecAndSec.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\ComicVineScraper.API.Models.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -47,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CodeGenerator\MultiOutput.cs">
+      <Link>CodeGenerator\MultiOutput.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+    </Compile>
+    <Compile Include="..\CodeGenerator\NamespaceParser.cs">
+      <Link>CodeGenerator\NamespaceParser.cs</Link>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NamespaceParser.tt</DependentUpon>
+    </Compile>
     <Compile Include="CodeGenerator\Characters.CharacterAliasModels.cs">
       <DependentUpon>ModelFileMaster.tt</DependentUpon>
     </Compile>
@@ -229,11 +242,6 @@
     <Compile Include="CodeGenerator\Movies.MovieWriterModels.cs">
       <DependentUpon>ModelFileMaster.tt</DependentUpon>
     </Compile>
-    <Compile Include="CodeGenerator\MultiOutput.cs">
-      <DependentUpon>MultiOutput.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="CodeGenerator\Objects.ObjectAliasModels.cs">
       <DependentUpon>ModelFileMaster.tt</DependentUpon>
     </Compile>
@@ -390,12 +398,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
+    <ProjectReference Include="..\ComicVineScraper.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
       <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\CodeGenerator\MultiOutput.tt">
+      <Link>CodeGenerator\MultiOutput.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+    <Content Include="..\CodeGenerator\NamespaceParser.tt">
+      <Link>CodeGenerator\NamespaceParser.tt</Link>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NamespaceParser.cs</LastGenOutput>
+    </Content>
     <Content Include="CodeGenerator\ModelFile.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelFile.cs</LastGenOutput>
@@ -408,10 +426,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelFileMaster.tt</DependentUpon>
-    </Content>
-    <Content Include="CodeGenerator\MultiOutput.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MultiOutput.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

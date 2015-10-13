@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.BusinessWorkflows
+﻿namespace ComicVineScraper.API.BusinessWorkflows
 {
     using StructureMap.Configuration.DSL;
     using Interfaces.Mappers;

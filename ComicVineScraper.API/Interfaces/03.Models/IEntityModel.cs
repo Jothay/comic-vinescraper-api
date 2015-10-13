@@ -1,4 +1,4 @@
-namespace ComicVine.API.Interfaces.Models
+namespace ComicVineScraper.API.Interfaces.Models
 {
     public interface IEntityModel
     {

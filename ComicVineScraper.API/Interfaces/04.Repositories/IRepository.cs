@@ -1,4 +1,4 @@
-namespace ComicVine.API.Interfaces.Repositories
+namespace ComicVineScraper.API.Interfaces.Repositories
 {
     using System;
     using System.Collections.Generic;

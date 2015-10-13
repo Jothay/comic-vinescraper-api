@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ComicVineScraper.API.Rep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ComicVineScraper.API.Services.Testing", "ComicVineScraper.API.Services.Testing\07.ComicVineScraper.API.Services.Testing.csproj", "{6E6C634B-A6C1-4EAD-823A-59BA674255C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGenerator", "CodeGenerator", "{7FF7B474-2CE6-4BAA-9FBC-4C051702C978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{51C42A85-B933-4A12-AB7D-67BE4055A2F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,8 +79,15 @@ Global
 		{6E6C634B-A6C1-4EAD-823A-59BA674255C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E6C634B-A6C1-4EAD-823A-59BA674255C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E6C634B-A6C1-4EAD-823A-59BA674255C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C42A85-B933-4A12-AB7D-67BE4055A2F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C42A85-B933-4A12-AB7D-67BE4055A2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C42A85-B933-4A12-AB7D-67BE4055A2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C42A85-B933-4A12-AB7D-67BE4055A2F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{51C42A85-B933-4A12-AB7D-67BE4055A2F5} = {7FF7B474-2CE6-4BAA-9FBC-4C051702C978}
 	EndGlobalSection
 EndGlobal

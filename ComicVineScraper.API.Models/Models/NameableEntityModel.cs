@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Models
+﻿namespace ComicVineScraper.API.Models
 {
     public class NameableEntityModel : EntityModel
         , Interfaces.Models.INameableEntityModel
@@ -9,7 +9,7 @@
     }
 }
 
-namespace ComicVine.API.SearchModels
+namespace ComicVineScraper.API.SearchModels
 {
     public partial class NameableEntitySearchModel : EntitySearchModel
         , Interfaces.SearchModels.INameableEntitySearchModel

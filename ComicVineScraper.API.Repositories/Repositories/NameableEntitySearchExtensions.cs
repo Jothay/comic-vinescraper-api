@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Repositories
+﻿namespace ComicVineScraper.API.Repositories
 {
     using System;
     using System.Linq;

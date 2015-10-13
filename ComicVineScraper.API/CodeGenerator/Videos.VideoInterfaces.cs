@@ -5,10 +5,10 @@
 // <summary>Declares the Video interfaces including Entity, Model, Search Model, Mapper,
 // Repository and Business Workflow in the appropriate namespaces.</summary>
 // <remarks>This file was auto-generated using InterfaceFileMaster.tt in
-// ComicVine.API\Interfaces\CodeGenerator</remarks>
+// ComicVineScraper.API\CodeGenerator</remarks>
 // </auto-generated>
 // ReSharper disable RedundantUsingDirective, UnusedMemberInSuper.Global
-namespace ComicVine.API.Interfaces.DataModels
+namespace ComicVineScraper.API.Interfaces.DataModels
 {
     using System;
     using System.Collections.Generic;
@@ -34,7 +34,7 @@ namespace ComicVine.API.Interfaces.DataModels
     }
 }
 
-namespace ComicVine.API.Interfaces.Models
+namespace ComicVineScraper.API.Interfaces.Models
 {
     using System;
     using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace ComicVine.API.Interfaces.Models
     }
 }
 
-namespace ComicVine.API.Interfaces.SearchModels
+namespace ComicVineScraper.API.Interfaces.SearchModels
 {
     public interface IVideoSearchModel : INameableEntitySearchModel
     {
@@ -88,7 +88,7 @@ namespace ComicVine.API.Interfaces.SearchModels
     }
 }
 
-namespace ComicVine.API.Interfaces.Mappers
+namespace ComicVineScraper.API.Interfaces.Mappers
 {
     public interface IVideoMapper
         : IMapper<
@@ -99,7 +99,7 @@ namespace ComicVine.API.Interfaces.Mappers
     }
 }
 
-namespace ComicVine.API.Interfaces.Repositories
+namespace ComicVineScraper.API.Interfaces.Repositories
 {
     public interface IVideosRepository
         : IRepositoryBase
@@ -108,7 +108,7 @@ namespace ComicVine.API.Interfaces.Repositories
     }
 }
 
-namespace ComicVine.API.Interfaces.BusinessWorkflows
+namespace ComicVineScraper.API.Interfaces.BusinessWorkflows
 {
     public interface IVideosBusinessWorkflow
         : IBusinessWorkflow<Models.IVideoModel, SearchModels.IVideoSearchModel>

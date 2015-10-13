@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Services
+﻿namespace ComicVineScraper.API.Services
 {
     using System.Configuration;
     using ServiceStack;

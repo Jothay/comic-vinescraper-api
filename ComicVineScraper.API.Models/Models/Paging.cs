@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.SearchModels
+﻿namespace ComicVineScraper.API.SearchModels
 {
     using Interfaces.SearchModels;
 

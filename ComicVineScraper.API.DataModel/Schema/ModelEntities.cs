@@ -1,6 +1,6 @@
 ﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable UnusedMember.Global
-namespace ComicVine.API.DataModel
+namespace ComicVineScraper.API.DataModel
 {
     using System.Data.Entity;
     using Schema;

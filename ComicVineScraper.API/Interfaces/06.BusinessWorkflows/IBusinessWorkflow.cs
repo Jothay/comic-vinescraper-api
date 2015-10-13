@@ -1,4 +1,4 @@
-namespace ComicVine.API.Interfaces.BusinessWorkflows
+namespace ComicVineScraper.API.Interfaces.BusinessWorkflows
 {
     using System.Collections.Generic;
 

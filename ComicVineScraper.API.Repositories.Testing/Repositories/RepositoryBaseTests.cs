@@ -1,4 +1,4 @@
-﻿namespace ComicVine.API.Testing.Repositories
+﻿namespace ComicVineScraper.API.Testing.Repositories
 {
     using System;
     using System.Data.Entity;

@@ -23,7 +23,8 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\MngRecAndSec.ruleset</CodeAnalysisRuleSet>
-    <DocumentationFile>bin\Debug\ComicVineScraper.API.DataModel.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\Assisting.cs" />
     <Compile Include="Attributes\DecimalPrecisionAttribute.cs" />
     <Compile Include="Attributes\MapDepthAllowedAttribute.cs" />
     <Compile Include="Attributes\SearchableAttribute.cs" />
@@ -185,7 +185,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
+    <ProjectReference Include="..\ComicVineScraper.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
       <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>

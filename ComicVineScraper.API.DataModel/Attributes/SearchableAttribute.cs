@@ -3,7 +3,7 @@
 // </copyright>
 // <summary>Implements the searchable attribute class</summary>
 // ReSharper disable UnusedAutoPropertyAccessor.Global
-namespace ComicVine.API.DataModel
+namespace ComicVineScraper.API.DataModel
 {
     using System;
 
