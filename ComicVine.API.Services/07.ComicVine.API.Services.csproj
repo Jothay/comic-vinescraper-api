@@ -486,9 +486,9 @@
       <Project>{39f476d8-bf0d-44cb-8a05-5876cf436bc5}</Project>
       <Name>06.ComicVine.API.BusinessWorkflows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVine.API.csproj">
+    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
-      <Name>01.RepositoryPattern</Name>
+      <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -404,13 +404,13 @@
     <Compile Include="RepositoryRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVine.API.DataModel.csproj">
+    <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVineScraper.API.DataModel.csproj">
       <Project>{941fd95d-2cf5-4378-99cc-1ce808027781}</Project>
-      <Name>02.RepositoryPattern.DataModel</Name>
+      <Name>02.ComicVineScraper.API.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVine.API.csproj">
+    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
-      <Name>01.RepositoryPattern</Name>
+      <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

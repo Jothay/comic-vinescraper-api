@@ -458,17 +458,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComicVine.API.Models\03.ComicVine.API.Models.csproj">
+    <ProjectReference Include="..\ComicVine.API.Models\03.ComicVineScraper.API.Models.csproj">
       <Project>{4FC964B6-D4F1-4A15-8D51-DD87DD17E810}</Project>
-      <Name>03.RepositoryPattern.Models</Name>
+      <Name>03.ComicVineScraper.API.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\ComicVine.API.Services\07.ComicVine.API.Services.csproj">
       <Project>{4389b305-b381-4b50-b1a8-bbb5259a0524}</Project>
-      <Name>07.RepositoryPattern.Services</Name>
+      <Name>07.ComicVine.API.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVine.API.csproj">
+    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
-      <Name>01.RepositoryPattern</Name>
+      <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

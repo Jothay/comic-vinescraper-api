@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4FC964B6-D4F1-4A15-8D51-DD87DD17E810}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComicVineScraper.API.Models</RootNamespace>
+    <AssemblyName>ComicVineScraper.API.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\MngRecAndSec.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\ComicVineScraper.API.Models.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\..\CEF-ClarityEcommerceFramework\packages\ServiceStack.Interfaces.4.0.38\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeGenerator\Characters.CharacterAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterAppearedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterCreatorModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterDiedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterEnemyTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterFriendlyTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterFriendModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterMovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterPowerModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Characters.CharacterVolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Chats.ChatModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptAppearedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptMovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Concepts.ConceptVolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterDiedModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeCharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeConceptModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeLocationModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeObjectModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodePersonModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamFirstAppearanceModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Episodes.EpisodeTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Issues.IssueWriterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationAppearedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationMovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Locations.LocationVolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Media.ImageFileModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\ModelFile.cs">
+      <DependentUpon>ModelFile.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieCharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieConceptModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieLocationModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieObjectModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieProducerModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieStudioModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Movies.MovieWriterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\MultiOutput.cs">
+      <DependentUpon>MultiOutput.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectAppearedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectMovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Objects.ObjectVolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Origins.OriginProfileModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.CreatorCharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.GenderModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\People.PersonModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Powers.PowerModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Profiles.ProfileModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.PromoModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Promos.ResourceTypeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Publishers.PublisherModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesCharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesLocationModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Series.SeriesModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\StoryArcs.StoryArcWriterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Studios.StudioModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamAppearedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterEnemyModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamCharacterFriendModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamDisbandedInIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamIssueModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMemberModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamMovieModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamStoryArcModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Teams.TeamVolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Videos.VideoTypeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeAliasModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeCharacterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeConceptModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeLocationModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeObjectModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeTeamModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CodeGenerator\Volumes.VolumeWriterModels.cs">
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NameableEntityModel.cs" />
+    <Compile Include="Models\Paging.cs" />
+    <Compile Include="Models\EntityModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
+      <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
+      <Name>01.ComicVineScraper.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CodeGenerator\ModelFile.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelFile.cs</LastGenOutput>
+    </Content>
+    <Content Include="CodeGenerator\ModelFileMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelFileMaster.txt</LastGenOutput>
+    </Content>
+    <Content Include="CodeGenerator\ModelFileMaster.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFileMaster.tt</DependentUpon>
+    </Content>
+    <Content Include="CodeGenerator\MultiOutput.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiOutput.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <TransformOnBuild>true</TransformOnBuild>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

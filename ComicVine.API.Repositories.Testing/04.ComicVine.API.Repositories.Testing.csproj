@@ -459,21 +459,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVine.API.DataModel.csproj">
+    <ProjectReference Include="..\ComicVine.API.DataModel\02.ComicVineScraper.API.DataModel.csproj">
       <Project>{941FD95D-2CF5-4378-99CC-1CE808027781}</Project>
-      <Name>02.RepositoryPattern.DataModel</Name>
+      <Name>02.ComicVineScraper.API.DataModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicVine.API.Models\03.ComicVine.API.Models.csproj">
+    <ProjectReference Include="..\ComicVine.API.Models\03.ComicVineScraper.API.Models.csproj">
       <Project>{4FC964B6-D4F1-4A15-8D51-DD87DD17E810}</Project>
-      <Name>03.RepositoryPattern.Models</Name>
+      <Name>03.ComicVineScraper.API.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\ComicVine.API.Repositories\04.ComicVine.API.Repositories.csproj">
       <Project>{30005a66-a3c4-4817-85dc-9dde96b8056d}</Project>
-      <Name>04.RepositoryPattern.Repositories</Name>
+      <Name>04.ComicVine.API.Repositories</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicVine.API\01.ComicVine.API.csproj">
+    <ProjectReference Include="..\ComicVine.API\01.ComicVineScraper.API.csproj">
       <Project>{81925cbb-9ae5-43df-9011-32ecc53f1222}</Project>
-      <Name>01.RepositoryPattern</Name>
+      <Name>01.ComicVineScraper.API</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -11,8 +11,28 @@
         protected ServiceStackHost AppHost;
         public void Dispose()
         {
-            AppHost.Dispose();
-            AppHost = null;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        ~ServiceTestsSetupTeardown()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // free managed resources
+                if (AppHost != null)
+                {
+                    AppHost.Dispose();
+                    AppHost = null;
+                }
+            }
+            // Free native resources
+            // <None>
         }
     }
 
@@ -40,16 +60,6 @@
 
         public static void ConfigureContainer(Funq.Container container)
         {
-            //container.Register<IPersonMapper>(c => new PersonMapper());
-            //container.Register<IModelEntities<Person>>(c => {
-            //    Mock<IDbSet<Person>> mockAuthSet;
-            //    return PeopleMockingSetup.DoMockingSetupForContext(true, out mockAuthSet).Object;
-            //});
-            //container.Register<IPeopleRepository>(c => {
-            //    Mock<IDbSet<Person>> mockAuthSet;
-            //    var mockContext = PeopleMockingSetup.DoMockingSetupForContext(true, out mockAuthSet);
-            //    return PeopleMockingSetup.DoMockingSetupForRepository(ref mockContext).Object;
-            //});
             #region Characters
             container.Register(c => CharactersMockingSetup.DoMockingSetupForBusinessWorkflow().Object);
             container.Register<ICharactersServices>(c => new CharactersServices(c.Resolve<ICharactersBusinessWorkflow>()));
