@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ComicVineScraper.API", "ComicVine.API\01.ComicVineScraper.API.csproj", "{81925CBB-9AE5-43DF-9011-32ECC53F1222}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ComicVineScraper.API", "ComicVineScraper.API\01.ComicVineScraper.API.csproj", "{81925CBB-9AE5-43DF-9011-32ECC53F1222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.ComicVineScraper.API.DataModel", "ComicVine.API.DataModel\02.ComicVineScraper.API.DataModel.csproj", "{941FD95D-2CF5-4378-99CC-1CE808027781}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.ComicVineScraper.API.DataModel", "ComicVineScraper.API.DataModel\02.ComicVineScraper.API.DataModel.csproj", "{941FD95D-2CF5-4378-99CC-1CE808027781}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ComicVineScraper.API.Models", "ComicVine.API.Models\03.ComicVineScraper.API.Models.csproj", "{4FC964B6-D4F1-4A15-8D51-DD87DD17E810}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.ComicVineScraper.API.Models", "ComicVineScraper.API.Models\03.ComicVineScraper.API.Models.csproj", "{4FC964B6-D4F1-4A15-8D51-DD87DD17E810}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ComicVine.API.Repositories", "ComicVine.API.Repositories\04.ComicVine.API.Repositories.csproj", "{30005A66-A3C4-4817-85DC-9DDE96B8056D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ComicVineScraper.API.Repositories", "ComicVineScraper.API.Repositories\04.ComicVineScraper.API.Repositories.csproj", "{30005A66-A3C4-4817-85DC-9DDE96B8056D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ComicVine.API.BusinessWorkflows", "ComicVine.API.BusinessWorkflows\06.ComicVine.API.BusinessWorkflows.csproj", "{39F476D8-BF0D-44CB-8A05-5876CF436BC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ComicVineScraper.API.BusinessWorkflows", "ComicVineScraper.API.BusinessWorkflows\06.ComicVineScraper.API.BusinessWorkflows.csproj", "{39F476D8-BF0D-44CB-8A05-5876CF436BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ComicVine.API.Mappings", "ComicVine.API.Mappings\05.ComicVine.API.Mappings.csproj", "{668FA6D2-5064-4343-9C6C-A6D5E0215796}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ComicVineScraper.API.Mappings", "ComicVineScraper.API.Mappings\05.ComicVineScraper.API.Mappings.csproj", "{668FA6D2-5064-4343-9C6C-A6D5E0215796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ComicVine.API.Services", "ComicVine.API.Services\07.ComicVine.API.Services.csproj", "{4389B305-B381-4B50-B1A8-BBB5259A0524}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ComicVineScraper.API.Services", "ComicVineScraper.API.Services\07.ComicVineScraper.API.Services.csproj", "{4389B305-B381-4B50-B1A8-BBB5259A0524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ComicVine.API.BusinessWorkflows.Testing", "ComicVine.API.BusinessWorkflows.Testing\06.ComicVine.API.BusinessWorkflows.Testing.csproj", "{1D266269-55D6-413C-8F8F-6DE2D2938880}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06.ComicVineScraper.API.BusinessWorkflows.Testing", "ComicVineScraper.API.BusinessWorkflows.Testing\06.ComicVineScraper.API.BusinessWorkflows.Testing.csproj", "{1D266269-55D6-413C-8F8F-6DE2D2938880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ComicVine.API.Mappings.Testing", "ComicVine.API.Mappings.Testing\05.ComicVine.API.Mappings.Testing.csproj", "{4C1DB338-6EC8-41A2-8E3E-49933BEC2AB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.ComicVineScraper.API.Mappings.Testing", "ComicVineScraper.API.Mappings.Testing\05.ComicVineScraper.API.Mappings.Testing.csproj", "{4C1DB338-6EC8-41A2-8E3E-49933BEC2AB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ComicVine.API.Repositories.Testing", "ComicVine.API.Repositories.Testing\04.ComicVine.API.Repositories.Testing.csproj", "{9CD5BBAB-C0DB-4499-9608-D76F02044822}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.ComicVineScraper.API.Repositories.Testing", "ComicVineScraper.API.Repositories.Testing\04.ComicVineScraper.API.Repositories.Testing.csproj", "{9CD5BBAB-C0DB-4499-9608-D76F02044822}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ComicVine.API.Services.Testing", "ComicVine.API.Services.Testing\07.ComicVine.API.Services.Testing.csproj", "{6E6C634B-A6C1-4EAD-823A-59BA674255C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07.ComicVineScraper.API.Services.Testing", "ComicVineScraper.API.Services.Testing\07.ComicVineScraper.API.Services.Testing.csproj", "{6E6C634B-A6C1-4EAD-823A-59BA674255C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,3 +9,7 @@
 /ComicVine.API.Services/App_Data/Models_log.ldf
 /ComicVine.API.Services/web.appSettings.config
 /ComicVine.API.Services/web.connectionStrings.config
+/ComicVineScraper.API.Services/App_Data/Models.mdf
+/ComicVineScraper.API.Services/App_Data/Models_log.ldf
+/ComicVineScraper.API.Services/web.appSettings.config
+/ComicVineScraper.API.Services/web.connectionStrings.config
